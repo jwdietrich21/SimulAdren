@@ -25,7 +25,7 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="9"/>
         <WindowIndex Value="1"/>
-        <CursorPos Y="2"/>
+        <CursorPos X="15" Y="3"/>
         <UsageCount Value="48"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -107,7 +107,7 @@
         <EditorIndex Value="4"/>
         <WindowIndex Value="1"/>
         <TopLine Value="34"/>
-        <CursorPos X="3" Y="45"/>
+        <CursorPos Y="45"/>
         <UsageCount Value="33"/>
         <Loaded Value="True"/>
       </Unit8>
@@ -136,26 +136,35 @@
         <LoadedDesigner Value="True"/>
       </Unit10>
       <Unit11>
+        <Filename Value="environmentinfo.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="EnvironmentInfo"/>
+        <EditorIndex Value="10"/>
+        <WindowIndex Value="1"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+      </Unit11>
+      <Unit12>
         <Filename Value="C:\lazarus\lcl\grids.pas"/>
         <TopLine Value="9124"/>
         <CursorPos Y="9142"/>
         <UsageCount Value="9"/>
-      </Unit11>
-      <Unit12>
+      </Unit12>
+      <Unit13>
         <Filename Value="C:\Developer\lazarus 1.4\components\tachart\tacustomseries.pas"/>
         <TopLine Value="792"/>
         <CursorPos Y="809"/>
         <UsageCount Value="9"/>
-      </Unit12>
-      <Unit13>
+      </Unit13>
+      <Unit14>
         <Filename Value="C:\Developer\lazarus 1.4\lcl\lcltype.pp"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <TopLine Value="443"/>
         <CursorPos X="3" Y="460"/>
         <UsageCount Value="9"/>
-      </Unit13>
-      <Unit14>
+      </Unit14>
+      <Unit15>
         <Filename Value="systemsdiagram.pas"/>
         <UnitName Value="SystemsDiagram"/>
         <EditorIndex Value="2"/>
@@ -169,8 +178,8 @@
         </ExtraEditor1>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
-      </Unit14>
-      <Unit15>
+      </Unit15>
+      <Unit16>
         <Filename Value="guiservices.pas"/>
         <UnitName Value="GUIServices"/>
         <EditorIndex Value="5"/>
@@ -178,16 +187,16 @@
         <CursorPos Y="2"/>
         <UsageCount Value="16"/>
         <Loaded Value="True"/>
-      </Unit15>
-      <Unit16>
+      </Unit16>
+      <Unit17>
         <Filename Value="..\..\..\..\..\..\..\..\..\Applications\lazarus\lcl\include\spinedit.inc"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <TopLine Value="162"/>
         <CursorPos Y="175"/>
         <UsageCount Value="11"/>
-      </Unit16>
-      <Unit17>
+      </Unit17>
+      <Unit18>
         <Filename Value="..\..\..\..\..\..\..\..\..\Applications\lazarus\lcl\grids.pas"/>
         <UnitName Value="Grids"/>
         <EditorIndex Value="-1"/>
@@ -195,15 +204,6 @@
         <TopLine Value="11420"/>
         <CursorPos Y="11429"/>
         <UsageCount Value="10"/>
-      </Unit17>
-      <Unit18>
-        <Filename Value="environmentinfo.pas"/>
-        <IsPartOfProject Value="True"/>
-        <UnitName Value="EnvironmentInfo"/>
-        <EditorIndex Value="10"/>
-        <WindowIndex Value="1"/>
-        <UsageCount Value="21"/>
-        <Loaded Value="True"/>
       </Unit18>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
