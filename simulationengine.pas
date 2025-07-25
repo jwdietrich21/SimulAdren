@@ -7,7 +7,7 @@ unit SimulationEngine;
 { Simulation program for the hypothalamus-pituitary-adrenal axis }
 { Simulation Engine }
 
-{ Version 1.0.0 (Rudolphina) }
+{ Version 1.1.0 (Desarrollo) }
 
 { (c) Johannes W. Dietrich, 1994 - 2025 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }

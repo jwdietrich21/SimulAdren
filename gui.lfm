@@ -13,7 +13,7 @@ object ValuesForm: TValuesForm
   OnCreate = FormCreate
   object ValuesGrid: TStringGrid
     Left = 0
-    Height = 344
+    Height = 312
     Top = 40
     Width = 646
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -120,7 +120,7 @@ object ValuesForm: TValuesForm
   object CRHSpinEdit: TFloatSpinEdit
     Left = 54
     Height = 20
-    Top = 397
+    Top = 368
     Width = 98
     Anchors = [akLeft, akBottom]
     DecimalPlaces = 4
@@ -131,7 +131,7 @@ object ValuesForm: TValuesForm
   object CRHLabel: TLabel
     Left = 24
     Height = 16
-    Top = 398
+    Top = 369
     Width = 27
     Anchors = [akLeft, akBottom]
     Caption = 'CRH'
@@ -140,7 +140,7 @@ object ValuesForm: TValuesForm
   object IterationsLabel: TLabel
     Left = 331
     Height = 16
-    Top = 541
+    Top = 512
     Width = 57
     Anchors = [akLeft, akBottom]
     Caption = 'Iterations'
@@ -151,7 +151,7 @@ object ValuesForm: TValuesForm
     AnchorSideLeft.Side = asrBottom
     Left = 399
     Height = 20
-    Top = 541
+    Top = 512
     Width = 98
     Anchors = [akLeft, akBottom]
     BorderSpacing.Left = 11
@@ -162,7 +162,7 @@ object ValuesForm: TValuesForm
   object G1Label: TLabel
     Left = 24
     Height = 16
-    Top = 434
+    Top = 405
     Width = 16
     Anchors = [akLeft, akBottom]
     Caption = 'G1'
@@ -171,7 +171,7 @@ object ValuesForm: TValuesForm
   object G1Edit: TFloatSpinEdit
     Left = 54
     Height = 20
-    Top = 433
+    Top = 404
     Width = 98
     Anchors = [akLeft, akBottom]
     Increment = 0.1
@@ -181,7 +181,7 @@ object ValuesForm: TValuesForm
   object GALabel: TLabel
     Left = 24
     Height = 16
-    Top = 506
+    Top = 477
     Width = 18
     Anchors = [akLeft, akBottom]
     Caption = 'GA'
@@ -190,7 +190,7 @@ object ValuesForm: TValuesForm
   object GAEdit: TFloatSpinEdit
     Left = 54
     Height = 20
-    Top = 505
+    Top = 476
     Width = 98
     Anchors = [akLeft, akBottom]
     Increment = 0.1
@@ -200,7 +200,7 @@ object ValuesForm: TValuesForm
   object G3Edit: TFloatSpinEdit
     Left = 54
     Height = 20
-    Top = 469
+    Top = 440
     Width = 98
     Anchors = [akLeft, akBottom]
     Increment = 0.1
@@ -210,7 +210,7 @@ object ValuesForm: TValuesForm
   object G3Label: TLabel
     Left = 24
     Height = 16
-    Top = 473
+    Top = 444
     Width = 18
     Anchors = [akLeft, akBottom]
     Caption = 'G3'
@@ -219,7 +219,7 @@ object ValuesForm: TValuesForm
   object DALabel: TLabel
     Left = 24
     Height = 16
-    Top = 542
+    Top = 513
     Width = 18
     Anchors = [akLeft, akBottom]
     Caption = 'DA'
@@ -228,7 +228,7 @@ object ValuesForm: TValuesForm
   object DAEdit: TFloatSpinEdit
     Left = 54
     Height = 20
-    Top = 541
+    Top = 512
     Width = 98
     Anchors = [akLeft, akBottom]
     Increment = 0.1
@@ -238,7 +238,7 @@ object ValuesForm: TValuesForm
   object DREdit: TFloatSpinEdit
     Left = 399
     Height = 20
-    Top = 433
+    Top = 404
     Width = 98
     Anchors = [akLeft, akBottom]
     Increment = 0.1
@@ -248,7 +248,7 @@ object ValuesForm: TValuesForm
   object DRLabel: TLabel
     Left = 359
     Height = 16
-    Top = 433
+    Top = 404
     Width = 18
     Anchors = [akLeft, akBottom]
     Caption = 'DR'
@@ -257,7 +257,7 @@ object ValuesForm: TValuesForm
   object GREdit: TFloatSpinEdit
     Left = 399
     Height = 20
-    Top = 397
+    Top = 368
     Width = 98
     Anchors = [akLeft, akBottom]
     Increment = 0.1
@@ -267,7 +267,7 @@ object ValuesForm: TValuesForm
   object GRLabel: TLabel
     Left = 359
     Height = 16
-    Top = 397
+    Top = 368
     Width = 18
     Anchors = [akLeft, akBottom]
     Caption = 'GR'
@@ -276,56 +276,56 @@ object ValuesForm: TValuesForm
   object G1UnitLabel: TLabel
     Left = 168
     Height = 16
-    Top = 434
+    Top = 405
     Width = 18
     Caption = 's/L'
   end
   object G3Unitlabel: TLabel
     Left = 168
     Height = 16
-    Top = 473
+    Top = 444
     Width = 18
     Caption = 's/L'
   end
   object GAUnitLabel: TLabel
     Left = 168
     Height = 16
-    Top = 506
+    Top = 477
     Width = 40
     Caption = 'nmol/s'
   end
   object DAUnitLabel: TLabel
     Left = 168
     Height = 16
-    Top = 542
+    Top = 513
     Width = 41
     Caption = 'pmol/L'
   end
   object GRUnitLabel: TLabel
     Left = 512
     Height = 16
-    Top = 397
+    Top = 368
     Width = 25
     Caption = '       '
   end
   object DRUnitLabel: TLabel
     Left = 512
     Height = 16
-    Top = 434
+    Top = 405
     Width = 41
     Caption = 'nmol/L'
   end
   object GELabel: TLabel
     Left = 359
     Height = 16
-    Top = 473
+    Top = 444
     Width = 17
     Caption = 'GE'
   end
   object GEEdit: TFloatSpinEdit
     Left = 399
     Height = 20
-    Top = 469
+    Top = 440
     Width = 98
     TabOrder = 11
     Value = 1
@@ -333,13 +333,13 @@ object ValuesForm: TValuesForm
   object CRHUnitLabel: TLabel
     Left = 168
     Height = 16
-    Top = 398
+    Top = 369
     Width = 38
     Caption = 'fmol/L'
   end
   object ImageList1: TImageList
     Left = 512
-    Top = 480
+    Top = 451
     Bitmap = {
       4C7A040000001000000010000000C90700000000000078DAAD97FD5354D719C7
       69FB533AD3C91FD099FE90693BFDA1C98C51D0244DDA264D329399649A8E9DA6
@@ -408,7 +408,7 @@ object ValuesForm: TValuesForm
   end
   object MainMenu1: TMainMenu
     Left = 568
-    Top = 480
+    Top = 451
     object AppleMenu: TMenuItem
       Caption = ''
       object MacAboutItem: TMenuItem

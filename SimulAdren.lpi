@@ -20,8 +20,9 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="1"/>
-      <BuildNr Value="57"/>
-      <StringTable Comments="Simulator for the HPA axis" CompanyName="Ruhr University of Bochum" FileDescription="Simulation program for the hypothalamus-pituitary-adrenal axis (HPA feedback control)" InternalName="Rudolphina" LegalCopyright="1994–2025 J. W. Dietrich and Ruhr University of Bochum" LegalTrademarks="SimulAdren" ProductName="SimulAdren" ProductVersion="1.0"/>
+      <MinorVersionNr Value="1"/>
+      <BuildNr Value="58"/>
+      <StringTable Comments="Simulator for the HPA axis" CompanyName="Ruhr University of Bochum" FileDescription="Simulation program for the hypothalamus-pituitary-adrenal axis (HPA feedback control)" InternalName="Desarrollo" LegalCopyright="1994–2025 J. W. Dietrich and Ruhr University of Bochum" LegalTrademarks="SimulAdren" ProductName="SimulAdren" ProductVersion="1.1"/>
     </VersionInfo>
     <BuildModes Count="5">
       <Item1 Name="Default" Default="True"/>
@@ -189,7 +190,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="12">
+    <Units Count="14">
       <Unit0>
         <Filename Value="SimulAdren.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -263,6 +264,15 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="EnvironmentInfo"/>
       </Unit11>
+      <Unit12>
+        <Filename Value="randomfunctions.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="RandomFunctions"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="evoEngine.pas"/>
+        <IsPartOfProject Value="True"/>
+      </Unit13>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

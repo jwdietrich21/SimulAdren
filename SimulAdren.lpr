@@ -7,7 +7,7 @@ program SimulAdren;
 { Simulation program for the hypothalamus-pituitary-adrenal axis }
 { Main project file }
 
-{ Version 1.0.0 (Rudolphina) }
+{ Version 1.1.0 (Desarrollo) }
 
 { (c) Johannes W. Dietrich, 1994 - 2025 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -35,7 +35,8 @@ uses
   {$ENDIF}{$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, tachartlazaruspkg, GUI, SimulationEngine, IPS, bricks, lifeblocks,
-  Plot, prediction, SimuladrenTypes, Solver, AboutBox, EnvironmentInfo
+  Plot, prediction, SimuladrenTypes, Solver, AboutBox, EnvironmentInfo,
+  RandomFunctions, evoEngine
   { you can add units after this };
 
 {$R *.res}

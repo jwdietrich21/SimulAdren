@@ -7,7 +7,7 @@ unit GUI;
 { Simulation program for the hypothalamus-pituitary-adrenal axis }
 { GUI }
 
-{ Version 1.0.0 (Rudolphina) }
+{ Version 1.1.0 (Desarrollo) }
 
 { (c) Johannes W. Dietrich, 1994 - 2025 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -34,7 +34,8 @@ interface
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, Grids,
   ComCtrls, StdCtrls, ExtCtrls, LCLType, Spin, Menus,
-  SimuladrenTypes, SimulationEngine, Prediction, Plot, GUIServices, AboutBox;
+  SimuladrenTypes, SimulationEngine, Prediction, Plot, GUIServices, AboutBox,
+  evoEngine;
 
 type
 
