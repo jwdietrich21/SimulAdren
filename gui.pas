@@ -43,18 +43,25 @@ type
 
   TValuesForm = class(TForm)
     AppleMenu: TMenuItem;
+    EstimateGECheckbox: TCheckBox;
+    EstimateGRCheckBox: TCheckBox;
+    SteadyStateButton: TButton;
+    EvolveButton: TButton;
     CloseMenuItem: TMenuItem;
     CopyMenuItem: TMenuItem;
     CutMenuItem: TMenuItem;
+    DAUnitLabel: TLabel;
     DREdit: TFloatSpinEdit;
     DRLabel: TLabel;
     Divider11: TMenuItem;
     Divider12: TMenuItem;
     Divider21: TMenuItem;
+    DRUnitLabel: TLabel;
     EditMenu: TMenuItem;
     FileMenu: TMenuItem;
     DAEdit: TFloatSpinEdit;
     DALabel: TLabel;
+    GAUnitLabel: TLabel;
     GEEdit: TFloatSpinEdit;
     G3Edit: TFloatSpinEdit;
     G3Label: TLabel;
@@ -98,10 +105,12 @@ type
     GAEdit: TFloatSpinEdit;
     procedure CloseMenuItemClick(Sender: TObject);
     procedure CopyMenuItemClick(Sender: TObject);
+    procedure EvolveButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure MacAboutItemClick(Sender: TObject);
     procedure QuitMenuItemClick(Sender: TObject);
     procedure StartButtonClick(Sender: TObject);
+    procedure SteadyStateButtonClick(Sender: TObject);
     procedure WinAboutItemClick(Sender: TObject);
   private
     { private declarations }
@@ -154,6 +163,14 @@ begin
   end;
   PlotForm.ShowPlot;
   gValues.Destroy;
+end;
+
+procedure TValuesForm.SteadyStateButtonClick(Sender: TObject);
+begin
+  PredictSteadyState(CRHSpinEdit.Value * CRHFactor, G1Edit.Value, G3Edit.Value,
+      GAEdit.Value * GAFactor, GREdit.Value, GEEdit.Value, DAEdit.Value *
+      DAFactor, DREdit.Value * DRFactor);
+  PredictionForm.DisplayPrediction(gPrediction1, gPrediction2);
 end;
 
 procedure AdaptMenus;
@@ -235,6 +252,11 @@ end;
 procedure TValuesForm.CopyMenuItemClick(Sender: TObject);
 begin
   CopyCells(Sender);
+end;
+
+procedure TValuesForm.EvolveButtonClick(Sender: TObject);
+begin
+
 end;
 
 end.

@@ -76,6 +76,7 @@ var
   gPrediction1, gPrediction2: TPrediction;
 
 procedure RunSimulation(CRH, G1, G3, GA, GR, GE, DA, DR: extended; nmax: integer);
+procedure PredictSteadyState(CRH, G1, G3, GA, GR, GE, DA, DR: extended);
 
 implementation
 
@@ -92,6 +93,38 @@ begin
   result := gBlocks.MiMeA.simOutput;
 end;
 
+procedure PredictSteadyState(CRH, G1, G3, GA, GR, GE, DA, DR: extended);
+var
+  e, ACTH, PRF: extended;
+  a, b, c, K1, K2: extended;
+  i: integer;
+  predictions: TQRoots;
+begin
+  gPrediction1.CRH := CRH;
+  gPrediction2.CRH := CRH;
+
+  { Solving for F: }
+  K1 := GR * G3 * GA / (DR + G3 * GA);
+  K2 := DR * DA / (DR + G3 * GA);
+  a := GE * K1 + 1;
+  b := K2 - G1 * gPrediction1.CRH;
+  c := -G1 * K2 * gPrediction1.CRH;
+  predictions := Solve(a, b, c);
+  gPrediction1.ACTH := max(predictions[0], predictions[1]);
+  gPrediction1.PRF := GA * gPrediction1.ACTH / (DA + gPrediction1.ACTH);
+  gPrediction1.F := G3 * gPrediction1.PRF;
+  gPrediction1.v := GR * gPrediction1.F / (DR + gPrediction1.F);
+  gPrediction1.yR := GE * gPrediction1.v;
+  gPrediction1.e := gPrediction1.CRH / (1 + gPrediction1.yR);
+
+  gPrediction2.ACTH := min(predictions[0], predictions[1]);
+  gPrediction2.PRF := GA * gPrediction2.ACTH / (DA + gPrediction2.ACTH);
+  gPrediction2.F := G3 * gPrediction2.PRF;
+  gPrediction2.v := GR * gPrediction2.F / (DR + gPrediction2.F);
+  gPrediction2.yR := GE * gPrediction2.v;
+  gPrediction2.e := gPrediction2.CRH / (1 + gPrediction2.yR);
+end;
+
 procedure RunSimulation(CRH, G1, G3, GA, GR, GE, DA, DR: extended; nmax: integer);
 var
   e, ACTH, PRF, F, v, yr: extended;
@@ -101,29 +134,7 @@ var
 begin
   if nmax > 0 then
   begin
-    gPrediction1.CRH := CRH;
-    gPrediction2.CRH := CRH;
-
-    { Solving for F: }
-    K1 := GR * G3 * GA / (DR + G3 * GA);
-    K2 := DR * DA / (DR + G3 * GA);
-    a := GE * K1 + 1;
-    b := K2 - G1 * gPrediction1.CRH;
-    c := -G1 * K2 * gPrediction1.CRH;
-    predictions := Solve(a, b, c);
-    gPrediction1.ACTH := max(predictions[0], predictions[1]);
-    gPrediction1.PRF := GA * gPrediction1.ACTH / (DA + gPrediction1.ACTH);
-    gPrediction1.F := G3 * gPrediction1.PRF;
-    gPrediction1.v := GR * gPrediction1.F / (DR + gPrediction1.F);
-    gPrediction1.yR := GE * gPrediction1.v;
-    gPrediction1.e := gPrediction1.CRH / (1 + gPrediction1.yR);
-
-    gPrediction2.ACTH := min(predictions[0], predictions[1]);
-    gPrediction2.PRF := GA * gPrediction2.ACTH / (DA + gPrediction2.ACTH);
-    gPrediction2.F := G3 * gPrediction2.PRF;
-    gPrediction2.v := GR * gPrediction2.F / (DR + gPrediction2.F);
-    gPrediction2.yR := GE * gPrediction2.v;
-    gPrediction2.e := gPrediction2.CRH / (1 + gPrediction2.yR);
+    PredictSteadyState(CRH, G1, G3, GA, GR, GE, DA, DR);
 
     gValues.size := 0; // delete content
     gValues.size := nmax;

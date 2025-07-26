@@ -1,10 +1,10 @@
 object ValuesForm: TValuesForm
   Left = 178
-  Height = 583
+  Height = 593
   Top = 136
   Width = 643
   Caption = 'Simuladren'
-  ClientHeight = 583
+  ClientHeight = 593
   ClientWidth = 643
   Constraints.MinHeight = 400
   Constraints.MinWidth = 640
@@ -13,7 +13,7 @@ object ValuesForm: TValuesForm
   OnCreate = FormCreate
   object ValuesGrid: TStringGrid
     Left = 0
-    Height = 312
+    Height = 305
     Top = 40
     Width = 646
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -109,20 +109,23 @@ object ValuesForm: TValuesForm
   object StartButton: TButton
     Left = 540
     Height = 25
-    Top = 536
+    Hint = 'Run simulation...'
+    Top = 545
     Width = 75
     Anchors = [akRight, akBottom]
     Caption = 'Run'
     Default = True
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 2
     OnClick = StartButtonClick
   end
   object CRHSpinEdit: TFloatSpinEdit
     Left = 54
     Height = 20
-    Top = 368
+    Top = 361
     Width = 98
-    Anchors = [akLeft, akBottom]
+    Anchors = [akRight, akBottom]
     DecimalPlaces = 4
     Increment = 0.2
     TabOrder = 3
@@ -131,18 +134,18 @@ object ValuesForm: TValuesForm
   object CRHLabel: TLabel
     Left = 24
     Height = 16
-    Top = 369
+    Top = 362
     Width = 27
-    Anchors = [akLeft, akBottom]
+    Anchors = [akRight, akBottom]
     Caption = 'CRH'
     ParentColor = False
   end
   object IterationsLabel: TLabel
     Left = 331
     Height = 16
-    Top = 512
+    Top = 505
     Width = 57
-    Anchors = [akLeft, akBottom]
+    Anchors = [akRight, akBottom]
     Caption = 'Iterations'
     ParentColor = False
   end
@@ -151,9 +154,9 @@ object ValuesForm: TValuesForm
     AnchorSideLeft.Side = asrBottom
     Left = 399
     Height = 20
-    Top = 512
+    Top = 505
     Width = 98
-    Anchors = [akLeft, akBottom]
+    Anchors = [akRight, akBottom]
     BorderSpacing.Left = 11
     MaxValue = 1000
     TabOrder = 4
@@ -162,18 +165,18 @@ object ValuesForm: TValuesForm
   object G1Label: TLabel
     Left = 24
     Height = 16
-    Top = 405
+    Top = 398
     Width = 16
-    Anchors = [akLeft, akBottom]
+    Anchors = [akRight, akBottom]
     Caption = 'G1'
     ParentColor = False
   end
   object G1Edit: TFloatSpinEdit
     Left = 54
     Height = 20
-    Top = 404
+    Top = 397
     Width = 98
-    Anchors = [akLeft, akBottom]
+    Anchors = [akRight, akBottom]
     Increment = 0.1
     TabOrder = 5
     Value = 2000
@@ -181,18 +184,18 @@ object ValuesForm: TValuesForm
   object GALabel: TLabel
     Left = 24
     Height = 16
-    Top = 477
+    Top = 470
     Width = 18
-    Anchors = [akLeft, akBottom]
+    Anchors = [akRight, akBottom]
     Caption = 'GA'
     ParentColor = False
   end
   object GAEdit: TFloatSpinEdit
     Left = 54
     Height = 20
-    Top = 476
+    Top = 469
     Width = 98
-    Anchors = [akLeft, akBottom]
+    Anchors = [akRight, akBottom]
     Increment = 0.1
     TabOrder = 6
     Value = 1.17
@@ -200,9 +203,9 @@ object ValuesForm: TValuesForm
   object G3Edit: TFloatSpinEdit
     Left = 54
     Height = 20
-    Top = 440
+    Top = 433
     Width = 98
-    Anchors = [akLeft, akBottom]
+    Anchors = [akRight, akBottom]
     Increment = 0.1
     TabOrder = 7
     Value = 371
@@ -210,27 +213,27 @@ object ValuesForm: TValuesForm
   object G3Label: TLabel
     Left = 24
     Height = 16
-    Top = 444
+    Top = 437
     Width = 18
-    Anchors = [akLeft, akBottom]
+    Anchors = [akRight, akBottom]
     Caption = 'G3'
     ParentColor = False
   end
   object DALabel: TLabel
     Left = 24
     Height = 16
-    Top = 513
+    Top = 506
     Width = 18
-    Anchors = [akLeft, akBottom]
+    Anchors = [akRight, akBottom]
     Caption = 'DA'
     ParentColor = False
   end
   object DAEdit: TFloatSpinEdit
     Left = 54
     Height = 20
-    Top = 512
+    Top = 505
     Width = 98
-    Anchors = [akLeft, akBottom]
+    Anchors = [akRight, akBottom]
     Increment = 0.1
     TabOrder = 8
     Value = 10
@@ -238,9 +241,9 @@ object ValuesForm: TValuesForm
   object DREdit: TFloatSpinEdit
     Left = 399
     Height = 20
-    Top = 404
+    Top = 397
     Width = 98
-    Anchors = [akLeft, akBottom]
+    Anchors = [akRight, akBottom]
     Increment = 0.1
     TabOrder = 9
     Value = 200
@@ -248,18 +251,18 @@ object ValuesForm: TValuesForm
   object DRLabel: TLabel
     Left = 359
     Height = 16
-    Top = 404
+    Top = 397
     Width = 18
-    Anchors = [akLeft, akBottom]
+    Anchors = [akRight, akBottom]
     Caption = 'DR'
     ParentColor = False
   end
   object GREdit: TFloatSpinEdit
     Left = 399
     Height = 20
-    Top = 368
+    Top = 361
     Width = 98
-    Anchors = [akLeft, akBottom]
+    Anchors = [akRight, akBottom]
     Increment = 0.1
     TabOrder = 10
     Value = 1
@@ -267,79 +270,132 @@ object ValuesForm: TValuesForm
   object GRLabel: TLabel
     Left = 359
     Height = 16
-    Top = 368
+    Top = 361
     Width = 18
-    Anchors = [akLeft, akBottom]
+    Anchors = [akRight, akBottom]
     Caption = 'GR'
     ParentColor = False
   end
   object G1UnitLabel: TLabel
     Left = 168
     Height = 16
-    Top = 405
+    Top = 398
     Width = 18
+    Anchors = [akRight, akBottom]
     Caption = 's/L'
   end
   object G3Unitlabel: TLabel
     Left = 168
     Height = 16
-    Top = 444
+    Top = 437
     Width = 18
+    Anchors = [akRight, akBottom]
     Caption = 's/L'
   end
   object GAUnitLabel: TLabel
     Left = 168
     Height = 16
-    Top = 477
+    Top = 470
     Width = 40
+    Anchors = [akRight, akBottom]
     Caption = 'nmol/s'
   end
   object DAUnitLabel: TLabel
     Left = 168
     Height = 16
-    Top = 513
+    Top = 506
     Width = 41
+    Anchors = [akRight, akBottom]
     Caption = 'pmol/L'
   end
   object GRUnitLabel: TLabel
     Left = 512
     Height = 16
-    Top = 368
+    Top = 361
     Width = 25
+    Anchors = [akRight, akBottom]
     Caption = '       '
   end
   object DRUnitLabel: TLabel
     Left = 512
     Height = 16
-    Top = 405
+    Top = 398
     Width = 41
+    Anchors = [akRight, akBottom]
     Caption = 'nmol/L'
   end
   object GELabel: TLabel
     Left = 359
     Height = 16
-    Top = 444
+    Top = 437
     Width = 17
+    Anchors = [akRight, akBottom]
     Caption = 'GE'
   end
   object GEEdit: TFloatSpinEdit
     Left = 399
     Height = 20
-    Top = 440
+    Top = 433
     Width = 98
+    Anchors = [akRight, akBottom]
     TabOrder = 11
     Value = 1
   end
   object CRHUnitLabel: TLabel
     Left = 168
     Height = 16
-    Top = 369
+    Top = 362
     Width = 38
+    Anchors = [akRight, akBottom]
     Caption = 'fmol/L'
+  end
+  object SteadyStateButton: TButton
+    Left = 448
+    Height = 25
+    Hint = 'Predict steady-state values'
+    Top = 545
+    Width = 75
+    Anchors = [akRight, akBottom]
+    Caption = 'Predict'
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 12
+    OnClick = SteadyStateButtonClick
+  end
+  object EvolveButton: TButton
+    Left = 359
+    Height = 25
+    Hint = 'Estimate checked parameters with an evolutionary algorithm.'
+    Top = 545
+    Width = 75
+    Anchors = [akRight, akBottom]
+    Caption = 'Estimate'
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 13
+    OnClick = EvolveButtonClick
+  end
+  object EstimateGRCheckBox: TCheckBox
+    Left = 504
+    Height = 18
+    Top = 363
+    Width = 75
+    Anchors = [akRight, akBottom]
+    Caption = 'Estimate'
+    TabOrder = 14
+  end
+  object EstimateGECheckbox: TCheckBox
+    Left = 504
+    Height = 18
+    Top = 433
+    Width = 75
+    Anchors = [akRight, akBottom]
+    Caption = 'Estimate'
+    TabOrder = 15
   end
   object ImageList1: TImageList
     Left = 512
-    Top = 451
+    Top = 434
     Bitmap = {
       4C7A040000001000000010000000C90700000000000078DAAD97FD5354D719C7
       69FB533AD3C91FD099FE90693BFDA1C98C51D0244DDA264D329399649A8E9DA6
@@ -408,7 +464,7 @@ object ValuesForm: TValuesForm
   end
   object MainMenu1: TMainMenu
     Left = 568
-    Top = 451
+    Top = 434
     object AppleMenu: TMenuItem
       Caption = ''
       object MacAboutItem: TMenuItem
