@@ -62,7 +62,7 @@ begin
   PredictionList.Cells[0, 1] := 'CRH';
   PredictionList.Cells[0, 2] := 'e';
   PredictionList.Cells[0, 3] := 'ACTH';
-  PredictionList.Cells[0, 4] := 'CRF';
+  PredictionList.Cells[0, 4] := 'PRF';
   PredictionList.Cells[0, 5] := 'F';
   PredictionList.Cells[0, 6] := 'yr';
 end;

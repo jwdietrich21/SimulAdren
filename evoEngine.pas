@@ -32,7 +32,7 @@ unit evoEngine;
 interface
 
 uses
-  Classes, SysUtils, Math, RandomFunctions, SimulationEngine;
+  Classes, SysUtils, Math, RandomFunctions, SimulAdrenTypes, SimulationEngine;
 
 const
   LowerBound = -50;
@@ -56,6 +56,7 @@ type
 
 var
   LowEdge, HighEdge: real;
+  EvoTargets: TEvoTargets;
 
 function Fitness(const theGuess: TIndividual; const theTarget: real): real;
 function InitialPopulation(const size: integer;

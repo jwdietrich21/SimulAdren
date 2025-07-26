@@ -38,6 +38,9 @@ type
   TStrucPars = record
     G1, G3, GA, DA, GR, DR, GE: extended;
   end;
+  TEvoTargets = record
+    ACTH, F: extended;
+  end;
 
 const
   kTAB = char(9);
@@ -64,7 +67,13 @@ const
     'fmol/l', 'fmol/s', 'pmol/L', 'pmol/s', 'nmol/L', 'mAU'
     );
 
-  SimulAdrenVersionString = 'Simuladren 1.0 Alpha';
+  kEvoTargets: TEvoTargets =
+    (
+    ACTH: 6.81;
+    F: 175.88;
+    );
+
+  SimulAdrenVersionString = 'Simuladren 1.1 (Desarrollo)';
 
 implementation
 

@@ -1,0 +1,68 @@
+object TargetForm: TTargetForm
+  Left = 321
+  Height = 162
+  Top = 247
+  Width = 327
+  Caption = 'Set Targets'
+  ClientHeight = 162
+  ClientWidth = 327
+  LCLVersion = '4.0.0.4'
+  OnCreate = FormCreate
+  object FloatSpinEditA: TFloatSpinEdit
+    Left = 120
+    Height = 20
+    Top = 48
+    Width = 98
+    TabOrder = 0
+  end
+  object FloatSpinEditF: TFloatSpinEdit
+    Left = 120
+    Height = 20
+    Top = 80
+    Width = 98
+    TabOrder = 1
+  end
+  object ALabel: TLabel
+    Left = 24
+    Height = 16
+    Top = 48
+    Width = 39
+    Caption = 'ACTH:'
+  end
+  object FLabel: TLabel
+    Left = 24
+    Height = 16
+    Top = 80
+    Width = 72
+    Caption = 'Cortisol (F):'
+  end
+  object OKButton: TButton
+    Left = 227
+    Height = 25
+    Top = 119
+    Width = 75
+    Anchors = [akRight, akBottom]
+    Caption = 'OK'
+    Default = True
+    TabOrder = 2
+    OnClick = OKButtonClick
+  end
+  object CancelButton: TButton
+    Left = 130
+    Height = 25
+    Top = 119
+    Width = 75
+    Anchors = [akRight, akBottom]
+    Cancel = True
+    Caption = 'Cancel'
+    TabOrder = 3
+    OnClick = CancelButtonClick
+  end
+  object ExplanationLabel: TLabel
+    Left = 24
+    Height = 16
+    Top = 16
+    Width = 229
+    Caption = 'Set targets for evolutionary algorithm:'
+  end
+end

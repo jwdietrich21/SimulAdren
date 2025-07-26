@@ -35,7 +35,7 @@ uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, Grids,
   ComCtrls, StdCtrls, ExtCtrls, LCLType, Spin, Menus,
   SimuladrenTypes, SimulationEngine, Prediction, Plot, GUIServices, AboutBox,
-  evoEngine;
+  SetTargets, evoEngine;
 
 type
 
@@ -256,7 +256,9 @@ end;
 
 procedure TValuesForm.EvolveButtonClick(Sender: TObject);
 begin
-
+  TargetForm.Show;
+  EvoTargets.ACTH := TargetForm.targetA;
+  EvoTargets.F := TargetForm.targetF;
 end;
 
 end.

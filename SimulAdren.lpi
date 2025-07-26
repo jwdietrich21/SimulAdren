@@ -21,7 +21,7 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="1"/>
       <MinorVersionNr Value="1"/>
-      <BuildNr Value="59"/>
+      <BuildNr Value="61"/>
       <StringTable Comments="Simulator for the HPA axis" CompanyName="Ruhr University of Bochum" FileDescription="Simulation program for the hypothalamus-pituitary-adrenal axis (HPA feedback control)" InternalName="Desarrollo" LegalCopyright="1994–2025 J. W. Dietrich and Ruhr University of Bochum" LegalTrademarks="SimulAdren" ProductName="SimulAdren" ProductVersion="1.1"/>
     </VersionInfo>
     <BuildModes Count="5">
@@ -190,7 +190,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="14">
+    <Units Count="15">
       <Unit0>
         <Filename Value="SimulAdren.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -273,6 +273,13 @@
         <Filename Value="evoEngine.pas"/>
         <IsPartOfProject Value="True"/>
       </Unit13>
+      <Unit14>
+        <Filename Value="settargets.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="TargetForm"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="SetTargets"/>
+      </Unit14>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
