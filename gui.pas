@@ -33,7 +33,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, Grids,
-  ComCtrls, StdCtrls, ExtCtrls, LCLType, Spin, Menus,
+  ComCtrls, StdCtrls, ExtCtrls, LCLType, Spin, Menus, Math,
   SimuladrenTypes, SimulationEngine, Prediction, Plot, GUIServices, AboutBox,
   SetTargets, evoEngine;
 
@@ -105,6 +105,8 @@ type
     GAEdit: TFloatSpinEdit;
     procedure CloseMenuItemClick(Sender: TObject);
     procedure CopyMenuItemClick(Sender: TObject);
+    procedure EstimateGECheckboxChange(Sender: TObject);
+    procedure EstimateGRCheckBoxChange(Sender: TObject);
     procedure EvolveButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure MacAboutItemClick(Sender: TObject);
@@ -156,9 +158,11 @@ begin
     ValuesGrid.Cells[0, i + 2] := IntToStr(i + 1);
     ValuesGrid.Cells[1, i + 2] := FloatToStrF(gValues.CRH[i] / CRHFactor, ffFixed, 0, 4);
     ValuesGrid.Cells[2, i + 2] := FloatToStrF(gValues.e[i] / eFactor, ffFixed, 0, 4);
-    ValuesGrid.Cells[3, i + 2] := FloatToStrF(gValues.ACTH[i] / ACTHFactor, ffFixed, 0, 4);
+    ValuesGrid.Cells[3, i + 2] :=
+      FloatToStrF(gValues.ACTH[i] / ACTHFactor, ffFixed, 0, 4);
     ValuesGrid.Cells[4, i + 2] := FloatToStrF(gValues.PRF[i] / PRFFactor, ffFixed, 0, 4);
-    ValuesGrid.Cells[5, i + 2] := FloatToStrF(gValues.F[i] / CortisolFactor, ffFixed, 0, 4);
+    ValuesGrid.Cells[5, i + 2] :=
+      FloatToStrF(gValues.F[i] / CortisolFactor, ffFixed, 0, 4);
     ValuesGrid.Cells[6, i + 2] := FloatToStrF(gValues.yr[i] / yRFactor, ffFixed, 0, 4);
   end;
   PlotForm.ShowPlot;
@@ -168,8 +172,8 @@ end;
 procedure TValuesForm.SteadyStateButtonClick(Sender: TObject);
 begin
   PredictSteadyState(CRHSpinEdit.Value * CRHFactor, G1Edit.Value, G3Edit.Value,
-      GAEdit.Value * GAFactor, GREdit.Value, GEEdit.Value, DAEdit.Value *
-      DAFactor, DREdit.Value * DRFactor);
+    GAEdit.Value * GAFactor, GREdit.Value, GEEdit.Value, DAEdit.Value *
+    DAFactor, DREdit.Value * DRFactor);
   PredictionForm.DisplayPrediction(gPrediction1, gPrediction2);
 end;
 
@@ -218,7 +222,7 @@ end;
 
 procedure TValuesForm.CopyCells(Sender: TObject);
 begin
-  CutorCopyfromGrid(ValuesGrid, false);
+  CutorCopyfromGrid(ValuesGrid, False);
 end;
 
 procedure TValuesForm.MacAboutItemClick(Sender: TObject);
@@ -235,6 +239,7 @@ procedure TValuesForm.FormCreate(Sender: TObject);
 var
   i: integer;
 begin
+  Left := 13;
   AdaptMenus;
   CRHSpinEdit.Value := kCRH / CRHFactor;
   for i := 1 to ValuesGrid.ColCount - 1 do
@@ -254,11 +259,36 @@ begin
   CopyCells(Sender);
 end;
 
+procedure TValuesForm.EstimateGECheckboxChange(Sender: TObject);
+begin
+  if EstimateGECheckbox.checked then
+    begin
+      GEEdit.Enabled := false;
+      GEEdit.Value := 0;
+    end
+  else
+    GEEdit.Enabled := true;
+end;
+
+procedure TValuesForm.EstimateGRCheckBoxChange(Sender: TObject);
+begin
+  if EstimateGRCheckbox.checked then
+    begin
+      GREdit.Enabled := false;
+      GREdit.Value := 0;
+    end
+  else
+    GREdit.Enabled := true;
+end;
+
 procedure TValuesForm.EvolveButtonClick(Sender: TObject);
 begin
-  TargetForm.Show;
-  EvoTargets.ACTH := TargetForm.targetA;
-  EvoTargets.F := TargetForm.targetF;
+  if EstimateGRCheckbox.Checked or EstimateGECheckbox.Checked then
+  begin
+    TargetForm.Show;
+    EvoTargets.ACTH := TargetForm.targetA;
+    EvoTargets.F := TargetForm.targetF;
+  end;
 end;
 
 end.

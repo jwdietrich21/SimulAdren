@@ -1,12 +1,12 @@
 object PlotForm: TPlotForm
-  Left = 551
+  Left = 659
   Height = 342
-  Top = 426
+  Top = 468
   Width = 554
   Caption = 'Plot'
   ClientHeight = 342
   ClientWidth = 554
-  LCLVersion = '4.0.0.4'
+  LCLVersion = '4.2.0.0'
   Visible = True
   OnCreate = FormCreate
   object Chart1: TChart

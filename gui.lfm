@@ -1,7 +1,7 @@
 object ValuesForm: TValuesForm
-  Left = 178
+  Left = 223
   Height = 593
-  Top = 136
+  Top = 139
   Width = 643
   Caption = 'Simuladren'
   ClientHeight = 593
@@ -9,7 +9,7 @@ object ValuesForm: TValuesForm
   Constraints.MinHeight = 400
   Constraints.MinWidth = 640
   Menu = MainMenu1
-  LCLVersion = '4.0.0.4'
+  LCLVersion = '4.2.0.0'
   OnCreate = FormCreate
   object ValuesGrid: TStringGrid
     Left = 0
@@ -383,6 +383,7 @@ object ValuesForm: TValuesForm
     Anchors = [akRight, akBottom]
     Caption = 'Estimate'
     TabOrder = 14
+    OnChange = EstimateGRCheckBoxChange
   end
   object EstimateGECheckbox: TCheckBox
     Left = 504
@@ -392,6 +393,7 @@ object ValuesForm: TValuesForm
     Anchors = [akRight, akBottom]
     Caption = 'Estimate'
     TabOrder = 15
+    OnChange = EstimateGECheckboxChange
   end
   object ImageList1: TImageList
     Left = 512

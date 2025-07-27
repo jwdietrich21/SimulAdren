@@ -1,12 +1,13 @@
 object TargetForm: TTargetForm
-  Left = 321
+  Left = 761
   Height = 162
-  Top = 247
+  Top = 260
   Width = 327
   Caption = 'Set Targets'
   ClientHeight = 162
   ClientWidth = 327
-  LCLVersion = '4.0.0.4'
+  Position = poOwnerFormCenter
+  LCLVersion = '4.2.0.0'
   OnCreate = FormCreate
   object FloatSpinEditA: TFloatSpinEdit
     Left = 120
