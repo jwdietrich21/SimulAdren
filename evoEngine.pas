@@ -66,7 +66,8 @@ function Selection(const population: TPopulation;
 function Crossover(const parents: TParents): TChildren;
 function Mutated(const Individual: TIndividual; const MutationRate: integer;
   const lowBound, highBound: real): TIndividual;
-procedure GeneticAlgorithm(const size: integer; const lowBound, highBound: real;
+procedure GeneticAlgorithm(const size: integer; const CRH: extended;
+  const params: TParams; const lowBound, highBound: real;
   const generations: integer; const mutationRate: integer;
   var AllPopulations: TAllPopulations; var theFittest: TFittest);
 
@@ -161,7 +162,7 @@ function Crossover(const parents: TParents): TChildren;
 var
   alleles: record
     a, b, c: tAllele;
-  end;
+    end;
   meioticIndex, crossing: TIntArray;
 begin
   SetLength(meioticIndex, 2);
@@ -176,16 +177,16 @@ begin
   alleles.c[1] := parents[1].c;
   crossing[0] := Sample(meioticIndex, 1)[0];
   crossing[1] := 1 - crossing[0];
-  result[0].a := alleles.a[crossing[0]];
-  result[1].a := alleles.a[crossing[1]];
+  Result[0].a := alleles.a[crossing[0]];
+  Result[1].a := alleles.a[crossing[1]];
   crossing[0] := Sample(meioticIndex, 1)[0];
   crossing[1] := 1 - crossing[0];
-  result[0].b := alleles.b[crossing[0]];
-  result[1].b := alleles.b[crossing[1]];
+  Result[0].b := alleles.b[crossing[0]];
+  Result[1].b := alleles.b[crossing[1]];
   crossing[0] := Sample(meioticIndex, 1)[0];
   crossing[1] := 1 - crossing[0];
-  result[0].c := alleles.c[crossing[0]];
-  result[1].c := alleles.c[crossing[1]];
+  Result[0].c := alleles.c[crossing[0]];
+  Result[1].c := alleles.c[crossing[1]];
 end;
 
 function Mutated(const Individual: TIndividual; const MutationRate: integer;
@@ -193,20 +194,21 @@ function Mutated(const Individual: TIndividual; const MutationRate: integer;
 var
   intensity: real;
 begin
-  result := Individual;
+  Result := Individual;
   if random < MutationRate then
-    begin
-      intensity := runif(-1, 1);
-      result.a := Individual.a * intensity;
-      result.a := max(min(result.a, highBound), lowBound);
-      result.b := Individual.b * intensity;
-      result.b := max(min(result.b, highBound), lowBound);
-      result.c := Individual.c * intensity;
-      result.c := max(min(result.c, highBound), lowBound);
-    end;
+  begin
+    intensity := runif(-1, 1);
+    Result.a := Individual.a * intensity;
+    Result.a := max(min(Result.a, highBound), lowBound);
+    Result.b := Individual.b * intensity;
+    Result.b := max(min(Result.b, highBound), lowBound);
+    Result.c := Individual.c * intensity;
+    Result.c := max(min(Result.c, highBound), lowBound);
+  end;
 end;
 
-procedure GeneticAlgorithm(const size: integer; const lowBound, highBound: real;
+procedure GeneticAlgorithm(const size: integer; const CRH: extended;
+  const params: TParams; const lowBound, highBound: real;
   const generations: integer; const mutationRate: integer;
   var AllPopulations: TAllPopulations; var theFittest: TFittest);
 var
@@ -236,7 +238,8 @@ begin
         parents[1] := curPopulation[k + 1];
         children := Crossover(parents);
         nextPopulation[k] := Mutated(children[0], MutationRate, LowerBound, UpperBound);
-        nextPopulation[k + 1] := Mutated(children[1], MutationRate, LowerBound, UpperBound);
+        nextPopulation[k + 1] :=
+          Mutated(children[1], MutationRate, LowerBound, UpperBound);
       end;
     end;
     nextPopulation[0] := bestIndividual;

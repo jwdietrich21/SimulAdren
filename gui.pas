@@ -134,9 +134,17 @@ implementation
 procedure TValuesForm.StartButtonClick(Sender: TObject);
 var
   i, j, iterations: integer;
+  params: TParams;
 begin
+  params.G1 := G1Edit.Value;
+  params.G3 := G3Edit.Value;
+  params.GA := GAEdit.Value * GAFactor;
+  params.GR := GREdit.Value;
+  params.GE := GEEdit.Value;
+  params.DA := DAEdit.Value * DAFactor;
+  params.DR := DREdit.Value * DRFactor;
   iterations := IterationsSpinEdit.Value;
-  gValues := TValues.Create;
+  gSequence := TSequence.Create;
   ValuesGrid.RowCount := iterations + 2;
   for i := 0 to ValuesGrid.ColCount - 1 do
     for j := 2 to ValuesGrid.RowCount - 1 do
@@ -147,33 +155,40 @@ begin
   PlotForm.eSeries.Clear;
   PlotForm.ACTHSeries.Clear;
   PlotForm.yrSeries.Clear;
-  RunSimulation(CRHSpinEdit.Value * CRHFactor, G1Edit.Value, G3Edit.Value,
-    GAEdit.Value * GAFactor, GREdit.Value, GEEdit.Value, DAEdit.Value *
-    DAFactor, DREdit.Value * DRFactor, iterations);
+  RunSimulation(CRHSpinEdit.Value * CRHFactor, params, iterations);
   PredictionForm.DisplayPrediction(gPrediction1, gPrediction2);
   if iterations > ValuesGrid.RowCount then
     ValuesGrid.RowCount := iterations + 1;
   for i := 0 to iterations - 1 do
   begin
     ValuesGrid.Cells[0, i + 2] := IntToStr(i + 1);
-    ValuesGrid.Cells[1, i + 2] := FloatToStrF(gValues.CRH[i] / CRHFactor, ffFixed, 0, 4);
-    ValuesGrid.Cells[2, i + 2] := FloatToStrF(gValues.e[i] / eFactor, ffFixed, 0, 4);
+    ValuesGrid.Cells[1, i + 2] :=
+      FloatToStrF(gSequence.CRH[i] / CRHFactor, ffFixed, 0, 4);
+    ValuesGrid.Cells[2, i + 2] := FloatToStrF(gSequence.e[i] / eFactor, ffFixed, 0, 4);
     ValuesGrid.Cells[3, i + 2] :=
-      FloatToStrF(gValues.ACTH[i] / ACTHFactor, ffFixed, 0, 4);
-    ValuesGrid.Cells[4, i + 2] := FloatToStrF(gValues.PRF[i] / PRFFactor, ffFixed, 0, 4);
+      FloatToStrF(gSequence.ACTH[i] / ACTHFactor, ffFixed, 0, 4);
+    ValuesGrid.Cells[4, i + 2] :=
+      FloatToStrF(gSequence.PRF[i] / PRFFactor, ffFixed, 0, 4);
     ValuesGrid.Cells[5, i + 2] :=
-      FloatToStrF(gValues.F[i] / CortisolFactor, ffFixed, 0, 4);
-    ValuesGrid.Cells[6, i + 2] := FloatToStrF(gValues.yr[i] / yRFactor, ffFixed, 0, 4);
+      FloatToStrF(gSequence.F[i] / CortisolFactor, ffFixed, 0, 4);
+    ValuesGrid.Cells[6, i + 2] := FloatToStrF(gSequence.yr[i] / yRFactor, ffFixed, 0, 4);
   end;
   PlotForm.ShowPlot;
-  gValues.Destroy;
+  gSequence.Destroy;
 end;
 
 procedure TValuesForm.SteadyStateButtonClick(Sender: TObject);
+var
+  params: TParams;
 begin
-  PredictSteadyState(CRHSpinEdit.Value * CRHFactor, G1Edit.Value, G3Edit.Value,
-    GAEdit.Value * GAFactor, GREdit.Value, GEEdit.Value, DAEdit.Value *
-    DAFactor, DREdit.Value * DRFactor);
+  params.G1 := G1Edit.Value;
+  params.G3 := G3Edit.Value;
+  params.GA := GAEdit.Value * GAFactor;
+  params.GR := GREdit.Value;
+  params.GE := GEEdit.Value;
+  params.DA := DAEdit.Value * DAFactor;
+  params.DR := DREdit.Value * DRFactor;
+  PredictSteadyState(CRHSpinEdit.Value * CRHFactor, params);
   PredictionForm.DisplayPrediction(gPrediction1, gPrediction2);
 end;
 
@@ -261,30 +276,45 @@ end;
 
 procedure TValuesForm.EstimateGECheckboxChange(Sender: TObject);
 begin
-  if EstimateGECheckbox.checked then
-    begin
-      GEEdit.Enabled := false;
-      GEEdit.Value := 0;
-    end
+  if EstimateGECheckbox.Checked then
+  begin
+    GEEdit.Enabled := False;
+    GEEdit.Value := 0;
+  end
   else
-    GEEdit.Enabled := true;
+    GEEdit.Enabled := True;
 end;
 
 procedure TValuesForm.EstimateGRCheckBoxChange(Sender: TObject);
 begin
-  if EstimateGRCheckbox.checked then
-    begin
-      GREdit.Enabled := false;
-      GREdit.Value := 0;
-    end
+  if EstimateGRCheckbox.Checked then
+  begin
+    GREdit.Enabled := False;
+    GREdit.Value := 0;
+  end
   else
-    GREdit.Enabled := true;
+    GREdit.Enabled := True;
 end;
 
 procedure TValuesForm.EvolveButtonClick(Sender: TObject);
+var
+  params: TParams;
 begin
   if EstimateGRCheckbox.Checked or EstimateGECheckbox.Checked then
   begin
+    params.G1 := G1Edit.Value;
+    params.G3 := G3Edit.Value;
+    params.GA := GAEdit.Value * GAFactor;
+    if EstimateGRCheckbox.Checked then
+      params.GR := Math.NaN
+    else
+      params.GR := GREdit.Value;
+    if EstimateGECheckbox.Checked then
+      params.GE := Math.NaN
+    else
+      params.GE := GEEdit.Value;
+    params.DA := DAEdit.Value * DAFactor;
+    params.DR := DREdit.Value * DRFactor;
     TargetForm.Show;
     EvoTargets.ACTH := TargetForm.targetA;
     EvoTargets.F := TargetForm.targetF;

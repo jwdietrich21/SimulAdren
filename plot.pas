@@ -77,15 +77,15 @@ procedure TPlotForm.ShowPlot;
 var
   i: integer;
 begin
-  Chart1.AxisList.Axes[1].Range.Max := gValues.size - 1;
-  for i := 0 to gValues.size - 1 do
+  Chart1.AxisList.Axes[1].Range.Max := gSequence.size - 1;
+  for i := 0 to gSequence.size - 1 do
   begin
-    CRHSeries.AddXY(i, gValues.CRH[i] / CRHFactor);
-    PRFSeries.AddXY(i, gValues.PRF[i] / PRFFactor);
-    FSeries.AddXY(i, gValues.F[i] / CortisolFactor);
-    eSeries.AddXY(i, gValues.e[i] / eFactor);
-    ACTHSeries.AddXY(i, gValues.ACTH[i] / ACTHFactor);
-    yrSeries.AddXY(i, gValues.yr[i] / yRFactor);
+    CRHSeries.AddXY(i, gSequence.CRH[i] / CRHFactor);
+    PRFSeries.AddXY(i, gSequence.PRF[i] / PRFFactor);
+    FSeries.AddXY(i, gSequence.F[i] / CortisolFactor);
+    eSeries.AddXY(i, gSequence.e[i] / eFactor);
+    ACTHSeries.AddXY(i, gSequence.ACTH[i] / ACTHFactor);
+    yrSeries.AddXY(i, gSequence.yr[i] / yRFactor);
   end;
 end;
 

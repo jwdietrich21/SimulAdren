@@ -47,9 +47,9 @@ const
 
 type
 
-  { TValues }
+  { TSequence }
 
-  TValues = class
+  TSequence = class
   protected
     function GetSize: integer;
     procedure SetSize(aValue: integer);
@@ -58,6 +58,10 @@ type
     constructor Create;
     destructor Destroy;
     property size: integer read GetSize write SetSize;
+  end;
+
+  TParams = record
+    G1, G3, GA, GR, GE, DA, DR: extended;
   end;
 
   TBlocks = record
@@ -71,12 +75,12 @@ type
   end;
 
 var
-  gValues: TValues;
+  gSequence: TSequence;
   gBlocks: TBlocks;
   gPrediction1, gPrediction2: TPrediction;
 
-procedure RunSimulation(CRH, G1, G3, GA, GR, GE, DA, DR: extended; nmax: integer);
-procedure PredictSteadyState(CRH, G1, G3, GA, GR, GE, DA, DR: extended);
+procedure RunSimulation(CRH: extended; params: TParams; nmax: integer);
+procedure PredictSteadyState(CRH: extended; params: TParams);
 
 implementation
 
@@ -84,16 +88,16 @@ function PituitaryResponse(CRH, yR: extended): extended;
 begin
   gBlocks.NoCoDI.input1 := CRH;
   gBlocks.NoCoDI.input2 := yR;
-  result := gBlocks.NoCoDI.simOutput;
+  Result := gBlocks.NoCoDI.simOutput;
 end;
 
 function AdrenalResponse(ACTH: extended): extended;
 begin
   gBlocks.MiMeA.input := ACTH;
-  result := gBlocks.MiMeA.simOutput;
+  Result := gBlocks.MiMeA.simOutput;
 end;
 
-procedure PredictSteadyState(CRH, G1, G3, GA, GR, GE, DA, DR: extended);
+procedure PredictSteadyState(CRH: extended; params: TParams);
 var
   e, ACTH, PRF: extended;
   a, b, c, K1, K2: extended;
@@ -104,53 +108,55 @@ begin
   gPrediction2.CRH := CRH;
 
   { Solving for F: }
-  K1 := GR * G3 * GA / (DR + G3 * GA);
-  K2 := DR * DA / (DR + G3 * GA);
-  a := GE * K1 + 1;
-  b := K2 - G1 * gPrediction1.CRH;
-  c := -G1 * K2 * gPrediction1.CRH;
-  predictions := Solve(a, b, c);
-  gPrediction1.ACTH := max(predictions[0], predictions[1]);
-  gPrediction1.PRF := GA * gPrediction1.ACTH / (DA + gPrediction1.ACTH);
-  gPrediction1.F := G3 * gPrediction1.PRF;
-  gPrediction1.v := GR * gPrediction1.F / (DR + gPrediction1.F);
-  gPrediction1.yR := GE * gPrediction1.v;
-  gPrediction1.e := gPrediction1.CRH / (1 + gPrediction1.yR);
+  with params do
+  begin
+    K1 := GR * G3 * GA / (DR + G3 * GA);
+    K2 := DR * DA / (DR + G3 * GA);
+    a := GE * K1 + 1;
+    b := K2 - G1 * gPrediction1.CRH;
+    c := -G1 * K2 * gPrediction1.CRH;
+    predictions := Solve(a, b, c);
+    gPrediction1.ACTH := max(predictions[0], predictions[1]);
+    gPrediction1.PRF := GA * gPrediction1.ACTH / (DA + gPrediction1.ACTH);
+    gPrediction1.F := G3 * gPrediction1.PRF;
+    gPrediction1.v := GR * gPrediction1.F / (DR + gPrediction1.F);
+    gPrediction1.yR := GE * gPrediction1.v;
+    gPrediction1.e := gPrediction1.CRH / (1 + gPrediction1.yR);
 
-  gPrediction2.ACTH := min(predictions[0], predictions[1]);
-  gPrediction2.PRF := GA * gPrediction2.ACTH / (DA + gPrediction2.ACTH);
-  gPrediction2.F := G3 * gPrediction2.PRF;
-  gPrediction2.v := GR * gPrediction2.F / (DR + gPrediction2.F);
-  gPrediction2.yR := GE * gPrediction2.v;
-  gPrediction2.e := gPrediction2.CRH / (1 + gPrediction2.yR);
+    gPrediction2.ACTH := min(predictions[0], predictions[1]);
+    gPrediction2.PRF := GA * gPrediction2.ACTH / (DA + gPrediction2.ACTH);
+    gPrediction2.F := G3 * gPrediction2.PRF;
+    gPrediction2.v := GR * gPrediction2.F / (DR + gPrediction2.F);
+    gPrediction2.yR := GE * gPrediction2.v;
+    gPrediction2.e := gPrediction2.CRH / (1 + gPrediction2.yR);
+  end;
 end;
 
-procedure RunSimulation(CRH, G1, G3, GA, GR, GE, DA, DR: extended; nmax: integer);
+procedure RunSimulation(CRH: extended; params: TParams; nmax: integer);
 var
   e, ACTH, PRF, F, v, yr: extended;
   a, b, c, K1, K2: extended;
   i: integer;
-  predictions: TQRoots;
 begin
   if nmax > 0 then
   begin
-    PredictSteadyState(CRH, G1, G3, GA, GR, GE, DA, DR);
+    PredictSteadyState(CRH, params);
 
-    gValues.size := 0; // delete content
-    gValues.size := nmax;
+    gSequence.size := 0; // delete content
+    gSequence.size := nmax;
     gBlocks.G1 := TP.Create;
     gBlocks.G3 := TP.Create;
     gBlocks.GE := TP.Create;
     gBlocks.MiMeA := TMiMe.Create;
     gBlocks.MimeR := TMime.Create;
     gBlocks.NoCoDI := TNoCoDI.Create;
-    gBlocks.G1.G := G1;
-    gBlocks.G3.G := G3;
-    gBlocks.GE.G := GE;
-    gBlocks.MiMeA.G := GA;
-    gBlocks.MiMeA.D := DA;
-    gBlocks.MimeR.G := GR;
-    gBlocks.MimeR.D := DR;
+    gBlocks.G1.G := params.G1;
+    gBlocks.G3.G := params.G3;
+    gBlocks.GE.G := params.GE;
+    gBlocks.MiMeA.G := params.GA;
+    gBlocks.MiMeA.D := params.DA;
+    gBlocks.MimeR.G := params.GR;
+    gBlocks.MimeR.D := params.DR;
 
     yr := 20;
     for i := 0 to nmax - 1 do
@@ -161,19 +167,19 @@ begin
       gBlocks.G1.input := e;
       ACTH := gBlocks.G1.simOutput;
       PRF := AdrenalResponse(ACTH);
-      F := G3 * PRF;
+      F := params.G3 * PRF;
       gBlocks.MimeR.input := F;
       v := gBlocks.MimeR.simOutput;
       gBlocks.GE.input := v;
       yR := gBlocks.GE.simOutput;
 
-      gValues.CRH[i] := CRH;
-      gValues.e[i] := e;
-      gValues.ACTH[i] := ACTH;
-      gValues.PRF[i] := PRF;
-      gValues.F[i] := F;
-      gValues.v[i] := v;
-      gValues.yr[i] := yr;
+      gSequence.CRH[i] := CRH;
+      gSequence.e[i] := e;
+      gSequence.ACTH[i] := ACTH;
+      gSequence.PRF[i] := PRF;
+      gSequence.F[i] := F;
+      gSequence.v[i] := v;
+      gSequence.yr[i] := yr;
       application.ProcessMessages;
     end;
     gBlocks.G1.Destroy;
@@ -185,14 +191,14 @@ begin
   end;
 end;
 
-{ TValues }
+{ TSequence }
 
-function TValues.GetSize: integer;
+function TSequence.GetSize: integer;
 begin
-  result := Length(CRH);
+  Result := Length(CRH);
 end;
 
-procedure TValues.SetSize(aValue: integer);
+procedure TSequence.SetSize(aValue: integer);
 begin
   SetLength(CRH, aValue);
   SetLength(e, aValue);
@@ -203,15 +209,14 @@ begin
   SetLength(yr, aValue);
 end;
 
-constructor TValues.Create;
+constructor TSequence.Create;
 begin
   inherited Create;
 end;
 
-destructor TValues.Destroy;
+destructor TSequence.Destroy;
 begin
   inherited Destroy;
 end;
 
 end.
-
