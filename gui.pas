@@ -107,10 +107,10 @@ type
     procedure CopyMenuItemClick(Sender: TObject);
     procedure EstimateGECheckboxChange(Sender: TObject);
     procedure EstimateGRCheckBoxChange(Sender: TObject);
-    procedure EvolveButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure MacAboutItemClick(Sender: TObject);
     procedure QuitMenuItemClick(Sender: TObject);
+    procedure EvolveButtonClick(Sender: TObject);
     procedure StartButtonClick(Sender: TObject);
     procedure SteadyStateButtonClick(Sender: TObject);
     procedure WinAboutItemClick(Sender: TObject);
@@ -118,6 +118,8 @@ type
     { private declarations }
   public
     { public declarations }
+    AllPopulations: TAllPopulations;
+    FittestIndividuals: TFittest;
     procedure ShowAboutWindow(Sender: TObject);
     procedure CopyCells(Sender: TObject);
   end;
@@ -190,6 +192,35 @@ begin
   params.DR := DREdit.Value * DRFactor;
   PredictSteadyState(CRHSpinEdit.Value * CRHFactor, params);
   PredictionForm.DisplayPrediction(gPrediction1, gPrediction2);
+end;
+
+procedure TValuesForm.EvolveButtonClick(Sender: TObject);
+var
+  params: TParams;
+  EvoTargets: TEvoTargets;
+begin
+  if EstimateGRCheckbox.Checked or EstimateGECheckbox.Checked then
+  begin
+    params.G1 := G1Edit.Value;
+    params.G3 := G3Edit.Value;
+    params.GA := GAEdit.Value * GAFactor;
+    if EstimateGRCheckbox.Checked then
+      params.GR := Math.NaN
+    else
+      params.GR := GREdit.Value;
+    if EstimateGECheckbox.Checked then
+      params.GE := Math.NaN
+    else
+      params.GE := GEEdit.Value;
+    params.DA := DAEdit.Value * DAFactor;
+    params.DR := DREdit.Value * DRFactor;
+    TargetForm.Show;
+    EvoTargets.ACTH := TargetForm.targetA;
+    EvoTargets.F := TargetForm.targetF;
+    GeneticAlgorithm(PopulationSize, gSequence.CRH[0], params, LowerBound,
+      UpperBound, EvoTargets, Generations, MutationRate, AllPopulations,
+      FittestIndividuals);
+  end;
 end;
 
 procedure AdaptMenus;
@@ -296,29 +327,5 @@ begin
     GREdit.Enabled := True;
 end;
 
-procedure TValuesForm.EvolveButtonClick(Sender: TObject);
-var
-  params: TParams;
-begin
-  if EstimateGRCheckbox.Checked or EstimateGECheckbox.Checked then
-  begin
-    params.G1 := G1Edit.Value;
-    params.G3 := G3Edit.Value;
-    params.GA := GAEdit.Value * GAFactor;
-    if EstimateGRCheckbox.Checked then
-      params.GR := Math.NaN
-    else
-      params.GR := GREdit.Value;
-    if EstimateGECheckbox.Checked then
-      params.GE := Math.NaN
-    else
-      params.GE := GEEdit.Value;
-    params.DA := DAEdit.Value * DAFactor;
-    params.DR := DREdit.Value * DRFactor;
-    TargetForm.Show;
-    EvoTargets.ACTH := TargetForm.targetA;
-    EvoTargets.F := TargetForm.targetF;
-  end;
-end;
 
 end.

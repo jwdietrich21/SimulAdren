@@ -56,7 +56,6 @@ type
 
 var
   LowEdge, HighEdge: real;
-  EvoTargets: TEvoTargets;
 
 function Fitness(const theGuess: TIndividual; const theTarget: real): real;
 function InitialPopulation(const size: integer;
@@ -67,9 +66,10 @@ function Crossover(const parents: TParents): TChildren;
 function Mutated(const Individual: TIndividual; const MutationRate: integer;
   const lowBound, highBound: real): TIndividual;
 procedure GeneticAlgorithm(const size: integer; const CRH: extended;
-  const params: TParams; const lowBound, highBound: real;
-  const generations: integer; const mutationRate: integer;
-  var AllPopulations: TAllPopulations; var theFittest: TFittest);
+  var params: TParams; const lowBound, highBound: real;
+  const EvoTargets: TEvoTargets; const generations: integer;
+  const mutationRate: integer; var AllPopulations: TAllPopulations;
+  var theFittest: TFittest);
 
 implementation
 
@@ -208,9 +208,10 @@ begin
 end;
 
 procedure GeneticAlgorithm(const size: integer; const CRH: extended;
-  const params: TParams; const lowBound, highBound: real;
-  const generations: integer; const mutationRate: integer;
-  var AllPopulations: TAllPopulations; var theFittest: TFittest);
+  var params: TParams; const lowBound, highBound: real;
+  const EvoTargets: TEvoTargets; const generations: integer;
+  const mutationRate: integer; var AllPopulations: TAllPopulations;
+  var theFittest: TFittest);
 var
   curPopulation, nextPopulation: TPopulation;
   bestIndividual: TIndividual;
@@ -222,7 +223,7 @@ begin
   SetLength(theFittest, generations);
   SetLength(nextPopulation, size);
   curPopulation := InitialPopulation(Populationsize, LowerBound, UpperBound);
-  for i := 0 to generations - 1 do
+  {for i := 0 to generations - 1 do
   begin
     for j := 0 to size - 1 do
       curPopulation[j].fitness := Fitness(curPopulation[j], 0);
@@ -244,7 +245,8 @@ begin
     end;
     nextPopulation[0] := bestIndividual;
     curPopulation := nextPopulation;
-  end;
+  end;}
+
 end;
 
 end.
