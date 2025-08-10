@@ -217,9 +217,9 @@ begin
     TargetForm.Show;
     EvoTargets.ACTH := TargetForm.targetA;
     EvoTargets.F := TargetForm.targetF;
-    GeneticAlgorithm(PopulationSize, gSequence.CRH[0], params, LowerBound,
-      UpperBound, EvoTargets, Generations, MutationRate, AllPopulations,
-      FittestIndividuals);
+    GeneticAlgorithm(PopulationSize, CRHSpinEdit.Value * CRHFactor, params,
+      LowerBound, UpperBound, EvoTargets, Generations, MutationRate,
+      AllPopulations, FittestIndividuals);
   end;
 end;
 
