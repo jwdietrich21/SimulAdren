@@ -223,6 +223,10 @@ begin
   SetLength(theFittest, generations);
   SetLength(nextPopulation, size);
   curPopulation := InitialPopulation(Populationsize, LowerBound, UpperBound);
+  if isNan(params.GR) then    // for development and debugging only
+    params.GR := 1;
+  if isNan(params.GE) then
+    params.GE := 1;
   {for i := 0 to generations - 1 do
   begin
     for j := 0 to size - 1 do

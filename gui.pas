@@ -122,6 +122,8 @@ type
     FittestIndividuals: TFittest;
     procedure ShowAboutWindow(Sender: TObject);
     procedure CopyCells(Sender: TObject);
+    procedure ReadParams(Sender: TObject; var params: TParams);
+    procedure SetParams(Sender: TObject; const params: TParams);
   end;
 
 var
@@ -138,13 +140,7 @@ var
   i, j, iterations: integer;
   params: TParams;
 begin
-  params.G1 := G1Edit.Value;
-  params.G3 := G3Edit.Value;
-  params.GA := GAEdit.Value * GAFactor;
-  params.GR := GREdit.Value;
-  params.GE := GEEdit.Value;
-  params.DA := DAEdit.Value * DAFactor;
-  params.DR := DREdit.Value * DRFactor;
+  ReadParams(Sender, params);
   iterations := IterationsSpinEdit.Value;
   gSequence := TSequence.Create;
   ValuesGrid.RowCount := iterations + 2;
@@ -183,13 +179,7 @@ procedure TValuesForm.SteadyStateButtonClick(Sender: TObject);
 var
   params: TParams;
 begin
-  params.G1 := G1Edit.Value;
-  params.G3 := G3Edit.Value;
-  params.GA := GAEdit.Value * GAFactor;
-  params.GR := GREdit.Value;
-  params.GE := GEEdit.Value;
-  params.DA := DAEdit.Value * DAFactor;
-  params.DR := DREdit.Value * DRFactor;
+  ReadParams(Sender, params);
   PredictSteadyState(CRHSpinEdit.Value * CRHFactor, params);
   PredictionForm.DisplayPrediction(gPrediction1, gPrediction2);
 end;
@@ -220,6 +210,7 @@ begin
     GeneticAlgorithm(PopulationSize, CRHSpinEdit.Value * CRHFactor, params,
       LowerBound, UpperBound, EvoTargets, Generations, MutationRate,
       AllPopulations, FittestIndividuals);
+    SetParams(Sender, params);
   end;
 end;
 
@@ -269,6 +260,28 @@ end;
 procedure TValuesForm.CopyCells(Sender: TObject);
 begin
   CutorCopyfromGrid(ValuesGrid, False);
+end;
+
+procedure TValuesForm.ReadParams(Sender: TObject; var params: TParams);
+begin
+  params.G1 := G1Edit.Value;
+  params.G3 := G3Edit.Value;
+  params.GA := GAEdit.Value * GAFactor;
+  params.GR := GREdit.Value;
+  params.GE := GEEdit.Value;
+  params.DA := DAEdit.Value * DAFactor;
+  params.DR := DREdit.Value * DRFactor;
+end;
+
+procedure TValuesForm.SetParams(Sender: TObject; const params: TParams);
+begin
+  G1Edit.Value := params.G1;
+  G3Edit.Value := params.G3;
+  GAEdit.Value := params.GA / GAFactor;
+  GREdit.Value := params.GR;
+  GEEdit.Value := params.GE;
+  DAEdit.Value := params.DA / DAFactor;
+  DREdit.Value := params.DR / DRFactor;
 end;
 
 procedure TValuesForm.MacAboutItemClick(Sender: TObject);
