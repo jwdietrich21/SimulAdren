@@ -14,8 +14,6 @@ program SimulAdren;
 { (c) University of Ulm Hospitals 2002 - 2004 }
 { (c) Ruhr University of Bochum 2005 - 2025 }
 
-{ Standard blocks for systems modelling and simulation }
-
 { Source code released under the BSD License }
 
 { See the file "license.txt", included in this distribution, }

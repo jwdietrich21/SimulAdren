@@ -14,8 +14,6 @@ unit GUI;
 { (c) University of Ulm Hospitals 2002 - 2004 }
 { (c) Ruhr University of Bochum 2005 - 2025 }
 
-{ Standard blocks for systems modelling and simulation }
-
 { Source code released under the BSD License }
 
 { See the file "license.txt", included in this distribution, }
@@ -154,7 +152,7 @@ begin
   PlotForm.ACTHSeries.Clear;
   PlotForm.yrSeries.Clear;
   RunSimulation(CRHSpinEdit.Value * CRHFactor, params, iterations);
-  PredictionForm.DisplayPrediction(gPrediction1, gPrediction2);
+  PredictionForm.DisplayPrediction(gPrediction[0], gPrediction[1]);
   if iterations > ValuesGrid.RowCount then
     ValuesGrid.RowCount := iterations + 1;
   for i := 0 to iterations - 1 do
@@ -180,8 +178,8 @@ var
   params: TParams;
 begin
   ReadParams(Sender, params);
-  PredictSteadyState(CRHSpinEdit.Value * CRHFactor, params);
-  PredictionForm.DisplayPrediction(gPrediction1, gPrediction2);
+  gPrediction := PredictSteadyState(CRHSpinEdit.Value * CRHFactor, params);
+  PredictionForm.DisplayPrediction(gPrediction[0], gPrediction[1]);
 end;
 
 procedure TValuesForm.EvolveButtonClick(Sender: TObject);

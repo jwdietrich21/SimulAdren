@@ -14,8 +14,6 @@ unit evoEngine;
 { (c) University of Ulm Hospitals 2002 - 2004 }
 { (c) Ruhr University of Bochum 2005 - 2025 }
 
-{ Standard blocks for systems modelling and simulation }
-
 { Source code released under the BSD License }
 
 { See the file "license.txt", included in this distribution, }
@@ -44,7 +42,7 @@ const
 
 type
   TIndividual = record
-    a, b, c: real;
+    GR, GE: extended;
     fitness: real;
   end;
   TPopulation = array of TIndividual;
@@ -57,7 +55,8 @@ type
 var
   LowEdge, HighEdge: real;
 
-function Fitness(const theGuess: TIndividual; const theTarget: real): real;
+function Fitness(const CRH: extended; const params: TParams;
+  const theGuess: TIndividual; const EvoTargets: TEvoTargets): real;
 function InitialPopulation(const size: integer;
   const lowBound, highBound: real): TPopulation;
 function Selection(const population: TPopulation;
@@ -73,24 +72,31 @@ procedure GeneticAlgorithm(const size: integer; const CRH: extended;
 
 implementation
 
-function Fitness(const theGuess: TIndividual; const theTarget: real): real;
+function Fitness(const CRH: extended; const params: TParams;
+  const theGuess: TIndividual; const EvoTargets: TEvoTargets): real;
 var
-  vertexX, vertexY, yLeft, yRight, curviness: real;
+  i: integer;
+  distanceA, distanceF, distance: real;
+  steadyState: TPredictionArray;
 begin
   with theGuess do
   begin
-    if a <= 0 then
-      curviness := Math.Infinity
+    if (GE <= 0) or (GR <= 0) then
+      distance := Math.Infinity
     else
     begin
-      vertexX := -b / (2 * a); // x value at vertex
-      vertexY := a * sqr(vertexX) + b * vertexX + c; // y value at vertex
-      yLeft := a * sqr(LowEdge) + b * lowEdge + c; // y coordinate at lower bound
-      yRight := a * sqr(HighEdge) + b * HighEdge + c; // y coordinate at upper bound
-      curviness := abs(yLeft - vertexX) + abs(yRight - vertexX);
+      steadyState := PredictSteadyState(CRH, params);
+      if steadyState[0].ACTH > steadyState[1].ACTH then
+        i := 0
+      else
+        i := 1;
+      distanceA := steadyState[i].ACTH - EvoTargets.ACTH;
+      distanceF := steadyState[i].F - EvoTargets.F;
+      // Euclidian distance of ACTH and F from the target:
+      Result := sqrt(sqr(distanceA) + sqr(distanceF));
     end;
   end;
-  Result := -(curviness - theTarget);
+  Result := -distance;
 end;
 
 function InitialPopulation(const size: integer;
@@ -102,9 +108,8 @@ begin
   SetLength(Result, size);
   for i := 0 to size - 1 do
   begin
-    individual.a := runif(lowBound, highBound);
-    individual.b := runif(lowBound, highBound);
-    individual.c := runif(lowBound, highBound);
+    individual.GE := runif(lowBound, highBound);
+    individual.GR := runif(lowBound, highBound);
     Result[i] := individual;
   end;
 end;
@@ -161,7 +166,7 @@ end;
 function Crossover(const parents: TParents): TChildren;
 var
   alleles: record
-    a, b, c: tAllele;
+    GE, GR: tAllele;
     end;
   meioticIndex, crossing: TIntArray;
 begin
@@ -169,24 +174,18 @@ begin
   SetLength(crossing, 2);
   meioticIndex[0] := 0;
   meioticIndex[1] := 1;
-  alleles.a[0] := parents[0].a;
-  alleles.a[1] := parents[1].a;
-  alleles.b[0] := parents[0].b;
-  alleles.b[1] := parents[1].b;
-  alleles.c[0] := parents[0].c;
-  alleles.c[1] := parents[1].c;
+  alleles.GE[0] := parents[0].GE;
+  alleles.GE[1] := parents[1].GE;
+  alleles.GR[0] := parents[0].GR;
+  alleles.GR[1] := parents[1].GR;
   crossing[0] := Sample(meioticIndex, 1)[0];
   crossing[1] := 1 - crossing[0];
-  Result[0].a := alleles.a[crossing[0]];
-  Result[1].a := alleles.a[crossing[1]];
+  Result[0].GE := alleles.GE[crossing[0]];
+  Result[1].GE := alleles.GE[crossing[1]];
   crossing[0] := Sample(meioticIndex, 1)[0];
   crossing[1] := 1 - crossing[0];
-  Result[0].b := alleles.b[crossing[0]];
-  Result[1].b := alleles.b[crossing[1]];
-  crossing[0] := Sample(meioticIndex, 1)[0];
-  crossing[1] := 1 - crossing[0];
-  Result[0].c := alleles.c[crossing[0]];
-  Result[1].c := alleles.c[crossing[1]];
+  Result[0].GR := alleles.GR[crossing[0]];
+  Result[1].GR := alleles.GR[crossing[1]];
 end;
 
 function Mutated(const Individual: TIndividual; const MutationRate: integer;
@@ -198,12 +197,10 @@ begin
   if random < MutationRate then
   begin
     intensity := runif(-1, 1);
-    Result.a := Individual.a * intensity;
-    Result.a := max(min(Result.a, highBound), lowBound);
-    Result.b := Individual.b * intensity;
-    Result.b := max(min(Result.b, highBound), lowBound);
-    Result.c := Individual.c * intensity;
-    Result.c := max(min(Result.c, highBound), lowBound);
+    Result.GE := Individual.GE * intensity;
+    Result.GE := max(min(Result.GE, highBound), lowBound);
+    Result.GR := Individual.GR * intensity;
+    Result.GR := max(min(Result.GR, highBound), lowBound);
   end;
 end;
 

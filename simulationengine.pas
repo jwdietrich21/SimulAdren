@@ -14,8 +14,6 @@ unit SimulationEngine;
 { (c) University of Ulm Hospitals 2002 - 2004 }
 { (c) Ruhr University of Bochum 2005 - 2025 }
 
-{ Standard blocks for systems modelling and simulation }
-
 { Source code released under the BSD License }
 
 { See the file "license.txt", included in this distribution, }
@@ -74,13 +72,15 @@ type
     CRH, e, ACTH, PRF, F, v, yR: extended;
   end;
 
+  TPredictionArray = array[0..1] of TPrediction;
+
 var
   gSequence: TSequence;
   gBlocks: TBlocks;
-  gPrediction1, gPrediction2: TPrediction;
+  gPrediction: TPredictionArray;
 
 procedure RunSimulation(CRH: extended; params: TParams; nmax: integer);
-procedure PredictSteadyState(CRH: extended; params: TParams);
+function PredictSteadyState(CRH: extended; params: TParams): TPredictionArray;
 
 implementation
 
@@ -97,15 +97,15 @@ begin
   Result := gBlocks.MiMeA.simOutput;
 end;
 
-procedure PredictSteadyState(CRH: extended; params: TParams);
+function PredictSteadyState(CRH: extended; params: TParams): TPredictionArray;
 var
   e, ACTH, PRF: extended;
   a, b, c, K1, K2: extended;
   i: integer;
   predictions: TQRoots;
 begin
-  gPrediction1.CRH := CRH;
-  gPrediction2.CRH := CRH;
+  result[0].CRH := CRH;
+  result[1].CRH := CRH;
 
   { Solving for F: }
   with params do
@@ -113,22 +113,22 @@ begin
     K1 := GR * G3 * GA / (DR + G3 * GA);
     K2 := DR * DA / (DR + G3 * GA);
     a := GE * K1 + 1;
-    b := K2 - G1 * gPrediction1.CRH;
-    c := -G1 * K2 * gPrediction1.CRH;
+    b := K2 - G1 * result[0].CRH;
+    c := -G1 * K2 * result[0].CRH;
     predictions := Solve(a, b, c);
-    gPrediction1.ACTH := max(predictions[0], predictions[1]);
-    gPrediction1.PRF := GA * gPrediction1.ACTH / (DA + gPrediction1.ACTH);
-    gPrediction1.F := G3 * gPrediction1.PRF;
-    gPrediction1.v := GR * gPrediction1.F / (DR + gPrediction1.F);
-    gPrediction1.yR := GE * gPrediction1.v;
-    gPrediction1.e := gPrediction1.CRH / (1 + gPrediction1.yR);
+    result[0].ACTH := max(predictions[0], predictions[1]);
+    result[0].PRF := GA * result[0].ACTH / (DA + result[0].ACTH);
+    result[0].F := G3 * result[0].PRF;
+    result[0].v := GR * result[0].F / (DR + result[0].F);
+    result[0].yR := GE * result[0].v;
+    result[0].e := result[0].CRH / (1 + result[0].yR);
 
-    gPrediction2.ACTH := min(predictions[0], predictions[1]);
-    gPrediction2.PRF := GA * gPrediction2.ACTH / (DA + gPrediction2.ACTH);
-    gPrediction2.F := G3 * gPrediction2.PRF;
-    gPrediction2.v := GR * gPrediction2.F / (DR + gPrediction2.F);
-    gPrediction2.yR := GE * gPrediction2.v;
-    gPrediction2.e := gPrediction2.CRH / (1 + gPrediction2.yR);
+    result[1].ACTH := min(predictions[0], predictions[1]);
+    result[1].PRF := GA * result[1].ACTH / (DA + result[1].ACTH);
+    result[1].F := G3 * result[1].PRF;
+    result[1].v := GR * result[1].F / (DR + result[1].F);
+    result[1].yR := GE * result[1].v;
+    result[1].e := result[1].CRH / (1 + result[1].yR);
   end;
 end;
 
@@ -140,7 +140,7 @@ var
 begin
   if nmax > 0 then
   begin
-    PredictSteadyState(CRH, params);
+    gPrediction := PredictSteadyState(CRH, params);
 
     gSequence.size := 0; // delete content
     gSequence.size := nmax;

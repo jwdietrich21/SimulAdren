@@ -5,7 +5,7 @@ unit SetTargets;
 { Simulator for HPA feedback control }
 
 { Simulation program for the hypothalamus-pituitary-adrenal axis }
-{ GUI for targets }
+{ GUI for targets of evoluationay algorithm }
 
 { Version 1.1.0 (Desarrollo) }
 
@@ -13,8 +13,6 @@ unit SetTargets;
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
 { (c) Ruhr University of Bochum 2005 - 2025 }
-
-{ Standard blocks for systems modelling and simulation }
 
 { Source code released under the BSD License }
 
