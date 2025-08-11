@@ -23,6 +23,7 @@
         <UnitName Value="GUI"/>
         <EditorIndex Value="13"/>
         <WindowIndex Value="1"/>
+        <TopLine Value="184"/>
         <UsageCount Value="70"/>
         <Loaded Value="True"/>
       </Unit1>
@@ -158,7 +159,8 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="11"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="26" Y="31"/>
+        <TopLine Value="234"/>
+        <CursorPos X="25" Y="224"/>
         <UsageCount Value="42"/>
         <Loaded Value="True"/>
       </Unit13>

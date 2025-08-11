@@ -75,6 +75,7 @@ implementation
 
 function Fitness(const CRH: extended; const params: TParams;
   const theGuess: TIndividual; const EvoTargets: TEvoTargets): real;
+{ A higher result denotes a higher fitness }
 var
   i: integer;
   distanceA, distanceF, distance: real;
@@ -243,7 +244,7 @@ begin
   SetLength(AllPopulations, generations);
   SetLength(theFittest, generations);
   SetLength(nextPopulation, size);
-  curPopulation := InitialPopulation(size, params, LowerBound, UpperBound);
+  curPopulation := InitialPopulation(size, params, lowBound, highBound);
   for i := 0 to generations - 1 do
   begin
     for j := 0 to size - 1 do
@@ -261,9 +262,9 @@ begin
         parents[1] := curPopulation[k + 1];
         children := Crossover(parents, params);
         nextPopulation[k] := Mutated(children[0], params, MutationRate,
-          LowerBound, UpperBound);
+          lowBound, highBound);
         nextPopulation[k + 1] :=
-          Mutated(children[1], params, MutationRate, LowerBound, UpperBound);
+          Mutated(children[1], params, MutationRate, lowBound, highBound);
       end;
     end;
     nextPopulation[0] := bestIndividual;
