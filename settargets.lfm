@@ -1,6 +1,7 @@
 object TargetForm: TTargetForm
   Left = 761
   Height = 162
+  Hint = 'Set targets for estimting parameters by evolutionary algorithm'
   Top = 260
   Width = 327
   ActiveControl = OKButton
@@ -10,21 +11,23 @@ object TargetForm: TTargetForm
   ClientWidth = 327
   FormStyle = fsStayOnTop
   Position = poOwnerFormCenter
+  ShowHint = True
   LCLVersion = '4.2.0.0'
   OnCreate = FormCreate
+  OnShow = FormShow
   object FloatSpinEditA: TFloatSpinEdit
     Left = 120
     Height = 20
     Top = 48
     Width = 98
-    TabOrder = 0
+    TabOrder = 1
   end
   object FloatSpinEditF: TFloatSpinEdit
     Left = 120
     Height = 20
     Top = 80
     Width = 98
-    TabOrder = 1
+    TabOrder = 2
   end
   object ALabel: TLabel
     Left = 24
@@ -49,7 +52,7 @@ object TargetForm: TTargetForm
     Caption = 'OK'
     Default = True
     ModalResult = 1
-    TabOrder = 2
+    TabOrder = 0
     OnClick = OKButtonClick
   end
   object CancelButton: TButton

@@ -1,11 +1,11 @@
 object PredictionForm: TPredictionForm
-  Left = 1072
+  Left = 1051
   Height = 182
   Top = 63
-  Width = 334
+  Width = 355
   Caption = 'Prediction'
   ClientHeight = 182
-  ClientWidth = 334
+  ClientWidth = 355
   LCLVersion = '4.2.0.0'
   Visible = True
   OnCreate = FormCreate
@@ -14,22 +14,22 @@ object PredictionForm: TPredictionForm
     Left = 0
     Height = 160
     Top = 0
-    Width = 334
+    Width = 355
     Anchors = [akTop, akLeft, akRight]
     AutoFillColumns = True
     ColCount = 4
     Columns = <    
       item
         Title.Caption = 'Steady State 1'
-        Width = 90
+        Width = 97
       end    
       item
         Title.Caption = 'Steady State 2'
-        Width = 89
+        Width = 96
       end    
       item
         Title.Caption = 'UoM'
-        Width = 89
+        Width = 96
       end>
     MouseWheelOption = mwGrid
     RowCount = 7
@@ -37,9 +37,9 @@ object PredictionForm: TPredictionForm
     TabOrder = 0
     ColWidths = (
       64
-      90
-      89
-      89
+      97
+      96
+      96
     )
   end
 end

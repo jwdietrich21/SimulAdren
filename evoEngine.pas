@@ -75,19 +75,19 @@ implementation
 
 function Fitness(const CRH: extended; const params: TParams;
   const theGuess: TIndividual; const EvoTargets: TEvoTargets): real;
-{ A higher result denotes a higher fitness }
+  { A higher result denotes a higher fitness }
 var
   i: integer; // index for steady-state soluation to use
   distanceA, distanceF, distance: real; // distances from target
   steadyState: TPredictionArray; // steady-state solutions
   testParams: TParams; // parameter set for feedback loop to test
 begin
-  testParams := params;
-  if isNan(testParams.GE) then
+  testParams := params; // passed parameters for feedback loop
+  if isNan(testParams.GE) then  // NaN if to be estimated by GA
     testParams.GE := theGuess.GE;
   if isNan(testParams.GR) then
     testParams.GR := theGuess.GR;
-  // penalise physiologically nonsense parameters
+  // penalise physiologically nonsense parameters:
   if (theGuess.GE <= 0) or (theGuess.GR <= 0) then
     distance := Math.Infinity
   else
@@ -115,7 +115,7 @@ begin
   SetLength(Result, size);
   for i := 0 to size - 1 do
   begin
-    if isNan(params.GE) then
+    if isNan(params.GE) then   // NaN if to be estimated by GA
       individual.GE := runif(lowBound, highBound);
     if isNan(params.GR) then
       individual.GR := runif(lowBound, highBound);
@@ -187,7 +187,7 @@ begin
   SetLength(crossing, 2);
   meioticIndex[0] := 0;
   meioticIndex[1] := 1;
-  if isNan(params.GE) then
+  if isNan(params.GE) then  // NaN if to be estimated by GA
   begin
     alleles.GE[0] := parents[0].GE;
     alleles.GE[1] := parents[1].GE;
@@ -217,7 +217,7 @@ begin
   if random < MutationRate then
   begin
     intensity := runif(-1, 1);
-    if isNan(params.GE) then
+    if isNan(params.GE) then  // NaN if to be estimated by GA
     begin
       Result.GE := Individual.GE * intensity;
       Result.GE := max(min(Result.GE, highBound), lowBound);
@@ -235,7 +235,7 @@ procedure GeneticAlgorithm(const size: integer; const CRH: extended;
   const EvoTargets: TEvoTargets; const generations: integer;
   const mutationRate: integer; var AllPopulations: TAllPopulations;
   var theFittest: TFittest);
-{ params: passed record of parameters. Parameters to be modified marked by NaN }
+  { params: passed record of parameters. Parameters to be modified marked by NaN }
 var
   curPopulation, nextPopulation: TPopulation;
   bestIndividual: TIndividual;
@@ -272,7 +272,7 @@ begin
     nextPopulation[0] := bestIndividual;
     curPopulation := nextPopulation;
   end;
-  if isNan(params.GR) then
+  if isNan(params.GR) then  // NaN if to be estimated by GA
     params.GR := theFittest[generations - 1].GR;
   if isNan(params.GE) then
     params.GE := theFittest[generations - 1].GE;

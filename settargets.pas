@@ -1,6 +1,6 @@
 unit SetTargets;
 
-{ SimulAdren }
+{ SimulAdren}
 
 { Simulator for HPA feedback control }
 
@@ -49,6 +49,7 @@ type
     UoM_F: TLabel;
     procedure CancelButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure OKButtonClick(Sender: TObject);
   private
 
@@ -85,6 +86,11 @@ begin
   FloatSpinEditF.Value := targetF;
   UoM_A.Caption := kUoMs[3]; // UoM for ACTH
   UoM_F.Caption := kUoMs[5]; // UoM for F (Cortisol)
+end;
+
+procedure TTargetForm.FormShow(Sender: TObject);
+begin
+  ActiveControl := OKButton;
 end;
 
 
