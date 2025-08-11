@@ -202,7 +202,7 @@ begin
       params.GE := GEEdit.Value;
     params.DA := DAEdit.Value * DAFactor;
     params.DR := DREdit.Value * DRFactor;
-    TargetForm.Show;
+    TargetForm.ShowModal;
     EvoTargets.ACTH := TargetForm.targetA;
     EvoTargets.F := TargetForm.targetF;
     GeneticAlgorithm(PopulationSize, CRHSpinEdit.Value * CRHFactor, params,

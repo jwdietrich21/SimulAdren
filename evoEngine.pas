@@ -33,7 +33,7 @@ uses
   Classes, SysUtils, Math, RandomFunctions, SimulAdrenTypes, SimulationEngine;
 
 const
-  LowerBound = -50;
+  LowerBound = 0;
   UpperBound = 50;
   PopulationSize = 100;
   Generations = 20;
@@ -45,6 +45,7 @@ type
     GR, GE: extended;
     fitness: real;
   end;
+
   TPopulation = array of TIndividual;
   TParents = array[0..1] of TIndividual;
   TChildren = array[0..1] of TIndividual;
@@ -57,13 +58,13 @@ var
 
 function Fitness(const CRH: extended; const params: TParams;
   const theGuess: TIndividual; const EvoTargets: TEvoTargets): real;
-function InitialPopulation(const size: integer;
+function InitialPopulation(const size: integer; var params: TParams;
   const lowBound, highBound: real): TPopulation;
 function Selection(const population: TPopulation;
   const TournamentSize: integer): TPopulation;
 function Crossover(const parents: TParents): TChildren;
-function Mutated(const Individual: TIndividual; const MutationRate: integer;
-  const lowBound, highBound: real): TIndividual;
+function Mutated(const Individual: TIndividual; var params: TParams;
+  const MutationRate: integer; const lowBound, highBound: real): TIndividual;
 procedure GeneticAlgorithm(const size: integer; const CRH: extended;
   var params: TParams; const lowBound, highBound: real;
   const EvoTargets: TEvoTargets; const generations: integer;
@@ -99,7 +100,7 @@ begin
   Result := -distance;
 end;
 
-function InitialPopulation(const size: integer;
+function InitialPopulation(const size: integer; var params: TParams;
   const lowBound, highBound: real): TPopulation;
 var
   i: integer;
@@ -115,6 +116,7 @@ begin
 end;
 
 function IncIndex(const size: integer): TIntArray;
+  {delivers ordered array of integer}
 var
   i: integer;
 begin
@@ -188,8 +190,8 @@ begin
   Result[1].GR := alleles.GR[crossing[1]];
 end;
 
-function Mutated(const Individual: TIndividual; const MutationRate: integer;
-  const lowBound, highBound: real): TIndividual;
+function Mutated(const Individual: TIndividual; var params: TParams;
+  const MutationRate: integer; const lowBound, highBound: real): TIndividual;
 var
   intensity: real;
 begin
@@ -219,7 +221,7 @@ begin
   SetLength(AllPopulations, generations);
   SetLength(theFittest, generations);
   SetLength(nextPopulation, size);
-  curPopulation := InitialPopulation(Populationsize, LowerBound, UpperBound);
+  curPopulation := InitialPopulation(Populationsize, params, LowerBound, UpperBound);
   if isNan(params.GR) then    // for development and debugging only
     params.GR := 1;
   if isNan(params.GE) then
@@ -227,7 +229,8 @@ begin
   {for i := 0 to generations - 1 do
   begin
     for j := 0 to size - 1 do
-      curPopulation[j].fitness := Fitness(curPopulation[j], 0);
+      curPopulation[j].fitness := Fitness(CRH, params, curPopulation[j],
+        EvoTargets);
     bestIndividual := Fittest(curPopulation);
     theFittest[i] := bestIndividual;
     AllPopulations[i] := CurPopulation;
@@ -239,14 +242,14 @@ begin
         parents[0] := curPopulation[k];
         parents[1] := curPopulation[k + 1];
         children := Crossover(parents);
-        nextPopulation[k] := Mutated(children[0], MutationRate, LowerBound, UpperBound);
+        nextPopulation[k] := Mutated(children[0], params, MutationRate, LowerBound, UpperBound);
         nextPopulation[k + 1] :=
-          Mutated(children[1], MutationRate, LowerBound, UpperBound);
+          Mutated(children[1], params, MutationRate, LowerBound, UpperBound);
       end;
     end;
     nextPopulation[0] := bestIndividual;
     curPopulation := nextPopulation;
-  end;}
+  end;    }
 
 end;
 
