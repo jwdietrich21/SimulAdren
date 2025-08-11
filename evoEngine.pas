@@ -58,12 +58,12 @@ var
 
 function Fitness(const CRH: extended; const params: TParams;
   const theGuess: TIndividual; const EvoTargets: TEvoTargets): real;
-function InitialPopulation(const size: integer; var params: TParams;
+function InitialPopulation(const size: integer; const params: TParams;
   const lowBound, highBound: real): TPopulation;
 function Selection(const population: TPopulation;
   const TournamentSize: integer): TPopulation;
-function Crossover(const parents: TParents): TChildren;
-function Mutated(const Individual: TIndividual; var params: TParams;
+function Crossover(const parents: TParents; const params: TParams): TChildren;
+function Mutated(const Individual: TIndividual; const params: TParams;
   const MutationRate: integer; const lowBound, highBound: real): TIndividual;
 procedure GeneticAlgorithm(const size: integer; const CRH: extended;
   var params: TParams; const lowBound, highBound: real;
@@ -79,29 +79,34 @@ var
   i: integer;
   distanceA, distanceF, distance: real;
   steadyState: TPredictionArray;
+  testParams: TParams;
 begin
-  with theGuess do
+  testParams := params;
+  if isNan(testParams.GE) then
+    testParams.GE := theGuess.GE;
+  if isNan(testParams.GR) then
+    testParams.GR := theGuess.GR;
+  // penalise physiologically nonsense parameters
+  if (theGuess.GE <= 0) or (theGuess.GR <= 0) then
+    distance := Math.Infinity
+  else
   begin
-    if (GE <= 0) or (GR <= 0) then
-      distance := Math.Infinity
+    steadyState := PredictSteadyState(CRH, testParams);
+    if steadyState[0].ACTH > steadyState[1].ACTH then
+      i := 0
     else
-    begin
-      steadyState := PredictSteadyState(CRH, params);
-      if steadyState[0].ACTH > steadyState[1].ACTH then
-        i := 0
-      else
-        i := 1;
-      distanceA := steadyState[i].ACTH - EvoTargets.ACTH;
-      distanceF := steadyState[i].F - EvoTargets.F;
-      // Euclidian distance of ACTH and F from the target:
-      Result := sqrt(sqr(distanceA) + sqr(distanceF));
-    end;
+      i := 1;
+    distanceA := steadyState[i].ACTH - EvoTargets.ACTH;
+    distanceF := steadyState[i].F - EvoTargets.F;
+    // Euclidian distance of ACTH and F from the target:
+    distance := sqrt(sqr(distanceA) + sqr(distanceF));
   end;
   Result := -distance;
 end;
 
-function InitialPopulation(const size: integer; var params: TParams;
+function InitialPopulation(const size: integer; const params: TParams;
   const lowBound, highBound: real): TPopulation;
+  { params: passed record of parameters. Parameters to be modified marked by NaN }
 var
   i: integer;
   individual: TIndividual;
@@ -109,14 +114,16 @@ begin
   SetLength(Result, size);
   for i := 0 to size - 1 do
   begin
-    individual.GE := runif(lowBound, highBound);
-    individual.GR := runif(lowBound, highBound);
+    if isNan(params.GE) then
+      individual.GE := runif(lowBound, highBound);
+    if isNan(params.GR) then
+      individual.GR := runif(lowBound, highBound);
     Result[i] := individual;
   end;
 end;
 
 function IncIndex(const size: integer): TIntArray;
-  {delivers ordered array of integer}
+  { delivers ordered array of integer }
 var
   i: integer;
 begin
@@ -165,7 +172,8 @@ begin
   end;
 end;
 
-function Crossover(const parents: TParents): TChildren;
+function Crossover(const parents: TParents; const params: TParams): TChildren;
+  { params: passed record of parameters. Parameters to be modified marked by NaN }
 var
   alleles: record
     GE, GR: tAllele;
@@ -176,22 +184,29 @@ begin
   SetLength(crossing, 2);
   meioticIndex[0] := 0;
   meioticIndex[1] := 1;
-  alleles.GE[0] := parents[0].GE;
-  alleles.GE[1] := parents[1].GE;
-  alleles.GR[0] := parents[0].GR;
-  alleles.GR[1] := parents[1].GR;
-  crossing[0] := Sample(meioticIndex, 1)[0];
-  crossing[1] := 1 - crossing[0];
-  Result[0].GE := alleles.GE[crossing[0]];
-  Result[1].GE := alleles.GE[crossing[1]];
-  crossing[0] := Sample(meioticIndex, 1)[0];
-  crossing[1] := 1 - crossing[0];
-  Result[0].GR := alleles.GR[crossing[0]];
-  Result[1].GR := alleles.GR[crossing[1]];
+  if isNan(params.GE) then
+  begin
+    alleles.GE[0] := parents[0].GE;
+    alleles.GE[1] := parents[1].GE;
+    crossing[0] := Sample(meioticIndex, 1)[0];
+    crossing[1] := 1 - crossing[0];
+    Result[0].GE := alleles.GE[crossing[0]];
+    Result[1].GE := alleles.GE[crossing[1]];
+  end;
+  if isNan(params.GR) then
+  begin
+    alleles.GR[0] := parents[0].GR;
+    alleles.GR[1] := parents[1].GR;
+    crossing[0] := Sample(meioticIndex, 1)[0];
+    crossing[1] := 1 - crossing[0];
+    Result[0].GR := alleles.GR[crossing[0]];
+    Result[1].GR := alleles.GR[crossing[1]];
+  end;
 end;
 
-function Mutated(const Individual: TIndividual; var params: TParams;
+function Mutated(const Individual: TIndividual; const params: TParams;
   const MutationRate: integer; const lowBound, highBound: real): TIndividual;
+  { params: passed record of parameters. Parameters to be modified marked by NaN }
 var
   intensity: real;
 begin
@@ -199,10 +214,16 @@ begin
   if random < MutationRate then
   begin
     intensity := runif(-1, 1);
-    Result.GE := Individual.GE * intensity;
-    Result.GE := max(min(Result.GE, highBound), lowBound);
-    Result.GR := Individual.GR * intensity;
-    Result.GR := max(min(Result.GR, highBound), lowBound);
+    if isNan(params.GE) then
+    begin
+      Result.GE := Individual.GE * intensity;
+      Result.GE := max(min(Result.GE, highBound), lowBound);
+    end;
+    if isNan(params.GR) then
+    begin
+      Result.GR := Individual.GR * intensity;
+      Result.GR := max(min(Result.GR, highBound), lowBound);
+    end;
   end;
 end;
 
@@ -211,6 +232,7 @@ procedure GeneticAlgorithm(const size: integer; const CRH: extended;
   const EvoTargets: TEvoTargets; const generations: integer;
   const mutationRate: integer; var AllPopulations: TAllPopulations;
   var theFittest: TFittest);
+{ params: passed record of parameters. Parameters to be modified marked by NaN }
 var
   curPopulation, nextPopulation: TPopulation;
   bestIndividual: TIndividual;
@@ -222,15 +244,11 @@ begin
   SetLength(theFittest, generations);
   SetLength(nextPopulation, size);
   curPopulation := InitialPopulation(Populationsize, params, LowerBound, UpperBound);
-  if isNan(params.GR) then    // for development and debugging only
-    params.GR := 1;
-  if isNan(params.GE) then
-    params.GE := 1;
-  {for i := 0 to generations - 1 do
+  for i := 0 to generations - 1 do
   begin
     for j := 0 to size - 1 do
-      curPopulation[j].fitness := Fitness(CRH, params, curPopulation[j],
-        EvoTargets);
+      curPopulation[j].fitness :=
+        Fitness(CRH, params, curPopulation[j], EvoTargets);
     bestIndividual := Fittest(curPopulation);
     theFittest[i] := bestIndividual;
     AllPopulations[i] := CurPopulation;
@@ -241,16 +259,20 @@ begin
       begin
         parents[0] := curPopulation[k];
         parents[1] := curPopulation[k + 1];
-        children := Crossover(parents);
-        nextPopulation[k] := Mutated(children[0], params, MutationRate, LowerBound, UpperBound);
+        children := Crossover(parents, params);
+        nextPopulation[k] := Mutated(children[0], params, MutationRate,
+          LowerBound, UpperBound);
         nextPopulation[k + 1] :=
           Mutated(children[1], params, MutationRate, LowerBound, UpperBound);
       end;
     end;
     nextPopulation[0] := bestIndividual;
     curPopulation := nextPopulation;
-  end;    }
-
+  end;
+  if isNan(params.GR) then
+    params.GR := theFittest[generations - 1].GR;
+  if isNan(params.GE) then
+    params.GE := theFittest[generations - 1].GE;
 end;
 
 end.
