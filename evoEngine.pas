@@ -35,8 +35,8 @@ uses
 const
   LowerBound = 0;
   UpperBound = 50;
-  PopulationSize = 100;
-  Generations = 20;
+  PopulationSize = 1000;
+  Generations = 50;
   MutationRate = 1;
   TournamentSize = 3;
 
@@ -243,7 +243,7 @@ begin
   SetLength(AllPopulations, generations);
   SetLength(theFittest, generations);
   SetLength(nextPopulation, size);
-  curPopulation := InitialPopulation(Populationsize, params, LowerBound, UpperBound);
+  curPopulation := InitialPopulation(size, params, LowerBound, UpperBound);
   for i := 0 to generations - 1 do
   begin
     for j := 0 to size - 1 do

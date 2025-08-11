@@ -31,7 +31,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Spin, StdCtrls,
-  SimulAdrenTypes;
+  SimulAdrenTypes, SimulationEngine;
 
 type
 
@@ -66,8 +66,8 @@ implementation
 procedure TTargetForm.OKButtonClick(Sender: TObject);
 begin
   Close;
-  TargetA := FloatSpinEditA.Value;
-  TargetF := FloatSpinEditF.Value;
+  TargetA := FloatSpinEditA.Value * ACTHFactor;
+  TargetF := FloatSpinEditF.Value * CortisolFactor;
 end;
 
 procedure TTargetForm.CancelButtonClick(Sender: TObject);
