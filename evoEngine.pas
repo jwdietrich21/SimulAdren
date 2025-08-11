@@ -19,7 +19,7 @@ unit evoEngine;
 { See the file "license.txt", included in this distribution, }
 { for details about the copyright. }
 { Current versions and additional information are available from }
-{ http://cyberunits.sf.net }
+{ http://simuladren.sf.net }
 
 { This program is distributed in the hope that it will be useful, }
 { but WITHOUT ANY WARRANTY; without even the implied warranty of }
@@ -77,10 +77,10 @@ function Fitness(const CRH: extended; const params: TParams;
   const theGuess: TIndividual; const EvoTargets: TEvoTargets): real;
 { A higher result denotes a higher fitness }
 var
-  i: integer;
-  distanceA, distanceF, distance: real;
-  steadyState: TPredictionArray;
-  testParams: TParams;
+  i: integer; // index for steady-state soluation to use
+  distanceA, distanceF, distance: real; // distances from target
+  steadyState: TPredictionArray; // steady-state solutions
+  testParams: TParams; // parameter set for feedback loop to test
 begin
   testParams := params;
   if isNan(testParams.GE) then
@@ -124,7 +124,7 @@ begin
 end;
 
 function IncIndex(const size: integer): TIntArray;
-  { delivers ordered array of integer }
+{ delivers ordered array of integer }
 var
   i: integer;
 begin
@@ -134,6 +134,7 @@ begin
 end;
 
 function Fittest(const Population: TPopulation): TIndividual;
+{ delivers the fittest member of a population }
 var
   i, index: integer;
   bestScore: real;
@@ -153,6 +154,7 @@ end;
 
 function Selection(const population: TPopulation;
   const TournamentSize: integer): TPopulation;
+  { evoluationay selection algorithm }
 var
   indices, tournament: TIntArray;
   competitors: TPopulation;
@@ -174,7 +176,7 @@ begin
 end;
 
 function Crossover(const parents: TParents; const params: TParams): TChildren;
-  { params: passed record of parameters. Parameters to be modified marked by NaN }
+{ params: passed record of parameters. Parameters to be modified marked by NaN }
 var
   alleles: record
     GE, GR: tAllele;

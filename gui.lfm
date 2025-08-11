@@ -9,6 +9,7 @@ object ValuesForm: TValuesForm
   Constraints.MinHeight = 400
   Constraints.MinWidth = 640
   Menu = MainMenu1
+  ShowHint = True
   LCLVersion = '4.2.0.0'
   OnCreate = FormCreate
   object ValuesGrid: TStringGrid
@@ -123,6 +124,7 @@ object ValuesForm: TValuesForm
   object CRHSpinEdit: TFloatSpinEdit
     Left = 54
     Height = 20
+    Hint = 'Concentration of corticotropin releasing hormone (CRH)'
     Top = 361
     Width = 98
     Anchors = [akRight, akBottom]
@@ -154,6 +156,7 @@ object ValuesForm: TValuesForm
     AnchorSideLeft.Side = asrBottom
     Left = 399
     Height = 20
+    Hint = 'Number of simulation steps'
     Top = 505
     Width = 98
     Anchors = [akRight, akBottom]
@@ -174,6 +177,7 @@ object ValuesForm: TValuesForm
   object G1Edit: TFloatSpinEdit
     Left = 54
     Height = 20
+    Hint = 'Gain of ASIA element 1'
     Top = 397
     Width = 98
     Anchors = [akRight, akBottom]
@@ -193,6 +197,7 @@ object ValuesForm: TValuesForm
   object GAEdit: TFloatSpinEdit
     Left = 54
     Height = 20
+    Hint = 'Secretory capacity of adrenal glands'
     Top = 469
     Width = 98
     Anchors = [akRight, akBottom]
@@ -203,6 +208,7 @@ object ValuesForm: TValuesForm
   object G3Edit: TFloatSpinEdit
     Left = 54
     Height = 20
+    Hint = 'Gain of ASIA element 2'
     Top = 433
     Width = 98
     Anchors = [akRight, akBottom]
@@ -231,6 +237,7 @@ object ValuesForm: TValuesForm
   object DAEdit: TFloatSpinEdit
     Left = 54
     Height = 20
+    Hint = 'EC50 of ACTH at the adrenal glands'
     Top = 505
     Width = 98
     Anchors = [akRight, akBottom]
@@ -241,6 +248,7 @@ object ValuesForm: TValuesForm
   object DREdit: TFloatSpinEdit
     Left = 399
     Height = 20
+    Hint = 'EC50 of cortisol (F)'
     Top = 397
     Width = 98
     Anchors = [akRight, akBottom]
@@ -260,6 +268,7 @@ object ValuesForm: TValuesForm
   object GREdit: TFloatSpinEdit
     Left = 399
     Height = 20
+    Hint = 'Cortisol receptor gain'
     Top = 361
     Width = 98
     Anchors = [akRight, akBottom]
@@ -335,6 +344,7 @@ object ValuesForm: TValuesForm
   object GEEdit: TFloatSpinEdit
     Left = 399
     Height = 20
+    Hint = 'Effector gain'
     Top = 433
     Width = 98
     Anchors = [akRight, akBottom]
@@ -378,6 +388,7 @@ object ValuesForm: TValuesForm
   object EstimateGRCheckBox: TCheckBox
     Left = 504
     Height = 18
+    Hint = 'Estimate this parameter via evolutionary algorithm'
     Top = 363
     Width = 75
     Anchors = [akRight, akBottom]
@@ -388,6 +399,7 @@ object ValuesForm: TValuesForm
   object EstimateGECheckbox: TCheckBox
     Left = 504
     Height = 18
+    Hint = 'Estimate this parameter via evolutionary algorithm'
     Top = 433
     Width = 75
     Anchors = [akRight, akBottom]

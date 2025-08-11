@@ -19,7 +19,7 @@ unit SimulationEngine;
 { See the file "license.txt", included in this distribution, }
 { for details about the copyright. }
 { Current versions and additional information are available from }
-{ http://cyberunits.sf.net }
+{ http://simuladren.sf.net }
 
 { This program is distributed in the hope that it will be useful, }
 { but WITHOUT ANY WARRANTY; without even the implied warranty of }
@@ -99,15 +99,13 @@ end;
 
 function PredictSteadyState(CRH: extended; params: TParams): TPredictionArray;
 var
-  e, ACTH, PRF: extended;
   a, b, c, K1, K2: extended;
-  i: integer;
   predictions: TQRoots;
 begin
   result[0].CRH := CRH;
   result[1].CRH := CRH;
 
-  { Solving for F: }
+  { Solving for F (Cortisol): }
   with params do
   begin
     K1 := GR * G3 * GA / (DR + G3 * GA);
@@ -135,7 +133,6 @@ end;
 procedure RunSimulation(CRH: extended; params: TParams; nmax: integer);
 var
   e, ACTH, PRF, F, v, yr: extended;
-  a, b, c, K1, K2: extended;
   i: integer;
 begin
   if nmax > 0 then

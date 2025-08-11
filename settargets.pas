@@ -19,7 +19,7 @@ unit SetTargets;
 { See the file "license.txt", included in this distribution, }
 { for details about the copyright. }
 { Current versions and additional information are available from }
-{ http://cyberunits.sf.net }
+{ http://simuladren.sf.net }
 
 { This program is distributed in the hope that it will be useful, }
 { but WITHOUT ANY WARRANTY; without even the implied warranty of }
@@ -38,6 +38,7 @@ type
   { TTargetForm }
 
   TTargetForm = class(TForm)
+    UoM_A: TLabel;
     CancelButton: TButton;
     ExplanationLabel: TLabel;
     OKButton: TButton;
@@ -45,6 +46,7 @@ type
     FloatSpinEditF: TFloatSpinEdit;
     ALabel: TLabel;
     FLabel: TLabel;
+    UoM_F: TLabel;
     procedure CancelButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure OKButtonClick(Sender: TObject);
@@ -81,6 +83,8 @@ begin
   targetF := kEvoTargets.F;
   FloatSpinEditA.Value := targetA;
   FloatSpinEditF.Value := targetF;
+  UoM_A.Caption := kUoMs[3]; // UoM for ACTH
+  UoM_F.Caption := kUoMs[5]; // UoM for F (Cortisol)
 end;
 
 

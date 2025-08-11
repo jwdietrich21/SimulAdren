@@ -3,9 +3,12 @@ object TargetForm: TTargetForm
   Height = 162
   Top = 260
   Width = 327
+  ActiveControl = OKButton
+  BorderStyle = bsDialog
   Caption = 'Set Targets'
   ClientHeight = 162
   ClientWidth = 327
+  FormStyle = fsStayOnTop
   Position = poOwnerFormCenter
   LCLVersion = '4.2.0.0'
   OnCreate = FormCreate
@@ -45,6 +48,7 @@ object TargetForm: TTargetForm
     Anchors = [akRight, akBottom]
     Caption = 'OK'
     Default = True
+    ModalResult = 1
     TabOrder = 2
     OnClick = OKButtonClick
   end
@@ -65,5 +69,19 @@ object TargetForm: TTargetForm
     Top = 16
     Width = 229
     Caption = 'Set targets for evolutionary algorithm:'
+  end
+  object UoM_A: TLabel
+    Left = 227
+    Height = 16
+    Top = 48
+    Width = 28
+    Caption = 'UoM'
+  end
+  object UoM_F: TLabel
+    Left = 227
+    Height = 16
+    Top = 80
+    Width = 28
+    Caption = 'UoM'
   end
 end

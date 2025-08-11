@@ -19,7 +19,7 @@ unit RandomFunctions;
 { See the file "license.txt", included in this distribution, }
 { for details about the copyright. }
 { Current versions and additional information are available from }
-{ http://cyberunits.sf.net }
+{ http://simuladren.sf.net }
 
 { This program is distributed in the hope that it will be useful, }
 { but WITHOUT ANY WARRANTY; without even the implied warranty of }
@@ -48,6 +48,7 @@ function runif(const min, max: real): real;
 implementation
 
 function contains(const theArray: array of integer; theNumber: integer): boolean;
+{ is theNumber contained in theArray? }
 var
   i: integer;
 begin
@@ -61,6 +62,7 @@ begin
 end;
 
 function Sample(const theArray: TIntArray; const theLength: integer): TIntArray;
+{ draws a sample of length theLength from the vector theArray without replacement }
 var
   i, r: integer;
 begin
@@ -76,6 +78,7 @@ begin
 end;
 
 function Sample(const theString: string; const theLength: integer): string;
+{ draws a sample of length theLength from the vector theArray without replacement }
 var
   i, origLength: integer;
   indexArray, posArray: array of integer;
@@ -91,6 +94,7 @@ begin
 end;
 
 function runif(const min, max: real): real;
+{ delivers random number from uniform distribution between min and max }
 begin
   assert(max > min, kError103);
   result := min + random * (max - min);
