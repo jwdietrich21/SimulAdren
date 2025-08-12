@@ -37,9 +37,10 @@ type
   TIntArray = array of integer;
 
 const
+  kError100 = 'Runtime error: Parameter zero';
   kError101 = 'Runtime error: Negative parameters';
   kError102 = 'Runtime error: Parameter out of range';
-  kError103 = 'Runtime error: min > max';
+  kError103 = 'Runtime error: min > max or low > high';
 
 function Sample(const theArray: TIntArray; const theLength: integer): TIntArray;
 function Sample(const theString: string; const theLength: integer): string;
@@ -66,6 +67,8 @@ function Sample(const theArray: TIntArray; const theLength: integer): TIntArray;
 var
   i, r: integer;
 begin
+  assert(theLength <> 0, kError100);
+  assert(theLength >= 0, kError101);
   assert(theLength <= length(theArray), kError102);
   setLength(Result, theLength);
   for i := 0 to theLength - 1 do
@@ -83,6 +86,9 @@ var
   i, origLength: integer;
   indexArray, posArray: array of integer;
 begin
+  assert(theLength <> 0, kError100);
+  assert(theLength >= 0, kError101);
+  assert(theLength <= length(theString), kError102);
   origLength := length(theString);
   setLength(indexArray, origLength);
   Result := '';

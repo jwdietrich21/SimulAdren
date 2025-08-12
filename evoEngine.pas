@@ -112,6 +112,9 @@ var
   i: integer;
   individual: TIndividual;
 begin
+  assert(size <> 0, kError100);
+  assert(size >= 0, kError101);
+  assert(highBound > lowBound, kError103);
   SetLength(Result, size);
   for i := 0 to size - 1 do
   begin
@@ -128,6 +131,8 @@ function IncIndex(const size: integer): TIntArray;
 var
   i: integer;
 begin
+  assert(size <> 0, kError100);
+  assert(size >= 0, kError101);
   SetLength(Result, size);
   for i := 0 to size - 1 do
     Result[i] := i;
@@ -154,13 +159,15 @@ end;
 
 function Selection(const population: TPopulation;
   const TournamentSize: integer): TPopulation;
-  { evoluationay selection algorithm }
+  { evolutionary selection algorithm based on a tournament method }
 var
   indices, tournament: TIntArray;
   competitors: TPopulation;
   winner: TIndividual;
   i, j: integer;
 begin
+  assert(TournamentSize <> 0, kError100);
+  assert(TournamentSize >= 0, kError101);
   SetLength(tournament, TournamentSize);
   SetLength(competitors, TournamentSize);
   SetLength(Result, length(Population));
@@ -213,6 +220,9 @@ function Mutated(const Individual: TIndividual; const params: TParams;
 var
   intensity: real;
 begin
+  assert(MutationRate <> 0, kError100);
+  assert(MutationRate >= 0, kError101);
+  assert(highBound > lowBound, kError103);
   Result := Individual;
   if random < MutationRate then
   begin
@@ -243,6 +253,13 @@ var
   children: TChildren;
   i, j, k: integer;
 begin
+  assert(size <> 0, kError100);
+  assert(size >= 0, kError101);
+  assert(highBound > lowBound, kError103);
+  assert(generations <> 0, kError100);
+  assert(generations >= 0, kError101);
+  assert(MutationRate <> 0, kError100);
+  assert(MutationRate >= 0, kError101);
   SetLength(AllPopulations, generations);
   SetLength(theFittest, generations);
   SetLength(nextPopulation, size);
