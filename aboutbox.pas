@@ -31,7 +31,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
-  EnvironmentInfo;
+  EnvironmentInfo, GUIServices;
 
 type
 
@@ -56,6 +56,8 @@ type
     VersionLabel: TLabel;
     procedure BigLogoClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure FormPaint(Sender: TObject);
   private
 
   public
@@ -79,6 +81,28 @@ end;
 procedure TAboutWindow.FormCreate(Sender: TObject);
 begin
   VersionLabel.Caption := 'Version ' + FileVersion;
+end;
+
+procedure TAboutWindow.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if (key = 87) and ((ssMeta in Shift) or (ssCtrl in Shift)) then
+    Close;
+end;
+
+procedure TAboutWindow.FormPaint(Sender: TObject);
+begin
+  if DarkTheme then
+  begin
+    URL1.Font.Color := clSkyBlue;
+    SciCrunchLabel.Font.Color := clSkyBlue;
+  end
+  else
+  begin
+    URL1.Font.Color := clNavy;
+    SciCrunchLabel.Font.Color := clNavy;
+  end;
+  application.ProcessMessages;
 end;
 
 end.
