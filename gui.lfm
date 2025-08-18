@@ -1,7 +1,7 @@
 object ValuesForm: TValuesForm
-  Left = 223
+  Left = 127
   Height = 593
-  Top = 139
+  Top = 104
   Width = 643
   Caption = 'Simuladren'
   ClientHeight = 593

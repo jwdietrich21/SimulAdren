@@ -70045,6 +70045,7 @@ object AboutWindow: TAboutWindow
     Font.Pitch = fpVariable
     ParentColor = False
     ParentFont = False
+    OnClick = URL1Click
   end
   object SciCrunchLabel: TLabel
     Cursor = crHandPoint
@@ -70058,6 +70059,7 @@ object AboutWindow: TAboutWindow
     Font.Pitch = fpVariable
     ParentColor = False
     ParentFont = False
+    OnClick = SciCrunchLabelClick
   end
   object SimulaBetaLabel: TImage
     Left = 16

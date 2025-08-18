@@ -63,6 +63,7 @@ object TargetForm: TTargetForm
     Anchors = [akRight, akBottom]
     Cancel = True
     Caption = 'Cancel'
+    ModalResult = 2
     TabOrder = 3
     OnClick = CancelButtonClick
   end

@@ -36,6 +36,7 @@ type
   TStrucPars = record
     G1, G3, GA, DA, GR, DR, GE: extended;
   end;
+
   TEvoTargets = record
     ACTH, F: extended;
   end;
@@ -44,7 +45,7 @@ const
   kTAB = char(9);
   kCRLF = #13#10;
 
-  clGoldenRod  = TColor($20A5DA);
+  clGoldenRod = TColor($20A5DA);
   clDarkOrange = TColor($008CFF);
 
   kCRH = 5e-15;
@@ -62,8 +63,7 @@ const
 
   kUoMs: array [1..6] of string =
     ( // CRH, e, ACTH, PRF, F, yR
-    'fmol/l', 'fmol/s', 'pmol/L', 'pmol/s', 'nmol/L', 'mAU'
-    );
+    'fmol/l', 'fmol/s', 'pmol/L', 'pmol/s', 'nmol/L', 'mAU');
 
   kEvoTargets: TEvoTargets =
     (
@@ -73,7 +73,12 @@ const
 
   SimulAdrenVersionString = 'Simuladren 1.1 (Desarrollo)';
 
+  BASE_URL = 'http://simuladren.sf.net';
+  SIMULABETA_GLOBAL_ID = 'net.sf.simuladren';
+  HELP_URL = 'http://simuladren.sf.net';
+
+  SCICRUNCH_URL = 'http://scicrunch.org/browse/resources/SCR_027314';
+
 implementation
 
 end.
-

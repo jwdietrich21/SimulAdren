@@ -1,7 +1,7 @@
 object PlotForm: TPlotForm
-  Left = 659
+  Left = 647
   Height = 342
-  Top = 468
+  Top = 499
   Width = 554
   Caption = 'Plot'
   ClientHeight = 342
@@ -78,5 +78,6 @@ object PlotForm: TPlotForm
     Top = 24
     Width = 80
     Chart = Chart1
+    Anchors = [akTop, akRight]
   end
 end

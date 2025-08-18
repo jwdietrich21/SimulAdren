@@ -68,14 +68,16 @@ implementation
 
 procedure TTargetForm.OKButtonClick(Sender: TObject);
 begin
-  Close;
   TargetA := FloatSpinEditA.Value * ACTHFactor;
   TargetF := FloatSpinEditF.Value * CortisolFactor;
+  Close;
+  ModalResult := mrOK;
 end;
 
 procedure TTargetForm.CancelButtonClick(Sender: TObject);
 begin
   Close;
+  ModalResult := mrCancel;
 end;
 
 procedure TTargetForm.FormCreate(Sender: TObject);

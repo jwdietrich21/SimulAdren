@@ -1,0 +1,45 @@
+object ParameterForm: TParameterForm
+  Left = 11
+  Height = 361
+  Top = 505
+  Width = 615
+  Caption = 'Parameter Values over Generations'
+  ClientHeight = 361
+  ClientWidth = 615
+  LCLVersion = '4.2.0.0'
+  OnCreate = FormCreate
+  object Chart1: TChart
+    Left = 0
+    Height = 352
+    Top = 0
+    Width = 615
+    AxisList = <    
+      item
+        Marks.LabelBrush.Style = bsClear
+        Minors = <>
+        Title.LabelFont.Orientation = 900
+        Title.LabelBrush.Style = bsClear
+      end    
+      item
+        Alignment = calBottom
+        Marks.LabelBrush.Style = bsClear
+        Minors = <>
+        Title.LabelBrush.Style = bsClear
+      end>
+    Legend.Visible = True
+    Title.Text.Strings = (
+      'TAChart'
+    )
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    object GELineSeries: TLineSeries
+      Title = 'GE'
+      LinePen.Color = clRed
+      LinePen.Width = 2
+    end
+    object GRLineSeries: TLineSeries
+      Title = 'GR'
+      LinePen.Color = clGreen
+      LinePen.Width = 2
+    end
+  end
+end

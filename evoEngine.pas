@@ -34,10 +34,10 @@ uses
 
 const
   LowerBound = 0;
-  UpperBound = 50;
-  PopulationSize = 1000;
+  UpperBound = 100;
+  PopulationSize = 50;
   Generations = 50;
-  MutationRate = 1;
+  MutationRate = 0.1;
   TournamentSize = 3;
 
 type
@@ -64,11 +64,11 @@ function Selection(const population: TPopulation;
   const TournamentSize: integer): TPopulation;
 function Crossover(const parents: TParents; const params: TParams): TChildren;
 function Mutated(const Individual: TIndividual; const params: TParams;
-  const MutationRate: integer; const lowBound, highBound: real): TIndividual;
+  const MutationRate: real; const lowBound, highBound: real): TIndividual;
 procedure GeneticAlgorithm(const size: integer; const CRH: extended;
   var params: TParams; const lowBound, highBound: real;
   const EvoTargets: TEvoTargets; const generations: integer;
-  const mutationRate: integer; var AllPopulations: TAllPopulations;
+  const mutationRate: real; var AllPopulations: TAllPopulations;
   var theFittest: TFittest);
 
 implementation
@@ -215,7 +215,7 @@ begin
 end;
 
 function Mutated(const Individual: TIndividual; const params: TParams;
-  const MutationRate: integer; const lowBound, highBound: real): TIndividual;
+  const MutationRate: real; const lowBound, highBound: real): TIndividual;
   { params: passed record of parameters. Parameters to be modified marked by NaN }
 var
   intensity: real;
@@ -243,7 +243,7 @@ end;
 procedure GeneticAlgorithm(const size: integer; const CRH: extended;
   var params: TParams; const lowBound, highBound: real;
   const EvoTargets: TEvoTargets; const generations: integer;
-  const mutationRate: integer; var AllPopulations: TAllPopulations;
+  const mutationRate: real; var AllPopulations: TAllPopulations;
   var theFittest: TFittest);
   { params: passed record of parameters. Parameters to be modified marked by NaN }
 var

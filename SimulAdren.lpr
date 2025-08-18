@@ -34,7 +34,7 @@ uses
   Interfaces, // this includes the LCL widgetset
   Forms, tachartlazaruspkg, GUI, SimulationEngine, IPS, bricks, lifeblocks,
   Plot, prediction, SimuladrenTypes, Solver, AboutBox, EnvironmentInfo,
-  RandomFunctions, evoEngine, SetTargets
+  RandomFunctions, evoEngine, SetTargets, FitnessPlot, ParameterPlot
   { you can add units after this };
 
 {$R *.res}
@@ -48,6 +48,8 @@ begin
   Application.CreateForm(TPredictionForm, PredictionForm);
   Application.CreateForm(TAboutWindow, AboutWindow);
   Application.CreateForm(TTargetForm, TargetForm);
+  Application.CreateForm(TFitnessPlotForm, FitnessPlotForm);
+  Application.CreateForm(TParameterForm, ParameterForm);
   Application.Run;
 end.
 

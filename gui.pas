@@ -33,7 +33,7 @@ uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, Grids,
   ComCtrls, StdCtrls, ExtCtrls, LCLType, Spin, Menus, Math,
   SimuladrenTypes, SimulationEngine, Prediction, Plot, GUIServices, AboutBox,
-  SetTargets, evoEngine;
+  SetTargets, evoEngine, FitnessPlot, ParameterPlot;
 
 type
 
@@ -189,26 +189,33 @@ var
 begin
   if EstimateGRCheckbox.Checked or EstimateGECheckbox.Checked then
   begin
-    params.G1 := G1Edit.Value;
-    params.G3 := G3Edit.Value;
-    params.GA := GAEdit.Value * GAFactor;
-    if EstimateGRCheckbox.Checked then
-      params.GR := Math.NaN
-    else
-      params.GR := GREdit.Value;
-    if EstimateGECheckbox.Checked then
-      params.GE := Math.NaN
-    else
-      params.GE := GEEdit.Value;
-    params.DA := DAEdit.Value * DAFactor;
-    params.DR := DREdit.Value * DRFactor;
     TargetForm.ShowModal;
-    EvoTargets.ACTH := TargetForm.targetA;
-    EvoTargets.F := TargetForm.targetF;
-    GeneticAlgorithm(PopulationSize, CRHSpinEdit.Value * CRHFactor, params,
-      LowerBound, UpperBound, EvoTargets, Generations, MutationRate,
-      AllPopulations, FittestIndividuals);
-    SetParams(Sender, params);
+    if TargetForm.ModalResult = mrOK then
+    begin
+      params.G1 := G1Edit.Value;
+      params.G3 := G3Edit.Value;
+      params.GA := GAEdit.Value * GAFactor;
+      if EstimateGRCheckbox.Checked then
+        params.GR := Math.NaN
+      else
+        params.GR := GREdit.Value;
+      if EstimateGECheckbox.Checked then
+        params.GE := Math.NaN
+      else
+        params.GE := GEEdit.Value;
+      params.DA := DAEdit.Value * DAFactor;
+      params.DR := DREdit.Value * DRFactor;
+      EvoTargets.ACTH := TargetForm.targetA;
+      EvoTargets.F := TargetForm.targetF;
+      FitnessPlotForm.Show;
+      ParameterForm.Show;
+      GeneticAlgorithm(PopulationSize, CRHSpinEdit.Value * CRHFactor, params,
+        LowerBound, UpperBound, EvoTargets, Generations, MutationRate,
+        AllPopulations, FittestIndividuals);
+      FitnessPlotForm.DrawFitness(FittestIndividuals);
+      ParameterForm.DrawParameters(FittestIndividuals);
+      SetParams(Sender, params);
+    end;
   end;
 end;
 

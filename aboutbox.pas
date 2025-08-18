@@ -31,7 +31,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
-  EnvironmentInfo, GUIServices;
+  lclintf, SimulAdrenTypes, EnvironmentInfo, GUIServices;
 
 type
 
@@ -58,6 +58,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormPaint(Sender: TObject);
+    procedure SciCrunchLabelClick(Sender: TObject);
+    procedure URL1Click(Sender: TObject);
   private
 
   public
@@ -103,6 +105,16 @@ begin
     SciCrunchLabel.Font.Color := clNavy;
   end;
   application.ProcessMessages;
+end;
+
+procedure TAboutWindow.SciCrunchLabelClick(Sender: TObject);
+begin
+  OpenURL(SCICRUNCH_URL);
+end;
+
+procedure TAboutWindow.URL1Click(Sender: TObject);
+begin
+  OpenURL(BASE_URL);
 end;
 
 end.
