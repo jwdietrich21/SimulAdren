@@ -127,7 +127,6 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="AboutBox"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="16"/>
         <WindowIndex Value="1"/>
         <CursorPos X="26" Y="2"/>
@@ -172,10 +171,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="SetTargets"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="9"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="64"/>
-        <CursorPos X="6" Y="78"/>
+        <CursorPos X="8" Y="97"/>
         <UsageCount Value="36"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -233,7 +232,7 @@
         <UnitName Value="SystemsDiagram"/>
         <EditorIndex Value="2"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="20" Y="1248"/>
+        <CursorPos X="18" Y="2"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
           <EditorIndex Value="-1"/>
@@ -386,11 +385,11 @@
       </Position28>
       <Position29>
         <Filename Value="aboutbox.pas"/>
-        <Caret Line="34" Column="29" TopLine="71"/>
+        <Caret Line="105" Column="31" TopLine="93"/>
       </Position29>
       <Position30>
-        <Filename Value="aboutbox.pas"/>
-        <Caret Line="105" Column="31" TopLine="93"/>
+        <Filename Value="settargets.pas"/>
+        <Caret Line="82" Column="16" TopLine="64"/>
       </Position30>
     </JumpHistory>
     <RunParams>

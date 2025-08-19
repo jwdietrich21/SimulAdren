@@ -21,6 +21,7 @@ object TargetForm: TTargetForm
     Top = 48
     Width = 98
     TabOrder = 1
+    OnEditingDone = OKButtonClick
   end
   object FloatSpinEditF: TFloatSpinEdit
     Left = 120

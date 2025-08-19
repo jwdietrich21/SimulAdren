@@ -93,9 +93,8 @@ end;
 procedure TTargetForm.FormShow(Sender: TObject);
 begin
   ActiveControl := OKButton;
+  OKButton.SetFocus;
 end;
-
-
 
 end.
 
