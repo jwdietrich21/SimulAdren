@@ -126,18 +126,6 @@ begin
   end;
 end;
 
-function IncIndex(const size: integer): TIntArray;
-{ delivers ordered array of integer }
-var
-  i: integer;
-begin
-  assert(size <> 0, kError100);
-  assert(size >= 0, kError101);
-  SetLength(Result, size);
-  for i := 0 to size - 1 do
-    Result[i] := i;
-end;
-
 function Fittest(const Population: TPopulation): TIndividual;
 { delivers the fittest member of a population }
 var

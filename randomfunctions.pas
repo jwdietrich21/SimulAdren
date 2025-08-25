@@ -42,9 +42,11 @@ const
   kError102 = 'Runtime error: Parameter out of range';
   kError103 = 'Runtime error: min > max or low > high';
 
+function contains(const theArray: array of integer; theNumber: integer): boolean;
 function Sample(const theArray: TIntArray; const theLength: integer): TIntArray;
 function Sample(const theString: string; const theLength: integer): string;
 function runif(const min, max: real): real;
+function IncIndex(const size: integer): TIntArray;
 
 implementation
 
@@ -105,5 +107,18 @@ begin
   assert(max > min, kError103);
   result := min + random * (max - min);
 end;
+
+function IncIndex(const size: integer): TIntArray;
+{ delivers ordered array of integer }
+var
+  i: integer;
+begin
+  assert(size <> 0, kError100);
+  assert(size >= 0, kError101);
+  SetLength(Result, size);
+  for i := 0 to size - 1 do
+    Result[i] := i;
+end;
+
 
 end.

@@ -77,7 +77,7 @@ const
   SIMULABETA_GLOBAL_ID = 'net.sf.simuladren';
   HELP_URL = 'http://simuladren.sf.net';
 
-  SCICRUNCH_URL = 'http://scicrunch.org/browse/resources/SCR_027314';
+  SCICRUNCH_URL = 'https://rrid.site/data/record/nlx_144509-1/SCR_027314/resolver?i=rrid:scr_027314';
 
 implementation
 
