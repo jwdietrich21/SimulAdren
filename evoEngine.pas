@@ -77,7 +77,7 @@ function Fitness(const CRH: extended; const params: TParams;
   const theGuess: TIndividual; const EvoTargets: TEvoTargets): real;
   { A higher result denotes a higher fitness }
 var
-  i: integer; // index for steady-state soluation to use
+  i: integer; // index for steady-state solution to use
   distanceA, distanceF, distance: real; // distances from target
   steadyState: TPredictionArray; // steady-state solutions
   testParams: TParams; // parameter set for feedback loop to test
