@@ -190,7 +190,7 @@ begin
   if EstimateGRCheckbox.Checked or EstimateGECheckbox.Checked then
   begin
     TargetForm.ShowModal;
-    if TargetForm.ModalResult = mrOK then
+    if TargetForm.ModalResult = mrOk then
     begin
       params.G1 := G1Edit.Value;
       params.G3 := G3Edit.Value;
@@ -207,11 +207,15 @@ begin
       params.DR := DREdit.Value * DRFactor;
       EvoTargets.ACTH := TargetForm.targetA;
       EvoTargets.F := TargetForm.targetF;
+      EvoTargets.LowEdge := TargetForm.LowerBoundSpinEdit.Value;
+      EvoTargets.HighEdge := TargetForm.UpperBoundSpinEdit.Value;
+      EvoTargets.PopulationSize := TargetForm.PopSizeSpinEdit.Value;
+      EvoTargets.Generations := TargetForm.GenerationsSpinEdit.Value;
+      EvoTargets.MutationRate := TargetForm.MutationRateSpinEdit.Value;
+      EvoTargets.TournamentSize := TargetForm.TournamentSizeSpinEdit.Value;
       FitnessPlotForm.Show;
       ParameterForm.Show;
-      GeneticAlgorithm(PopulationSize, CRHSpinEdit.Value * CRHFactor, params,
-        LowerBound, UpperBound, EvoTargets, Generations, MutationRate,
-        AllPopulations, FittestIndividuals);
+      GeneticAlgorithm(CRHSpinEdit.Value * CRHFactor, params, EvoTargets, AllPopulations, FittestIndividuals);
       FitnessPlotForm.DrawFitness(FittestIndividuals);
       ParameterForm.DrawParameters(FittestIndividuals);
       SetParams(Sender, params);

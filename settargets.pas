@@ -31,16 +31,29 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Spin, StdCtrls,
-  SimulAdrenTypes, SimulationEngine;
+  SimulAdrenTypes, SimulationEngine, evoEngine;
 
 type
 
   { TTargetForm }
 
   TTargetForm = class(TForm)
+    BoundsLabel: TLabel;
+    MutationRateSpinEdit: TFloatSpinEdit;
+    TournamentSizeSpinEdit: TSpinEdit;
+    TournamentSizeLabel: TLabel;
+    HyphenLabel: TLabel;
+    GenerationsLabel: TLabel;
+    MutationRateLabel: TLabel;
+    PopSizeLabel: TLabel;
+    PopSizeSpinEdit: TSpinEdit;
+    GenerationsSpinEdit: TSpinEdit;
+    UpperBoundSpinEdit: TSpinEdit;
+    ParametersGroupBox: TGroupBox;
+    LowerBoundSpinEdit: TSpinEdit;
+    TargetGroupBox: TGroupBox;
     UoM_A: TLabel;
     CancelButton: TButton;
-    ExplanationLabel: TLabel;
     OKButton: TButton;
     FloatSpinEditA: TFloatSpinEdit;
     FloatSpinEditF: TFloatSpinEdit;
@@ -88,6 +101,12 @@ begin
   FloatSpinEditF.Value := targetF;
   UoM_A.Caption := kUoMs[3]; // UoM for ACTH
   UoM_F.Caption := kUoMs[5]; // UoM for F (Cortisol)
+  LowerBoundSpinEdit.Value := LowerBound;
+  UpperBoundSpinEdit.Value := UpperBound;
+  PopSizeSpinEdit.Value := PopulationSize;
+  GenerationsSpinEdit.Value := Generations;
+  MutationRateSpinEdit.Value := MutationRate;
+  TournamentSizeSpinEdit.Value := TournamentSize;
 end;
 
 procedure TTargetForm.FormShow(Sender: TObject);

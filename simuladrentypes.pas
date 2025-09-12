@@ -39,6 +39,10 @@ type
 
   TEvoTargets = record
     ACTH, F: extended;
+    LowEdge, HighEdge: integer;
+    PopulationSize, Generations: integer;
+    MutationRate: real;
+    TournamentSize: integer;
   end;
 
 const

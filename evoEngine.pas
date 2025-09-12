@@ -53,9 +53,6 @@ type
   TAllPopulations = array of TPopulation;
   TAllele = array[0..1] of real;
 
-var
-  LowEdge, HighEdge: real;
-
 function Fitness(const CRH: extended; const params: TParams;
   const theGuess: TIndividual; const EvoTargets: TEvoTargets): real;
 function InitialPopulation(const size: integer; const params: TParams;
@@ -65,11 +62,9 @@ function Selection(const population: TPopulation;
 function Crossover(const parents: TParents; const params: TParams): TChildren;
 function Mutated(const Individual: TIndividual; const params: TParams;
   const MutationRate: real; const lowBound, highBound: real): TIndividual;
-procedure GeneticAlgorithm(const size: integer; const CRH: extended;
-  var params: TParams; const lowBound, highBound: real;
-  const EvoTargets: TEvoTargets; const generations: integer;
-  const mutationRate: real; var AllPopulations: TAllPopulations;
-  var theFittest: TFittest);
+procedure GeneticAlgorithm(const CRH: extended;
+  var params: TParams; const EvoTargets: TEvoTargets;
+  var AllPopulations: TAllPopulations; var theFittest: TFittest);
 
 implementation
 
@@ -228,11 +223,9 @@ begin
   end;
 end;
 
-procedure GeneticAlgorithm(const size: integer; const CRH: extended;
-  var params: TParams; const lowBound, highBound: real;
-  const EvoTargets: TEvoTargets; const generations: integer;
-  const mutationRate: real; var AllPopulations: TAllPopulations;
-  var theFittest: TFittest);
+procedure GeneticAlgorithm(const CRH: extended;
+  var params: TParams; const EvoTargets: TEvoTargets;
+  var AllPopulations: TAllPopulations; var theFittest: TFittest);
   { params: passed record of parameters. Parameters to be modified marked by NaN }
 var
   curPopulation, nextPopulation: TPopulation;
@@ -241,26 +234,26 @@ var
   children: TChildren;
   i, j, k: integer;
 begin
-  assert(size <> 0, kError100);
-  assert(size >= 0, kError101);
-  assert(highBound > lowBound, kError103);
-  assert(generations <> 0, kError100);
-  assert(generations >= 0, kError101);
-  assert(MutationRate <> 0, kError100);
-  assert(MutationRate >= 0, kError101);
-  SetLength(AllPopulations, generations);
-  SetLength(theFittest, generations);
-  SetLength(nextPopulation, size);
-  curPopulation := InitialPopulation(size, params, lowBound, highBound);
-  for i := 0 to generations - 1 do
+  assert(EvoTargets.PopulationSize <> 0, kError100);
+  assert(EvoTargets.PopulationSize >= 0, kError101);
+  assert(EvoTargets.HighEdge > EvoTargets.LowEdge, kError103);
+  assert(EvoTargets.Generations <> 0, kError100);
+  assert(EvoTargets.Generations >= 0, kError101);
+  assert(EvoTargets.MutationRate <> 0, kError100);
+  assert(EvoTargets.MutationRate >= 0, kError101);
+  SetLength(AllPopulations, EvoTargets.Generations);
+  SetLength(theFittest, EvoTargets.Generations);
+  SetLength(nextPopulation, EvoTargets.PopulationSize);
+  curPopulation := InitialPopulation(EvoTargets.PopulationSize, params, EvoTargets.LowEdge, EvoTargets.HighEdge);
+  for i := 0 to EvoTargets.Generations - 1 do
   begin
-    for j := 0 to size - 1 do
+    for j := 0 to EvoTargets.PopulationSize - 1 do
       curPopulation[j].fitness :=
         Fitness(CRH, params, curPopulation[j], EvoTargets);
     bestIndividual := Fittest(curPopulation);
     theFittest[i] := bestIndividual;
     AllPopulations[i] := CurPopulation;
-    curPopulation := Selection(curPopulation, TournamentSize);
+    curPopulation := Selection(curPopulation, EvoTargets.TournamentSize);
     for k := 0 to length(curPopulation) - 1 do
     begin
       if not odd(k) then
@@ -268,10 +261,10 @@ begin
         parents[0] := curPopulation[k];
         parents[1] := curPopulation[k + 1];
         children := Crossover(parents, params);
-        nextPopulation[k] := Mutated(children[0], params, MutationRate,
-          lowBound, highBound);
+        nextPopulation[k] := Mutated(children[0], params, EvoTargets.MutationRate,
+          EvoTargets.LowEdge, EvoTargets.HighEdge);
         nextPopulation[k + 1] :=
-          Mutated(children[1], params, MutationRate, lowBound, highBound);
+          Mutated(children[1], params, EvoTargets.MutationRate, EvoTargets.LowEdge, EvoTargets.HighEdge);
       end;
     end;
     nextPopulation[0] := bestIndividual;
