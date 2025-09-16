@@ -31,7 +31,7 @@ unit Solver;
 interface
 
 uses
-  Classes, SysUtils, Math;
+  Classes, SysUtils, Math, uComplex;
 
 type
   TLRoot = extended;
@@ -184,7 +184,7 @@ begin
   if a <> 0 then                        // finite solution possible?
   begin
     {
-    These are the riginal equations stated in the literature:
+    These are the original equations stated in the literature:
 
     r := c / a - 1 / 3 * sqr(b / a);
     s := 2 / 27 * power((b / a), 3) - 1 / 3 * c * b / sqr(a) + d / a;
@@ -209,7 +209,7 @@ begin
     end
     else
     begin {Casus irreducibilis, three real solutions}
-      u := -q / (sqrt(-p * sqr(-p))); {cos phi}
+      u := -q / (sqrt(-cub(p)));   {cos phi}
       phi := arccos(u);            {angle as radian}
       y1 := 2 * sqrt(-p) * cos(phi / 3);
       y2 := -2 * sqrt(-p) * cos(phi / 3 + arc(60));
@@ -217,11 +217,8 @@ begin
     end;
 
     Result[0] := y1 - b / (3 * a);
-    if Det <= 0 then
-    begin
-      Result[1] := y2 - b / (3 * a);
-      Result[2] := y3 - b / (3 * a);
-    end;
+    Result[1] := y2 - b / (3 * a);
+    Result[2] := y3 - b / (3 * a);
 
   end;
   SortThree(Result[0], Result[1], Result[2]);
@@ -231,7 +228,7 @@ function Solve(a, b, c, d, e: extended): TRRoots;
   {solves a quartic equation ax^4 + bx^3 + cx^2 + dx + e = 0}
   {löst quartische Gleichung ax^4 + bx^3 + cx^2 + dx + e = 0}
 var
-  t0, t1, t2, t3, rA, rB, w: extended;
+  t0, t1, t2, t3, radicand, rA, rB, w: extended;
   ResolventRoots: TCRoots;
 begin
   Result[0] := Math.NaN;
@@ -267,7 +264,8 @@ begin
     begin
       ResolventRoots := Solve(t3, t2, t1, t0);
       w := ResolventRoots[0];
-      rA := sqrt((cub(b) + 8 * sqr(a) * d - 4 * a * b * c) / (b + 4 * a * w));
+      radicand := (cub(b) + 8 * sqr(a) * d - 4 * a * b * c) / (b + 4 * a * w);
+      rA := sqrt(radicand);
       rB := (cub(b) - 4 * sqr(a) * d - 2 * a * b * c + 6 * a * sqr(b) * w - 16 * sqr(a) * c * w) / (b + 4 * a * w);
       Result[0] := (-b - rA - sqrt(2) * sqrt(rB + rA * (b + 4 * a * w))) / (4 * a);
       Result[1] := (-b - rA + sqrt(2) * sqrt(rB + rA * (b + 4 * a * w))) / (4 * a);
