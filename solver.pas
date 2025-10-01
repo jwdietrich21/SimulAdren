@@ -31,7 +31,7 @@ unit Solver;
 interface
 
 uses
-  Classes, SysUtils, Math, uComplex;
+  Classes, SysUtils, Math;
 
 type
   TLRoot = extended;

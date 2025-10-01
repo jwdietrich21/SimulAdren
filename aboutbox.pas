@@ -10,6 +10,7 @@ unit AboutBox;
 { Version 1.1.0 (Desarrollo) }
 
 { (c) Johannes W. Dietrich, 1994 - 2025 }
+{ (c) Nina Siegmar, 2020 - 2025 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
 { (c) Ruhr University of Bochum 2005 - 2025 }
@@ -42,6 +43,7 @@ type
     CopyrightLabel1: TLabel;
     CopyrightLabel10: TLabel;
     CopyrightLabel11: TLabel;
+    CopyrightLabel12: TLabel;
     CopyrightLabel2: TLabel;
     CopyrightLabel3: TLabel;
     CopyrightLabel4: TLabel;

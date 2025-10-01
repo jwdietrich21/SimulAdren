@@ -1,11 +1,11 @@
 object AboutWindow: TAboutWindow
   Left = 240
-  Height = 313
+  Height = 326
   Top = 145
   Width = 473
   BorderStyle = bsToolWindow
   Caption = 'About SimulAdren'
-  ClientHeight = 313
+  ClientHeight = 326
   ClientWidth = 473
   FormStyle = fsStayOnTop
   Position = poScreenCenter
@@ -16,7 +16,7 @@ object AboutWindow: TAboutWindow
   object CopyrightLabel8: TLabel
     Left = 17
     Height = 13
-    Top = 213
+    Top = 228
     Width = 160
     Caption = 'Katholisches Klinikum Bochum'
     Font.Height = -11
@@ -69957,7 +69957,7 @@ object AboutWindow: TAboutWindow
   object CopyrightLabel1: TLabel
     Left = 17
     Height = 13
-    Top = 106
+    Top = 104
     Width = 80
     Caption = '© 1994 – 2025'
     Font.Height = -11
@@ -69968,7 +69968,7 @@ object AboutWindow: TAboutWindow
   object CopyrightLabel2: TLabel
     Left = 17
     Height = 13
-    Top = 120
+    Top = 118
     Width = 111
     Caption = 'Johannes W. Dietrich'
     Font.Height = -11
@@ -69979,7 +69979,7 @@ object AboutWindow: TAboutWindow
   object CopyrightLabel3: TLabel
     Left = 17
     Height = 13
-    Top = 140
+    Top = 155
     Width = 106
     Caption = 'In Cooperation with:'
     Font.CharSet = ANSI_CHARSET
@@ -69992,7 +69992,7 @@ object AboutWindow: TAboutWindow
   object CopyrightLabel4: TLabel
     Left = 17
     Height = 13
-    Top = 156
+    Top = 171
     Width = 144
     Caption = 'Klinikum der LMU München'
     Font.Height = -11
@@ -70003,7 +70003,7 @@ object AboutWindow: TAboutWindow
   object CopyrightLabel5: TLabel
     Left = 17
     Height = 13
-    Top = 170
+    Top = 185
     Width = 129
     Caption = 'Universitätsklinikum Ulm'
     Font.Height = -11
@@ -70014,7 +70014,7 @@ object AboutWindow: TAboutWindow
   object CopyrightLabel6: TLabel
     Left = 17
     Height = 13
-    Top = 184
+    Top = 199
     Width = 132
     Caption = 'Ruhr-Universität Bochum'
     Font.Height = -11
@@ -70025,7 +70025,7 @@ object AboutWindow: TAboutWindow
   object CopyrightLabel7: TLabel
     Left = 17
     Height = 13
-    Top = 198
+    Top = 213
     Width = 186
     Caption = 'Universitätsklinikum Bergmannsheil'
     Font.Height = -11
@@ -70037,7 +70037,7 @@ object AboutWindow: TAboutWindow
     Cursor = crHandPoint
     Left = 17
     Height = 13
-    Top = 280
+    Top = 295
     Width = 90
     Caption = 'simuladren.sf.net'
     Font.Color = clNavy
@@ -70051,7 +70051,7 @@ object AboutWindow: TAboutWindow
     Cursor = crHandPoint
     Left = 272
     Height = 13
-    Top = 280
+    Top = 295
     Width = 171
     Caption = '(SimulAdren, RRID:SCR_027314)'
     Font.Color = clNavy
@@ -88420,7 +88420,7 @@ object AboutWindow: TAboutWindow
   object CopyrightLabel9: TLabel
     Left = 17
     Height = 13
-    Top = 228
+    Top = 243
     Width = 173
     Caption = 'Christian Medical College Vellore'
     Font.Height = -11
@@ -88431,7 +88431,7 @@ object AboutWindow: TAboutWindow
   object CopyrightLabel10: TLabel
     Left = 17
     Height = 13
-    Top = 243
+    Top = 258
     Width = 185
     Caption = 'Lee Kong Chian School of Medicine'
     Font.Height = -11
@@ -88442,9 +88442,20 @@ object AboutWindow: TAboutWindow
   object CopyrightLabel11: TLabel
     Left = 17
     Height = 13
-    Top = 258
+    Top = 273
     Width = 233
     Caption = 'Nanyang Technological University Singapore'
+    Font.Height = -11
+    Font.Pitch = fpVariable
+    ParentColor = False
+    ParentFont = False
+  end
+  object CopyrightLabel12: TLabel
+    Left = 16
+    Height = 13
+    Top = 134
+    Width = 92
+    Caption = 'and Nina Siegmar'
     Font.Height = -11
     Font.Pitch = fpVariable
     ParentColor = False
