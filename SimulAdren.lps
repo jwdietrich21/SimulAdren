@@ -72,8 +72,8 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="7"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="39"/>
-        <CursorPos X="29" Y="47"/>
+        <TopLine Value="65"/>
+        <CursorPos X="30" Y="81"/>
         <UsageCount Value="90"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -246,8 +246,8 @@
         <UnitName Value="GUIServices"/>
         <EditorIndex Value="5"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="53"/>
-        <CursorPos X="33" Y="83"/>
+        <TopLine Value="40"/>
+        <CursorPos X="39" Y="13"/>
         <UsageCount Value="36"/>
         <Loaded Value="True"/>
       </Unit21>
@@ -278,7 +278,7 @@
         <UsageCount Value="10"/>
       </Unit24>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="29" HistoryIndex="28">
       <Position1>
         <Filename Value="evoEngine.pas"/>
         <Caret Line="61" Column="23" TopLine="37"/>
@@ -389,16 +389,12 @@
       </Position27>
       <Position28>
         <Filename Value="plot.pas"/>
-        <Caret Line="2" Column="6" TopLine="63"/>
+        <Caret Line="71" Column="34" TopLine="63"/>
       </Position28>
       <Position29>
         <Filename Value="plot.pas"/>
-        <Caret Line="71" Column="34" TopLine="63"/>
-      </Position29>
-      <Position30>
-        <Filename Value="plot.pas"/>
         <Caret Line="72" Column="32" TopLine="63"/>
-      </Position30>
+      </Position29>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>

@@ -32,7 +32,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, TAGraph, TASeries, TALegendPanel, Forms,
-  Controls, Graphics, Dialogs, SimuladrenTypes, SimulationEngine;
+  Controls, Graphics, Dialogs, SimuladrenTypes, SimulationEngine, GUIServices;
 
 type
 
@@ -78,6 +78,8 @@ var
   i: integer;
 begin
   Chart1.AxisList.Axes[1].Range.Max := gSequence.size - 1;
+  if DarkTheme then
+    yrSeries.SeriesColor := clWhite;
   for i := 0 to gSequence.size - 1 do
   begin
     CRHSeries.AddXY(i, gSequence.CRH[i] / CRHFactor);
