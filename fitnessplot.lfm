@@ -31,6 +31,7 @@ object FitnessPlotForm: TFitnessPlotForm
     )
     Anchors = [akTop, akLeft, akRight, akBottom]
     object FitnessChartLineSeries1: TLineSeries
+      LinePen.Color = clDefault
       LinePen.Width = 2
     end
   end
