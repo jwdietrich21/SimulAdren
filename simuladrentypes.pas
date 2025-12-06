@@ -77,7 +77,8 @@ const
     F: 175.88;
     );
 
-  SimulAdrenVersionString = 'Simuladren 1.1 (Desarrollo)';
+  SimulAdrenID = 'Simuladren';
+  SimulAdrenVersionString = SimulAdrenID + ' 1.1 (Desarrollo)';
 
   BASE_URL = 'http://simuladren.sf.net';
   SIMULADREN_GLOBAL_ID = 'net.sf.simuladren';

@@ -161,7 +161,7 @@ begin
     theCode := 0;
     try
       doc := TDIFDocument.Create;
-      doc.SetHead('SimThyr');
+      doc.SetHead(SimulAdrenID);
 
       if colNames then
       begin
