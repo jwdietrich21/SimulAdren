@@ -49,6 +49,7 @@ type
 const
   kTAB = char(9);
   kCRLF = #13#10;
+  kSEMICOLON = ';';
 
   clGoldenRod = TColor($20A5DA);
   clDarkOrange = TColor($008CFF);
@@ -79,10 +80,12 @@ const
   SimulAdrenVersionString = 'Simuladren 1.1 (Desarrollo)';
 
   BASE_URL = 'http://simuladren.sf.net';
-  SIMULABETA_GLOBAL_ID = 'net.sf.simuladren';
+  SIMULADREN_GLOBAL_ID = 'net.sf.simuladren';
   HELP_URL = 'http://simuladren.sf.net';
 
   SCICRUNCH_URL = 'https://rrid.site/data/record/nlx_144509-1/SCR_027314/resolver?i=rrid:scr_027314';
+
+  SAVE_ERROR_MESSAGE = 'Error saving the file';
 
 implementation
 

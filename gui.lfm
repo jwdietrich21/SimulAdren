@@ -10,7 +10,7 @@ object ValuesForm: TValuesForm
   Constraints.MinWidth = 640
   Menu = MainMenu1
   ShowHint = True
-  LCLVersion = '4.2.0.0'
+  LCLVersion = '4.4.0.0'
   OnCreate = FormCreate
   object ValuesGrid: TStringGrid
     Left = 0
@@ -503,8 +503,8 @@ object ValuesForm: TValuesForm
       end
       object SaveMenuItem: TMenuItem
         Caption = 'Save'
-        Enabled = False
         ShortCut = 16467
+        OnClick = SaveMenuItemClick
       end
       object CloseMenuItem: TMenuItem
         Caption = 'Close'
@@ -558,5 +558,13 @@ object ValuesForm: TValuesForm
         OnClick = WinAboutItemClick
       end
     end
+  end
+  object SaveDialog1: TSaveDialog
+    Title = 'Save results or current simulation as a scenario'
+    DefaultExt = '.tsv'
+    Filter = 'Log (tab delimited)|*.tsv|Log (CSV)|*.csv|Log (DIF)|*.dif'
+    Options = [ofOverwritePrompt, ofEnableSizing, ofViewDetail, ofAutoPreview]
+    Left = 568
+    Top = 488
   end
 end

@@ -34,7 +34,7 @@ uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, Grids,
   ComCtrls, StdCtrls, ExtCtrls, LCLType, Spin, Menus, Math,
   SimuladrenTypes, SimulationEngine, Prediction, Plot, GUIServices, AboutBox,
-  SetTargets, evoEngine, FitnessPlot, ParameterPlot;
+  SetTargets, evoEngine, FitnessPlot, ParameterPlot, DIFSupport;
 
 type
 
@@ -44,6 +44,7 @@ type
     AppleMenu: TMenuItem;
     EstimateGECheckbox: TCheckBox;
     EstimateGRCheckBox: TCheckBox;
+    SaveDialog1: TSaveDialog;
     SteadyStateButton: TButton;
     EvolveButton: TButton;
     CloseMenuItem: TMenuItem;
@@ -108,11 +109,13 @@ type
     procedure EstimateGRCheckBoxChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure MacAboutItemClick(Sender: TObject);
+    procedure WinAboutItemClick(Sender: TObject);
     procedure QuitMenuItemClick(Sender: TObject);
     procedure EvolveButtonClick(Sender: TObject);
+    procedure SaveMenuItemClick(Sender: TObject);
     procedure StartButtonClick(Sender: TObject);
     procedure SteadyStateButtonClick(Sender: TObject);
-    procedure WinAboutItemClick(Sender: TObject);
+    procedure SaveGrid(theFileName: string; theDelimiter: char);
   private
     { private declarations }
   public
@@ -131,6 +134,125 @@ var
 implementation
 
 {$R *.lfm}
+
+procedure ShowSaveError;
+begin
+  MessageDlg(SAVE_ERROR_MESSAGE, mtError, [mbOK], 0);
+end;
+
+procedure SaveGridToFile(theTable: TStringGrid; theFileName: string;
+  theDelimiter: char; colnames, rowNames, hasGridColumns: boolean; var ReturnCode: integer);
+{saves the contents of a string grid}
+{file type and, where applicable, delimiter are defined by variable theDelimiter}
+var
+  theString: string;
+  r, c: integer;
+  startC: integer;
+  theContents: TStringList;
+  doc: TDIFDocument;
+  theCode: integer;
+begin
+  if rowNames then
+    startC := 0
+  else
+    startC := 1;
+  if theDelimiter = 'd' then
+  begin {DIF file handling}
+    theCode := 0;
+    try
+      doc := TDIFDocument.Create;
+      doc.SetHead('SimThyr');
+
+      if colNames then
+      begin
+        doc.NewTuple;
+        theString := '';
+        if hasGridColumns then
+        begin
+          theString := 'i';
+          Doc.AppendCell(theString);
+        for c := startC to theTable.ColCount - 2 do
+          begin
+            theString := theTable.Columns[c].Title.Caption;
+            Doc.AppendCell(theString);
+          end;
+        end
+        else
+        for c := startC to theTable.ColCount - 1 do
+        begin
+          theString := theTable.Cells[c, 0];
+          Doc.AppendCell(theString);
+        end;
+      end;
+      for r := 1 to theTable.RowCount - 1 do
+      begin
+        doc.NewTuple;
+        theString := '';
+        for c := startC to theTable.ColCount - 1 do
+        begin
+          theString := theTable.Cells[c, r];
+          Doc.AppendCell(theString);
+        end;
+      end;
+
+      WriteDIFFile(doc, theFileName, theCode);
+      if theCode <> 0 then
+        ShowSaveError;
+    finally
+      doc.Free;
+      ReturnCode := theCode;
+    end;
+  end
+  else if theDelimiter <> ' ' then {tab delimited and CSV files}
+  begin
+    if theDelimiter = 't' then
+      theDelimiter := kTAB;
+    if theDelimiter = 'c' then
+      theDelimiter := kSEMICOLON;
+    ReturnCode := 0;
+    theContents := TStringList.Create;
+    theString := '';
+    if colNames then
+    begin
+      if hasGridColumns then
+      begin
+        theString := 'i' + theDelimiter;
+      for c := startC to theTable.ColCount - 2 do
+        theString := theString + theTable.Columns[c].Title.Caption + theDelimiter
+      end
+      else
+      for c := startC to theTable.ColCount - 1 do
+        theString := theString + theTable.Cells[c, 0] + theDelimiter;
+      theContents.Add(theString);
+    end;
+    for r := 1 to theTable.RowCount - 1 do
+    begin
+      theString := '';
+      for c := startC to theTable.ColCount - 1 do
+        theString := theString + theTable.Cells[c, r] + theDelimiter;
+      theContents.Add(theString);
+    end;
+    try
+      try
+        theContents.SaveToFile(theFileName);
+      except
+        on Ex: EFCreateError do
+        begin
+          ShowMessage(SAVE_ERROR_MESSAGE);
+          ReturnCode := -2;
+        end;
+      end;
+    finally
+      theContents.Free;
+    end;
+  end
+  else
+  begin
+    ShowSaveError;
+    ReturnCode := -1;
+  end;
+end;
+
 
 { TValuesForm }
 
@@ -183,6 +305,18 @@ begin
   PredictionForm.DisplayPrediction(gPrediction[0], gPrediction[1]);
 end;
 
+procedure TValuesForm.SaveGrid(theFileName: string; theDelimiter: char);
+{saves the contents of the log window}
+{file type and, where applicable, delimiter are defined by variable theDelimiter}
+var
+  theCode: integer;
+begin
+  theCode := 0;
+  SaveGridToFile(ValuesGrid, theFileName, theDelimiter, true, true, true, theCode);
+  if theCode <> 0 then
+    ShowSaveError;
+end;
+
 procedure TValuesForm.EvolveButtonClick(Sender: TObject);
 var
   params: TParams;
@@ -223,6 +357,32 @@ begin
     end;
   end;
 end;
+
+procedure TValuesForm.SaveMenuItemClick(Sender: TObject);
+var
+  theForm: TForm;
+  delimiter: char;
+  fileName: string;
+  theFilterIndex: integer;
+  begin
+    theForm := Screen.ActiveForm;
+    if theForm = ValuesForm then
+      if SaveDialog1.Execute then
+      begin
+        fileName    := SaveDialog1.FileName;
+        theFilterIndex := SaveDialog1.FilterIndex;
+        case theFilterIndex of
+            1: delimiter := kTab; // Tab-delimited
+            2: if DefaultFormatSettings.DecimalSeparator = ',' then
+                delimiter := ';'  // CSV
+              else
+                delimiter := ','; // CSV
+            3: delimiter := 'd';  // DIF
+            4: delimiter := ' ';
+          end;
+        SaveGrid(fileName, delimiter);
+      end;
+  end;
 
 procedure AdaptMenus;
 { Adapts Menus and Shortcuts to the interface style guidelines
