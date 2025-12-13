@@ -23,7 +23,7 @@ DefaultDirName={pf}\{#MyAppName}
 DefaultGroupName={#MyAppName}
 AllowNoIcons=yes
 LicenseFile=..\license.txt
-OutputBaseFilename=simuladren-setup
+OutputBaseFilename=simuladren-setup-standard
 Compression=lzma
 SolidCompression=yes
 

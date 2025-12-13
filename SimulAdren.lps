@@ -25,7 +25,7 @@
         <EditorIndex Value="13"/>
         <WindowIndex Value="1"/>
         <TopLine Value="456"/>
-        <CursorPos X="61" Y="476"/>
+        <CursorPos X="52" Y="476"/>
         <UsageCount Value="92"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -74,7 +74,7 @@
         <EditorIndex Value="7"/>
         <WindowIndex Value="1"/>
         <TopLine Value="54"/>
-        <CursorPos X="70" Y="62"/>
+        <CursorPos Y="62"/>
         <UsageCount Value="91"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -259,12 +259,12 @@
         <EditorIndex Value="5"/>
         <WindowIndex Value="1"/>
         <TopLine Value="40"/>
-        <CursorPos X="39" Y="13"/>
+        <CursorPos X="34" Y="13"/>
         <UsageCount Value="36"/>
         <Loaded Value="True"/>
       </Unit22>
       <Unit23>
-        <Filename Value="..\..\..\..\..\..\..\..\..\Applications\lazarus\lcl\include\spinedit.inc"/>
+        <Filename Value="C:\Applications\lazarus\lcl\include\spinedit.inc"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
         <TopLine Value="162"/>
@@ -272,7 +272,7 @@
         <UsageCount Value="9"/>
       </Unit23>
       <Unit24>
-        <Filename Value="..\..\..\..\..\..\..\..\..\Applications\lazarus\lcl\grids.pas"/>
+        <Filename Value="C:\Applications\lazarus\lcl\grids.pas"/>
         <UnitName Value="Grids"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
@@ -281,7 +281,7 @@
         <UsageCount Value="8"/>
       </Unit24>
       <Unit25>
-        <Filename Value="..\..\..\..\..\..\..\..\..\Applications\lazarus\lcl\interfaces\cocoa\cocoawscommon.pas"/>
+        <Filename Value="C:\Applications\lazarus\lcl\interfaces\cocoa\cocoawscommon.pas"/>
         <UnitName Value="CocoaWSCommon"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
