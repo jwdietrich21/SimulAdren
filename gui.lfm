@@ -22,6 +22,7 @@ object ValuesForm: TValuesForm
     ColCount = 7
     Columns = <    
       item
+        Color = clWindow
         Title.Caption = 'CRH(t)'
         Width = 97
       end    
@@ -37,11 +38,13 @@ object ValuesForm: TValuesForm
       end    
       item
         Font.Color = clPurple
+        Title.Font.Color = clPurple
         Title.Caption = 'PRF(t)'
         Width = 97
       end    
       item
         Font.Color = clPurple
+        Title.Font.Color = clPurple
         Title.Caption = 'F(t)'
         Width = 96
       end    

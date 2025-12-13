@@ -476,6 +476,9 @@ begin
   ValuesGrid.Columns[0].Font.Color := clDarkOrange;
   ValuesGrid.Columns[1].Font.Color := clDarkOrange;
   ValuesGrid.Columns[2].Font.Color := clGoldenRod;
+  ValuesGrid.Columns[0].Title.Font.Color := clDarkOrange;
+  ValuesGrid.Columns[1].Title.Font.Color := clDarkOrange;
+  ValuesGrid.Columns[2].Title.Font.Color := clGoldenRod;
 end;
 
 procedure TValuesForm.CloseMenuItemClick(Sender: TObject);
