@@ -7,7 +7,7 @@ unit FitnessPlot;
 { Simulation program for the hypothalamus-pituitary-adrenal axis }
 { Plot for fitness over generations }
 
-{ Version 1.1.0 (Desarrollo) }
+{ Version 1.2.0 (Emerald) }
 
 { (c) Johannes W. Dietrich, 1994 - 2025 }
 { (c) Nina Siegmar, 2020 - 2025 }

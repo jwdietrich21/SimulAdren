@@ -7,7 +7,7 @@ unit SimuladrenTypes;
 { Simulation program for the hypothalamus-pituitary-adrenal axis }
 { Global types and constants }
 
-{ Version 1.1.0 (Desarrollo) }
+{ Version 1.2.0 (Emerald) }
 
 { (c) Johannes W. Dietrich, 1994 - 2025 }
 { (c) Nina Siegmar, 2020 - 2025 }
@@ -47,6 +47,7 @@ type
   end;
 
 const
+  kNULL = char(0);
   kTAB = char(9);
   kCRLF = #13#10;
   kSEMICOLON = ';';

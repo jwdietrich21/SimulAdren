@@ -6,7 +6,7 @@ object FitnessPlotForm: TFitnessPlotForm
   Caption = 'Fitness Over Generations'
   ClientHeight = 326
   ClientWidth = 525
-  LCLVersion = '4.2.0.0'
+  LCLVersion = '4.4.0.0'
   OnCreate = FormCreate
   object FitnessChart: TChart
     Left = 0

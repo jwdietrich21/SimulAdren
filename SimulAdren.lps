@@ -10,7 +10,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="19"/>
         <WindowIndex Value="1"/>
-        <CursorPos Y="2"/>
+        <CursorPos X="28" Y="10"/>
         <UsageCount Value="92"/>
         <Loaded Value="True"/>
       </Unit0>
@@ -24,8 +24,8 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="13"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="456"/>
-        <CursorPos X="52" Y="476"/>
+        <TopLine Value="372"/>
+        <CursorPos X="40" Y="384"/>
         <UsageCount Value="92"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -36,7 +36,7 @@
         <UnitName Value="SimulationEngine"/>
         <EditorIndex Value="6"/>
         <WindowIndex Value="1"/>
-        <CursorPos Y="2"/>
+        <CursorPos X="28" Y="10"/>
         <UsageCount Value="92"/>
         <Loaded Value="True"/>
       </Unit2>
@@ -49,7 +49,7 @@
         <UnitName Value="IPS"/>
         <EditorIndex Value="18"/>
         <WindowIndex Value="1"/>
-        <CursorPos Y="2"/>
+        <CursorPos X="28" Y="10"/>
         <UsageCount Value="92"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -73,8 +73,7 @@
         <UnitName Value="Plot"/>
         <EditorIndex Value="7"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="54"/>
-        <CursorPos Y="62"/>
+        <CursorPos X="28" Y="10"/>
         <UsageCount Value="91"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -88,7 +87,7 @@
         <UnitName Value="Prediction"/>
         <EditorIndex Value="8"/>
         <WindowIndex Value="1"/>
-        <CursorPos Y="2"/>
+        <CursorPos X="28" Y="10"/>
         <UsageCount Value="90"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -107,7 +106,8 @@
         <UnitName Value="SimuladrenTypes"/>
         <EditorIndex Value="4"/>
         <WindowIndex Value="1"/>
-        <CursorPos Y="2"/>
+        <TopLine Value="37"/>
+        <CursorPos X="8" Y="50"/>
         <UsageCount Value="77"/>
         <Loaded Value="True"/>
       </Unit8>
@@ -131,7 +131,7 @@
         <EditorIndex Value="17"/>
         <WindowIndex Value="1"/>
         <TopLine Value="89"/>
-        <CursorPos X="57" Y="27"/>
+        <CursorPos X="64" Y="101"/>
         <UsageCount Value="65"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -152,7 +152,7 @@
         <UnitName Value="RandomFunctions"/>
         <EditorIndex Value="10"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="8" Y="3"/>
+        <CursorPos X="28" Y="10"/>
         <UsageCount Value="64"/>
         <Loaded Value="True"/>
       </Unit12>
@@ -161,7 +161,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="11"/>
         <WindowIndex Value="1"/>
-        <CursorPos Y="2"/>
+        <CursorPos X="28" Y="10"/>
         <UsageCount Value="64"/>
         <Loaded Value="True"/>
       </Unit13>
@@ -174,7 +174,7 @@
         <UnitName Value="SetTargets"/>
         <EditorIndex Value="9"/>
         <WindowIndex Value="1"/>
-        <CursorPos Y="2"/>
+        <CursorPos X="28" Y="10"/>
         <UsageCount Value="50"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -188,7 +188,7 @@
         <UnitName Value="FitnessPlot"/>
         <EditorIndex Value="15"/>
         <WindowIndex Value="1"/>
-        <CursorPos Y="2"/>
+        <CursorPos X="28" Y="10"/>
         <UsageCount Value="35"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -202,7 +202,7 @@
         <UnitName Value="ParameterPlot"/>
         <EditorIndex Value="16"/>
         <WindowIndex Value="1"/>
-        <CursorPos Y="2"/>
+        <CursorPos X="28" Y="10"/>
         <UsageCount Value="35"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -213,7 +213,7 @@
         <UnitName Value="DIFSupport"/>
         <EditorIndex Value="14"/>
         <WindowIndex Value="1"/>
-        <CursorPos Y="28"/>
+        <CursorPos X="28" Y="10"/>
         <UsageCount Value="21"/>
         <Loaded Value="True"/>
       </Unit17>
@@ -258,8 +258,7 @@
         <UnitName Value="GUIServices"/>
         <EditorIndex Value="5"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="40"/>
-        <CursorPos X="34" Y="13"/>
+        <CursorPos X="44" Y="2"/>
         <UsageCount Value="36"/>
         <Loaded Value="True"/>
       </Unit22>
@@ -290,127 +289,123 @@
         <UsageCount Value="10"/>
       </Unit25>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="29" HistoryIndex="28">
       <Position1>
-        <Filename Value="evoEngine.pas"/>
-        <Caret Line="246" Column="27" TopLine="231"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="250" Column="13" TopLine="229"/>
       </Position1>
       <Position2>
-        <Filename Value="evoEngine.pas"/>
-        <Caret Line="156" Column="19" TopLine="141"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="373" TopLine="347"/>
       </Position2>
       <Position3>
-        <Filename Value="evoEngine.pas"/>
-        <Caret Line="113" Column="19" TopLine="98"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="356" Column="28" TopLine="350"/>
       </Position3>
       <Position4>
-        <Filename Value="randomfunctions.pas"/>
-        <Caret Line="3" Column="16"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="364" Column="80" TopLine="357"/>
       </Position4>
       <Position5>
-        <Filename Value="randomfunctions.pas"/>
-        <Caret Line="75" Column="19" TopLine="60"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="118" Column="15" TopLine="103"/>
       </Position5>
       <Position6>
-        <Filename Value="guiservices.pas"/>
-        <Caret Line="87" Column="59" TopLine="73"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="319" TopLine="307"/>
       </Position6>
       <Position7>
-        <Filename Value="simulationengine.pas"/>
-        <Caret Line="149" Column="37" TopLine="135"/>
+        <Filename Value="difsupport.pas"/>
+        <Caret Line="28"/>
       </Position7>
       <Position8>
-        <Filename Value="solver.pas"/>
-        <Caret Line="3" Column="17"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="12" Column="37"/>
       </Position8>
       <Position9>
-        <Filename Value="aboutbox.pas"/>
-        <Caret Line="2" Column="11"/>
+        <Filename Value="simuladrentypes.pas"/>
+        <Caret Line="2"/>
       </Position9>
       <Position10>
-        <Filename Value="aboutbox.pas"/>
-        <Caret Line="27" Column="127"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="10" Column="28"/>
       </Position10>
       <Position11>
-        <Filename Value="plot.pas"/>
-        <Caret Line="71" Column="34" TopLine="63"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="47" Column="23" TopLine="25"/>
       </Position11>
       <Position12>
-        <Filename Value="plot.pas"/>
-        <Caret Line="72" Column="32" TopLine="63"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="90" Column="9" TopLine="69"/>
       </Position12>
       <Position13>
         <Filename Value="gui.pas"/>
-        <Caret Line="2" Column="13"/>
+        <Caret Line="115" Column="19" TopLine="94"/>
       </Position13>
       <Position14>
         <Filename Value="gui.pas"/>
-        <Caret Line="10" Column="68"/>
+        <Caret Line="118" Column="19" TopLine="97"/>
       </Position14>
       <Position15>
         <Filename Value="gui.pas"/>
-        <Caret Line="47" Column="23" TopLine="25"/>
+        <Caret Line="138" Column="19" TopLine="116"/>
       </Position15>
       <Position16>
         <Filename Value="gui.pas"/>
-        <Caret Line="90" Column="9" TopLine="69"/>
+        <Caret Line="140" Column="18" TopLine="118"/>
       </Position16>
       <Position17>
         <Filename Value="gui.pas"/>
-        <Caret Line="254" TopLine="228"/>
+        <Caret Line="143" Column="15" TopLine="121"/>
       </Position17>
       <Position18>
-        <Filename Value="simuladrentypes.pas"/>
-        <Caret Line="87" Column="48" TopLine="63"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="145" Column="6" TopLine="123"/>
       </Position18>
       <Position19>
         <Filename Value="gui.pas"/>
-        <Caret Line="37" Column="64" TopLine="17"/>
+        <Caret Line="200" Column="17" TopLine="179"/>
       </Position19>
       <Position20>
         <Filename Value="gui.pas"/>
-        <Caret Line="210" Column="23" TopLine="197"/>
+        <Caret Line="237" Column="25" TopLine="216"/>
       </Position20>
       <Position21>
         <Filename Value="gui.pas"/>
-        <Caret Line="236" Column="25" TopLine="215"/>
+        <Caret Line="241" Column="27" TopLine="220"/>
       </Position21>
       <Position22>
         <Filename Value="gui.pas"/>
-        <Caret Line="240" Column="27" TopLine="219"/>
+        <Caret Line="251" Column="13" TopLine="230"/>
       </Position22>
       <Position23>
         <Filename Value="gui.pas"/>
-        <Caret Line="250" Column="13" TopLine="229"/>
+        <Caret Line="308" Column="27" TopLine="286"/>
       </Position23>
       <Position24>
         <Filename Value="gui.pas"/>
-        <Caret Line="373" TopLine="347"/>
+        <Caret Line="309" Column="6" TopLine="287"/>
       </Position24>
       <Position25>
         <Filename Value="gui.pas"/>
-        <Caret Line="356" Column="28" TopLine="350"/>
+        <Caret Line="315" Column="7" TopLine="293"/>
       </Position25>
       <Position26>
         <Filename Value="gui.pas"/>
-        <Caret Line="364" Column="80" TopLine="357"/>
+        <Caret Line="317" Column="13" TopLine="295"/>
       </Position26>
       <Position27>
         <Filename Value="gui.pas"/>
-        <Caret Line="118" Column="15" TopLine="103"/>
+        <Caret Line="382" Column="48" TopLine="363"/>
       </Position27>
       <Position28>
         <Filename Value="gui.pas"/>
-        <Caret Line="319" TopLine="307"/>
+        <Caret Line="376" Column="31" TopLine="361"/>
       </Position28>
       <Position29>
-        <Filename Value="difsupport.pas"/>
-        <Caret Line="28"/>
-      </Position29>
-      <Position30>
         <Filename Value="gui.pas"/>
-        <Caret Line="12" Column="37"/>
-      </Position30>
+        <Caret Line="385" Column="11" TopLine="361"/>
+      </Position29>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>

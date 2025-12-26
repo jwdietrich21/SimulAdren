@@ -22,7 +22,6 @@ object ValuesForm: TValuesForm
     ColCount = 7
     Columns = <    
       item
-        Color = clWindow
         Title.Caption = 'CRH(t)'
         Width = 97
       end    
@@ -565,7 +564,7 @@ object ValuesForm: TValuesForm
   object SaveDialog1: TSaveDialog
     Title = 'Save results or current simulation as a scenario'
     DefaultExt = '.tsv'
-    Filter = 'Log (tab delimited)|*.tsv|Log (CSV)|*.csv|Log (DIF)|*.dif'
+    Filter = 'Scenario|*.xml|Log (tab delimited)|*.tsv|Log (CSV)|*.csv|Log (DIF)|*.dif'
     Options = [ofOverwritePrompt, ofEnableSizing, ofViewDetail, ofAutoPreview]
     Left = 568
     Top = 488

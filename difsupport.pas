@@ -7,7 +7,7 @@ unit DIFSupport;
 { Simulation program for the hypothalamus-pituitary-adrenal axis }
 { This unit provides support for DIF file handling }
 
-{ Version 1.1.0 (Desarrollo) }
+{ Version 1.2.0 (Emerald) }
 
 { (c) Johannes W. Dietrich, 1994 - 2025 }
 { (c) Nina Siegmar, 2020 - 2025 }

@@ -7,7 +7,7 @@ unit GUI;
 { Simulation program for the hypothalamus-pituitary-adrenal axis }
 { GUI }
 
-{ Version 1.1.0 (Desarrollo) }
+{ Version 1.2.0 (Emerald) }
 
 { (c) Johannes W. Dietrich, 1994 - 2025 }
 { (c) Nina Siegmar, 2020 - 2025 }
@@ -372,15 +372,17 @@ var
         fileName    := SaveDialog1.FileName;
         theFilterIndex := SaveDialog1.FilterIndex;
         case theFilterIndex of
-            1: delimiter := kTab; // Tab-delimited
-            2: if DefaultFormatSettings.DecimalSeparator = ',' then
+            1: delimiter := kNULL;
+            2: delimiter := kTab; // Tab-delimited
+            3: if DefaultFormatSettings.DecimalSeparator = ',' then
                 delimiter := ';'  // CSV
               else
                 delimiter := ','; // CSV
-            3: delimiter := 'd';  // DIF
-            4: delimiter := ' ';
+            4: delimiter := 'd';  // DIF
+            5: delimiter := ' ';
           end;
-        SaveGrid(fileName, delimiter);
+        if delimiter <> kNULL then
+          SaveGrid(fileName, delimiter);
       end;
   end;
 
