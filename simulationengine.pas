@@ -31,7 +31,8 @@ unit SimulationEngine;
 interface
 
 uses
-  Classes, SysUtils, Math, Forms, Bricks, Lifeblocks, Solver;
+  Classes, SysUtils, Math, Forms, Bricks, Lifeblocks, Solver, SimuladrenTypes,
+  ScenarioHandler;
 
 const
   GAFactor = 1e-9;
@@ -46,8 +47,6 @@ const
 
 type
 
-  { TSequence }
-
   TSequence = class
   protected
     function GetSize: integer;
@@ -57,10 +56,6 @@ type
     constructor Create;
     destructor Destroy;
     property size: integer read GetSize write SetSize;
-  end;
-
-  TParams = record
-    G1, G3, GA, GR, GE, DA, DR: extended;
   end;
 
   TBlocks = record
@@ -80,8 +75,8 @@ var
   gBlocks: TBlocks;
   gPrediction: TPredictionArray;
 
-procedure RunSimulation(CRH: extended; params: TParams; nmax: integer);
-function PredictSteadyState(CRH: extended; params: TParams): TPredictionArray;
+procedure RunSimulation(CRH: extended; params: TStrucPars; nmax: integer);
+function PredictSteadyState(CRH: extended; params: TStrucPars): TPredictionArray;
 
 implementation
 
@@ -98,7 +93,7 @@ begin
   Result := gBlocks.MiMeA.simOutput;
 end;
 
-function PredictSteadyState(CRH: extended; params: TParams): TPredictionArray;
+function PredictSteadyState(CRH: extended; params: TStrucPars): TPredictionArray;
 var
   a, b, c, K1, K2: extended;
   predictions: TQRoots;
@@ -131,7 +126,7 @@ begin
   end;
 end;
 
-procedure RunSimulation(CRH: extended; params: TParams; nmax: integer);
+procedure RunSimulation(CRH: extended; params: TStrucPars; nmax: integer);
 var
   e, ACTH, PRF, F, v, yr: extended;
   i: integer;
@@ -216,5 +211,9 @@ destructor TSequence.Destroy;
 begin
   inherited Destroy;
 end;
+
+initialization
+
+gActiveModel := NewScenario;
 
 end.

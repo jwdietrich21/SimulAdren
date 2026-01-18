@@ -32,7 +32,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ExtCtrls,
-  lclintf, SimulAdrenTypes, EnvironmentInfo, GUIServices;
+  lclintf, SimulAdrenTypes, SimuladrenResources, EnvironmentInfo, GUIServices;
 
 type
 

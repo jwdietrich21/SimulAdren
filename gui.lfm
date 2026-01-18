@@ -564,7 +564,7 @@ object ValuesForm: TValuesForm
   object SaveDialog1: TSaveDialog
     Title = 'Save results or current simulation as a scenario'
     DefaultExt = '.tsv'
-    Filter = 'Scenario|*.xml|Log (tab delimited)|*.tsv|Log (CSV)|*.csv|Log (DIF)|*.dif'
+    Filter = 'Log (tab delimited)|*.tsv|Log (CSV)|*.csv|Log (DIF)|*.dif|Scenario|*.xml'
     Options = [ofOverwritePrompt, ofEnableSizing, ofViewDetail, ofAutoPreview]
     Left = 568
     Top = 488

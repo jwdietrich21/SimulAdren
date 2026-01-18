@@ -33,8 +33,9 @@ interface
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, Grids,
   ComCtrls, StdCtrls, ExtCtrls, LCLType, Spin, Menus, Math,
-  SimuladrenTypes, SimulationEngine, Prediction, Plot, GUIServices, AboutBox,
-  SetTargets, evoEngine, FitnessPlot, ParameterPlot, DIFSupport;
+  SimuladrenTypes, SimuladrenResources, SimulationEngine, Prediction, Plot,
+  GUIServices, AboutBox, SetTargets, evoEngine, FitnessPlot, ParameterPlot,
+  DIFSupport, ScenarioHandler;
 
 type
 
@@ -124,8 +125,8 @@ type
     FittestIndividuals: TFittest;
     procedure ShowAboutWindow(Sender: TObject);
     procedure CopyCells(Sender: TObject);
-    procedure ReadParams(Sender: TObject; var params: TParams);
-    procedure SetParams(Sender: TObject; const params: TParams);
+    procedure ReadParams(Sender: TObject; var params: TStrucPars);
+    procedure SetParams(Sender: TObject; const params: TStrucPars);
   end;
 
 var
@@ -141,7 +142,8 @@ begin
 end;
 
 procedure SaveGridToFile(theTable: TStringGrid; theFileName: string;
-  theDelimiter: char; colnames, rowNames, hasGridColumns: boolean; var ReturnCode: integer);
+  theDelimiter: char; colnames, rowNames, hasGridColumns: boolean;
+  var ReturnCode: integer);
 {saves the contents of a string grid}
 {file type and, where applicable, delimiter are defined by variable theDelimiter}
 var
@@ -171,18 +173,18 @@ begin
         begin
           theString := 'i';
           Doc.AppendCell(theString);
-        for c := startC to theTable.ColCount - 2 do
+          for c := startC to theTable.ColCount - 2 do
           begin
             theString := theTable.Columns[c].Title.Caption;
             Doc.AppendCell(theString);
           end;
         end
         else
-        for c := startC to theTable.ColCount - 1 do
-        begin
-          theString := theTable.Cells[c, 0];
-          Doc.AppendCell(theString);
-        end;
+          for c := startC to theTable.ColCount - 1 do
+          begin
+            theString := theTable.Cells[c, 0];
+            Doc.AppendCell(theString);
+          end;
       end;
       for r := 1 to theTable.RowCount - 1 do
       begin
@@ -217,12 +219,12 @@ begin
       if hasGridColumns then
       begin
         theString := 'i' + theDelimiter;
-      for c := startC to theTable.ColCount - 2 do
-        theString := theString + theTable.Columns[c].Title.Caption + theDelimiter
+        for c := startC to theTable.ColCount - 2 do
+          theString := theString + theTable.Columns[c].Title.Caption + theDelimiter;
       end
       else
-      for c := startC to theTable.ColCount - 1 do
-        theString := theString + theTable.Cells[c, 0] + theDelimiter;
+        for c := startC to theTable.ColCount - 1 do
+          theString := theString + theTable.Cells[c, 0] + theDelimiter;
       theContents.Add(theString);
     end;
     for r := 1 to theTable.RowCount - 1 do
@@ -259,7 +261,7 @@ end;
 procedure TValuesForm.StartButtonClick(Sender: TObject);
 var
   i, j, iterations: integer;
-  params: TParams;
+  params: TStrucPars;
 begin
   ReadParams(Sender, params);
   iterations := IterationsSpinEdit.Value;
@@ -298,7 +300,7 @@ end;
 
 procedure TValuesForm.SteadyStateButtonClick(Sender: TObject);
 var
-  params: TParams;
+  params: TStrucPars;
 begin
   ReadParams(Sender, params);
   gPrediction := PredictSteadyState(CRHSpinEdit.Value * CRHFactor, params);
@@ -312,14 +314,14 @@ var
   theCode: integer;
 begin
   theCode := 0;
-  SaveGridToFile(ValuesGrid, theFileName, theDelimiter, true, true, true, theCode);
+  SaveGridToFile(ValuesGrid, theFileName, theDelimiter, True, True, True, theCode);
   if theCode <> 0 then
     ShowSaveError;
 end;
 
 procedure TValuesForm.EvolveButtonClick(Sender: TObject);
 var
-  params: TParams;
+  params: TStrucPars;
   EvoTargets: TEvoTargets;
 begin
   if EstimateGRCheckbox.Checked or EstimateGECheckbox.Checked then
@@ -350,7 +352,8 @@ begin
       EvoTargets.TournamentSize := TargetForm.TournamentSizeSpinEdit.Value;
       FitnessPlotForm.Show;
       ParameterForm.Show;
-      GeneticAlgorithm(CRHSpinEdit.Value * CRHFactor, params, EvoTargets, AllPopulations, FittestIndividuals);
+      GeneticAlgorithm(CRHSpinEdit.Value * CRHFactor, params, EvoTargets,
+        AllPopulations, FittestIndividuals);
       FitnessPlotForm.DrawFitness(FittestIndividuals);
       ParameterForm.DrawParameters(FittestIndividuals);
       SetParams(Sender, params);
@@ -364,27 +367,33 @@ var
   delimiter: char;
   fileName: string;
   theFilterIndex: integer;
-  begin
-    theForm := Screen.ActiveForm;
-    if theForm = ValuesForm then
-      if SaveDialog1.Execute then
-      begin
-        fileName    := SaveDialog1.FileName;
-        theFilterIndex := SaveDialog1.FilterIndex;
-        case theFilterIndex of
-            1: delimiter := kNULL;
-            2: delimiter := kTab; // Tab-delimited
-            3: if DefaultFormatSettings.DecimalSeparator = ',' then
-                delimiter := ';'  // CSV
-              else
-                delimiter := ','; // CSV
-            4: delimiter := 'd';  // DIF
-            5: delimiter := ' ';
-          end;
-        if delimiter <> kNULL then
-          SaveGrid(fileName, delimiter);
+  params: TStrucPars;
+begin
+  theForm := Screen.ActiveForm;
+  if theForm = ValuesForm then
+    if SaveDialog1.Execute then
+    begin
+      fileName := SaveDialog1.FileName;
+      theFilterIndex := SaveDialog1.FilterIndex;
+      case theFilterIndex of
+        1: delimiter := kTab; // Tab-delimited
+        2: if DefaultFormatSettings.DecimalSeparator = ',' then
+            delimiter := ';'  // CSV
+          else
+            delimiter := ','; // CSV
+        3: delimiter := 'd';  // DIF
+        4: delimiter := kNull;
+        5: delimiter := ' ';
       end;
-  end;
+      if delimiter = kNULL then
+      begin
+        ReadParams(Sender, params);
+        SaveScenario(fileName);
+      end
+      else
+        SaveGrid(fileName, delimiter);
+    end;
+end;
 
 procedure AdaptMenus;
 { Adapts Menus and Shortcuts to the interface style guidelines
@@ -434,7 +443,7 @@ begin
   CutorCopyfromGrid(ValuesGrid, False);
 end;
 
-procedure TValuesForm.ReadParams(Sender: TObject; var params: TParams);
+procedure TValuesForm.ReadParams(Sender: TObject; var params: TStrucPars);
 begin
   params.G1 := G1Edit.Value;
   params.G3 := G3Edit.Value;
@@ -443,9 +452,10 @@ begin
   params.GE := GEEdit.Value;
   params.DA := DAEdit.Value * DAFactor;
   params.DR := DREdit.Value * DRFactor;
+  GActiveModel.StrucPars := params;
 end;
 
-procedure TValuesForm.SetParams(Sender: TObject; const params: TParams);
+procedure TValuesForm.SetParams(Sender: TObject; const params: TStrucPars);
 begin
   G1Edit.Value := params.G1;
   G3Edit.Value := params.G3;
@@ -454,6 +464,7 @@ begin
   GEEdit.Value := params.GE;
   DAEdit.Value := params.DA / DAFactor;
   DREdit.Value := params.DR / DRFactor;
+  GActiveModel.StrucPars := params;
 end;
 
 procedure TValuesForm.MacAboutItemClick(Sender: TObject);

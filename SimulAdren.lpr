@@ -35,7 +35,9 @@ uses
   Interfaces, // this includes the LCL widgetset
   Forms, tachartlazaruspkg, GUI, SimulationEngine, IPS, bricks, lifeblocks,
   Plot, prediction, SimuladrenTypes, Solver, AboutBox, EnvironmentInfo,
-  RandomFunctions, evoEngine, SetTargets, FitnessPlot, ParameterPlot, DIFSupport
+  RandomFunctions, evoEngine, SetTargets, FitnessPlot, ParameterPlot,
+  DIFSupport, SystemsDiagram, BaseServices, GUIServices, ScenarioHandler,
+  SimuladrenResources
   { you can add units after this };
 
 {$R *.res}

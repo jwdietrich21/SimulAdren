@@ -54,29 +54,29 @@ type
   TAllPopulations = array of TPopulation;
   TAllele = array[0..1] of real;
 
-function Fitness(const CRH: extended; const params: TParams;
+function Fitness(const CRH: extended; const params: TStrucPars;
   const theGuess: TIndividual; const EvoTargets: TEvoTargets): real;
-function InitialPopulation(const size: integer; const params: TParams;
+function InitialPopulation(const size: integer; const params: TStrucPars;
   const lowBound, highBound: real): TPopulation;
 function Selection(const population: TPopulation;
   const TournamentSize: integer): TPopulation;
-function Crossover(const parents: TParents; const params: TParams): TChildren;
-function Mutated(const Individual: TIndividual; const params: TParams;
+function Crossover(const parents: TParents; const params: TStrucPars): TChildren;
+function Mutated(const Individual: TIndividual; const params: TStrucPars;
   const MutationRate: real; const lowBound, highBound: real): TIndividual;
 procedure GeneticAlgorithm(const CRH: extended;
-  var params: TParams; const EvoTargets: TEvoTargets;
+  var params: TStrucPars; const EvoTargets: TEvoTargets;
   var AllPopulations: TAllPopulations; var theFittest: TFittest);
 
 implementation
 
-function Fitness(const CRH: extended; const params: TParams;
+function Fitness(const CRH: extended; const params: TStrucPars;
   const theGuess: TIndividual; const EvoTargets: TEvoTargets): real;
   { A higher result denotes a higher fitness }
 var
   i: integer; // index for steady-state solution to use
   distanceA, distanceF, distance: real; // distances from target
   steadyState: TPredictionArray; // steady-state solutions
-  testParams: TParams; // parameter set for feedback loop to test
+  testParams: TStrucPars; // parameter set for feedback loop to test
 begin
   testParams := params; // passed parameters for feedback loop
   if isNan(testParams.GE) then  // NaN if to be estimated by GA
@@ -101,7 +101,7 @@ begin
   Result := -distance;
 end;
 
-function InitialPopulation(const size: integer; const params: TParams;
+function InitialPopulation(const size: integer; const params: TStrucPars;
   const lowBound, highBound: real): TPopulation;
   { params: passed record of parameters. Parameters to be modified marked by NaN }
 var
@@ -166,7 +166,7 @@ begin
   end;
 end;
 
-function Crossover(const parents: TParents; const params: TParams): TChildren;
+function Crossover(const parents: TParents; const params: TStrucPars): TChildren;
 { params: passed record of parameters. Parameters to be modified marked by NaN }
 var
   alleles: record
@@ -198,7 +198,7 @@ begin
   end;
 end;
 
-function Mutated(const Individual: TIndividual; const params: TParams;
+function Mutated(const Individual: TIndividual; const params: TStrucPars;
   const MutationRate: real; const lowBound, highBound: real): TIndividual;
   { params: passed record of parameters. Parameters to be modified marked by NaN }
 var
@@ -225,7 +225,7 @@ begin
 end;
 
 procedure GeneticAlgorithm(const CRH: extended;
-  var params: TParams; const EvoTargets: TEvoTargets;
+  var params: TStrucPars; const EvoTargets: TEvoTargets;
   var AllPopulations: TAllPopulations; var theFittest: TFittest);
   { params: passed record of parameters. Parameters to be modified marked by NaN }
 var

@@ -46,11 +46,29 @@ type
     TournamentSize: integer;
   end;
 
+  tActiveModel = record
+    Name: ansistring; // MIRIAM 1
+    Reference: ansistring; // MIRIAM 2
+    Species: ansistring;
+    Creators: ansistring; // MIRIAM 3
+    Created: TDateTime; // MIRIAM 4
+    LastModified: TDateTime; // MIRIAM 4
+    Terms: ansistring; // MIRIAM 5
+    Code: ansistring; // MIASE
+    Comments: ansistring; // MIASE
+    StrucPars: TStrucPars;
+    Iterations: integer;
+    Imported: boolean;
+  end;
+
+  Str13 = string[13];
+
 const
   kNULL = char(0);
   kTAB = char(9);
   kCRLF = #13#10;
   kSEMICOLON = ';';
+  kPERIOD = '.';
 
   clGoldenRod = TColor($20A5DA);
   clDarkOrange = TColor($008CFF);
@@ -58,7 +76,7 @@ const
   kCRH = 5e-15;
 
   kStrucPars: TStrucPars =
-    (
+    ( // default values
     G1: 0.4 / 0.0002;
     G3: 1 / 21 / (ln(2) / (90 * 60));
     GA: 2.25 * 5.2e-10;
@@ -81,14 +99,19 @@ const
   SimulAdrenID = 'Simuladren';
   SimulAdrenVersionString = SimulAdrenID + ' 1.1 (Desarrollo)';
 
-  BASE_URL = 'http://simuladren.sf.net';
-  SIMULADREN_GLOBAL_ID = 'net.sf.simuladren';
-  HELP_URL = 'http://simuladren.sf.net';
+  ISO_8601_DATE_FORMAT = 'YYYY-MM-DD"T"hh:nn:ss'; {Date/time format in XML representation}
+  STANDARD_NUM_FORMAT = '###,##0.0000';
+  SHORT_NUM_FORMAT = '###,###.00';
+  STANDARD_TIME_FORMAT = '"d"D hh:nn:ss';
 
-  SCICRUNCH_URL = 'https://rrid.site/data/record/nlx_144509-1/SCR_027314/resolver?i=rrid:scr_027314';
-
-  SAVE_ERROR_MESSAGE = 'Error saving the file';
+var
+  gNumberFormat, gDateTimeFormat: String;
+  gFormatSettings, gUSFormatSettings: TFormatSettings;
 
 implementation
+
+initialization
+  gNumberFormat := STANDARD_NUM_FORMAT;
+  gDateTimeFormat := STANDARD_TIME_FORMAT;
 
 end.
