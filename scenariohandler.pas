@@ -32,7 +32,7 @@ interface
 
 uses
   Classes, SysUtils, DateUtils, DOM, XMLRead, XMLWrite,
-  URIParser, SimuladrenTypes, SimuladrenResources, BaseServices;
+  URIParser, SimuladrenTypes, SimuladrenResources, BaseServices, GUIServices;
 
 var
   gActiveModel: tActiveModel;
@@ -105,9 +105,91 @@ begin
 end;
 
 procedure ReadScenario(theFileName: string; var modelVersion: Str13);
+{reads a simulation scenario}
+var
+  i: integer;
+  Doc: TXMLDocument;
+  RootNode, basicNode: TDOMNode;
+  oldSep: char;
+  standardDate: TDateTime;
 begin
-
+  if FileExists(theFileName) then
+    if ValidFormat(theFileName) then
+    begin
+      oldSep := DefaultFormatSettings.DecimalSeparator;
+      DefaultFormatSettings.DecimalSeparator := kPERIOD;
+      try
+        standardDate := EncodeDateTime(1904, 01, 01, 00, 00, 00, 00);
+        ReadXMLFile(Doc, theFileName);
+        if assigned(Doc) then
+          RootNode := Doc.DocumentElement;
+        if assigned(RootNode) and RootNode.HasAttributes and
+          (RootNode.Attributes.Length > 0) then
+          for i := 0 to RootNode.Attributes.Length - 1 do
+            with RootNode.Attributes[i] do
+            begin
+              if NodeName = 'modelversion' then
+                modelVersion := UTF8Encode(NodeValue);
+            end;
+        RootNode := Doc.DocumentElement.FindNode('MIRIAM');
+        if assigned(RootNode) then
+        begin
+          gActiveModel.Name := NodeContent(RootNode, 'Name');
+          gActiveModel.Reference := NodeContent(RootNode, 'Reference');
+          gActiveModel.Species := NodeContent(RootNode, 'Species');
+          gActiveModel.Creators := NodeContent(RootNode, 'Creators');
+          if not TryXMLDateTime2DateTime(NodeContent(RootNode, 'Created'),
+            gActiveModel.Created) then
+            gActiveModel.Created := standardDate;
+          if not TryXMLDateTime2DateTime(NodeContent(RootNode, 'LastModified'),
+            gActiveModel.LastModified) then
+            gActiveModel.LastModified := standardDate;
+          gActiveModel.Terms := NodeContent(RootNode, 'Terms');
+        end;
+        RootNode := Doc.DocumentElement.FindNode('MIASE');
+        if assigned(RootNode) then
+        begin
+          gActiveModel.Code := NodeContent(RootNode, 'Code');
+          gActiveModel.Comments := NodeContent(RootNode, 'Comments');
+        end;
+        if gActiveModel.Code = '' then
+          gActiveModel.Code := MIASE_SIMULADREN_STANDARD_CODE;
+        if (modelVersion = '') or (LeftStr(modelVersion, 2) = '1.') then
+        begin
+          RootNode := Doc.DocumentElement.FindNode('strucpars');
+          if assigned(RootNode) then
+          begin
+            VarFromNode(RootNode, 'G1', gActiveModel.StrucPars.G1);
+            VarFromNode(RootNode, 'G3', gActiveModel.StrucPars.G3);
+            VarFromNode(RootNode, 'GA', gActiveModel.StrucPars.GA);
+            VarFromNode(RootNode, 'DA', gActiveModel.StrucPars.DA);
+            VarFromNode(RootNode, 'GR', gActiveModel.StrucPars.GR);
+            VarFromNode(RootNode, 'DR', gActiveModel.StrucPars.DR);
+            VarFromNode(RootNode, 'GE', gActiveModel.StrucPars.GE);
+          end;
+        end
+        else
+          ShowVersionError;
+        basicNode := Doc.DocumentElement.FindNode('basic');
+        if assigned(basicNode) then
+        begin
+          VarFromNode(basicNode, 'iterations', gActiveModel.Iterations);
+        end;
+      finally
+        if assigned(Doc) then
+          Doc.Free;
+      end;
+      {$IFDEF GUI}
+      if AnnotationForm.Visible then
+        AnnotationForm.ShowAnnotation(gActiveModel);
+      {$ENDIF}
+      gActiveModel.Imported := true;
+      DefaultFormatSettings.DecimalSeparator := oldSep;
+    end
+    else
+      ShowFileError;
 end;
+
 
 procedure SaveScenario(theFileName: string);
 var

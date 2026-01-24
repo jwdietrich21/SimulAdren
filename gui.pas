@@ -45,6 +45,7 @@ type
     AppleMenu: TMenuItem;
     EstimateGECheckbox: TCheckBox;
     EstimateGRCheckBox: TCheckBox;
+    OpenDialog1: TOpenDialog;
     SaveDialog1: TSaveDialog;
     SteadyStateButton: TButton;
     EvolveButton: TButton;
@@ -110,6 +111,7 @@ type
     procedure EstimateGRCheckBoxChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure MacAboutItemClick(Sender: TObject);
+    procedure OpenMenuItemClick(Sender: TObject);
     procedure WinAboutItemClick(Sender: TObject);
     procedure QuitMenuItemClick(Sender: TObject);
     procedure EvolveButtonClick(Sender: TObject);
@@ -135,11 +137,6 @@ var
 implementation
 
 {$R *.lfm}
-
-procedure ShowSaveError;
-begin
-  MessageDlg(SAVE_ERROR_MESSAGE, mtError, [mbOK], 0);
-end;
 
 procedure SaveGridToFile(theTable: TStringGrid; theFileName: string;
   theDelimiter: char; colnames, rowNames, hasGridColumns: boolean;
@@ -367,7 +364,6 @@ var
   delimiter: char;
   fileName: string;
   theFilterIndex: integer;
-  params: TStrucPars;
 begin
   theForm := Screen.ActiveForm;
   if theForm = ValuesForm then
@@ -387,7 +383,7 @@ begin
       end;
       if delimiter = kNULL then
       begin
-        ReadParams(Sender, params);
+        ReadParams(Sender, gActiveModel.StrucPars);
         SaveScenario(fileName);
       end
       else
@@ -470,6 +466,27 @@ end;
 procedure TValuesForm.MacAboutItemClick(Sender: TObject);
 begin
   ShowAboutWindow(Sender);
+end;
+
+procedure TValuesForm.OpenMenuItemClick(Sender: TObject);
+var
+  theFileName:  string;
+  theFilterIndex: integer;
+  theVersion: Str13;
+begin
+  if OpenDialog1.Execute then
+  begin
+    theFileName    := OpenDialog1.FileName;
+    theFilterIndex := OpenDialog1.FilterIndex;
+    case theFilterIndex of
+      1:
+        begin
+          theVersion := '';
+          ReadScenario(theFileName, theVersion);  {XML file}
+          SetParams(Sender, gActiveModel.StrucPars);
+        end;
+    end;
+  end;
 end;
 
 procedure TValuesForm.QuitMenuItemClick(Sender: TObject);

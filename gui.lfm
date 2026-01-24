@@ -500,8 +500,8 @@ object ValuesForm: TValuesForm
       end
       object OpenMenuItem: TMenuItem
         Caption = 'Open'
-        Enabled = False
         ShortCut = 16463
+        OnClick = OpenMenuItemClick
       end
       object SaveMenuItem: TMenuItem
         Caption = 'Save'
@@ -567,6 +567,13 @@ object ValuesForm: TValuesForm
     Filter = 'Log (tab delimited)|*.tsv|Log (CSV)|*.csv|Log (DIF)|*.dif|Scenario|*.xml'
     Options = [ofOverwritePrompt, ofEnableSizing, ofViewDetail, ofAutoPreview]
     Left = 568
+    Top = 488
+  end
+  object OpenDialog1: TOpenDialog
+    Title = 'Open parameter set as scenario'
+    Filter = 'Scenario (XML)|*.xml'
+    Options = [ofEnableSizing, ofViewDetail, ofAutoPreview]
+    Left = 512
     Top = 488
   end
 end

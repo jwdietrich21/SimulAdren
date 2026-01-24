@@ -42,6 +42,8 @@ const
   SCICRUNCH_URL =
     'https://rrid.site/data/record/nlx_144509-1/SCR_027314/resolver?i=rrid:scr_027314';
 
+  FILE_VERSION_MESSAGE = 'This scenario file has a file version that is not supported by this version of SimulAdren.';
+  FILE_FORMAT_ERROR_MESSAGE = 'This is not a valid XML file that can be used by SimulAdren.';
   SAVE_ERROR_MESSAGE = 'Error saving the file';
 
   MIASE_URL = 'http://co.mbine.org/standards/miase';

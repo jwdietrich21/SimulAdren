@@ -31,7 +31,19 @@ unit BaseServices;
 interface
 
 uses
-  Classes, SysUtils, DateUtils, Math, DOM, SimuladrenTypes;
+  Classes, SysUtils, DateUtils, Math, DOM, SimuladrenTypes
+  {$IFDEF WINDOWS}
+  , Windows, Win32Proc, registry
+  {$ENDIF}
+  {$IFDEF DARWIN}
+  , MacOSAll
+  {$ENDIF}
+  {$IFDEF LCLCocoa}
+  , CocoaAll, CocoaUtils
+  {$ENDIF}
+  {$IFDEF UNIX}
+  , Unix
+  {$ENDIF};
 
 function AsTime(x: real): TDateTime;
 function FormattedTime(x: real): string;
@@ -44,6 +56,7 @@ procedure VarFromNode(theRoot: TDOMNode; Name: string; var theVar: extended);
 procedure VarFromNode(theRoot: TDOMNode; Name: string; var theVar: real);
 procedure VarFromNode(theRoot: TDOMNode; Name: string; var theVar: longint);
 function SimpleNode(Doc: TXMLDocument; Name, Value: string): TDOMNode;
+procedure bell;
 
 implementation
 
@@ -183,6 +196,24 @@ begin
   TextNode := Doc.CreateTextNode(UTF8Decode(Value));
   ItemNode.AppendChild(TextNode);
   Result := ItemNode;
+end;
+
+procedure bell; {platform-independent implementation of acustical warning}
+var
+  s: longint;
+begin
+  {$IFDEF WINDOWS}
+  MessageBeep(0);
+  {$ELSE}
+  {$IFDEF LCLCarbon}
+  SysBeep(30);
+  {$ELSE}
+  s := fpSystem('echo -ne ''\007''');
+  {s := fpSystem('echo -ne "\a"');}
+  {s := fpSystem('tput bel');}
+  {beep;}
+    {$ENDIF}
+  {$ENDIF}
 end;
 
 end.

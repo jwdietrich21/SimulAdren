@@ -34,7 +34,7 @@ unit GUIServices;
 interface
 
 uses
-  Classes, SysUtils, Grids, SimuladrenTypes, clipbrd
+  Classes, SysUtils, Grids, Dialogs, clipbrd
   {$IFDEF WINDOWS}
   , Windows, Win32Proc, registry
   {$ENDIF}
@@ -47,10 +47,13 @@ uses
   {$IFDEF UNIX}
   , Unix
   {$ENDIF}
-  ;
+  , BaseServices, SimuladrenTypes, SimulAdrenResources;
 
 function DarkTheme: boolean;
 procedure CutorCopyfromGrid(theGrid: TStringGrid; cut: boolean = False);
+procedure ShowFileError;
+procedure ShowSaveError;
+procedure ShowVersionError;
 
 implementation
 
@@ -182,6 +185,24 @@ begin
       textfromSelection := textfromSelection + kCRLF;
   end;
   ClipBoard.AsText := textfromSelection;
+end;
+
+procedure ShowFileError;
+begin
+  bell;
+  MessageDlg(FILE_FORMAT_ERROR_MESSAGE, mtError, [mbOK], 0);
+end;
+
+procedure ShowSaveError;
+begin
+  bell;
+  MessageDlg(SAVE_ERROR_MESSAGE, mtError, [mbOK], 0);
+end;
+
+procedure ShowVersionError;
+begin
+  bell;
+  MessageDlg(FILE_VERSION_MESSAGE, mtError, [mbOK], 0);
 end;
 
 end.
