@@ -111,11 +111,10 @@ end;
 
 procedure SaveScenario(theFileName: string);
 var
-  i, k: integer;
   oldSep: char;
   Doc: TXMLDocument;
-  RootNode, ElementNode, SeqNode: TDOMNode;
-  theDate, StringToWrite: ansistring;
+  RootNode, ElementNode: TDOMNode;
+  theDate: ansistring;
 begin
   oldSep := DefaultFormatSettings.DecimalSeparator;
   DefaultFormatSettings.DecimalSeparator := kPERIOD;
@@ -123,7 +122,7 @@ begin
     Doc := TXMLDocument.Create;
 
     RootNode := Doc.CreateElement('scenario');
-    TDOMElement(RootNode).SetAttribute('modelversion', '3.0');
+    TDOMElement(RootNode).SetAttribute('modelversion', MODEL_VERSION_1);
     Doc.Appendchild(RootNode);
     RootNode := Doc.DocumentElement;
 

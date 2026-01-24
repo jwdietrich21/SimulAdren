@@ -49,7 +49,7 @@ const
   MIRIAM_URL = 'http://www.ebi.ac.uk/miriam/main/';
   MIBBI_URL = 'http://biosharing.org/collection/MIBBI';
 
-  kSTANDARD_MODEL_NAME = 'Model 2';
+  kSTANDARD_MODEL_NAME = 'Model 1.1';
   kSTANDARD_MODEL_REFERENCE =
     'Dietrich JW, Boehm BO: Equilibrium behaviour of feedback-coupled physiological saturation kinetics. In: Cybernetics and Systems 2006.Volume 1, edn. Edited by Trappl R. Vienna: Austrian Society forCybernetic Studies; 2006: 269-274.';
   kSTANDARD_MODEL_SPECIES = 'Homo sapiens (NCBI Taxonomy ID 9606)';

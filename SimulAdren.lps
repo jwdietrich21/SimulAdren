@@ -10,9 +10,8 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="22"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="31"/>
         <CursorPos X="3" Y="40"/>
-        <UsageCount Value="95"/>
+        <UsageCount Value="98"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -26,7 +25,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="374"/>
         <CursorPos X="31" Y="385"/>
-        <UsageCount Value="95"/>
+        <UsageCount Value="98"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -36,9 +35,8 @@
         <UnitName Value="SimulationEngine"/>
         <EditorIndex Value="6"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="193"/>
         <CursorPos X="31" Y="217"/>
-        <UsageCount Value="95"/>
+        <UsageCount Value="98"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
@@ -51,7 +49,7 @@
         <EditorIndex Value="21"/>
         <WindowIndex Value="1"/>
         <CursorPos X="28" Y="10"/>
-        <UsageCount Value="95"/>
+        <UsageCount Value="98"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit3>
@@ -62,7 +60,7 @@
         <EditorIndex Value="1"/>
         <WindowIndex Value="1"/>
         <CursorPos Y="2"/>
-        <UsageCount Value="95"/>
+        <UsageCount Value="98"/>
         <Loaded Value="True"/>
       </Unit4>
       <Unit5>
@@ -75,7 +73,7 @@
         <EditorIndex Value="7"/>
         <WindowIndex Value="1"/>
         <CursorPos X="28" Y="10"/>
-        <UsageCount Value="94"/>
+        <UsageCount Value="97"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit5>
@@ -89,7 +87,7 @@
         <EditorIndex Value="8"/>
         <WindowIndex Value="1"/>
         <CursorPos X="28" Y="10"/>
-        <UsageCount Value="93"/>
+        <UsageCount Value="96"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit6>
@@ -98,7 +96,7 @@
         <IsPartOfProject Value="True"/>
         <WindowIndex Value="1"/>
         <CursorPos Y="2"/>
-        <UsageCount Value="90"/>
+        <UsageCount Value="93"/>
         <Loaded Value="True"/>
       </Unit7>
       <Unit8>
@@ -107,9 +105,9 @@
         <UnitName Value="SimuladrenTypes"/>
         <EditorIndex Value="4"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="90"/>
-        <CursorPos X="55" Y="109"/>
-        <UsageCount Value="80"/>
+        <TopLine Value="73"/>
+        <CursorPos X="18" Y="76"/>
+        <UsageCount Value="83"/>
         <Loaded Value="True"/>
       </Unit8>
       <Unit9>
@@ -119,7 +117,7 @@
         <EditorIndex Value="3"/>
         <WindowIndex Value="1"/>
         <CursorPos X="15" Y="3"/>
-        <UsageCount Value="80"/>
+        <UsageCount Value="83"/>
         <Loaded Value="True"/>
       </Unit9>
       <Unit10>
@@ -133,7 +131,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="18"/>
         <CursorPos X="50" Y="35"/>
-        <UsageCount Value="68"/>
+        <UsageCount Value="71"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit10>
@@ -144,7 +142,7 @@
         <EditorIndex Value="12"/>
         <WindowIndex Value="1"/>
         <CursorPos X="19" Y="26"/>
-        <UsageCount Value="68"/>
+        <UsageCount Value="71"/>
         <Loaded Value="True"/>
       </Unit11>
       <Unit12>
@@ -154,7 +152,7 @@
         <EditorIndex Value="10"/>
         <WindowIndex Value="1"/>
         <CursorPos X="28" Y="10"/>
-        <UsageCount Value="67"/>
+        <UsageCount Value="70"/>
         <Loaded Value="True"/>
       </Unit12>
       <Unit13>
@@ -164,7 +162,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="68"/>
         <CursorPos X="27" Y="81"/>
-        <UsageCount Value="67"/>
+        <UsageCount Value="70"/>
         <Loaded Value="True"/>
       </Unit13>
       <Unit14>
@@ -177,7 +175,7 @@
         <EditorIndex Value="9"/>
         <WindowIndex Value="1"/>
         <CursorPos X="28" Y="10"/>
-        <UsageCount Value="53"/>
+        <UsageCount Value="56"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit14>
@@ -191,7 +189,7 @@
         <EditorIndex Value="18"/>
         <WindowIndex Value="1"/>
         <CursorPos X="28" Y="10"/>
-        <UsageCount Value="38"/>
+        <UsageCount Value="41"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit15>
@@ -205,7 +203,7 @@
         <EditorIndex Value="19"/>
         <WindowIndex Value="1"/>
         <CursorPos X="28" Y="10"/>
-        <UsageCount Value="38"/>
+        <UsageCount Value="41"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit16>
@@ -213,35 +211,14 @@
         <Filename Value="difsupport.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="DIFSupport"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="17"/>
         <WindowIndex Value="1"/>
         <TopLine Value="104"/>
         <CursorPos X="19" Y="2"/>
-        <UsageCount Value="24"/>
+        <UsageCount Value="27"/>
         <Loaded Value="True"/>
       </Unit17>
       <Unit18>
-        <Filename Value="C:\lazarus\lcl\grids.pas"/>
-        <TopLine Value="9124"/>
-        <CursorPos Y="9142"/>
-        <UsageCount Value="7"/>
-      </Unit18>
-      <Unit19>
-        <Filename Value="C:\Developer\lazarus 1.4\components\tachart\tacustomseries.pas"/>
-        <TopLine Value="792"/>
-        <CursorPos Y="809"/>
-        <UsageCount Value="7"/>
-      </Unit19>
-      <Unit20>
-        <Filename Value="C:\Developer\lazarus 1.4\lcl\lcltype.pp"/>
-        <EditorIndex Value="-1"/>
-        <WindowIndex Value="1"/>
-        <TopLine Value="443"/>
-        <CursorPos X="3" Y="460"/>
-        <UsageCount Value="7"/>
-      </Unit20>
-      <Unit21>
         <Filename Value="systemsdiagram.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="SystemsDiagram"/>
@@ -255,68 +232,41 @@
           <TopLine Value="273"/>
           <CursorPos Y="307"/>
         </ExtraEditor1>
-        <UsageCount Value="43"/>
+        <UsageCount Value="46"/>
         <Loaded Value="True"/>
-      </Unit21>
-      <Unit22>
+      </Unit18>
+      <Unit19>
         <Filename Value="guiservices.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="GUIServices"/>
         <EditorIndex Value="5"/>
         <WindowIndex Value="1"/>
         <CursorPos Y="2"/>
-        <UsageCount Value="39"/>
+        <UsageCount Value="42"/>
         <Loaded Value="True"/>
-      </Unit22>
-      <Unit23>
-        <Filename Value="C:\Applications\lazarus\lcl\include\spinedit.inc"/>
-        <EditorIndex Value="-1"/>
-        <WindowIndex Value="1"/>
-        <TopLine Value="162"/>
-        <CursorPos Y="175"/>
-        <UsageCount Value="9"/>
-      </Unit23>
-      <Unit24>
-        <Filename Value="C:\Applications\lazarus\lcl\grids.pas"/>
-        <UnitName Value="Grids"/>
-        <EditorIndex Value="-1"/>
-        <WindowIndex Value="1"/>
-        <TopLine Value="11420"/>
-        <CursorPos Y="11429"/>
-        <UsageCount Value="8"/>
-      </Unit24>
-      <Unit25>
-        <Filename Value="C:\Applications\lazarus\lcl\interfaces\cocoa\cocoawscommon.pas"/>
-        <UnitName Value="CocoaWSCommon"/>
-        <EditorIndex Value="-1"/>
-        <WindowIndex Value="1"/>
-        <TopLine Value="409"/>
-        <CursorPos Y="423"/>
-        <UsageCount Value="10"/>
-      </Unit25>
-      <Unit26>
+      </Unit19>
+      <Unit20>
         <Filename Value="scenariohandler.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="ScenarioHandler"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="14"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="149"/>
-        <CursorPos X="48" Y="169"/>
-        <UsageCount Value="23"/>
+        <CursorPos X="33" Y="110"/>
+        <UsageCount Value="26"/>
         <Loaded Value="True"/>
-      </Unit26>
-      <Unit27>
+      </Unit20>
+      <Unit21>
         <Filename Value="simuladrenresources.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="SimuladrenResources"/>
         <EditorIndex Value="16"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="42"/>
-        <CursorPos X="43" Y="52"/>
-        <UsageCount Value="23"/>
+        <CursorPos X="39" Y="52"/>
+        <UsageCount Value="26"/>
         <Loaded Value="True"/>
-      </Unit27>
-      <Unit28>
+      </Unit21>
+      <Unit22>
         <Filename Value="baseservices.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="BaseServices"/>
@@ -324,8 +274,54 @@
         <WindowIndex Value="1"/>
         <TopLine Value="77"/>
         <CursorPos X="48" Y="89"/>
-        <UsageCount Value="22"/>
+        <UsageCount Value="25"/>
         <Loaded Value="True"/>
+      </Unit22>
+      <Unit23>
+        <Filename Value="C:\lazarus\lcl\grids.pas"/>
+        <TopLine Value="9124"/>
+        <CursorPos Y="9142"/>
+        <UsageCount Value="7"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="C:\Developer\lazarus 1.4\components\tachart\tacustomseries.pas"/>
+        <TopLine Value="792"/>
+        <CursorPos Y="809"/>
+        <UsageCount Value="7"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="C:\Developer\lazarus 1.4\lcl\lcltype.pp"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="443"/>
+        <CursorPos X="3" Y="460"/>
+        <UsageCount Value="7"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="C:\Applications\lazarus\lcl\include\spinedit.inc"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="162"/>
+        <CursorPos Y="175"/>
+        <UsageCount Value="9"/>
+      </Unit26>
+      <Unit27>
+        <Filename Value="C:\Applications\lazarus\lcl\grids.pas"/>
+        <UnitName Value="Grids"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="11420"/>
+        <CursorPos Y="11429"/>
+        <UsageCount Value="8"/>
+      </Unit27>
+      <Unit28>
+        <Filename Value="C:\Applications\lazarus\lcl\interfaces\cocoa\cocoawscommon.pas"/>
+        <UnitName Value="CocoaWSCommon"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="409"/>
+        <CursorPos Y="423"/>
+        <UsageCount Value="10"/>
       </Unit28>
     </Units>
     <JumpHistory Count="24" HistoryIndex="23">
@@ -358,72 +354,72 @@
         <Caret Line="49" Column="10" TopLine="39"/>
       </Position7>
       <Position8>
-        <Filename Value="scenariohandler.pas"/>
-        <Caret Line="87" Column="34" TopLine="90"/>
-      </Position8>
-      <Position9>
         <Filename Value="simulationengine.pas"/>
         <Caret Line="218" Column="28" TopLine="192"/>
+      </Position8>
+      <Position9>
+        <Filename Value="baseservices.pas"/>
+        <Caret Column="18"/>
       </Position9>
       <Position10>
         <Filename Value="baseservices.pas"/>
-        <Caret Column="18"/>
+        <Caret Line="186" TopLine="161"/>
       </Position10>
       <Position11>
         <Filename Value="baseservices.pas"/>
-        <Caret Line="8" Column="60" TopLine="13"/>
+        <Caret Line="32" TopLine="22"/>
       </Position11>
       <Position12>
-        <Filename Value="baseservices.pas"/>
-        <Caret Line="186" TopLine="161"/>
+        <Filename Value="scenariohandler.pas"/>
+        <Caret Line="35" Column="64" TopLine="20"/>
       </Position12>
       <Position13>
         <Filename Value="baseservices.pas"/>
-        <Caret Line="32" TopLine="22"/>
+        <Caret Line="34" Column="42" TopLine="29"/>
       </Position13>
       <Position14>
-        <Filename Value="scenariohandler.pas"/>
-        <Caret Line="35" Column="64" TopLine="20"/>
+        <Filename Value="simuladrentypes.pas"/>
+        <Caret Line="103" Column="42" TopLine="78"/>
       </Position14>
       <Position15>
         <Filename Value="baseservices.pas"/>
-        <Caret Line="34" Column="42" TopLine="29"/>
+        <Caret Line="34" Column="59" TopLine="17"/>
       </Position15>
       <Position16>
         <Filename Value="simuladrentypes.pas"/>
-        <Caret Line="103" Column="42" TopLine="78"/>
+        <Caret Line="109" Column="43" TopLine="85"/>
       </Position16>
       <Position17>
-        <Filename Value="baseservices.pas"/>
-        <Caret Line="34" Column="59" TopLine="17"/>
-      </Position17>
-      <Position18>
-        <Filename Value="simuladrentypes.pas"/>
-        <Caret Line="109" Column="43" TopLine="85"/>
-      </Position18>
-      <Position19>
         <Filename Value="simuladrentypes.pas"/>
         <Caret Line="105" Column="42" TopLine="90"/>
-      </Position19>
-      <Position20>
+      </Position17>
+      <Position18>
         <Filename Value="simulationengine.pas"/>
         <Caret Line="218" Column="28" TopLine="58"/>
+      </Position18>
+      <Position19>
+        <Filename Value="scenariohandler.pas"/>
+        <Caret Line="36" Column="19" TopLine="11"/>
+      </Position19>
+      <Position20>
+        <Filename Value="scenariohandler.pas"/>
+        <Caret Line="38" Column="30" TopLine="27"/>
       </Position20>
       <Position21>
         <Filename Value="scenariohandler.pas"/>
-        <Caret Line="36" Column="19" TopLine="11"/>
+        <Caret Line="35" Column="64" TopLine="22"/>
       </Position21>
       <Position22>
-        <Filename Value="scenariohandler.pas"/>
-        <Caret Line="38" Column="30" TopLine="27"/>
-      </Position22>
-      <Position23>
-        <Filename Value="scenariohandler.pas"/>
-        <Caret Line="35" Column="64" TopLine="22"/>
-      </Position23>
-      <Position24>
         <Filename Value="gui.pas"/>
         <Caret Line="387" Column="29" TopLine="371"/>
+      </Position22>
+      <Position23>
+        <Filename Value="simuladrentypes.pas"/>
+        <Caret Line="80" Column="19" TopLine="64"/>
+      </Position23>
+      <Position24>
+        <Filename Value="scenariohandler.pas"/>
+        <Caret Line="114" Column="27"/>
       </Position24>
     </JumpHistory>
     <RunParams>
