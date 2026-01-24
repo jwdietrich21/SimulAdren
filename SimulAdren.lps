@@ -24,8 +24,8 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="13"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="372"/>
-        <CursorPos X="27" Y="366"/>
+        <TopLine Value="488"/>
+        <CursorPos X="29" Y="496"/>
         <UsageCount Value="99"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -36,7 +36,7 @@
         <UnitName Value="SimulationEngine"/>
         <EditorIndex Value="6"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="31" Y="217"/>
+        <CursorPos X="29" Y="217"/>
         <UsageCount Value="99"/>
         <Loaded Value="True"/>
       </Unit2>
@@ -215,7 +215,7 @@
         <EditorIndex Value="17"/>
         <WindowIndex Value="1"/>
         <TopLine Value="104"/>
-        <CursorPos X="19" Y="2"/>
+        <CursorPos Y="2"/>
         <UsageCount Value="28"/>
         <Loaded Value="True"/>
       </Unit17>
@@ -254,7 +254,7 @@
         <EditorIndex Value="14"/>
         <WindowIndex Value="1"/>
         <TopLine Value="156"/>
-        <CursorPos X="47" Y="161"/>
+        <CursorPos X="16" Y="161"/>
         <UsageCount Value="27"/>
         <Loaded Value="True"/>
       </Unit20>
@@ -265,7 +265,7 @@
         <EditorIndex Value="16"/>
         <WindowIndex Value="1"/>
         <TopLine Value="27"/>
-        <CursorPos X="73" Y="41"/>
+        <CursorPos Y="41"/>
         <UsageCount Value="27"/>
         <Loaded Value="True"/>
       </Unit21>
@@ -329,124 +329,124 @@
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="simulationengine.pas"/>
-        <Caret Line="218" Column="28" TopLine="192"/>
+        <Filename Value="baseservices.pas"/>
+        <Caret Line="186" TopLine="161"/>
       </Position1>
       <Position2>
         <Filename Value="baseservices.pas"/>
-        <Caret Column="18"/>
+        <Caret Line="32" TopLine="22"/>
       </Position2>
       <Position3>
-        <Filename Value="baseservices.pas"/>
-        <Caret Line="186" TopLine="161"/>
+        <Filename Value="scenariohandler.pas"/>
+        <Caret Line="35" Column="64" TopLine="20"/>
       </Position3>
       <Position4>
         <Filename Value="baseservices.pas"/>
-        <Caret Line="32" TopLine="22"/>
+        <Caret Line="34" Column="42" TopLine="29"/>
       </Position4>
       <Position5>
-        <Filename Value="scenariohandler.pas"/>
-        <Caret Line="35" Column="64" TopLine="20"/>
+        <Filename Value="simuladrentypes.pas"/>
+        <Caret Line="103" Column="42" TopLine="78"/>
       </Position5>
       <Position6>
         <Filename Value="baseservices.pas"/>
-        <Caret Line="34" Column="42" TopLine="29"/>
+        <Caret Line="34" Column="59" TopLine="17"/>
       </Position6>
       <Position7>
         <Filename Value="simuladrentypes.pas"/>
-        <Caret Line="103" Column="42" TopLine="78"/>
+        <Caret Line="109" Column="43" TopLine="85"/>
       </Position7>
       <Position8>
-        <Filename Value="baseservices.pas"/>
-        <Caret Line="34" Column="59" TopLine="17"/>
-      </Position8>
-      <Position9>
-        <Filename Value="simuladrentypes.pas"/>
-        <Caret Line="109" Column="43" TopLine="85"/>
-      </Position9>
-      <Position10>
         <Filename Value="simuladrentypes.pas"/>
         <Caret Line="105" Column="42" TopLine="90"/>
-      </Position10>
-      <Position11>
+      </Position8>
+      <Position9>
         <Filename Value="simulationengine.pas"/>
         <Caret Line="218" Column="28" TopLine="58"/>
+      </Position9>
+      <Position10>
+        <Filename Value="scenariohandler.pas"/>
+        <Caret Line="36" Column="19" TopLine="11"/>
+      </Position10>
+      <Position11>
+        <Filename Value="scenariohandler.pas"/>
+        <Caret Line="38" Column="30" TopLine="27"/>
       </Position11>
       <Position12>
         <Filename Value="scenariohandler.pas"/>
-        <Caret Line="36" Column="19" TopLine="11"/>
+        <Caret Line="35" Column="64" TopLine="22"/>
       </Position12>
       <Position13>
-        <Filename Value="scenariohandler.pas"/>
-        <Caret Line="38" Column="30" TopLine="27"/>
-      </Position13>
-      <Position14>
-        <Filename Value="scenariohandler.pas"/>
-        <Caret Line="35" Column="64" TopLine="22"/>
-      </Position14>
-      <Position15>
         <Filename Value="gui.pas"/>
         <Caret Line="387" Column="29" TopLine="371"/>
-      </Position15>
-      <Position16>
+      </Position13>
+      <Position14>
         <Filename Value="simuladrentypes.pas"/>
         <Caret Line="80" Column="19" TopLine="64"/>
+      </Position14>
+      <Position15>
+        <Filename Value="scenariohandler.pas"/>
+        <Caret Line="114" Column="27"/>
+      </Position15>
+      <Position16>
+        <Filename Value="scenariohandler.pas"/>
+        <Caret Line="179" TopLine="168"/>
       </Position16>
       <Position17>
         <Filename Value="scenariohandler.pas"/>
-        <Caret Line="114" Column="27"/>
+        <Caret Line="157" Column="48" TopLine="145"/>
       </Position17>
       <Position18>
-        <Filename Value="scenariohandler.pas"/>
-        <Caret Line="179" TopLine="168"/>
-      </Position18>
-      <Position19>
-        <Filename Value="scenariohandler.pas"/>
-        <Caret Line="157" Column="48" TopLine="145"/>
-      </Position19>
-      <Position20>
         <Filename Value="guiservices.pas"/>
         <Caret Line="56" Column="28" TopLine="44"/>
-      </Position20>
-      <Position21>
+      </Position18>
+      <Position19>
         <Filename Value="gui.pas"/>
         <Caret Line="38" Column="13" TopLine="25"/>
-      </Position21>
-      <Position22>
+      </Position19>
+      <Position20>
         <Filename Value="scenariohandler.pas"/>
         <Caret Line="35" Column="77" TopLine="30"/>
-      </Position22>
-      <Position23>
+      </Position20>
+      <Position21>
         <Filename Value="guiservices.pas"/>
         <Caret Line="50" Column="5" TopLine="37"/>
-      </Position23>
-      <Position24>
+      </Position21>
+      <Position22>
         <Filename Value="guiservices.pas"/>
         <Caret Line="37" Column="65" TopLine="32"/>
-      </Position24>
-      <Position25>
+      </Position22>
+      <Position23>
         <Filename Value="baseservices.pas"/>
         <Caret Line="47" Column="16" TopLine="31"/>
-      </Position25>
-      <Position26>
+      </Position23>
+      <Position24>
         <Filename Value="baseservices.pas"/>
         <Caret Line="46" Column="11" TopLine="29"/>
-      </Position26>
-      <Position27>
+      </Position24>
+      <Position25>
         <Filename Value="guiservices.pas"/>
         <Caret Line="50" Column="19" TopLine="28"/>
-      </Position27>
-      <Position28>
+      </Position25>
+      <Position26>
         <Filename Value="guiservices.pas"/>
         <Caret Line="37" Column="38" TopLine="30"/>
+      </Position26>
+      <Position27>
+        <Filename Value="gui.pas"/>
+        <Caret Line="38" Column="13" TopLine="25"/>
+      </Position27>
+      <Position28>
+        <Filename Value="gui.pas"/>
+        <Caret Line="40" Column="72" TopLine="25"/>
       </Position28>
       <Position29>
         <Filename Value="gui.pas"/>
-        <Caret Line="38" Column="13" TopLine="25"/>
+        <Caret Line="387" Column="37" TopLine="374"/>
       </Position29>
       <Position30>
         <Filename Value="gui.pas"/>
-        <Caret Line="40" Column="72" TopLine="25"/>
+        <Caret Line="496" Column="3" TopLine="493"/>
       </Position30>
     </JumpHistory>
     <RunParams>

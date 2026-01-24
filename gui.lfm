@@ -1,5 +1,5 @@
 object ValuesForm: TValuesForm
-  Left = 127
+  Left = 125
   Height = 593
   Top = 104
   Width = 643
@@ -80,19 +80,21 @@ object ValuesForm: TValuesForm
       Enabled = False
       ImageIndex = 0
     end
-    object ToolButton2: TToolButton
+    object OpenToolButton: TToolButton
       Left = 32
+      Hint = 'Open scenario'
       Top = 2
-      Caption = 'ToolButton2'
-      Enabled = False
+      Caption = 'Open'
       ImageIndex = 1
+      OnClick = OpenToolButtonClick
     end
-    object ToolButton3: TToolButton
+    object SaveToolButton: TToolButton
       Left = 55
+      Hint = 'Save timeseries or scenario'
       Top = 2
-      Caption = 'ToolButton3'
-      Enabled = False
+      Caption = 'Save'
       ImageIndex = 2
+      OnClick = SaveToolButtonClick
     end
     object ToolButton4: TToolButton
       Left = 78

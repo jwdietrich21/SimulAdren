@@ -91,8 +91,8 @@ type
     RedoMenuItem: TMenuItem;
     SaveMenuItem: TMenuItem;
     ToolButton1: TToolButton;
-    ToolButton2: TToolButton;
-    ToolButton3: TToolButton;
+    OpenToolButton: TToolButton;
+    SaveToolButton: TToolButton;
     ToolButton4: TToolButton;
     ToolButton5: TToolButton;
     UndoMenuItem: TMenuItem;
@@ -112,6 +112,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure MacAboutItemClick(Sender: TObject);
     procedure OpenMenuItemClick(Sender: TObject);
+    procedure OpenToolButtonClick(Sender: TObject);
+    procedure SaveToolButtonClick(Sender: TObject);
     procedure WinAboutItemClick(Sender: TObject);
     procedure QuitMenuItemClick(Sender: TObject);
     procedure EvolveButtonClick(Sender: TObject);
@@ -487,6 +489,16 @@ begin
         end;
     end;
   end;
+end;
+
+procedure TValuesForm.OpenToolButtonClick(Sender: TObject);
+begin
+  OpenMenuItemClick(Sender);
+end;
+
+procedure TValuesForm.SaveToolButtonClick(Sender: TObject);
+begin
+  SaveMenuItemClick(Sender);
 end;
 
 procedure TValuesForm.QuitMenuItemClick(Sender: TObject);
