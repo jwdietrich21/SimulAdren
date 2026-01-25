@@ -66,8 +66,8 @@ implementation
 
 procedure TPlotForm.FormCreate(Sender: TObject);
 begin
-  top := screen.Height - Height - 39;
-  left := screen.Width - width - 52;
+  top := screen.Height - Height - trunc(39 * gScalingFactor);
+  left := screen.Width - width - trunc(52 * gScalingFactor);
   CRHSeries.SeriesColor := clDarkOrange;
   eSeries.SeriesColor := clDarkOrange;
   ACTHSeries.SeriesColor := clGoldenRod;

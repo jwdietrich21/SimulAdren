@@ -70,7 +70,7 @@ procedure TPredictionForm.FormCreate(Sender: TObject);
 var
   i: integer;
 begin
-  left := screen.Width - Width - 26;
+  left := screen.Width - Width - trunc(26 * gScalingFactor);
   for i := 1 to PredictionList.RowCount - 1 do
     PredictionList.Cells[3, i] := kUoMs[i];
 end;

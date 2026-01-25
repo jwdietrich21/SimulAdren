@@ -1,8 +1,8 @@
 object PredictionForm: TPredictionForm
-  Left = 1051
+  Left = 1084
   Height = 182
   Hint = 'This window displays predicted values for hormone concentrations from a closed-loop model. '#10'Negative values are virtual solutions that result from the system''s equations.  '#10'Only the positive solution is possible in a biological sense.'
-  Top = 63
+  Top = 74
   Width = 355
   Caption = 'Prediction'
   ClientHeight = 182

@@ -32,7 +32,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, TAGraph, TASeries,
-  EvoEngine;
+  SimulAdrenTypes, EvoEngine;
 
 type
 
@@ -61,7 +61,7 @@ implementation
 procedure TParameterForm.FormCreate(Sender: TObject);
 begin
   left := 26;
-  top := screen.Height - height - 39;
+  top := screen.Height - height - trunc(39 * gScalingFactor);
 end;
 
 procedure TParameterForm.DrawParameters(theFittest: TFittest);

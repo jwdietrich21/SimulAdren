@@ -32,7 +32,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, TAGraph, TASeries,
-  EvoEngine;
+  SimulAdrenTypes, EvoEngine;
 
 type
 
@@ -59,7 +59,7 @@ implementation
 
 procedure TFitnessPlotForm.FormCreate(Sender: TObject);
 begin
-  left := screen.Width - width - 39;
+  left := screen.Width - width - trunc(39 * gScalingFactor);
 end;
 
 procedure TFitnessPlotForm.DrawFitness(theFittest: TFittest);

@@ -74,10 +74,10 @@ var
   DrawColour: TColor;
 begin
   BlockDiagram := TBlockDiagram.Create;
-  BlockDiagram.scaling := 1;
+  BlockDiagram.scaling := gScalingFactor;
   IPSBitmap := TBitmap.Create;
   try
-    IPSBitmap.Canvas.Font.Size := 9;
+    IPSBitmap.Canvas.Font.Size := trunc(9 / gScalingFactor);
     IPSBitmap.Canvas.Pen.Width := trunc(BlockDiagram.scaling);
     IPSBitmap.Height := IPSImage.Height;
     IPSBitmap.Width := IPSImage.Width;

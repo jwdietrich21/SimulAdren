@@ -44,7 +44,7 @@ uses
 
 begin
   RequireDerivedFormResource := True;
-  Application.Scaled:=True;
+  Application.Scaled := True;
   Application.Initialize;
   gScalingFactor := ScalingFactor;
   Application.CreateForm(TValuesForm, ValuesForm);
