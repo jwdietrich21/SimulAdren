@@ -9,11 +9,11 @@ unit GUIServices;
 
 { Version 1.2.0 (Emerald) }
 
-{ (c) Johannes W. Dietrich, 1994 - 2025 }
-{ (c) Nina Siegmar, 2020 - 2025 }
+{ (c) Johannes W. Dietrich, 1994 - 2026 }
+{ (c) Nina Siegmar, 2020 - 2026 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
-{ (c) Ruhr University of Bochum 2005 - 2025 }
+{ (c) Ruhr University of Bochum 2005 - 2026 }
 
 { Source code released under the BSD License }
 
@@ -34,7 +34,7 @@ unit GUIServices;
 interface
 
 uses
-  Classes, SysUtils, Grids, Dialogs, clipbrd
+  Classes, SysUtils, Graphics, Grids, Dialogs, clipbrd
   {$IFDEF WINDOWS}
   , Windows, Win32Proc, registry
   {$ENDIF}
@@ -51,6 +51,7 @@ uses
 
 function DarkTheme: boolean;
 procedure CutorCopyfromGrid(theGrid: TStringGrid; cut: boolean = False);
+function ScalingFactor: real;
 procedure ShowFileError;
 procedure ShowSaveError;
 procedure ShowVersionError;
@@ -185,6 +186,16 @@ begin
       textfromSelection := textfromSelection + kCRLF;
   end;
   ClipBoard.AsText := textfromSelection;
+end;
+
+function ScalingFactor: real;
+const
+  kStandardRes = 96;
+var
+  screenDPI: integer;
+begin
+  screenDPI := ScreenInfo.PixelsPerInchX;
+  result := screenDPI / kStandardRes;
 end;
 
 procedure ShowFileError;

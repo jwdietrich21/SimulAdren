@@ -9,11 +9,11 @@ unit IPS;
 
 { Version 1.2.0 (Emerald) }
 
-{ (c) Johannes W. Dietrich, 1994 - 2025 }
-{ (c) Nina Siegmar, 2020 - 2025 }
+{ (c) Johannes W. Dietrich, 1994 - 2026 }
+{ (c) Nina Siegmar, 2020 - 2026 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
-{ (c) Ruhr University of Bochum 2005 - 2025 }
+{ (c) Ruhr University of Bochum 2005 - 2026 }
 
 { Source code released under the BSD License }
 
@@ -74,10 +74,14 @@ var
   DrawColour: TColor;
 begin
   BlockDiagram := TBlockDiagram.Create;
+  BlockDiagram.scaling := 1;
   IPSBitmap := TBitmap.Create;
   try
+    IPSBitmap.Canvas.Font.Size := 9;
+    IPSBitmap.Canvas.Pen.Width := trunc(BlockDiagram.scaling);
     IPSBitmap.Height := IPSImage.Height;
     IPSBitmap.Width := IPSImage.Width;
+
     if DarkTheme then
     begin
       IPSBitmap.Canvas.Brush.Color := self.Color;
@@ -94,16 +98,17 @@ begin
     IPSBitmap.Canvas.Pen.Color := DrawColour;
     BlockDiagram.canvas := IPSBitmap.Canvas;
 
-    IPSBitmap.Canvas.Pen.Color := clDarkOrange;
+    BlockDiagram.Canvas.Pen.Color := clDarkOrange;
     Elements.xt := TTerminalClass.Create;
     Elements.xt.blockDiagram := BlockDiagram;
     BlockDiagram.firstIPSObject := Elements.xt;
     SetRect(Elements.xt.boundsRect, 21, 10, 41, 30);
     Elements.xt.title := 'CRH(t)';
+    Elements.xt.font.Style := [fsItalic];
     TTerminalClass(Elements.xt).TextMargin := 5;
     TTerminalClass(Elements.xt).TextPosition := rightmiddle;
     Elements.xt.Draw;
-    IPSBitmap.Canvas.Pen.Color := DrawColour;
+    BlockDiagram.Canvas.Pen.Color := DrawColour;
 
     Elements.Controller := TPiClass.Create;
     Elements.Controller.blockDiagram := BlockDiagram;
@@ -143,16 +148,16 @@ begin
     TInvertableClass(Elements.MMRatio2).invertedSegments := [bottomSegment];
     Elements.MMRatio2.Draw;
 
-    IPSBitmap.Canvas.Pen.Color := clGoldenRod;
+    BlockDiagram.Canvas.Pen.Color := clGoldenRod;
     Elements.j1 := TJunctionClass.Create;
     Elements.j1.blockDiagram := BlockDiagram;
     SetRect(Elements.j1.boundsRect, 190, 53, 210, 89);
     Elements.j1.Draw;
-    IPSBitmap.Canvas.Pen.Color := DrawColour;
+    BlockDiagram.Canvas.Pen.Color := DrawColour;
 
     Elements.DA := TTerminalClass.Create;
     Elements.DA.blockDiagram := BlockDiagram;
-    SetRect(Elements.DA.boundsRect, 251, 160, 291, 180);
+    SetRect(Elements.DA.boundsRect, 250, 160, 290, 180);
     Elements.DA.title := 'DA';
     TTerminalClass(Elements.DA).TextMargin := 5;
     TTerminalClass(Elements.DA).TextPosition := leftmiddle;
@@ -160,18 +165,18 @@ begin
 
     Elements.x1 := TTerminalClass.Create;
     Elements.x1.blockDiagram := BlockDiagram;
-    SetRect(Elements.x1.boundsRect, 21, 300, 41, 350);
+    SetRect(Elements.x1.boundsRect, 20, 300, 40, 350);
     Elements.x1.title := '1';
     TTerminalClass(Elements.x1).TextMargin := 5;
     TTerminalClass(Elements.x1).TextPosition := rightmiddle;
     Elements.x1.Draw;
 
-    IPSBitmap.Canvas.Pen.Color := clPurple;
+    BlockDiagram.Canvas.Pen.Color := clPurple;
     Elements.j2 := TJunctionClass.Create;
     Elements.j2.blockDiagram := BlockDiagram;
     SetRect(Elements.j2.boundsRect, 390, 261, 400, 301);
     Elements.j2.Draw;
-    IPSBitmap.Canvas.Pen.Color := DrawColour;
+    BlockDiagram.Canvas.Pen.Color := DrawColour;
 
     Elements.GR := TPClass.Create;
     Elements.GR.blockDiagram := BlockDiagram;
@@ -211,7 +216,7 @@ begin
     SetRect(Elements.VTypeAllostery.boundsRect, 10, 260, 50, 300);
     Elements.VTypeAllostery.Draw;
 
-    IPSBitmap.Canvas.Pen.Color := clDarkOrange;
+    BlockDiagram.Canvas.Pen.Color := clDarkOrange;
     Elements.cx := TConnectionClass.Create;
     Elements.cx.blockDiagram := BlockDiagram;
     Elements.cx.sourceObject := Elements.xt;
@@ -231,9 +236,9 @@ begin
     TConnectionClass(Elements.ce).TextMargin := 7;
     TConnectionClass(Elements.ce).TextPosition := topmiddle;
     Elements.ce.Draw;
-    IPSBitmap.Canvas.Pen.Color := DrawColour;
+    BlockDiagram.Canvas.Pen.Color := DrawColour;
 
-    IPSBitmap.Canvas.Pen.Color := clGoldenRod;
+    BlockDiagram.Canvas.Pen.Color := clGoldenRod;
     Elements.cACTH := TConnectionClass.Create;
     Elements.cACTH.blockDiagram := BlockDiagram;
     Elements.cACTH.sourceObject := Elements.G1;
@@ -245,7 +250,7 @@ begin
     TConnectionClass(Elements.cACTH).TextMargin := 7;
     TConnectionClass(Elements.cACTH).TextPosition := topmiddle;
     Elements.cACTH.Draw;
-    IPSBitmap.Canvas.Pen.Color := DrawColour;
+    BlockDiagram.Canvas.Pen.Color := DrawColour;
 
     Elements.cyr := TConnectionClass.Create;
     Elements.cyr.blockDiagram := BlockDiagram;
@@ -288,7 +293,7 @@ begin
     Elements.cDA.drainAnchor := bottommiddle;
     Elements.cDA.Draw;
 
-    IPSBitmap.Canvas.Pen.Color := clPurple;
+    BlockDiagram.Canvas.Pen.Color := clPurple;
     Elements.cy := TConnectionClass.Create;
     Elements.cy.blockDiagram := BlockDiagram;
     Elements.cy.sourceObject := Elements.MMRatio2;
@@ -314,7 +319,7 @@ begin
     TConnectionClass(Elements.cCortisol).TextMargin := 7;
     TConnectionClass(Elements.cCortisol).TextPosition := bottommiddle;
     Elements.cCortisol.Draw;
-    IPSBitmap.Canvas.Pen.Color := DrawColour;
+    BlockDiagram.Canvas.Pen.Color := DrawColour;
 
     Elements.c1 := TConnectionClass.Create;
     Elements.c1.blockDiagram := BlockDiagram;
@@ -324,7 +329,7 @@ begin
     Elements.c1.drainAnchor := bottommiddle;
     Elements.c1.Draw;
 
-    IPSBitmap.Canvas.Pen.Color := clGoldenRod;
+    BlockDiagram.Canvas.Pen.Color := clGoldenRod;
     Elements.c2a := TConnectionClass.Create;
     Elements.c2a.blockDiagram := BlockDiagram;
     Elements.c2a.sourceObject := Elements.j1;
@@ -349,7 +354,7 @@ begin
     Elements.c2c.drainAnchor := bottommiddle;
     Elements.c2c.chirality := cleft;
     Elements.c2c.Draw;
-    IPSBitmap.Canvas.Pen.Color := DrawColour;
+    BlockDiagram.Canvas.Pen.Color := DrawColour;
 
     Elements.cD4 := TConnectionClass.Create;
     Elements.cD4.blockDiagram := BlockDiagram;
@@ -359,7 +364,7 @@ begin
     Elements.cD4.drainAnchor := topmiddle;
     Elements.cD4.Draw;
 
-    IPSBitmap.Canvas.Pen.Color := clPurple;
+    BlockDiagram.Canvas.Pen.Color := clPurple;
     Elements.c4a := TConnectionClass.Create;
     Elements.c4a.blockDiagram := BlockDiagram;
     Elements.c4a.sourceObject := Elements.j2;
@@ -384,7 +389,7 @@ begin
     Elements.c4c.drainAnchor := topmiddle;
     Elements.c4c.chirality := cleft;
     Elements.c4c.Draw;
-    IPSBitmap.Canvas.Pen.Color := DrawColour;
+    BlockDiagram.Canvas.Pen.Color := DrawColour;
 
     IPSImage.Canvas.Draw(0, 0, IPSBitmap);
   finally

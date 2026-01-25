@@ -9,8 +9,14 @@
       </Flags>
       <SessionStorage Value="InProjectDir"/>
       <Title Value="SimulAdren"/>
+      <Scaled Value="True"/>
       <ResourceType Value="res"/>
       <UseXPManifest Value="True"/>
+      <XPManifest>
+        <DpiAware Value="True"/>
+        <TextName Value="net.sf.simuladren"/>
+        <TextDesc Value="Simulation program for the hypothalamus-pituitary-adrenal axis (HPA feedback control)"/>
+      </XPManifest>
       <Icon Value="0"/>
     </General>
     <i18n>
@@ -21,7 +27,7 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="1"/>
       <MinorVersionNr Value="2"/>
-      <BuildNr Value="116"/>
+      <BuildNr Value="120"/>
       <Attributes pvaDebug="True" pvaPreRelease="True"/>
       <StringTable Comments="Simulator for the HPA axis" CompanyName="Ruhr University of Bochum" FileDescription="Simulation program for the hypothalamus-pituitary-adrenal axis (HPA feedback control)" InternalName="Emerald" LegalCopyright="1994–2026 J. W. Dietrich, N. Siegmar and Ruhr University of Bochum" LegalTrademarks="SimulAdren" ProductName="SimulAdren" ProductVersion="1.2"/>
     </VersionInfo>
