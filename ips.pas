@@ -74,7 +74,11 @@ var
   DrawColour: TColor;
 begin
   BlockDiagram := TBlockDiagram.Create;
-  BlockDiagram.scaling := gScalingFactor;
+  {$IFDEF WINDOWS}
+  BlockDiagram.scaling := 2;
+  {$ELSE}
+  BlockDiagram.scaling := 1;
+  {$ENDIF}
   IPSBitmap := TBitmap.Create;
   try
     IPSBitmap.Canvas.Font.Size := trunc(9 / gScalingFactor);
