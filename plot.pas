@@ -7,7 +7,7 @@ unit Plot;
 { Simulation program for the hypothalamus-pituitary-adrenal axis }
 { Plot unit }
 
-{ Version 1.2.0 (Emerald) }
+{ Version 1.3.0 (Green Lizard) }
 
 { (c) Johannes W. Dietrich, 1994 - 2026 }
 { (c) Nina Siegmar, 2020 - 2026 }
@@ -31,15 +31,16 @@ unit Plot;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, TAGraph, TASeries, TALegendPanel, Forms,
-  Controls, Graphics, Dialogs, SimuladrenTypes, SimulationEngine, GUIServices;
+  Classes, SysUtils, FileUtil, TAGraph, TASeries, TALegendPanel, TADrawUtils,
+  TADrawerSVG, TADrawerCanvas, Forms, Controls, Graphics, Dialogs,
+  SimuladrenTypes, SimulationEngine, GUIServices;
 
 type
 
   { TPlotForm }
 
   TPlotForm = class(TForm)
-    Chart1: TChart;
+    TimeSeriesChart: TChart;
     PRFSeries: TLineSeries;
     FSeries: TLineSeries;
     ChartLegendPanel1: TChartLegendPanel;
@@ -53,6 +54,7 @@ type
   public
     { public declarations }
     procedure ShowPlot;
+    procedure SaveChart(fileName: string; imageType: TImageType);
   end;
 
 var
@@ -67,7 +69,7 @@ implementation
 procedure TPlotForm.FormCreate(Sender: TObject);
 begin
   top := screen.Height - Height - trunc(39 * gScalingFactor);
-  left := screen.Width - width - trunc(52 * gScalingFactor);
+  left := screen.Width - Width - trunc(52 * gScalingFactor);
   CRHSeries.SeriesColor := clDarkOrange;
   eSeries.SeriesColor := clDarkOrange;
   ACTHSeries.SeriesColor := clGoldenRod;
@@ -77,7 +79,7 @@ procedure TPlotForm.ShowPlot;
 var
   i: integer;
 begin
-  Chart1.AxisList.Axes[1].Range.Max := gSequence.size - 1;
+  TimeSeriesChart.AxisList.Axes[1].Range.Max := gSequence.size - 1;
   if DarkTheme then
     yrSeries.SeriesColor := clWhite;
   for i := 0 to gSequence.size - 1 do
@@ -91,5 +93,32 @@ begin
   end;
 end;
 
-end.
+procedure TPlotForm.SaveChart(fileName: string; imageType: TImageType);
+var
+  theStream: TFileStream;
+  theDrawer: IChartDrawer;
+begin
+  theStream := nil;
+  try
+    case imageType of
+      BMP: TimeSeriesChart.SaveToBitmapFile(fileName);
+      XPM: TimeSeriesChart.SaveToFile(TPixmap, fileName);
+      PNG: TimeSeriesChart.SaveToFile(TPortableNetworkGraphic, fileName);
+      PBM: TimeSeriesChart.SaveToFile(TPortableAnyMapGraphic, fileName);
+      JPG: TimeSeriesChart.SaveToFile(TJPEGImage, fileName);
+      TIFF: TimeSeriesChart.SaveToFile(TTIFFImage, fileName);
+      SVG: begin
+        theStream := TFileStream.Create(fileName, fmCreate);
+        theDrawer := TSVGDrawer.Create(theStream, True);
+        theDrawer.DoChartColorToFPColor := @ChartColorSysToFPColor;
+        with TimeSeriesChart do
+          Draw(theDrawer, Rect(0, 0, Width, Height));
+      end;
+    end;
+  finally
+    if assigned(theStream) then
+      theStream.Free;
+  end;
+end;
 
+end.

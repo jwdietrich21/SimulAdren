@@ -7,7 +7,7 @@ unit Prediction;
 { Simulation program for the hypothalamus-pituitary-adrenal axis }
 { Predictor }
 
-{ Version 1.2.0 (Emerald) }
+{ Version 1.3.0 (Green Lizard) }
 
 { (c) Johannes W. Dietrich, 1994 - 2026 }
 { (c) Nina Siegmar, 2020 - 2026 }

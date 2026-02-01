@@ -9,7 +9,7 @@ object PlotForm: TPlotForm
   LCLVersion = '4.4.0.0'
   Visible = True
   OnCreate = FormCreate
-  object Chart1: TChart
+  object TimeSeriesChart: TChart
     Left = 24
     Height = 304
     Top = 16
@@ -77,7 +77,7 @@ object PlotForm: TPlotForm
     Height = 256
     Top = 24
     Width = 80
-    Chart = Chart1
+    Chart = TimeSeriesChart
     Anchors = [akTop, akRight]
   end
 end

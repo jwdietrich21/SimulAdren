@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "SimulAdren"
-#define MyAppVersion "1.2.0"
+#define MyAppVersion "1.3.0"
 #define MyAppPublisher "FORMATIO RETICULARIS"
 #define MyAppURL "http://simuladren.sf.net"
 #define MyAppExeName "SimulAdren.exe"

@@ -4,15 +4,15 @@
     <PathDelim Value="\"/>
     <Version Value="12"/>
     <BuildModes Active="Default"/>
-    <Units Count="33">
+    <Units Count="37">
       <Unit0>
         <Filename Value="SimulAdren.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="22"/>
         <WindowIndex Value="1"/>
         <TopLine Value="26"/>
-        <CursorPos Y="49"/>
-        <UsageCount Value="115"/>
+        <CursorPos X="32" Y="10"/>
+        <UsageCount Value="124"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -24,9 +24,9 @@
         <UnitName Value="GUI"/>
         <EditorIndex Value="13"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="488"/>
-        <CursorPos X="46" Y="16"/>
-        <UsageCount Value="115"/>
+        <TopLine Value="418"/>
+        <CursorPos X="29" Y="430"/>
+        <UsageCount Value="124"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -36,8 +36,8 @@
         <UnitName Value="SimulationEngine"/>
         <EditorIndex Value="6"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="46" Y="16"/>
-        <UsageCount Value="115"/>
+        <CursorPos X="32" Y="10"/>
+        <UsageCount Value="124"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
@@ -50,9 +50,9 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="21"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="66"/>
-        <CursorPos X="31" Y="79"/>
-        <UsageCount Value="115"/>
+        <TopLine Value="401"/>
+        <CursorPos Y="427"/>
+        <UsageCount Value="124"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit3>
@@ -63,7 +63,7 @@
         <EditorIndex Value="1"/>
         <WindowIndex Value="1"/>
         <CursorPos X="46" Y="14"/>
-        <UsageCount Value="115"/>
+        <UsageCount Value="124"/>
         <Loaded Value="True"/>
       </Unit4>
       <Unit5>
@@ -75,9 +75,8 @@
         <UnitName Value="Plot"/>
         <EditorIndex Value="7"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="59"/>
-        <CursorPos X="60" Y="70"/>
-        <UsageCount Value="114"/>
+        <CursorPos X="11"/>
+        <UsageCount Value="123"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit5>
@@ -90,9 +89,8 @@
         <UnitName Value="Prediction"/>
         <EditorIndex Value="8"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="63"/>
-        <CursorPos X="60" Y="73"/>
-        <UsageCount Value="113"/>
+        <CursorPos X="32" Y="10"/>
+        <UsageCount Value="122"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit6>
@@ -101,7 +99,7 @@
         <IsPartOfProject Value="True"/>
         <WindowIndex Value="1"/>
         <CursorPos X="46" Y="14"/>
-        <UsageCount Value="110"/>
+        <UsageCount Value="119"/>
         <Loaded Value="True"/>
       </Unit7>
       <Unit8>
@@ -110,9 +108,8 @@
         <UnitName Value="SimuladrenTypes"/>
         <EditorIndex Value="4"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="107"/>
-        <CursorPos Y="117"/>
-        <UsageCount Value="100"/>
+        <CursorPos X="63" Y="20"/>
+        <UsageCount Value="109"/>
         <Loaded Value="True"/>
       </Unit8>
       <Unit9>
@@ -122,7 +119,7 @@
         <EditorIndex Value="3"/>
         <WindowIndex Value="1"/>
         <CursorPos X="15" Y="3"/>
-        <UsageCount Value="100"/>
+        <UsageCount Value="109"/>
         <Loaded Value="True"/>
       </Unit9>
       <Unit10>
@@ -134,9 +131,8 @@
         <UnitName Value="AboutBox"/>
         <EditorIndex Value="20"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="18"/>
-        <CursorPos X="46" Y="16"/>
-        <UsageCount Value="88"/>
+        <CursorPos Y="2"/>
+        <UsageCount Value="97"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit10>
@@ -147,7 +143,7 @@
         <EditorIndex Value="12"/>
         <WindowIndex Value="1"/>
         <CursorPos X="19" Y="26"/>
-        <UsageCount Value="88"/>
+        <UsageCount Value="97"/>
         <Loaded Value="True"/>
       </Unit11>
       <Unit12>
@@ -156,8 +152,8 @@
         <UnitName Value="RandomFunctions"/>
         <EditorIndex Value="10"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="46" Y="16"/>
-        <UsageCount Value="87"/>
+        <CursorPos X="32" Y="10"/>
+        <UsageCount Value="96"/>
         <Loaded Value="True"/>
       </Unit12>
       <Unit13>
@@ -166,8 +162,8 @@
         <EditorIndex Value="11"/>
         <WindowIndex Value="1"/>
         <TopLine Value="68"/>
-        <CursorPos X="46" Y="16"/>
-        <UsageCount Value="87"/>
+        <CursorPos X="32" Y="10"/>
+        <UsageCount Value="96"/>
         <Loaded Value="True"/>
       </Unit13>
       <Unit14>
@@ -179,8 +175,8 @@
         <UnitName Value="SetTargets"/>
         <EditorIndex Value="9"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="46" Y="16"/>
-        <UsageCount Value="73"/>
+        <CursorPos X="32" Y="10"/>
+        <UsageCount Value="82"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit14>
@@ -194,8 +190,8 @@
         <EditorIndex Value="18"/>
         <WindowIndex Value="1"/>
         <TopLine Value="16"/>
-        <CursorPos X="20" Y="35"/>
-        <UsageCount Value="58"/>
+        <CursorPos X="32" Y="10"/>
+        <UsageCount Value="67"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit15>
@@ -209,8 +205,8 @@
         <EditorIndex Value="19"/>
         <WindowIndex Value="1"/>
         <TopLine Value="25"/>
-        <CursorPos X="20" Y="35"/>
-        <UsageCount Value="58"/>
+        <CursorPos X="32" Y="10"/>
+        <UsageCount Value="67"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit16>
@@ -221,8 +217,8 @@
         <EditorIndex Value="17"/>
         <WindowIndex Value="1"/>
         <TopLine Value="104"/>
-        <CursorPos X="46" Y="16"/>
-        <UsageCount Value="44"/>
+        <CursorPos X="32" Y="10"/>
+        <UsageCount Value="53"/>
         <Loaded Value="True"/>
       </Unit17>
       <Unit18>
@@ -239,7 +235,7 @@
           <TopLine Value="263"/>
           <CursorPos X="66" Y="1509"/>
         </ExtraEditor1>
-        <UsageCount Value="63"/>
+        <UsageCount Value="72"/>
         <Loaded Value="True"/>
       </Unit18>
       <Unit19>
@@ -249,8 +245,8 @@
         <EditorIndex Value="5"/>
         <WindowIndex Value="1"/>
         <TopLine Value="180"/>
-        <CursorPos Y="199"/>
-        <UsageCount Value="59"/>
+        <CursorPos X="32" Y="10"/>
+        <UsageCount Value="68"/>
         <Loaded Value="True"/>
       </Unit19>
       <Unit20>
@@ -260,8 +256,8 @@
         <EditorIndex Value="14"/>
         <WindowIndex Value="1"/>
         <TopLine Value="156"/>
-        <CursorPos X="46" Y="16"/>
-        <UsageCount Value="43"/>
+        <CursorPos X="32" Y="10"/>
+        <UsageCount Value="52"/>
         <Loaded Value="True"/>
       </Unit20>
       <Unit21>
@@ -271,8 +267,8 @@
         <EditorIndex Value="16"/>
         <WindowIndex Value="1"/>
         <TopLine Value="27"/>
-        <CursorPos X="46" Y="16"/>
-        <UsageCount Value="43"/>
+        <CursorPos X="32" Y="10"/>
+        <UsageCount Value="52"/>
         <Loaded Value="True"/>
       </Unit21>
       <Unit22>
@@ -282,21 +278,21 @@
         <EditorIndex Value="15"/>
         <WindowIndex Value="1"/>
         <TopLine Value="29"/>
-        <CursorPos X="46" Y="16"/>
-        <UsageCount Value="42"/>
+        <CursorPos X="32" Y="10"/>
+        <UsageCount Value="51"/>
         <Loaded Value="True"/>
       </Unit22>
       <Unit23>
         <Filename Value="C:\lazarus\lcl\grids.pas"/>
         <TopLine Value="9124"/>
         <CursorPos Y="9142"/>
-        <UsageCount Value="5"/>
+        <UsageCount Value="4"/>
       </Unit23>
       <Unit24>
         <Filename Value="C:\Developer\lazarus 1.4\components\tachart\tacustomseries.pas"/>
         <TopLine Value="792"/>
         <CursorPos Y="809"/>
-        <UsageCount Value="5"/>
+        <UsageCount Value="4"/>
       </Unit24>
       <Unit25>
         <Filename Value="C:\Developer\lazarus 1.4\lcl\lcltype.pp"/>
@@ -304,7 +300,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="443"/>
         <CursorPos X="3" Y="460"/>
-        <UsageCount Value="5"/>
+        <UsageCount Value="4"/>
       </Unit25>
       <Unit26>
         <Filename Value="C:\Applications\lazarus\lcl\include\spinedit.inc"/>
@@ -312,7 +308,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="162"/>
         <CursorPos Y="175"/>
-        <UsageCount Value="7"/>
+        <UsageCount Value="6"/>
       </Unit26>
       <Unit27>
         <Filename Value="C:\Applications\lazarus\lcl\grids.pas"/>
@@ -321,7 +317,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="11420"/>
         <CursorPos Y="11429"/>
-        <UsageCount Value="6"/>
+        <UsageCount Value="5"/>
       </Unit27>
       <Unit28>
         <Filename Value="C:\Applications\lazarus\lcl\interfaces\cocoa\cocoawscommon.pas"/>
@@ -330,7 +326,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="409"/>
         <CursorPos Y="423"/>
-        <UsageCount Value="8"/>
+        <UsageCount Value="7"/>
       </Unit28>
       <Unit29>
         <Filename Value="C:\Applications\lazarus\fpc\3.2.2\sources\rtl\inc\objpash.inc"/>
@@ -338,7 +334,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="193"/>
         <CursorPos X="23" Y="206"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="8"/>
       </Unit29>
       <Unit30>
         <Filename Value="C:\Applications\lazarus\lcl\include\font.inc"/>
@@ -346,7 +342,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="914"/>
         <CursorPos Y="927"/>
-        <UsageCount Value="9"/>
+        <UsageCount Value="8"/>
       </Unit30>
       <Unit31>
         <Filename Value="C:\Applications\lazarus\fpc\3.2.2\sources\packages\fcl-image\src\fpcanvas.pp"/>
@@ -355,7 +351,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="277"/>
         <CursorPos X="28" Y="294"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit31>
       <Unit32>
         <Filename Value="C:\Applications\lazarus\fpc\3.2.2\sources\packages\fcl-image\src\fpcanvas.inc"/>
@@ -363,129 +359,163 @@
         <WindowIndex Value="1"/>
         <TopLine Value="410"/>
         <CursorPos X="3" Y="413"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="9"/>
       </Unit32>
+      <Unit33>
+        <Filename Value="..\..\..\..\..\..\..\..\..\Applications\lazarus\lcl\include\graphic.inc"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="112"/>
+        <CursorPos Y="128"/>
+        <UsageCount Value="9"/>
+      </Unit33>
+      <Unit34>
+        <Filename Value="..\..\..\..\..\..\..\..\..\Applications\lazarus\components\tachart\tadrawersvg.pas"/>
+        <UnitName Value="TADrawerSVG"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="1"/>
+        <CursorPos X="17" Y="10"/>
+        <UsageCount Value="9"/>
+      </Unit34>
+      <Unit35>
+        <Filename Value="..\..\..\..\..\..\..\..\..\Applications\lazarus\components\freetype\easylazfreetype.pas"/>
+        <UnitName Value="EasyLazFreeType"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="2017"/>
+        <CursorPos Y="2033"/>
+        <UsageCount Value="9"/>
+      </Unit35>
+      <Unit36>
+        <Filename Value="..\..\..\..\..\..\..\..\..\Applications\lazarus\components\freetype\lazfreetypefontcollection.pas"/>
+        <UnitName Value="LazFreeTypeFontCollection"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="973"/>
+        <CursorPos Y="988"/>
+        <UsageCount Value="9"/>
+      </Unit36>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="systemsdiagram.pas"/>
-        <Caret Line="483" TopLine="470"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="374" TopLine="366"/>
       </Position1>
       <Position2>
-        <Filename Value="systemsdiagram.pas"/>
-        <Caret Line="493" TopLine="472"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="406" Column="30" TopLine="395"/>
       </Position2>
       <Position3>
-        <Filename Value="systemsdiagram.pas"/>
-        <Caret Line="494" TopLine="484"/>
+        <Filename Value="plot.pas"/>
+        <Caret Line="101" TopLine="74"/>
       </Position3>
       <Position4>
-        <Filename Value="systemsdiagram.pas"/>
-        <Caret Line="495" TopLine="484"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="409" Column="41" TopLine="393"/>
       </Position4>
       <Position5>
-        <Filename Value="systemsdiagram.pas"/>
-        <Caret Line="496" TopLine="484"/>
+        <Filename Value="plot.pas"/>
+        <Caret Line="115" Column="22" TopLine="86"/>
       </Position5>
       <Position6>
-        <Filename Value="systemsdiagram.pas"/>
-        <Caret Line="503" TopLine="484"/>
+        <Filename Value="plot.pas"/>
+        <Caret Line="36" Column="3" TopLine="21"/>
       </Position6>
       <Position7>
-        <Filename Value="systemsdiagram.pas"/>
-        <Caret Line="504" TopLine="484"/>
+        <Filename Value="plot.pas"/>
+        <Caret Line="112" Column="50" TopLine="87"/>
       </Position7>
       <Position8>
-        <Filename Value="systemsdiagram.pas"/>
-        <Caret Line="505" TopLine="484"/>
+        <Filename Value="plot.pas"/>
+        <Caret Line="89" Column="19" TopLine="88"/>
       </Position8>
       <Position9>
-        <Filename Value="systemsdiagram.pas"/>
-        <Caret Line="506" TopLine="485"/>
+        <Filename Value="plot.pas"/>
+        <Caret Line="36" Column="20" TopLine="20"/>
       </Position9>
       <Position10>
-        <Filename Value="systemsdiagram.pas"/>
-        <Caret Line="507" TopLine="493"/>
+        <Filename Value="plot.pas"/>
+        <Caret Line="35" Column="17" TopLine="19"/>
       </Position10>
       <Position11>
-        <Filename Value="systemsdiagram.pas"/>
-        <Caret Line="508" TopLine="493"/>
+        <Filename Value="plot.pas"/>
+        <Caret Line="103" TopLine="87"/>
       </Position11>
       <Position12>
-        <Filename Value="systemsdiagram.pas"/>
-        <Caret Line="514" TopLine="493"/>
+        <Filename Value="plot.pas"/>
+        <Caret Line="111" TopLine="87"/>
       </Position12>
       <Position13>
-        <Filename Value="systemsdiagram.pas"/>
-        <Caret Line="515" TopLine="494"/>
+        <Filename Value="plot.pas"/>
+        <Caret Line="112" TopLine="87"/>
       </Position13>
       <Position14>
-        <Filename Value="systemsdiagram.pas"/>
-        <Caret Line="516" TopLine="495"/>
+        <Filename Value="simuladrentypes.pas"/>
+        <Caret Line="64" Column="23" TopLine="40"/>
       </Position14>
       <Position15>
-        <Filename Value="systemsdiagram.pas"/>
-        <Caret Line="503" Column="37" TopLine="488"/>
+        <Filename Value="ips.pas"/>
+        <Caret Line="60" Column="15" TopLine="44"/>
       </Position15>
       <Position16>
-        <Filename Value="systemsdiagram.pas"/>
-        <Caret Line="493" Column="58" TopLine="488"/>
+        <Filename Value="ips.pas"/>
+        <Caret Line="437" TopLine="405"/>
       </Position16>
       <Position17>
-        <Filename Value="ips.pas"/>
-        <Caret Line="78" Column="44" TopLine="58"/>
+        <Filename Value="plot.pas"/>
+        <Caret Line="35" Column="38" TopLine="20"/>
       </Position17>
       <Position18>
-        <Filename Value="ips.pas"/>
-        <Caret Line="77" Column="32" TopLine="58"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="429" TopLine="399"/>
       </Position18>
       <Position19>
-        <Filename Value="ips.pas"/>
-        <Caret Line="81" Column="63" TopLine="68"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="38" Column="35" TopLine="20"/>
       </Position19>
       <Position20>
         <Filename Value="ips.pas"/>
-        <Caret Line="77" Column="40" TopLine="68"/>
+        <Caret Line="424" Column="54" TopLine="404"/>
       </Position20>
       <Position21>
-        <Filename Value="simuladrentypes.pas"/>
-        <Caret Line="117" Column="15" TopLine="107"/>
+        <Filename Value="ips.pas"/>
+        <Caret Line="417" Column="36" TopLine="231"/>
       </Position21>
       <Position22>
-        <Filename Value="ips.pas"/>
-        <Caret Line="80" Column="60"/>
+        <Filename Value="plot.pas"/>
+        <Caret Line="119" Column="45" TopLine="91"/>
       </Position22>
       <Position23>
-        <Filename Value="prediction.pas"/>
-        <Caret Line="73" Column="60" TopLine="63"/>
+        <Filename Value="plot.pas"/>
+        <Caret Line="118" Column="10" TopLine="91"/>
       </Position23>
       <Position24>
-        <Filename Value="plot.pas"/>
-        <Caret Line="70" Column="60" TopLine="59"/>
+        <Filename Value="ips.pas"/>
+        <Caret Line="430" Column="33" TopLine="12"/>
       </Position24>
       <Position25>
-        <Filename Value="fitnessplot.pas"/>
-        <Caret Line="62" Column="60" TopLine="52"/>
+        <Filename Value="ips.pas"/>
+        <Caret Line="35" Column="25" TopLine="27"/>
       </Position25>
       <Position26>
-        <Filename Value="fitnessplot.pas"/>
-        <Caret Line="35" Column="20" TopLine="16"/>
+        <Filename Value="ips.pas"/>
+        <Caret Line="422" Column="24" TopLine="405"/>
       </Position26>
       <Position27>
-        <Filename Value="parameterplot.pas"/>
-        <Caret Line="64" Column="61" TopLine="54"/>
+        <Filename Value="ips.pas"/>
+        <Caret Line="431" TopLine="403"/>
       </Position27>
       <Position28>
-        <Filename Value="SimulAdren.lpr"/>
-        <Caret Line="49" TopLine="34"/>
+        <Filename Value="ips.pas"/>
+        <Caret Line="432" Column="22" TopLine="403"/>
       </Position28>
       <Position29>
-        <Filename Value="guiservices.pas"/>
-        <Caret Line="197" TopLine="180"/>
+        <Filename Value="ips.pas"/>
+        <Caret Line="431" TopLine="404"/>
       </Position29>
       <Position30>
-        <Filename Value="guiservices.pas"/>
-        <Caret Line="198" TopLine="180"/>
+        <Filename Value="ips.pas"/>
+        <Caret Line="432" TopLine="404"/>
       </Position30>
     </JumpHistory>
     <RunParams>

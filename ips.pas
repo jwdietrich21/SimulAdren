@@ -7,7 +7,7 @@ unit IPS;
 { Simulation program for the hypothalamus-pituitary-adrenal axis }
 { Information Processing Structure }
 
-{ Version 1.2.0 (Emerald) }
+{ Version 1.3.0 (Green Lizard) }
 
 { (c) Johannes W. Dietrich, 1994 - 2026 }
 { (c) Nina Siegmar, 2020 - 2026 }
@@ -32,7 +32,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  lclintf, SystemsDiagram, SimuladrenTypes, GUIServices;
+  lclintf, TADrawerSVG, SystemsDiagram, SimuladrenTypes, GUIServices;
 
 type
 
@@ -57,6 +57,7 @@ type
     BlockDiagram: TBlockDiagram;
     IPSBitmap: TBitmap;
     Elements: TElements;
+    procedure SaveBlockDiagram(fileName: string; imageType: TImageType);
   end;
 
 
@@ -405,6 +406,31 @@ end;
 procedure TIPSForm.FormCreate(Sender: TObject);
 begin
   DrawIPS(Sender);
+end;
+
+procedure TIPSForm.SaveBlockDiagram(fileName: string; imageType: TImageType);
+var
+  theStream: TFileStream;
+begin
+  theStream := nil;
+  try
+    case imageType of
+      BMP: IPSImage.Picture.SaveToFile(filename, 'BMP');
+      XPM: IPSImage.Picture.SaveToFile(filename, 'XPM');
+      PNG: IPSImage.Picture.SaveToFile(filename, 'PNG');
+      PBM: IPSImage.Picture.SaveToFile(filename, 'PBM');
+      JPG: IPSImage.Picture.SaveToFile(filename, 'JPG');
+      TIFF: IPSImage.Picture.SaveToFile(filename, 'TIFF');
+      SVG: begin
+        theStream := TFileStream.Create(fileName, fmCreate);
+        { #todo -oJWD : To be completed }
+
+      end;
+    end;
+  finally
+    if assigned(theStream) then
+      theStream.Free;
+  end;
 end;
 
 end.

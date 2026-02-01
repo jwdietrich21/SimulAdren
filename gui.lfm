@@ -1,7 +1,7 @@
 object ValuesForm: TValuesForm
   Left = 125
   Height = 593
-  Top = 104
+  Top = 142
   Width = 643
   Caption = 'Simuladren'
   ClientHeight = 593
@@ -577,5 +577,12 @@ object ValuesForm: TValuesForm
     Options = [ofEnableSizing, ofViewDetail, ofAutoPreview]
     Left = 512
     Top = 488
+  end
+  object SaveDialog2: TSaveDialog
+    DefaultExt = '.png'
+    Filter = 'Graphics (*.bmp;*.png;*.pbm;*.pgm;*.ppm;*.jpg;*.jpeg;*.jpe;*.jfif;*.tif;*.tiff;*.gif)|*.bmp;*.png;*.pbm;*.pgm;*.ppm;*.jpg;*.jpeg;*.jpe;*.jfif;*.tif;*.tiff;*.gif|Bitmaps (*.bmp)|*.bmp|Pixmap (*.xpm)|*.xpm|Portable Network Graphic (*.png)|*.png|Portable PixMap (*.pbm;*.pgm;*.ppm)|*.pbm;*.pgm;*.ppm|Joint Picture Expert Group (*.jpg;*.jpeg;*.jpe;*.jfif)|*.jpg;*.jpeg;*.jpe;*.jfif|Tagged Image File Format (*.tif;*.tiff)|*.tif;*.tiff|Scalable Vector Graphic|*.svg|All files (*)|*'
+    Options = [ofOverwritePrompt, ofEnableSizing, ofViewDetail]
+    Left = 568
+    Top = 376
   end
 end

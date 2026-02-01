@@ -7,7 +7,7 @@ unit GUI;
 { Simulation program for the hypothalamus-pituitary-adrenal axis }
 { GUI }
 
-{ Version 1.2.0 (Emerald) }
+{ Version 1.3.0 (Green Lizard) }
 
 { (c) Johannes W. Dietrich, 1994 - 2026 }
 { (c) Nina Siegmar, 2020 - 2026 }
@@ -35,7 +35,7 @@ uses
   ComCtrls, StdCtrls, ExtCtrls, LCLType, Spin, Menus, Math,
   SimuladrenTypes, SimuladrenResources, SimulationEngine, Prediction, Plot,
   GUIServices, AboutBox, SetTargets, evoEngine, FitnessPlot, ParameterPlot,
-  DIFSupport, ScenarioHandler;
+  DIFSupport, ScenarioHandler, IPS;
 
 type
 
@@ -47,6 +47,7 @@ type
     EstimateGRCheckBox: TCheckBox;
     OpenDialog1: TOpenDialog;
     SaveDialog1: TSaveDialog;
+    SaveDialog2: TSaveDialog;
     SteadyStateButton: TButton;
     EvolveButton: TButton;
     CloseMenuItem: TMenuItem;
@@ -364,11 +365,14 @@ procedure TValuesForm.SaveMenuItemClick(Sender: TObject);
 var
   theForm: TForm;
   delimiter: char;
+  imageType: TImageType;
   fileName: string;
   theFilterIndex: integer;
 begin
+  delimiter := kNull;
   theForm := Screen.ActiveForm;
   if theForm = ValuesForm then
+  begin
     if SaveDialog1.Execute then
     begin
       fileName := SaveDialog1.FileName;
@@ -391,6 +395,47 @@ begin
       else
         SaveGrid(fileName, delimiter);
     end;
+  end
+  else if theForm = PlotForm then
+  begin
+    SaveDialog2.FilterIndex := 4;
+    if SaveDialog2.Execute then
+    begin
+      fileName := SaveDialog2.FileName;
+      theFilterIndex := SaveDialog2.FilterIndex;
+      case theFilterIndex of
+        1: ImageType := NULL;
+        2: imageType := BMP;
+        3: ImageType := XPM;
+        4: ImageType := PNG;
+        5: ImageType := PBM;
+        6: ImageType := JPG;
+        7: ImageType := TIFF;
+        8: ImageType := SVG;
+      end;
+      PlotForm.SaveChart(fileName, imageType);
+    end;
+  end
+  else if theForm = IPSForm then
+  begin
+    SaveDialog2.FilterIndex := 4;
+    if SaveDialog2.Execute then
+    begin
+      fileName := SaveDialog2.FileName;
+      theFilterIndex := SaveDialog2.FilterIndex;
+      case theFilterIndex of
+        1: ImageType := NULL;
+        2: imageType := BMP;
+        3: imageType := XPM;
+        4: imageType := PNG;
+        5: imageType := PBM;
+        6: imageType := JPG;
+        7: imageType := TIFF;
+        8: imageType := SVG;
+      end;
+      IPSForm.SaveBlockDiagram(filename, imageType);
+    end;
+  end;
 end;
 
 procedure AdaptMenus;
@@ -472,21 +517,21 @@ end;
 
 procedure TValuesForm.OpenMenuItemClick(Sender: TObject);
 var
-  theFileName:  string;
+  theFileName: string;
   theFilterIndex: integer;
   theVersion: Str13;
 begin
   if OpenDialog1.Execute then
   begin
-    theFileName    := OpenDialog1.FileName;
+    theFileName := OpenDialog1.FileName;
     theFilterIndex := OpenDialog1.FilterIndex;
     case theFilterIndex of
       1:
-        begin
-          theVersion := '';
-          ReadScenario(theFileName, theVersion);  {XML file}
-          SetParams(Sender, gActiveModel.StrucPars);
-        end;
+      begin
+        theVersion := '';
+        ReadScenario(theFileName, theVersion);  {XML file}
+        SetParams(Sender, gActiveModel.StrucPars);
+      end;
     end;
   end;
 end;
