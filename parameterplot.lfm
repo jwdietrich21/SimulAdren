@@ -6,9 +6,9 @@ object ParameterForm: TParameterForm
   Caption = 'Parameter Values over Generations'
   ClientHeight = 361
   ClientWidth = 615
-  LCLVersion = '4.4.0.0'
+  LCLVersion = '4.6.0.0'
   OnCreate = FormCreate
-  object Chart1: TChart
+  object ParameterChart: TChart
     Left = 0
     Height = 352
     Top = 0

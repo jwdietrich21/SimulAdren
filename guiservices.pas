@@ -55,6 +55,7 @@ function ScalingFactor: real;
 procedure ShowFileError;
 procedure ShowSaveError;
 procedure ShowVersionError;
+procedure ShowSVGVersionError;
 
 implementation
 
@@ -214,6 +215,12 @@ procedure ShowVersionError;
 begin
   bell;
   MessageDlg(FILE_VERSION_MESSAGE, mtError, [mbOK], 0);
+end;
+
+procedure ShowSVGVersionError;
+begin
+  bell;
+  MessageDlg(SVG_UNSUPPORTED_MESSAGE, mtError, [mbOK], 0);
 end;
 
 end.

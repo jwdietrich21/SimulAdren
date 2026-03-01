@@ -32,7 +32,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, TAGraph, TASeries,
-  SimulAdrenTypes, EvoEngine;
+  TADrawUtils, TADrawerSVG, TADrawerCanvas, SimulAdrenTypes, EvoEngine;
 
 type
 
@@ -46,6 +46,7 @@ type
 
   public
     procedure DrawFitness(theFittest: TFittest);
+    procedure SaveChart(fileName: string; imageType: TImageType);
   end;
 
 var
@@ -69,6 +70,34 @@ begin
   FitnessChartLineSeries1.Clear;
   for i := 0 to length(theFittest) - 1 do
     FitnessChartLineSeries1.AddXY(i, theFittest[i].fitness);
+end;
+
+procedure TFitnessPlotForm.SaveChart(fileName: string; imageType: TImageType);
+var
+  theStream: TFileStream;
+  theDrawer: IChartDrawer;
+begin
+  theStream := nil;
+  try
+    case imageType of
+      BMP: FitnessChart.SaveToBitmapFile(fileName);
+      XPM: FitnessChart.SaveToFile(TPixmap, fileName);
+      PNG: FitnessChart.SaveToFile(TPortableNetworkGraphic, fileName);
+      PBM: FitnessChart.SaveToFile(TPortableAnyMapGraphic, fileName);
+      JPG: FitnessChart.SaveToFile(TJPEGImage, fileName);
+      TIFF: FitnessChart.SaveToFile(TTIFFImage, fileName);
+      SVG: begin
+        theStream := TFileStream.Create(fileName, fmCreate);
+        theDrawer := TSVGDrawer.Create(theStream, True);
+        theDrawer.DoChartColorToFPColor := @ChartColorSysToFPColor;
+        with FitnessChart do
+          Draw(theDrawer, Rect(0, 0, Width, Height));
+      end;
+    end;
+  finally
+    if assigned(theStream) then
+      theStream.Free;
+  end;
 end;
 
 end.

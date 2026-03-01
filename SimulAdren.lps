@@ -10,9 +10,9 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="22"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="26"/>
+        <TopLine Value="34"/>
         <CursorPos X="32" Y="10"/>
-        <UsageCount Value="124"/>
+        <UsageCount Value="125"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -22,11 +22,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="GUI"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="13"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="418"/>
-        <CursorPos X="29" Y="430"/>
-        <UsageCount Value="124"/>
+        <CursorPos Y="2"/>
+        <UsageCount Value="125"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -37,7 +37,7 @@
         <EditorIndex Value="6"/>
         <WindowIndex Value="1"/>
         <CursorPos X="32" Y="10"/>
-        <UsageCount Value="124"/>
+        <UsageCount Value="125"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
@@ -47,12 +47,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="IPS"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="21"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="401"/>
-        <CursorPos Y="427"/>
-        <UsageCount Value="124"/>
+        <TopLine Value="394"/>
+        <CursorPos X="57" Y="4"/>
+        <UsageCount Value="125"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit3>
@@ -63,7 +62,7 @@
         <EditorIndex Value="1"/>
         <WindowIndex Value="1"/>
         <CursorPos X="46" Y="14"/>
-        <UsageCount Value="124"/>
+        <UsageCount Value="125"/>
         <Loaded Value="True"/>
       </Unit4>
       <Unit5>
@@ -75,8 +74,9 @@
         <UnitName Value="Plot"/>
         <EditorIndex Value="7"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="11"/>
-        <UsageCount Value="123"/>
+        <TopLine Value="18"/>
+        <CursorPos X="15" Y="25"/>
+        <UsageCount Value="124"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit5>
@@ -90,7 +90,7 @@
         <EditorIndex Value="8"/>
         <WindowIndex Value="1"/>
         <CursorPos X="32" Y="10"/>
-        <UsageCount Value="122"/>
+        <UsageCount Value="123"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit6>
@@ -99,7 +99,7 @@
         <IsPartOfProject Value="True"/>
         <WindowIndex Value="1"/>
         <CursorPos X="46" Y="14"/>
-        <UsageCount Value="119"/>
+        <UsageCount Value="120"/>
         <Loaded Value="True"/>
       </Unit7>
       <Unit8>
@@ -109,7 +109,7 @@
         <EditorIndex Value="4"/>
         <WindowIndex Value="1"/>
         <CursorPos X="63" Y="20"/>
-        <UsageCount Value="109"/>
+        <UsageCount Value="110"/>
         <Loaded Value="True"/>
       </Unit8>
       <Unit9>
@@ -119,7 +119,7 @@
         <EditorIndex Value="3"/>
         <WindowIndex Value="1"/>
         <CursorPos X="15" Y="3"/>
-        <UsageCount Value="109"/>
+        <UsageCount Value="110"/>
         <Loaded Value="True"/>
       </Unit9>
       <Unit10>
@@ -132,7 +132,7 @@
         <EditorIndex Value="20"/>
         <WindowIndex Value="1"/>
         <CursorPos Y="2"/>
-        <UsageCount Value="97"/>
+        <UsageCount Value="98"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit10>
@@ -143,7 +143,7 @@
         <EditorIndex Value="12"/>
         <WindowIndex Value="1"/>
         <CursorPos X="19" Y="26"/>
-        <UsageCount Value="97"/>
+        <UsageCount Value="98"/>
         <Loaded Value="True"/>
       </Unit11>
       <Unit12>
@@ -153,7 +153,7 @@
         <EditorIndex Value="10"/>
         <WindowIndex Value="1"/>
         <CursorPos X="32" Y="10"/>
-        <UsageCount Value="96"/>
+        <UsageCount Value="97"/>
         <Loaded Value="True"/>
       </Unit12>
       <Unit13>
@@ -163,7 +163,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="68"/>
         <CursorPos X="32" Y="10"/>
-        <UsageCount Value="96"/>
+        <UsageCount Value="97"/>
         <Loaded Value="True"/>
       </Unit13>
       <Unit14>
@@ -176,7 +176,7 @@
         <EditorIndex Value="9"/>
         <WindowIndex Value="1"/>
         <CursorPos X="32" Y="10"/>
-        <UsageCount Value="82"/>
+        <UsageCount Value="83"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit14>
@@ -189,9 +189,9 @@
         <UnitName Value="FitnessPlot"/>
         <EditorIndex Value="18"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="16"/>
-        <CursorPos X="32" Y="10"/>
-        <UsageCount Value="67"/>
+        <TopLine Value="73"/>
+        <CursorPos X="22" Y="82"/>
+        <UsageCount Value="68"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit15>
@@ -204,9 +204,8 @@
         <UnitName Value="ParameterPlot"/>
         <EditorIndex Value="19"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="25"/>
-        <CursorPos X="32" Y="10"/>
-        <UsageCount Value="67"/>
+        <CursorPos X="25" Y="2"/>
+        <UsageCount Value="68"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit16>
@@ -218,7 +217,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="104"/>
         <CursorPos X="32" Y="10"/>
-        <UsageCount Value="53"/>
+        <UsageCount Value="54"/>
         <Loaded Value="True"/>
       </Unit17>
       <Unit18>
@@ -235,7 +234,7 @@
           <TopLine Value="263"/>
           <CursorPos X="66" Y="1509"/>
         </ExtraEditor1>
-        <UsageCount Value="72"/>
+        <UsageCount Value="73"/>
         <Loaded Value="True"/>
       </Unit18>
       <Unit19>
@@ -244,9 +243,9 @@
         <UnitName Value="GUIServices"/>
         <EditorIndex Value="5"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="180"/>
-        <CursorPos X="32" Y="10"/>
-        <UsageCount Value="68"/>
+        <TopLine Value="200"/>
+        <CursorPos X="10" Y="223"/>
+        <UsageCount Value="69"/>
         <Loaded Value="True"/>
       </Unit19>
       <Unit20>
@@ -257,7 +256,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="156"/>
         <CursorPos X="32" Y="10"/>
-        <UsageCount Value="52"/>
+        <UsageCount Value="53"/>
         <Loaded Value="True"/>
       </Unit20>
       <Unit21>
@@ -266,9 +265,8 @@
         <UnitName Value="SimuladrenResources"/>
         <EditorIndex Value="16"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="27"/>
-        <CursorPos X="32" Y="10"/>
-        <UsageCount Value="52"/>
+        <CursorPos X="34" Y="3"/>
+        <UsageCount Value="53"/>
         <Loaded Value="True"/>
       </Unit21>
       <Unit22>
@@ -279,7 +277,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="29"/>
         <CursorPos X="32" Y="10"/>
-        <UsageCount Value="51"/>
+        <UsageCount Value="52"/>
         <Loaded Value="True"/>
       </Unit22>
       <Unit23>
@@ -396,127 +394,114 @@
         <UsageCount Value="9"/>
       </Unit36>
     </Units>
-    <JumpHistory Count="30" HistoryIndex="29">
+    <JumpHistory Count="27" HistoryIndex="26">
       <Position1>
-        <Filename Value="gui.pas"/>
-        <Caret Line="374" TopLine="366"/>
+        <Filename Value="simuladrentypes.pas"/>
+        <Caret Line="64" Column="23" TopLine="40"/>
       </Position1>
       <Position2>
-        <Filename Value="gui.pas"/>
-        <Caret Line="406" Column="30" TopLine="395"/>
+        <Filename Value="ips.pas"/>
+        <Caret Line="60" Column="15" TopLine="44"/>
       </Position2>
       <Position3>
-        <Filename Value="plot.pas"/>
-        <Caret Line="101" TopLine="74"/>
+        <Filename Value="ips.pas"/>
+        <Caret Line="437" TopLine="405"/>
       </Position3>
       <Position4>
-        <Filename Value="gui.pas"/>
-        <Caret Line="409" Column="41" TopLine="393"/>
+        <Filename Value="plot.pas"/>
+        <Caret Line="35" Column="38" TopLine="20"/>
       </Position4>
       <Position5>
-        <Filename Value="plot.pas"/>
-        <Caret Line="115" Column="22" TopLine="86"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="429" TopLine="399"/>
       </Position5>
       <Position6>
-        <Filename Value="plot.pas"/>
-        <Caret Line="36" Column="3" TopLine="21"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="38" Column="35" TopLine="20"/>
       </Position6>
       <Position7>
-        <Filename Value="plot.pas"/>
-        <Caret Line="112" Column="50" TopLine="87"/>
+        <Filename Value="ips.pas"/>
+        <Caret Line="424" Column="54" TopLine="404"/>
       </Position7>
       <Position8>
-        <Filename Value="plot.pas"/>
-        <Caret Line="89" Column="19" TopLine="88"/>
+        <Filename Value="ips.pas"/>
+        <Caret Line="417" Column="36" TopLine="231"/>
       </Position8>
       <Position9>
         <Filename Value="plot.pas"/>
-        <Caret Line="36" Column="20" TopLine="20"/>
+        <Caret Line="119" Column="45" TopLine="91"/>
       </Position9>
       <Position10>
         <Filename Value="plot.pas"/>
-        <Caret Line="35" Column="17" TopLine="19"/>
+        <Caret Line="118" Column="10" TopLine="91"/>
       </Position10>
       <Position11>
-        <Filename Value="plot.pas"/>
-        <Caret Line="103" TopLine="87"/>
+        <Filename Value="ips.pas"/>
+        <Caret Line="430" Column="33" TopLine="12"/>
       </Position11>
       <Position12>
-        <Filename Value="plot.pas"/>
-        <Caret Line="111" TopLine="87"/>
+        <Filename Value="ips.pas"/>
+        <Caret Line="35" Column="25" TopLine="27"/>
       </Position12>
       <Position13>
-        <Filename Value="plot.pas"/>
-        <Caret Line="112" TopLine="87"/>
+        <Filename Value="ips.pas"/>
+        <Caret Line="422" Column="24" TopLine="405"/>
       </Position13>
       <Position14>
-        <Filename Value="simuladrentypes.pas"/>
-        <Caret Line="64" Column="23" TopLine="40"/>
+        <Filename Value="ips.pas"/>
+        <Caret Line="431" TopLine="403"/>
       </Position14>
       <Position15>
         <Filename Value="ips.pas"/>
-        <Caret Line="60" Column="15" TopLine="44"/>
+        <Caret Line="432" Column="22" TopLine="403"/>
       </Position15>
       <Position16>
         <Filename Value="ips.pas"/>
-        <Caret Line="437" TopLine="405"/>
+        <Caret Line="431" TopLine="404"/>
       </Position16>
       <Position17>
-        <Filename Value="plot.pas"/>
-        <Caret Line="35" Column="38" TopLine="20"/>
+        <Filename Value="ips.pas"/>
+        <Caret Line="432" TopLine="404"/>
       </Position17>
       <Position18>
-        <Filename Value="gui.pas"/>
-        <Caret Line="429" TopLine="399"/>
+        <Filename Value="guiservices.pas"/>
+        <Caret Line="58" Column="31" TopLine="49"/>
       </Position18>
       <Position19>
         <Filename Value="gui.pas"/>
-        <Caret Line="38" Column="35" TopLine="20"/>
+        <Caret Line="436" Column="31" TopLine="425"/>
       </Position19>
       <Position20>
         <Filename Value="ips.pas"/>
-        <Caret Line="424" Column="54" TopLine="404"/>
+        <Caret Line="61" Column="31" TopLine="44"/>
       </Position20>
       <Position21>
         <Filename Value="ips.pas"/>
-        <Caret Line="417" Column="36" TopLine="231"/>
+        <Caret Line="428" Column="29" TopLine="411"/>
       </Position21>
       <Position22>
-        <Filename Value="plot.pas"/>
-        <Caret Line="119" Column="45" TopLine="91"/>
+        <Filename Value="ips.pas"/>
       </Position22>
       <Position23>
-        <Filename Value="plot.pas"/>
-        <Caret Line="118" Column="10" TopLine="91"/>
+        <Filename Value="ips.pas"/>
+        <Caret Line="430" Column="25" TopLine="411"/>
       </Position23>
       <Position24>
-        <Filename Value="ips.pas"/>
-        <Caret Line="430" Column="33" TopLine="12"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="436" Column="20" TopLine="416"/>
       </Position24>
       <Position25>
-        <Filename Value="ips.pas"/>
-        <Caret Line="35" Column="25" TopLine="27"/>
+        <Filename Value="parameterplot.pas"/>
+        <Caret Line="50" Column="66" TopLine="27"/>
       </Position25>
       <Position26>
-        <Filename Value="ips.pas"/>
-        <Caret Line="422" Column="24" TopLine="405"/>
+        <Filename Value="fitnessplot.pas"/>
+        <Caret Line="49" Column="66" TopLine="38"/>
       </Position26>
       <Position27>
-        <Filename Value="ips.pas"/>
-        <Caret Line="431" TopLine="403"/>
+        <Filename Value="fitnessplot.pas"/>
+        <Caret Line="96" Column="17" TopLine="79"/>
       </Position27>
-      <Position28>
-        <Filename Value="ips.pas"/>
-        <Caret Line="432" Column="22" TopLine="403"/>
-      </Position28>
-      <Position29>
-        <Filename Value="ips.pas"/>
-        <Caret Line="431" TopLine="404"/>
-      </Position29>
-      <Position30>
-        <Filename Value="ips.pas"/>
-        <Caret Line="432" TopLine="404"/>
-      </Position30>
     </JumpHistory>
     <RunParams>
       <FormatVersion Value="2"/>

@@ -45,6 +45,7 @@ const
   FILE_VERSION_MESSAGE = 'This scenario file has a file version that is not supported by this version of SimulAdren.';
   FILE_FORMAT_ERROR_MESSAGE = 'This is not a valid XML file that can be used by SimulAdren.';
   SAVE_ERROR_MESSAGE = 'Error saving the file';
+  SVG_UNSUPPORTED_MESSAGE = 'SVG export of processing structurs is not supported in this version of SimulAdren';
 
   MIASE_URL = 'http://co.mbine.org/standards/miase';
   MIASE_SIMULADREN_STANDARD_CODE = 'Model of HPA feedback control for use with SimulAdren, as available from ' +  BASE_URL;

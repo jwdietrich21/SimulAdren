@@ -422,9 +422,9 @@ begin
       JPG: IPSImage.Picture.SaveToFile(filename, 'JPG');
       TIFF: IPSImage.Picture.SaveToFile(filename, 'TIFF');
       SVG: begin
-        theStream := TFileStream.Create(fileName, fmCreate);
+        //theStream := TFileStream.Create(fileName, fmCreate);
         { #todo -oJWD : To be completed }
-
+        ShowSVGVersionError;
       end;
     end;
   finally

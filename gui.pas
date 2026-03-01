@@ -416,6 +416,46 @@ begin
       PlotForm.SaveChart(fileName, imageType);
     end;
   end
+  else if theForm = ParameterForm then
+  begin
+    SaveDialog2.FilterIndex := 4;
+    if SaveDialog2.Execute then
+    begin
+      fileName := SaveDialog2.FileName;
+      theFilterIndex := SaveDialog2.FilterIndex;
+      case theFilterIndex of
+        1: ImageType := NULL;
+        2: imageType := BMP;
+        3: ImageType := XPM;
+        4: ImageType := PNG;
+        5: ImageType := PBM;
+        6: ImageType := JPG;
+        7: ImageType := TIFF;
+        8: ImageType := SVG;
+      end;
+      ParameterForm.SaveChart(fileName, imageType);
+    end;
+  end
+  else if theForm = FitnessPlotForm then
+  begin
+    SaveDialog2.FilterIndex := 4;
+    if SaveDialog2.Execute then
+    begin
+      fileName := SaveDialog2.FileName;
+      theFilterIndex := SaveDialog2.FilterIndex;
+      case theFilterIndex of
+        1: ImageType := NULL;
+        2: imageType := BMP;
+        3: ImageType := XPM;
+        4: ImageType := PNG;
+        5: ImageType := PBM;
+        6: ImageType := JPG;
+        7: ImageType := TIFF;
+        8: ImageType := SVG;
+      end;
+      FitnessPlotForm.SaveChart(fileName, imageType);
+    end;
+  end
   else if theForm = IPSForm then
   begin
     SaveDialog2.FilterIndex := 4;

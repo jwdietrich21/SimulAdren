@@ -32,14 +32,14 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, TAGraph, TASeries,
-  SimulAdrenTypes, EvoEngine;
+  TADrawUtils, TADrawerSVG, TADrawerCanvas, SimulAdrenTypes, EvoEngine;
 
 type
 
   { TParameterForm }
 
   TParameterForm = class(TForm)
-    Chart1: TChart;
+    ParameterChart: TChart;
     GELineSeries: TLineSeries;
     GRLineSeries: TLineSeries;
     procedure FormCreate(Sender: TObject);
@@ -47,6 +47,7 @@ type
 
   public
     procedure DrawParameters(theFittest: TFittest);
+    procedure SaveChart(fileName: string; imageType: TImageType);
   end;
 
 var
@@ -74,6 +75,34 @@ begin
   begin
     GELineSeries.AddXY(i, theFittest[i].GE);
     GRLineSeries.AddXY(i, theFittest[i].GR);
+  end;
+end;
+
+procedure TParameterForm.SaveChart(fileName: string; imageType: TImageType);
+var
+  theStream: TFileStream;
+  theDrawer: IChartDrawer;
+begin
+  theStream := nil;
+  try
+    case imageType of
+      BMP: ParameterChart.SaveToBitmapFile(fileName);
+      XPM: ParameterChart.SaveToFile(TPixmap, fileName);
+      PNG: ParameterChart.SaveToFile(TPortableNetworkGraphic, fileName);
+      PBM: ParameterChart.SaveToFile(TPortableAnyMapGraphic, fileName);
+      JPG: ParameterChart.SaveToFile(TJPEGImage, fileName);
+      TIFF: ParameterChart.SaveToFile(TTIFFImage, fileName);
+      SVG: begin
+        theStream := TFileStream.Create(fileName, fmCreate);
+        theDrawer := TSVGDrawer.Create(theStream, True);
+        theDrawer.DoChartColorToFPColor := @ChartColorSysToFPColor;
+        with ParameterChart do
+          Draw(theDrawer, Rect(0, 0, Width, Height));
+      end;
+    end;
+  finally
+    if assigned(theStream) then
+      theStream.Free;
   end;
 end;
 
