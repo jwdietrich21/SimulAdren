@@ -96,6 +96,7 @@ end;
 
 procedure TTargetForm.FormCreate(Sender: TObject);
 begin
+  Scaled := true;
   targetA := kEvoTargets.ACTH;
   targetF := kEvoTargets.F;
   FloatSpinEditA.Value := targetA;

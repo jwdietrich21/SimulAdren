@@ -84,6 +84,7 @@ end;
 
 procedure TAboutWindow.FormCreate(Sender: TObject);
 begin
+  Scaled := true;
   VersionLabel.Caption := 'Version ' + FileVersion;
 end;
 

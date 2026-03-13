@@ -61,6 +61,7 @@ implementation
 
 procedure TParameterForm.FormCreate(Sender: TObject);
 begin
+  Scaled := true;
   left := 26;
   top := screen.Height - height - trunc(39 * gScalingFactor);
 end;

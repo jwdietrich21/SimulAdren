@@ -595,6 +595,7 @@ procedure TValuesForm.FormCreate(Sender: TObject);
 var
   i: integer;
 begin
+  Scaled := true;
   Left := 13;
   AdaptMenus;
   CRHSpinEdit.Value := kCRH / CRHFactor;

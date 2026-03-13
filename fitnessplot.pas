@@ -60,6 +60,7 @@ implementation
 
 procedure TFitnessPlotForm.FormCreate(Sender: TObject);
 begin
+  Scaled := true;
   left := screen.Width - width - trunc(39 * gScalingFactor);
 end;
 
