@@ -1,7 +1,7 @@
 object FitnessPlotForm: TFitnessPlotForm
-  Left = 784
+  Left = 420
   Height = 326
-  Top = 267
+  Top = 237
   Width = 525
   Caption = 'Fitness Over Generations'
   ClientHeight = 326

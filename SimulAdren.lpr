@@ -37,8 +37,7 @@ uses
   Plot, prediction, SimuladrenTypes, Solver, AboutBox, EnvironmentInfo,
   RandomFunctions, evoEngine, SetTargets, FitnessPlot, ParameterPlot,
   DIFSupport, SystemsDiagram, BaseServices, GUIServices, ScenarioHandler,
-  SimuladrenResources
-  { you can add units after this };
+  SimuladrenResources;
 
 {$R *.res}
 
@@ -57,4 +56,3 @@ begin
   Application.CreateForm(TParameterForm, ParameterForm);
   Application.Run;
 end.
-

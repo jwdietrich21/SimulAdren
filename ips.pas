@@ -405,6 +405,7 @@ end;
 
 procedure TIPSForm.FormCreate(Sender: TObject);
 begin
+  Scaled := true;
   DrawIPS(Sender);
 end;
 
