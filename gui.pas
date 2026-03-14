@@ -7,7 +7,7 @@ unit GUI;
 { Simulation program for the hypothalamus-pituitary-adrenal axis }
 { GUI }
 
-{ Version 1.3.0 (Green Lizard) }
+{ Version 2.0.0 (Rubycon) }
 
 { (c) Johannes W. Dietrich, 1994 - 2026 }
 { (c) Nina Siegmar, 2020 - 2026 }
@@ -43,6 +43,8 @@ type
 
   TValuesForm = class(TForm)
     AppleMenu: TMenuItem;
+    ModelVersionLabel: TLabel;
+    ModelVersionComboBox: TComboBox;
     EstimateGECheckbox: TCheckBox;
     EstimateGRCheckBox: TCheckBox;
     OpenDialog1: TOpenDialog;

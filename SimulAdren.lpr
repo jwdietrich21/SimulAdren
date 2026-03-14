@@ -7,7 +7,7 @@ program SimulAdren;
 { Simulation program for the hypothalamus-pituitary-adrenal axis }
 { Main project file }
 
-{ Version 1.3.0 (Green Lizard) }
+{ Version 2.0.0 (Rubycon) }
 
 { (c) Johannes W. Dietrich, 1994 - 2026 }
 { (c) Nina Siegmar, 2020 - 2026 }
