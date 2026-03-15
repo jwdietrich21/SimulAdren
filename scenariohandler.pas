@@ -102,6 +102,7 @@ begin
   Result.Terms := kSTANDARD_MODEL_TERMS;
   Result.Iterations := 0;
   Result.Imported := false;
+  Result.Version := '';
 end;
 
 procedure ReadScenario(theFileName: string; var modelVersion: Str13);

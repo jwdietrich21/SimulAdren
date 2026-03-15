@@ -59,6 +59,7 @@ type
     StrucPars: TStrucPars;
     Iterations: integer;
     Imported: boolean;
+    Version: String;
   end;
 
   TImageType = (NULL, BMP, XPM, PNG, PBM, JPG, TIFF, SVG);

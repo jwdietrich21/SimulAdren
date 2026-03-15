@@ -42,7 +42,19 @@ type
   { TValuesForm }
 
   TValuesForm = class(TForm)
+    Alpha3Edit: TFloatSpinEdit;
+    Alpha3Label: TLabel;
+    Alpha3UnitLabel: TLabel;
+    Beta1Edit: TFloatSpinEdit;
+    Beta3Edit: TFloatSpinEdit;
+    Beta1Label: TLabel;
+    Beta3Label: TLabel;
+    Beta1UnitLabel: TLabel;
     AppleMenu: TMenuItem;
+    Alpha1Edit: TFloatSpinEdit;
+    Alpha1Label: TLabel;
+    Alpha1UnitLabel: TLabel;
+    Beta3UnitLabel: TLabel;
     ModelVersionLabel: TLabel;
     ModelVersionComboBox: TComboBox;
     EstimateGECheckbox: TCheckBox;
@@ -50,6 +62,8 @@ type
     OpenDialog1: TOpenDialog;
     SaveDialog1: TSaveDialog;
     SaveDialog2: TSaveDialog;
+    Shape1: TShape;
+    Shape2: TShape;
     SteadyStateButton: TButton;
     EvolveButton: TButton;
     CloseMenuItem: TMenuItem;
@@ -108,12 +122,17 @@ type
     IterationsLabel: TLabel;
     GALabel: TLabel;
     GAEdit: TFloatSpinEdit;
+    procedure Alpha1EditChange(Sender: TObject);
+    procedure Alpha3EditChange(Sender: TObject);
+    procedure Beta1EditChange(Sender: TObject);
+    procedure Beta3EditChange(Sender: TObject);
     procedure CloseMenuItemClick(Sender: TObject);
     procedure CopyMenuItemClick(Sender: TObject);
     procedure EstimateGECheckboxChange(Sender: TObject);
     procedure EstimateGRCheckBoxChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure MacAboutItemClick(Sender: TObject);
+    procedure ModelVersionComboBoxChange(Sender: TObject);
     procedure OpenMenuItemClick(Sender: TObject);
     procedure OpenToolButtonClick(Sender: TObject);
     procedure SaveToolButtonClick(Sender: TObject);
@@ -134,6 +153,9 @@ type
     procedure CopyCells(Sender: TObject);
     procedure ReadParams(Sender: TObject; var params: TStrucPars);
     procedure SetParams(Sender: TObject; const params: TStrucPars);
+    procedure SetModel(Sender: TObject);
+    procedure SetG1(Sender: TObject);
+    procedure SetG3(Sender: TObject);
   end;
 
 var
@@ -552,9 +574,49 @@ begin
   GActiveModel.StrucPars := params;
 end;
 
+procedure TValuesForm.SetModel(Sender: TObject);
+begin
+  gActiveModel.Version := ModelVersionComboBox.Caption;
+  if ModelVersionComboBox.ItemIndex < 2 then
+  begin
+    G1Edit.Enabled := true;
+    Alpha1Edit.Enabled := false;
+    Beta1Edit.Enabled := false;
+    G3Edit.Enabled := true;
+    Alpha3Edit.Enabled := false;
+    Beta3Edit.Enabled := false;
+  end
+  else
+  begin
+    G1Edit.Enabled := false;
+    Alpha1Edit.Enabled := true;
+    Beta1Edit.Enabled := true;
+    G3Edit.Enabled := false;
+    Alpha3Edit.Enabled := true;
+    Beta3Edit.Enabled := true;
+    SetG1(Sender);
+    SetG3(Sender);
+  end;
+end;
+
+procedure TValuesForm.SetG1(Sender: TObject);
+begin
+  G1Edit.Value := Alpha1Edit.Value / Beta1Edit.Value;
+end;
+
+procedure TValuesForm.SetG3(Sender: TObject);
+begin
+  G3Edit.Value := Alpha3Edit.Value / Beta3Edit.Value;
+end;
+
 procedure TValuesForm.MacAboutItemClick(Sender: TObject);
 begin
   ShowAboutWindow(Sender);
+end;
+
+procedure TValuesForm.ModelVersionComboBoxChange(Sender: TObject);
+begin
+  SetModel(Sender);
 end;
 
 procedure TValuesForm.OpenMenuItemClick(Sender: TObject);
@@ -609,11 +671,32 @@ begin
   ValuesGrid.Columns[0].Title.Font.Color := clDarkOrange;
   ValuesGrid.Columns[1].Title.Font.Color := clDarkOrange;
   ValuesGrid.Columns[2].Title.Font.Color := clGoldenRod;
+  SetModel(Sender);
 end;
 
 procedure TValuesForm.CloseMenuItemClick(Sender: TObject);
 begin
   application.Terminate;
+end;
+
+procedure TValuesForm.Alpha1EditChange(Sender: TObject);
+begin
+  SetG1(Sender);
+end;
+
+procedure TValuesForm.Alpha3EditChange(Sender: TObject);
+begin
+  SetG3(Sender);
+end;
+
+procedure TValuesForm.Beta1EditChange(Sender: TObject);
+begin
+  SetG1(Sender);
+end;
+
+procedure TValuesForm.Beta3EditChange(Sender: TObject);
+begin
+  SetG3(Sender);
 end;
 
 procedure TValuesForm.CopyMenuItemClick(Sender: TObject);
