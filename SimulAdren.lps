@@ -24,7 +24,8 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="13"/>
         <WindowIndex Value="1"/>
-        <CursorPos Y="2"/>
+        <TopLine Value="582"/>
+        <CursorPos X="59" Y="590"/>
         <UsageCount Value="129"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>

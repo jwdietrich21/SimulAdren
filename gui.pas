@@ -577,23 +577,24 @@ end;
 procedure TValuesForm.SetModel(Sender: TObject);
 begin
   gActiveModel.Version := ModelVersionComboBox.Caption;
-  if ModelVersionComboBox.ItemIndex < 2 then
+  // Model versions 1 or 1.2?
+  if (ModelVersionComboBox.ItemIndex = 0) or (ModelVersionComboBox.ItemIndex = 2) then
   begin
-    G1Edit.Enabled := true;
-    Alpha1Edit.Enabled := false;
-    Beta1Edit.Enabled := false;
-    G3Edit.Enabled := true;
-    Alpha3Edit.Enabled := false;
-    Beta3Edit.Enabled := false;
+    G1Edit.Enabled := True;
+    Alpha1Edit.Enabled := False;
+    Beta1Edit.Enabled := False;
+    G3Edit.Enabled := True;
+    Alpha3Edit.Enabled := False;
+    Beta3Edit.Enabled := False;
   end
   else
   begin
-    G1Edit.Enabled := false;
-    Alpha1Edit.Enabled := true;
-    Beta1Edit.Enabled := true;
-    G3Edit.Enabled := false;
-    Alpha3Edit.Enabled := true;
-    Beta3Edit.Enabled := true;
+    G1Edit.Enabled := False;
+    Alpha1Edit.Enabled := True;
+    Beta1Edit.Enabled := True;
+    G3Edit.Enabled := False;
+    Alpha3Edit.Enabled := True;
+    Beta3Edit.Enabled := True;
     SetG1(Sender);
     SetG3(Sender);
   end;
@@ -659,7 +660,7 @@ procedure TValuesForm.FormCreate(Sender: TObject);
 var
   i: integer;
 begin
-  Scaled := true;
+  Scaled := True;
   Left := 13;
   AdaptMenus;
   CRHSpinEdit.Value := kCRH / CRHFactor;
