@@ -145,6 +145,7 @@ type
     procedure SaveGrid(theFileName: string; theDelimiter: char);
   private
     { private declarations }
+    procedure CheckEvolveEnabling(Sender: TObject);
   public
     { public declarations }
     AllPopulations: TAllPopulations;
@@ -345,7 +346,7 @@ end;
 
 procedure TValuesForm.EvolveButtonClick(Sender: TObject);
 var
-  params: TStrucPars;
+  testModel: tActiveModel;
   EvoTargets: TEvoTargets;
 begin
   if EstimateGRCheckbox.Checked or EstimateGECheckbox.Checked then
@@ -353,19 +354,19 @@ begin
     TargetForm.ShowModal;
     if TargetForm.ModalResult = mrOk then
     begin
-      params.G1 := G1Edit.Value;
-      params.G3 := G3Edit.Value;
-      params.GA := GAEdit.Value * GAFactor;
+      testModel.StrucPars.G1 := G1Edit.Value;
+      testModel.StrucPars.G3 := G3Edit.Value;
+      testModel.StrucPars.GA := GAEdit.Value * GAFactor;
       if EstimateGRCheckbox.Checked then
-        params.GR := Math.NaN
+        testModel.StrucPars.GR := Math.NaN
       else
-        params.GR := GREdit.Value;
+        testModel.StrucPars.GR := GREdit.Value;
       if EstimateGECheckbox.Checked then
-        params.GE := Math.NaN
+        testModel.StrucPars.GE := Math.NaN
       else
-        params.GE := GEEdit.Value;
-      params.DA := DAEdit.Value * DAFactor;
-      params.DR := DREdit.Value * DRFactor;
+        testModel.StrucPars.GE := GEEdit.Value;
+      testModel.StrucPars.DA := DAEdit.Value * DAFactor;
+      testModel.StrucPars.DR := DREdit.Value * DRFactor;
       EvoTargets.ACTH := TargetForm.targetA;
       EvoTargets.F := TargetForm.targetF;
       EvoTargets.LowEdge := TargetForm.LowerBoundSpinEdit.Value;
@@ -376,11 +377,11 @@ begin
       EvoTargets.TournamentSize := TargetForm.TournamentSizeSpinEdit.Value;
       FitnessPlotForm.Show;
       ParameterForm.Show;
-      GeneticAlgorithm(CRHSpinEdit.Value * CRHFactor, params, EvoTargets,
+      GeneticAlgorithm(CRHSpinEdit.Value * CRHFactor, testModel, EvoTargets,
         AllPopulations, FittestIndividuals);
       FitnessPlotForm.DrawFitness(FittestIndividuals);
       ParameterForm.DrawParameters(FittestIndividuals);
-      SetParams(Sender, params);
+      SetParams(Sender, testModel.StrucPars);
     end;
   end;
 end;
@@ -705,6 +706,15 @@ begin
   CopyCells(Sender);
 end;
 
+procedure TValuesForm.CheckEvolveEnabling(Sender: TObject);
+begin
+  if EstimateGECheckbox.Checked or EstimateGRCheckbox.Checked then
+    EvolveButton.Enabled := True
+  else
+    EvolveButton.Enabled := False;
+end;
+
+
 procedure TValuesForm.EstimateGECheckboxChange(Sender: TObject);
 begin
   if EstimateGECheckbox.Checked then
@@ -714,6 +724,7 @@ begin
   end
   else
     GEEdit.Enabled := True;
+  CheckEvolveEnabling(Sender);
 end;
 
 procedure TValuesForm.EstimateGRCheckBoxChange(Sender: TObject);
@@ -725,6 +736,7 @@ begin
   end
   else
     GREdit.Enabled := True;
+  CheckEvolveEnabling(Sender);
 end;
 
 

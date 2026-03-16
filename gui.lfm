@@ -385,6 +385,7 @@ object ValuesForm: TValuesForm
     Width = 75
     Anchors = [akRight, akBottom]
     Caption = 'Estimate'
+    Enabled = False
     ParentShowHint = False
     ShowHint = True
     TabOrder = 13

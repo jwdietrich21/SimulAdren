@@ -64,7 +64,7 @@ function Crossover(const parents: TParents; const params: TStrucPars): TChildren
 function Mutated(const Individual: TIndividual; const params: TStrucPars;
   const MutationRate: real; const lowBound, highBound: real): TIndividual;
 procedure GeneticAlgorithm(const CRH: extended;
-  var params: TStrucPars; const EvoTargets: TEvoTargets;
+  var model: tActiveModel; const EvoTargets: TEvoTargets;
   var AllPopulations: TAllPopulations; var theFittest: TFittest);
 
 implementation
@@ -225,7 +225,7 @@ begin
 end;
 
 procedure GeneticAlgorithm(const CRH: extended;
-  var params: TStrucPars; const EvoTargets: TEvoTargets;
+  var model: tActiveModel; const EvoTargets: TEvoTargets;
   var AllPopulations: TAllPopulations; var theFittest: TFittest);
   { params: passed record of parameters. Parameters to be modified marked by NaN }
 var
@@ -245,12 +245,12 @@ begin
   SetLength(AllPopulations, EvoTargets.Generations);
   SetLength(theFittest, EvoTargets.Generations);
   SetLength(nextPopulation, EvoTargets.PopulationSize);
-  curPopulation := InitialPopulation(EvoTargets.PopulationSize, params, EvoTargets.LowEdge, EvoTargets.HighEdge);
+  curPopulation := InitialPopulation(EvoTargets.PopulationSize, model.StrucPars, EvoTargets.LowEdge, EvoTargets.HighEdge);
   for i := 0 to EvoTargets.Generations - 1 do
   begin
     for j := 0 to EvoTargets.PopulationSize - 1 do
       curPopulation[j].fitness :=
-        Fitness(CRH, params, curPopulation[j], EvoTargets);
+        Fitness(CRH, model.StrucPars, curPopulation[j], EvoTargets);
     bestIndividual := Fittest(curPopulation);
     theFittest[i] := bestIndividual;
     AllPopulations[i] := CurPopulation;
@@ -261,20 +261,20 @@ begin
       begin
         parents[0] := curPopulation[k];
         parents[1] := curPopulation[k + 1];
-        children := Crossover(parents, params);
-        nextPopulation[k] := Mutated(children[0], params, EvoTargets.MutationRate,
+        children := Crossover(parents, model.StrucPars);
+        nextPopulation[k] := Mutated(children[0], model.StrucPars, EvoTargets.MutationRate,
           EvoTargets.LowEdge, EvoTargets.HighEdge);
         nextPopulation[k + 1] :=
-          Mutated(children[1], params, EvoTargets.MutationRate, EvoTargets.LowEdge, EvoTargets.HighEdge);
+          Mutated(children[1], model.StrucPars, EvoTargets.MutationRate, EvoTargets.LowEdge, EvoTargets.HighEdge);
       end;
     end;
     nextPopulation[0] := bestIndividual;
     curPopulation := nextPopulation;
   end;
-  if isNan(params.GR) then  // NaN if to be estimated by GA
-    params.GR := theFittest[generations - 1].GR;
-  if isNan(params.GE) then
-    params.GE := theFittest[generations - 1].GE;
+  if isNan(model.StrucPars.GR) then  // NaN if to be estimated by GA
+    model.StrucPars.GR := theFittest[generations - 1].GR;
+  if isNan(model.StrucPars.GE) then
+    model.StrucPars.GE := theFittest[generations - 1].GE;
 end;
 
 end.
