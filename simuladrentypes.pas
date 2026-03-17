@@ -64,6 +64,8 @@ type
 
   TImageType = (NULL, BMP, XPM, PNG, PBM, JPG, TIFF, SVG);
 
+  TTimeUnit = (minutes, hours);
+
   Str13 = string[13];
 
 const

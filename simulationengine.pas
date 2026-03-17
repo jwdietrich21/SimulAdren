@@ -78,7 +78,7 @@ var
   gBlocks: TBlocks;
   gPrediction: TPredictionArray;
 
-procedure RunSimulation(CRH: extended; model: tActiveModel; nmax: integer);
+procedure RunSimulation(CRH: extended; model: tActiveModel);
 function PredictSteadyState(CRH: extended; model: tActiveModel): TPredictionArray;
 
 implementation
@@ -138,19 +138,19 @@ begin
   end;
 end;
 
-procedure RunSimulation(CRH: extended; model: tActiveModel; nmax: integer);
+procedure RunSimulation(CRH: extended; model: tActiveModel);
 var
   e, ACTH, PRF, F, v, yr: extended;
   i: integer;
   params: TStrucPars;
 begin
   params := model.StrucPars;
-  if nmax > 0 then
+  if model.Iterations > 0 then
   begin
     gPrediction := PredictSteadyState(CRH, model);
 
     gSequence.size := 0; // delete content
-    gSequence.size := nmax;
+    gSequence.size := model.Iterations;;
     gBlocks.G1 := TP.Create;
     gBlocks.G3 := TP.Create;
     gBlocks.GE := TP.Create;
@@ -177,7 +177,7 @@ begin
     end;
 
     yr := 20;
-    for i := 0 to nmax - 1 do
+    for i := 0 to model.Iterations - 1 do
     begin
       gBlocks.NoCoDI.input1 := CRH;
       gBlocks.NoCoDI.input2 := yR;

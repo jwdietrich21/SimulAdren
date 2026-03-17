@@ -29,7 +29,7 @@ object PlotForm: TPlotForm
         Range.UseMax = True
         Range.UseMin = True
         Title.Visible = True
-        Title.Caption = 'Iteration'
+        Title.Caption = 'Time'
         Title.LabelBrush.Style = bsClear
       end>
     BackColor = clDefault

@@ -55,7 +55,8 @@ type
     Alpha1Label: TLabel;
     Alpha1UnitLabel: TLabel;
     Beta3UnitLabel: TLabel;
-    TimeUnitLabel: TLabel;
+    HoursButton: TRadioButton;
+    MinutesButton: TRadioButton;
     ModelVersionLabel: TLabel;
     ModelVersionComboBox: TComboBox;
     EstimateGECheckbox: TCheckBox;
@@ -132,7 +133,9 @@ type
     procedure EstimateGECheckboxChange(Sender: TObject);
     procedure EstimateGRCheckBoxChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure HoursButtonChange(Sender: TObject);
     procedure MacAboutItemClick(Sender: TObject);
+    procedure MinutesButtonChange(Sender: TObject);
     procedure ModelVersionComboBoxChange(Sender: TObject);
     procedure OpenMenuItemClick(Sender: TObject);
     procedure OpenToolButtonClick(Sender: TObject);
@@ -151,6 +154,7 @@ type
     { public declarations }
     AllPopulations: TAllPopulations;
     FittestIndividuals: TFittest;
+    SimTimeUnit, TestTimeUnit: TTimeUnit;
     procedure ShowAboutWindow(Sender: TObject);
     procedure CopyCells(Sender: TObject);
     procedure ReadParams(Sender: TObject; var params: TStrucPars);
@@ -291,13 +295,15 @@ end;
 
 procedure TValuesForm.StartButtonClick(Sender: TObject);
 var
-  i, j, iterations: integer;
+  i, j: integer;
   params: TStrucPars;
 begin
   ReadParams(Sender, params);
-  iterations := IterationsSpinEdit.Value;
+  gActiveModel.iterations := IterationsSpinEdit.Value * SecsPerMin;
+  if SimTimeUnit = hours then
+    gActiveModel.iterations := gActiveModel.iterations * MinsPerHour;
   gSequence := TSequence.Create;
-  ValuesGrid.RowCount := iterations + 2;
+  ValuesGrid.RowCount := gActiveModel.iterations + 2;
   for i := 0 to ValuesGrid.ColCount - 1 do
     for j := 2 to ValuesGrid.RowCount - 1 do
       ValuesGrid.Cells[i, j] := '';
@@ -307,11 +313,11 @@ begin
   PlotForm.eSeries.Clear;
   PlotForm.ACTHSeries.Clear;
   PlotForm.yrSeries.Clear;
-  RunSimulation(CRHSpinEdit.Value * CRHFactor, gActiveModel, iterations);
+  RunSimulation(CRHSpinEdit.Value * CRHFactor, gActiveModel);
   PredictionForm.DisplayPrediction(gPrediction[0], gPrediction[1]);
-  if iterations > ValuesGrid.RowCount then
-    ValuesGrid.RowCount := iterations + 1;
-  for i := 0 to iterations - 1 do
+  if gActiveModel.iterations > ValuesGrid.RowCount then
+    ValuesGrid.RowCount := gActiveModel.iterations + 1;
+  for i := 0 to gActiveModel.iterations - 1 do
   begin
     ValuesGrid.Cells[0, i + 2] := IntToStr(i + 1);
     ValuesGrid.Cells[1, i + 2] :=
@@ -634,6 +640,34 @@ begin
   ShowAboutWindow(Sender);
 end;
 
+procedure TValuesForm.HoursButtonChange(Sender: TObject);
+begin
+  if HoursButton.checked then
+    begin
+      MinutesButton.Checked := false;
+      SimTimeUnit := hours;
+    end
+  else
+    begin
+      SimTimeUnit := minutes;
+    end;
+  TestTimeUnit := SimTimeUnit;
+end;
+
+procedure TValuesForm.MinutesButtonChange(Sender: TObject);
+begin
+  if MinutesButton.checked then
+    begin
+      HoursButton.Checked := false;
+      SimTimeUnit := minutes;
+    end
+  else
+    begin
+      SimTimeUnit := hours;
+    end;
+  TestTimeUnit := SimTimeUnit;
+end;
+
 procedure TValuesForm.ModelVersionComboBoxChange(Sender: TObject);
 begin
   SetModel(Sender);
@@ -682,6 +716,7 @@ begin
   Scaled := True;
   Left := 13;
   AdaptMenus;
+  SimTimeUnit := minutes;
   CRHSpinEdit.Value := kCRH / CRHFactor;
   for i := 1 to ValuesGrid.ColCount - 1 do
     ValuesGrid.Cells[i, 1] := kUoMs[i];
