@@ -21,10 +21,9 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="GUI"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="13"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="350"/>
+        <TopLine Value="352"/>
         <CursorPos X="64" Y="383"/>
         <UsageCount Value="130"/>
         <Loaded Value="True"/>
@@ -34,9 +33,10 @@
         <Filename Value="simulationengine.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="SimulationEngine"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="6"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="193"/>
+        <TopLine Value="64"/>
         <CursorPos X="28" Y="217"/>
         <UsageCount Value="130"/>
         <Loaded Value="True"/>
@@ -164,8 +164,8 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="11"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="255"/>
-        <CursorPos X="20" Y="277"/>
+        <TopLine Value="75"/>
+        <CursorPos X="60" Y="251"/>
         <UsageCount Value="102"/>
         <Loaded Value="True"/>
       </Unit13>
@@ -405,124 +405,124 @@
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="scenariohandler.pas"/>
-        <Caret Line="40" Column="21" TopLine="27"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="152" Column="23" TopLine="131"/>
       </Position1>
       <Position2>
-        <Filename Value="scenariohandler.pas"/>
-        <Caret Line="105" Column="24" TopLine="82"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="573" TopLine="560"/>
       </Position2>
       <Position3>
         <Filename Value="gui.pas"/>
-        <Caret Line="571" Column="31" TopLine="547"/>
+        <Caret Line="583" Column="11" TopLine="570"/>
       </Position3>
       <Position4>
         <Filename Value="gui.pas"/>
-        <Caret Line="152" Column="23" TopLine="131"/>
+        <Caret Line="573" TopLine="568"/>
       </Position4>
       <Position5>
         <Filename Value="gui.pas"/>
-        <Caret Line="573" TopLine="560"/>
+        <Caret Line="574" TopLine="568"/>
       </Position5>
       <Position6>
         <Filename Value="gui.pas"/>
-        <Caret Line="583" Column="11" TopLine="570"/>
+        <Caret Line="573" TopLine="568"/>
       </Position6>
       <Position7>
         <Filename Value="gui.pas"/>
-        <Caret Line="573" TopLine="568"/>
+        <Caret Line="590" Column="10" TopLine="565"/>
       </Position7>
       <Position8>
         <Filename Value="gui.pas"/>
-        <Caret Line="574" TopLine="568"/>
+        <Caret Line="154" Column="29" TopLine="136"/>
       </Position8>
       <Position9>
         <Filename Value="gui.pas"/>
-        <Caret Line="573" TopLine="568"/>
+        <Caret Line="605" Column="5" TopLine="590"/>
       </Position9>
       <Position10>
         <Filename Value="gui.pas"/>
-        <Caret Line="590" Column="10" TopLine="565"/>
+        <Caret Line="154" Column="36" TopLine="133"/>
       </Position10>
       <Position11>
         <Filename Value="gui.pas"/>
-        <Caret Line="154" Column="29" TopLine="136"/>
+        <Caret Line="597" Column="25" TopLine="587"/>
       </Position11>
       <Position12>
         <Filename Value="gui.pas"/>
-        <Caret Line="605" Column="5" TopLine="590"/>
+        <Caret Line="682" Column="17" TopLine="679"/>
       </Position12>
       <Position13>
         <Filename Value="gui.pas"/>
-        <Caret Line="154" Column="36" TopLine="133"/>
+        <Caret Line="693" Column="17" TopLine="680"/>
       </Position13>
       <Position14>
         <Filename Value="gui.pas"/>
-        <Caret Line="597" Column="25" TopLine="587"/>
+        <Caret Line="689" Column="17" TopLine="681"/>
       </Position14>
       <Position15>
         <Filename Value="gui.pas"/>
-        <Caret Line="682" Column="17" TopLine="679"/>
+        <Caret Line="590" Column="59" TopLine="583"/>
       </Position15>
       <Position16>
         <Filename Value="gui.pas"/>
-        <Caret Line="693" Column="17" TopLine="680"/>
+        <Caret Line="706" Column="20" TopLine="703"/>
       </Position16>
       <Position17>
         <Filename Value="gui.pas"/>
-        <Caret Line="689" Column="17" TopLine="681"/>
+        <Caret Line="148" Column="35" TopLine="139"/>
       </Position17>
       <Position18>
         <Filename Value="gui.pas"/>
-        <Caret Line="590" Column="59" TopLine="583"/>
+        <Caret Line="346" TopLine="342"/>
       </Position18>
       <Position19>
         <Filename Value="gui.pas"/>
-        <Caret Line="706" Column="20" TopLine="703"/>
+        <Caret Line="709" Column="59" TopLine="703"/>
       </Position19>
       <Position20>
         <Filename Value="gui.pas"/>
-        <Caret Line="148" Column="35" TopLine="139"/>
+        <Caret Line="148" Column="34" TopLine="137"/>
       </Position20>
       <Position21>
         <Filename Value="gui.pas"/>
-        <Caret Line="346" TopLine="342"/>
+        <Caret Line="739" Column="31" TopLine="715"/>
       </Position21>
       <Position22>
-        <Filename Value="gui.pas"/>
-        <Caret Line="709" Column="59" TopLine="703"/>
+        <Filename Value="evoEngine.pas"/>
+        <Caret Line="66" Column="27" TopLine="50"/>
       </Position22>
       <Position23>
-        <Filename Value="gui.pas"/>
-        <Caret Line="148" Column="34" TopLine="137"/>
+        <Filename Value="evoEngine.pas"/>
+        <Caret Line="228" Column="26" TopLine="227"/>
       </Position23>
       <Position24>
-        <Filename Value="gui.pas"/>
-        <Caret Line="739" Column="31" TopLine="715"/>
+        <Filename Value="evoEngine.pas"/>
+        <Caret Line="253" Column="37" TopLine="236"/>
       </Position24>
       <Position25>
         <Filename Value="evoEngine.pas"/>
-        <Caret Line="66" Column="27" TopLine="50"/>
+        <Caret Line="277" Column="20" TopLine="255"/>
       </Position25>
       <Position26>
-        <Filename Value="evoEngine.pas"/>
-        <Caret Line="228" Column="26" TopLine="227"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="380" Column="77" TopLine="368"/>
       </Position26>
       <Position27>
-        <Filename Value="evoEngine.pas"/>
-        <Caret Line="253" Column="37" TopLine="236"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="384" Column="44" TopLine="360"/>
       </Position27>
       <Position28>
         <Filename Value="evoEngine.pas"/>
-        <Caret Line="277" Column="20" TopLine="255"/>
+        <Caret Line="81" Column="32" TopLine="74"/>
       </Position28>
       <Position29>
-        <Filename Value="gui.pas"/>
-        <Caret Line="380" Column="77" TopLine="368"/>
+        <Filename Value="evoEngine.pas"/>
+        <Caret Line="57" Column="64" TopLine="44"/>
       </Position29>
       <Position30>
-        <Filename Value="gui.pas"/>
-        <Caret Line="384" Column="44" TopLine="360"/>
+        <Filename Value="evoEngine.pas"/>
+        <Caret Line="72" Column="64" TopLine="59"/>
       </Position30>
     </JumpHistory>
     <RunParams>
