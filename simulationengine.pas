@@ -45,6 +45,8 @@ const
   CortisolFactor = 1e-9; // nmol/L
   yRFactor = 1e-3; // AU
 
+  Delta = 1;
+
 type
 
   TSequence = class
@@ -166,6 +168,12 @@ begin
     begin
       gBlocks.ASIA1 := TASIA.Create;
       gBlocks.ASIA3 := TASIA.Create;
+      gBlocks.ASIA1.alpha := params.alpha1;
+      gBlocks.ASIA1.beta := params.beta1;
+      gBlocks.ASIA1.delta := Delta;
+      gBlocks.ASIA3.alpha := params.alpha3;
+      gBlocks.ASIA3.beta := params.beta3;
+      gBlocks.ASIA3.delta := Delta;
     end;
 
     yr := 20;
@@ -174,10 +182,27 @@ begin
       gBlocks.NoCoDI.input1 := CRH;
       gBlocks.NoCoDI.input2 := yR;
       e := PituitaryResponse(CRH, yR);
-      gBlocks.G1.input := e;
-      ACTH := gBlocks.G1.simOutput;
+      if (model.Version = '1') or (model.Version = '1.1') then
+      begin
+        gBlocks.G1.input := e;
+        ACTH := gBlocks.G1.simOutput;
+      end
+      else
+      begin
+        gBlocks.ASIA1.input := e;
+        ACTH := gBlocks.ASIA1.simOutput;
+      end;
       PRF := AdrenalResponse(ACTH);
-      F := params.G3 * PRF;
+      if (model.Version = '1') or (model.Version = '1.1') then
+      begin
+        gBlocks.G3.input := PRF;
+        F := gBlocks.G3.simOutput;
+      end
+      else
+      begin
+        gBlocks.ASIA3.input := PRF;
+        F := gBlocks.ASIA3.simOutput;
+      end;
       gBlocks.MimeR.input := F;
       v := gBlocks.MimeR.simOutput;
       gBlocks.GE.input := v;

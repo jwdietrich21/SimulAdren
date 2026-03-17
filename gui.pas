@@ -55,6 +55,7 @@ type
     Alpha1Label: TLabel;
     Alpha1UnitLabel: TLabel;
     Beta3UnitLabel: TLabel;
+    TimeUnitLabel: TLabel;
     ModelVersionLabel: TLabel;
     ModelVersionComboBox: TComboBox;
     EstimateGECheckbox: TCheckBox;
@@ -119,7 +120,7 @@ type
     StartButton: TButton;
     ValuesGrid: TStringGrid;
     ToolBar1: TToolBar;
-    IterationsLabel: TLabel;
+    TimeLabel: TLabel;
     GALabel: TLabel;
     GAEdit: TFloatSpinEdit;
     procedure Alpha1EditChange(Sender: TObject);
