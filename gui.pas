@@ -301,7 +301,7 @@ begin
   PlotForm.eSeries.Clear;
   PlotForm.ACTHSeries.Clear;
   PlotForm.yrSeries.Clear;
-  RunSimulation(CRHSpinEdit.Value * CRHFactor, params, iterations);
+  RunSimulation(CRHSpinEdit.Value * CRHFactor, gActiveModel, iterations);
   PredictionForm.DisplayPrediction(gPrediction[0], gPrediction[1]);
   if iterations > ValuesGrid.RowCount then
     ValuesGrid.RowCount := iterations + 1;
@@ -328,7 +328,7 @@ var
   params: TStrucPars;
 begin
   ReadParams(Sender, params);
-  gPrediction := PredictSteadyState(CRHSpinEdit.Value * CRHFactor, params);
+  gPrediction := PredictSteadyState(CRHSpinEdit.Value * CRHFactor, gActiveModel);
   PredictionForm.DisplayPrediction(gPrediction[0], gPrediction[1]);
 end;
 

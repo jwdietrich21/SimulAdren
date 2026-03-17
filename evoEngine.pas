@@ -76,19 +76,19 @@ var
   i: integer; // index for steady-state solution to use
   distanceA, distanceF, distance: real; // distances from target
   steadyState: TPredictionArray; // steady-state solutions
-  testParams: TStrucPars; // parameter set for feedback loop to test
+  testModel: tActiveModel; // model to be tested
 begin
-  testParams := model.StrucPars; // passed parameters for feedback loop
-  if isNan(testParams.GE) then  // NaN if to be estimated by GA
-    testParams.GE := theGuess.GE;
-  if isNan(testParams.GR) then
-    testParams.GR := theGuess.GR;
+  testModel := model; // passed model for feedback loop
+  if isNan(testModel.StrucPars.GE) then  // NaN if to be estimated by GA
+    testModel.StrucPars.GE := theGuess.GE;
+  if isNan(testModel.StrucPars.GR) then
+    testModel.StrucPars.GR := theGuess.GR;
   // penalise physiologically nonsense parameters:
   if (theGuess.GE <= 0) or (theGuess.GR <= 0) then
     distance := Math.Infinity
   else
   begin
-    steadyState := PredictSteadyState(CRH, testParams);
+    steadyState := PredictSteadyState(CRH, testModel);
     if steadyState[0].ACTH > steadyState[1].ACTH then
       i := 0
     else

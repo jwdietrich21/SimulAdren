@@ -75,8 +75,8 @@ var
   gBlocks: TBlocks;
   gPrediction: TPredictionArray;
 
-procedure RunSimulation(CRH: extended; params: TStrucPars; nmax: integer);
-function PredictSteadyState(CRH: extended; params: TStrucPars): TPredictionArray;
+procedure RunSimulation(CRH: extended; model: tActiveModel; nmax: integer);
+function PredictSteadyState(CRH: extended; model: tActiveModel): TPredictionArray;
 
 implementation
 
@@ -93,11 +93,13 @@ begin
   Result := gBlocks.MiMeA.simOutput;
 end;
 
-function PredictSteadyState(CRH: extended; params: TStrucPars): TPredictionArray;
+function PredictSteadyState(CRH: extended; model: tActiveModel): TPredictionArray;
 var
   a, b, c, K1, K2: extended;
   predictions: TQRoots;
+  params: TStrucPars;
 begin
+  params := model.StrucPars;
   result[0].CRH := CRH;
   result[1].CRH := CRH;
 
@@ -126,14 +128,16 @@ begin
   end;
 end;
 
-procedure RunSimulation(CRH: extended; params: TStrucPars; nmax: integer);
+procedure RunSimulation(CRH: extended; model: tActiveModel; nmax: integer);
 var
   e, ACTH, PRF, F, v, yr: extended;
   i: integer;
+  params: TStrucPars;
 begin
+  params := model.StrucPars;
   if nmax > 0 then
   begin
-    gPrediction := PredictSteadyState(CRH, params);
+    gPrediction := PredictSteadyState(CRH, model);
 
     gSequence.size := 0; // delete content
     gSequence.size := nmax;
