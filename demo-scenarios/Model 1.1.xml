@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scenario modelversion="1.1">
+  <MIRIAM>
+    <Name>Model 1.1</Name>
+    <Reference>Dietrich JW, Boehm BO: Equilibrium behaviour of feedback-coupled physiological saturation kinetics. In: Cybernetics and Systems 2006.Volume 1, edn. Edited by Trappl R. Vienna: Austrian Society forCybernetic Studies; 2006: 269-274.</Reference>
+    <Species>Homo sapiens (NCBI Taxonomy ID 9606)</Species>
+    <Creators>Dietrich, Boehm and Siegmar</Creators>
+    <Created>2025-06-28T13:00:00</Created>
+    <LastModified>2026-01-18T20:28:00</LastModified>
+    <Terms>Creative Commons Attributions License 4.0 (CC BY 4.0)</Terms>
+  </MIRIAM>
+  <MIASE>
+    <Code>Model of HPA feedback control for use with SimulAdren, as available from http://simuladren.sf.net</Code>
+    <Comments></Comments>
+  </MIASE>
+  <basic>
+    <iterations>0</iterations>
+  </basic>
+  <strucpars>
+    <G1>2000</G1>
+    <G3>371</G3>
+    <GA>1.17E-9</GA>
+    <DA>1E-11</DA>
+    <GR>1</GR>
+    <DR>2E-7</DR>
+    <GE>1</GE>
+  </strucpars>
+</scenario>

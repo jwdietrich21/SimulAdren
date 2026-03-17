@@ -153,7 +153,7 @@ type
     procedure ShowAboutWindow(Sender: TObject);
     procedure CopyCells(Sender: TObject);
     procedure ReadParams(Sender: TObject; var params: TStrucPars);
-    procedure SetParams(Sender: TObject; const params: TStrucPars);
+    procedure SetParams(Sender: TObject; var theModel: tActiveModel);
     procedure SetModel(Sender: TObject);
     procedure SetG1(Sender: TObject);
     procedure SetG3(Sender: TObject);
@@ -165,6 +165,11 @@ var
 implementation
 
 {$R *.lfm}
+
+function VersionID(theString: string): string;
+begin
+  Result := StringReplace(theString, 'Model ', '', [rfReplaceAll, rfIgnoreCase]);
+end;
 
 procedure SaveGridToFile(theTable: TStringGrid; theFileName: string;
   theDelimiter: char; colnames, rowNames, hasGridColumns: boolean;
@@ -367,6 +372,7 @@ begin
         testModel.StrucPars.GE := GEEdit.Value;
       testModel.StrucPars.DA := DAEdit.Value * DAFactor;
       testModel.StrucPars.DR := DREdit.Value * DRFactor;
+      testModel.Version := VersionID(ModelVersionComboBox.Caption);
       EvoTargets.ACTH := TargetForm.targetA;
       EvoTargets.F := TargetForm.targetF;
       EvoTargets.LowEdge := TargetForm.LowerBoundSpinEdit.Value;
@@ -381,7 +387,8 @@ begin
         AllPopulations, FittestIndividuals);
       FitnessPlotForm.DrawFitness(FittestIndividuals);
       ParameterForm.DrawParameters(FittestIndividuals);
-      SetParams(Sender, testModel.StrucPars);
+      SetParams(Sender, testModel);
+      gActiveModel.StrucPars := testModel.StrucPars;
     end;
   end;
 end;
@@ -560,26 +567,36 @@ begin
   params.GE := GEEdit.Value;
   params.DA := DAEdit.Value * DAFactor;
   params.DR := DREdit.Value * DRFactor;
+  params.alpha1 := Alpha1Edit.Value;
+  params.beta1 := Beta1Edit.Value;
+  params.alpha3 := Alpha3Edit.Value;
+  params.beta3 := Beta3Edit.Value;
   GActiveModel.StrucPars := params;
 end;
 
-procedure TValuesForm.SetParams(Sender: TObject; const params: TStrucPars);
+procedure TValuesForm.SetParams(Sender: TObject; var theModel: tActiveModel);
 begin
-  G1Edit.Value := params.G1;
-  G3Edit.Value := params.G3;
-  GAEdit.Value := params.GA / GAFactor;
-  GREdit.Value := params.GR;
-  GEEdit.Value := params.GE;
-  DAEdit.Value := params.DA / DAFactor;
-  DREdit.Value := params.DR / DRFactor;
-  GActiveModel.StrucPars := params;
+  G1Edit.Value := theModel.StrucPars.G1;
+  G3Edit.Value := theModel.StrucPars.G3;
+  GAEdit.Value := theModel.StrucPars.GA / GAFactor;
+  GREdit.Value := theModel.StrucPars.GR;
+  GEEdit.Value := theModel.StrucPars.GE;
+  DAEdit.Value := theModel.StrucPars.DA / DAFactor;
+  DREdit.Value := theModel.StrucPars.DR / DRFactor;
+  if (theModel.Version <> '1') and (theModel.Version <> '1.1') then
+  begin
+    Alpha1Edit.Value := theModel.StrucPars.alpha1;
+    Beta1Edit.Value := theModel.StrucPars.beta1;
+    Alpha3Edit.Value := theModel.StrucPars.alpha3;
+    Beta3Edit.Value := theModel.StrucPars.beta3;
+  end;
 end;
 
 procedure TValuesForm.SetModel(Sender: TObject);
 begin
-  gActiveModel.Version := ModelVersionComboBox.Caption;
-  // Model versions 1 or 1.2?
-  if (ModelVersionComboBox.ItemIndex = 0) or (ModelVersionComboBox.ItemIndex = 2) then
+  gActiveModel.Version := VersionID(ModelVersionComboBox.Caption);
+  // Model versions 1 or 1.1?
+  if (ModelVersionComboBox.ItemIndex = 0) or (ModelVersionComboBox.ItemIndex = 1) then
   begin
     G1Edit.Enabled := True;
     Alpha1Edit.Enabled := False;
@@ -636,7 +653,7 @@ begin
       begin
         theVersion := '';
         ReadScenario(theFileName, theVersion);  {XML file}
-        SetParams(Sender, gActiveModel.StrucPars);
+        SetParams(Sender, gActiveModel);
       end;
     end;
   end;

@@ -62,6 +62,7 @@ type
     G1, G3, GE: TP;
     MiMeA, MimeR: TMiMe;
     NoCoDI: TNoCoDI;
+    ASIA1, ASIA3: TASIA;
   end;
 
   TPrediction = record
@@ -100,8 +101,15 @@ var
   params: TStrucPars;
 begin
   params := model.StrucPars;
-  result[0].CRH := CRH;
-  result[1].CRH := CRH;
+  if (model.Version <> '1') and (model.Version <> '1.1') then
+  begin
+    { G1 and G3 provide the gain of a P element that is equivalent to the gain
+      of the ASIA element in steady state }
+    params.G1 := params.alpha1 / params.beta1;
+    params.G3 := params.alpha3 / params.beta3;
+  end;
+  Result[0].CRH := CRH;
+  Result[1].CRH := CRH;
 
   { Solving for F (Cortisol): }
   with params do
@@ -109,22 +117,22 @@ begin
     K1 := GR * G3 * GA / (DR + G3 * GA);
     K2 := DR * DA / (DR + G3 * GA);
     a := GE * K1 + 1;
-    b := K2 - G1 * result[0].CRH;
-    c := -G1 * K2 * result[0].CRH;
+    b := K2 - G1 * Result[0].CRH;
+    c := -G1 * K2 * Result[0].CRH;
     predictions := Solve(a, b, c);
-    result[0].ACTH := max(predictions[0], predictions[1]);
-    result[0].PRF := GA * result[0].ACTH / (DA + result[0].ACTH);
-    result[0].F := G3 * result[0].PRF;
-    result[0].v := GR * result[0].F / (DR + result[0].F);
-    result[0].yR := GE * result[0].v;
-    result[0].e := result[0].CRH / (1 + result[0].yR);
+    Result[0].ACTH := max(predictions[0], predictions[1]);
+    Result[0].PRF := GA * Result[0].ACTH / (DA + Result[0].ACTH);
+    Result[0].F := G3 * Result[0].PRF;
+    Result[0].v := GR * Result[0].F / (DR + Result[0].F);
+    Result[0].yR := GE * Result[0].v;
+    Result[0].e := Result[0].CRH / (1 + Result[0].yR);
 
-    result[1].ACTH := min(predictions[0], predictions[1]);
-    result[1].PRF := GA * result[1].ACTH / (DA + result[1].ACTH);
-    result[1].F := G3 * result[1].PRF;
-    result[1].v := GR * result[1].F / (DR + result[1].F);
-    result[1].yR := GE * result[1].v;
-    result[1].e := result[1].CRH / (1 + result[1].yR);
+    Result[1].ACTH := min(predictions[0], predictions[1]);
+    Result[1].PRF := GA * Result[1].ACTH / (DA + Result[1].ACTH);
+    Result[1].F := G3 * Result[1].PRF;
+    Result[1].v := GR * Result[1].F / (DR + Result[1].F);
+    Result[1].yR := GE * Result[1].v;
+    Result[1].e := Result[1].CRH / (1 + Result[1].yR);
   end;
 end;
 
@@ -154,6 +162,11 @@ begin
     gBlocks.MiMeA.D := params.DA;
     gBlocks.MimeR.G := params.GR;
     gBlocks.MimeR.D := params.DR;
+    if (model.Version <> '1') and (model.Version <> '1.1') then
+    begin
+      gBlocks.ASIA1 := TASIA.Create;
+      gBlocks.ASIA3 := TASIA.Create;
+    end;
 
     yr := 20;
     for i := 0 to nmax - 1 do
@@ -185,6 +198,10 @@ begin
     gBlocks.MimeR.Destroy;
     gBlocks.GE.Destroy;
     gBlocks.NoCoDI.Destroy;
+    if assigned(gBlocks.ASIA1) then
+      FreeAndNil(gBlocks.ASIA1);
+    if assigned(gBlocks.ASIA3) then
+      FreeAndNil(gBlocks.ASIA3);
   end;
 end;
 
@@ -218,6 +235,6 @@ end;
 
 initialization
 
-gActiveModel := NewScenario;
+  gActiveModel := NewScenario;
 
 end.

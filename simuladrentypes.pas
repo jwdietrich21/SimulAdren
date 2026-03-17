@@ -35,7 +35,7 @@ uses
 
 type
   TStrucPars = record
-    G1, G3, GA, DA, GR, DR, GE: extended;
+    G1, G3, GA, DA, GR, DR, GE, alpha1, beta1, alpha3, beta3: extended;
   end;
 
   TEvoTargets = record
