@@ -380,6 +380,13 @@ begin
       testModel.StrucPars.DA := DAEdit.Value * DAFactor;
       testModel.StrucPars.DR := DREdit.Value * DRFactor;
       testModel.Version := VersionID(ModelVersionComboBox.Caption);
+      if (testModel.Version <> '1') and (testModel.Version <> '1.1') then
+      begin
+        testModel.StrucPars.alpha1 := alpha1Edit.Value;
+        testModel.StrucPars.beta1 := beta1Edit.Value;
+        testModel.StrucPars.alpha3 := alpha3Edit.Value;
+        testModel.StrucPars.beta3 := beta3Edit.Value;
+      end;
       EvoTargets.ACTH := TargetForm.targetA;
       EvoTargets.F := TargetForm.targetF;
       EvoTargets.LowEdge := TargetForm.LowerBoundSpinEdit.Value;

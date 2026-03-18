@@ -420,7 +420,7 @@ object ValuesForm: TValuesForm
     Width = 148
     Anchors = [akLeft, akBottom]
     ItemHeight = 18
-    ItemIndex = 0
+    ItemIndex = 3
     Items.Strings = (
       'Model 1'
       'Model 1.1'
@@ -428,7 +428,7 @@ object ValuesForm: TValuesForm
       'Model 1.3'
     )
     TabOrder = 16
-    Text = 'Model 1'
+    Text = 'Model 1.3'
     OnChange = ModelVersionComboBoxChange
   end
   object ModelVersionLabel: TLabel
