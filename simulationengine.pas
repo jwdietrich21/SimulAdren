@@ -47,6 +47,91 @@ const
 
   Delta = 1;
 
+  kCRH = 5e-15;
+
+  VD_ACTH = 2.5;
+  kalpha1 = 1 / VD_ACTH;
+  kbeta1 = 0.0002;
+  VD_F_1 = 20;
+  VD_F_1_1 = 21;
+  t12_F_1 = 96;
+  t12_F_1_1 = 90;
+  kalpha3_1 = 1 / VD_F_1;
+  kalpha3_1_1 = 1 / VD_F_1_1;
+  kbeta3_1 = ln(2) / (t12_F_1 * SecsPerMin);
+  kbeta3_1_1 = ln(2) / (t12_F_1_1 * SecsPerMin);
+  mPR_F = 5.2e-10;
+
+  kStrucPars_1: TStrucPars =
+    ( // default values for model 1
+    G1: kalpha1 / kbeta1;
+    G3: kalpha3_1 / kbeta3_1;
+    GA: 1.2e-9;
+    DA: 1e-11;
+    GR: 1;
+    DR: 2e-7;
+    GE: 1;
+    alpha1: kalpha1;
+    beta1: kbeta1;
+    alpha3: kalpha3_1;
+    beta3: kbeta3_1;
+    );
+
+  kStrucPars_1_1: TStrucPars =
+    ( // default values for model 1.1
+    G1: kalpha1 / kbeta1;
+    G3: kalpha3_1_1 / kbeta3_1_1;
+    GA: 2.25 * mPR_F;
+    DA: 1e-11;
+    GR: 1;
+    DR: 2e-7;
+    GE: 1;
+    alpha1: kalpha1;
+    beta1: kbeta1;
+    alpha3: kalpha3_1_1;
+    beta3: kbeta3_1_1;
+    );
+
+  kStrucPars_1_2: TStrucPars =
+    ( // default values for model 1.2
+    G1: kalpha1 / kbeta1;
+    G3: kalpha3_1 / kbeta3_1;
+    GA: 1.2e-9;
+    DA: 1e-11;
+    GR: 1;
+    DR: 2e-7;
+    GE: 1;
+    alpha1: kalpha1;
+    beta1: kbeta1;
+    alpha3: kalpha3_1;
+    beta3: kbeta3_1;
+    );
+
+  kStrucPars_1_3: TStrucPars =
+    ( // default values for model 1.3
+    G1: kalpha1 / kbeta1;
+    G3: kalpha3_1_1 / kbeta3_1_1;
+    GA: 2.25 * mPR_F;
+    DA: 1e-11;
+    GR: 1;
+    DR: 2e-7;
+    GE: 1;
+    alpha1: kalpha1;
+    beta1: kbeta1;
+    alpha3: kalpha3_1_1;
+    beta3: kbeta3_1_1;
+    );
+
+  kUoMs: array [1..6] of string =
+    ( // CRH, e, ACTH, PRF, F, yR
+    'fmol/l', 'fmol/s', 'pmol/L', 'pmol/s', 'nmol/L', 'mAU');
+
+  kEvoTargets: TEvoTargets =
+    (
+    ACTH: 6.81;
+    F: 175.88;
+    );
+
 type
 
   TSequence = class

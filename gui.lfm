@@ -1,7 +1,7 @@
 object ValuesForm: TValuesForm
-  Left = 234
+  Left = 216
   Height = 544
-  Top = 170
+  Top = 150
   Width = 765
   ActiveControl = StartButton
   Caption = 'Simuladren'

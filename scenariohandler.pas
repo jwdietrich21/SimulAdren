@@ -205,7 +205,7 @@ begin
     Doc := TXMLDocument.Create;
 
     RootNode := Doc.CreateElement('scenario');
-    TDOMElement(RootNode).SetAttribute('modelversion', MODEL_VERSION_1);
+    TDOMElement(RootNode).SetAttribute('modelversion', gActiveModel.Version);
     Doc.Appendchild(RootNode);
     RootNode := Doc.DocumentElement;
 

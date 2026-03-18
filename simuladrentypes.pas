@@ -59,7 +59,7 @@ type
     StrucPars: TStrucPars;
     Iterations: integer;
     Imported: boolean;
-    Version: String;
+    Version: string;
   end;
 
   TImageType = (NULL, BMP, XPM, PNG, PBM, JPG, TIFF, SVG);
@@ -78,50 +78,17 @@ const
   clGoldenRod = TColor($20A5DA);
   clDarkOrange = TColor($008CFF);
 
-  MODEL_VERSION_1 = '1.1';
-
-  kCRH = 5e-15;
-
-  VD_ACTH = 2.5;
-  alpha1 = 1 / VD_ACTH;
-  beta1 = 0.0002;
-  VD_F = 21;
-  t12_F = 90;
-  alpha3 = 1 / VD_F;
-  beta3 = ln(2) / (t12_F * SecsPerMin);
-  mPR_F = 5.2e-10;
-
-  kStrucPars: TStrucPars =
-    ( // default values
-    G1: alpha1 / beta1;
-    G3: alpha3 / beta3;
-    GA: 2.25 * mPR_F;
-    DA: 1e-11;
-    GR: 1;
-    DR: 2e-7;
-    GE: 1;
-    );
-
-  kUoMs: array [1..6] of string =
-    ( // CRH, e, ACTH, PRF, F, yR
-    'fmol/l', 'fmol/s', 'pmol/L', 'pmol/s', 'nmol/L', 'mAU');
-
-  kEvoTargets: TEvoTargets =
-    (
-    ACTH: 6.81;
-    F: 175.88;
-    );
-
   SimulAdrenID = 'Simuladren';
   SimulAdrenVersionString = SimulAdrenID + ' 1.1 (Desarrollo)';
 
-  ISO_8601_DATE_FORMAT = 'YYYY-MM-DD"T"hh:nn:ss'; {Date/time format in XML representation}
+  ISO_8601_DATE_FORMAT = 'YYYY-MM-DD"T"hh:nn:ss';
+  {Date/time format in XML representation}
   STANDARD_NUM_FORMAT = '###,##0.0000';
   SHORT_NUM_FORMAT = '###,###.00';
   STANDARD_TIME_FORMAT = '"d"D hh:nn:ss';
 
 var
-  gNumberFormat, gDateTimeFormat: String;
+  gNumberFormat, gDateTimeFormat: string;
   gFormatSettings, gUSFormatSettings: TFormatSettings;
   gScalingFactor: real;
 
@@ -132,7 +99,6 @@ initialization
   gDateTimeFormat := STANDARD_TIME_FORMAT;
 
 end.
-
 { References:
 
 Breuninger LM, Dempsey WL, Uhl J, Murasko DM. Hydrocortisone regulation of
@@ -170,4 +136,3 @@ Feedback Loops. Advances in Distributed Computing and Artificial Intelligence
 Journal. 2024 August; 13. doi: 10.14201/adcaij.31762.
 
 }
-

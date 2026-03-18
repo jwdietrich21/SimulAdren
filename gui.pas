@@ -599,9 +599,39 @@ begin
   end;
 end;
 
+procedure AssignParams(var theModel: TActiveModel; params: TStrucPars);
+begin
+  with theModel.StrucPars do
+  begin
+    alpha1 := params.alpha1;
+    beta1 := params.beta1;
+    alpha3 := params.alpha3;
+    beta3 := params.beta3;
+    if beta1 > 0 then
+      G1 := alpha1 / beta1
+    else
+      G1 := params.G1;
+    if beta3 > 0 then
+      G3 := alpha3 / beta3
+    else
+      G3 := params.G3;
+    GA := params.GA;
+    DA := params.DA;
+    GR := params.GR;
+    DR := params.DR;
+    GE := params.GE;
+  end;
+end;
+
 procedure TValuesForm.SetModel(Sender: TObject);
 begin
   gActiveModel.Version := VersionID(ModelVersionComboBox.Caption);
+  case gActiveModel.Version of
+    '1': AssignParams(gActiveModel, kStrucPars_1);
+    '1.1': AssignParams(gActiveModel, kStrucPars_1_1);
+    '1.2': AssignParams(gActiveModel, kStrucPars_1_2);
+    '1.3': AssignParams(gActiveModel, kStrucPars_1_3);
+  end;
   // Model versions 1 or 1.1?
   if (ModelVersionComboBox.ItemIndex = 0) or (ModelVersionComboBox.ItemIndex = 1) then
   begin
@@ -623,6 +653,7 @@ begin
     SetG1(Sender);
     SetG3(Sender);
   end;
+  SetParams(Sender, gActiveModel);
 end;
 
 procedure TValuesForm.SetG1(Sender: TObject);
@@ -642,29 +673,29 @@ end;
 
 procedure TValuesForm.HoursButtonChange(Sender: TObject);
 begin
-  if HoursButton.checked then
-    begin
-      MinutesButton.Checked := false;
-      SimTimeUnit := hours;
-    end
+  if HoursButton.Checked then
+  begin
+    MinutesButton.Checked := False;
+    SimTimeUnit := hours;
+  end
   else
-    begin
-      SimTimeUnit := minutes;
-    end;
+  begin
+    SimTimeUnit := minutes;
+  end;
   TestTimeUnit := SimTimeUnit;
 end;
 
 procedure TValuesForm.MinutesButtonChange(Sender: TObject);
 begin
-  if MinutesButton.checked then
-    begin
-      HoursButton.Checked := false;
-      SimTimeUnit := minutes;
-    end
+  if MinutesButton.Checked then
+  begin
+    HoursButton.Checked := False;
+    SimTimeUnit := minutes;
+  end
   else
-    begin
-      SimTimeUnit := hours;
-    end;
+  begin
+    SimTimeUnit := hours;
+  end;
   TestTimeUnit := SimTimeUnit;
 end;
 
