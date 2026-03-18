@@ -40,7 +40,7 @@ var
 function NewScenario: TActiveModel;
 function emptyModel: TActiveModel;
 procedure ReadScenario(theFileName: string; var modelVersion: Str13);
-procedure SaveScenario(theFileName: string);
+procedure SaveScenario(theModel: tActiveModel; theFileName: string);
 
 implementation
 
@@ -101,7 +101,7 @@ begin
     kSTANDARD_MODEL_MODIFIED_S, 0);
   Result.Terms := kSTANDARD_MODEL_TERMS;
   Result.Iterations := 0;
-  Result.Imported := false;
+  Result.Imported := False;
   Result.Version := '';
 end;
 
@@ -184,7 +184,7 @@ begin
       if AnnotationForm.Visible then
         AnnotationForm.ShowAnnotation(gActiveModel);
       {$ENDIF}
-      gActiveModel.Imported := true;
+      gActiveModel.Imported := True;
       DefaultFormatSettings.DecimalSeparator := oldSep;
     end
     else
@@ -192,7 +192,7 @@ begin
 end;
 
 
-procedure SaveScenario(theFileName: string);
+procedure SaveScenario(theModel: tActiveModel; theFileName: string);
 var
   oldSep: char;
   Doc: TXMLDocument;
@@ -201,52 +201,65 @@ var
 begin
   oldSep := DefaultFormatSettings.DecimalSeparator;
   DefaultFormatSettings.DecimalSeparator := kPERIOD;
+  theModel.LastModified := Now;
   try
     Doc := TXMLDocument.Create;
 
     RootNode := Doc.CreateElement('scenario');
-    TDOMElement(RootNode).SetAttribute('modelversion', gActiveModel.Version);
+    TDOMElement(RootNode).SetAttribute('modelversion', DOMString(theModel.Version));
     Doc.Appendchild(RootNode);
     RootNode := Doc.DocumentElement;
 
     ElementNode := Doc.CreateElement('MIRIAM');
-    ElementNode.AppendChild(SimpleNode(Doc, 'Name', gActiveModel.Name));
-    ElementNode.AppendChild(SimpleNode(Doc, 'Reference', gActiveModel.Reference));
-    ElementNode.AppendChild(SimpleNode(Doc, 'Species', gActiveModel.Species));
-    ElementNode.AppendChild(SimpleNode(Doc, 'Creators', gActiveModel.Creators));
-    DateTimeToString(theDate, ISO_8601_DATE_FORMAT, gActiveModel.Created);
+    ElementNode.AppendChild(SimpleNode(Doc, 'Name', theModel.Name));
+    ElementNode.AppendChild(SimpleNode(Doc, 'Reference', theModel.Reference));
+    ElementNode.AppendChild(SimpleNode(Doc, 'Species', theModel.Species));
+    ElementNode.AppendChild(SimpleNode(Doc, 'Creators', theModel.Creators));
+    DateTimeToString(theDate, ISO_8601_DATE_FORMAT, theModel.Created);
     ElementNode.AppendChild(SimpleNode(Doc, 'Created', theDate));
-    DateTimeToString(theDate, ISO_8601_DATE_FORMAT, gActiveModel.LastModified);
+    DateTimeToString(theDate, ISO_8601_DATE_FORMAT, theModel.LastModified);
     ElementNode.AppendChild(SimpleNode(Doc, 'LastModified', theDate));
-    ElementNode.AppendChild(SimpleNode(Doc, 'Terms', gActiveModel.Terms));
+    ElementNode.AppendChild(SimpleNode(Doc, 'Terms', theModel.Terms));
     RootNode.AppendChild(ElementNode);
 
     ElementNode := Doc.CreateElement('MIASE');
-    if gActiveModel.Code = '' then
-      gActiveModel.Code := MIASE_SIMULADREN_STANDARD_CODE;
-    ElementNode.AppendChild(SimpleNode(Doc, 'Code', gActiveModel.Code));
-    ElementNode.AppendChild(SimpleNode(Doc, 'Comments', gActiveModel.Comments));
+    if theModel.Code = '' then
+      theModel.Code := MIASE_SIMULADREN_STANDARD_CODE;
+    ElementNode.AppendChild(SimpleNode(Doc, 'Code', theModel.Code));
+    ElementNode.AppendChild(SimpleNode(Doc, 'Comments', theModel.Comments));
     RootNode.AppendChild(ElementNode);
 
     ElementNode := Doc.CreateElement('basic');
-    ElementNode.AppendChild(SimpleNode(Doc, 'iterations', IntToStr(gActiveModel.Iterations)));
+    ElementNode.AppendChild(SimpleNode(Doc, 'iterations',
+      IntToStr(theModel.Iterations)));
     RootNode.AppendChild(ElementNode);
 
     ElementNode := Doc.CreateElement('strucpars');
     ElementNode.AppendChild(SimpleNode(Doc, 'G1',
-      FloatToStr(gActiveModel.StrucPars.G1, gUSFormatSettings)));
+      FloatToStr(theModel.StrucPars.G1, gUSFormatSettings)));
     ElementNode.AppendChild(SimpleNode(Doc, 'G3',
-      FloatToStr(gActiveModel.StrucPars.G3, gUSFormatSettings)));
+      FloatToStr(theModel.StrucPars.G3, gUSFormatSettings)));
     ElementNode.AppendChild(SimpleNode(Doc, 'GA',
-      FloatToStr(gActiveModel.StrucPars.GA, gUSFormatSettings)));
+      FloatToStr(theModel.StrucPars.GA, gUSFormatSettings)));
     ElementNode.AppendChild(SimpleNode(Doc, 'DA',
-      FloatToStr(gActiveModel.StrucPars.DA, gUSFormatSettings)));
+      FloatToStr(theModel.StrucPars.DA, gUSFormatSettings)));
     ElementNode.AppendChild(SimpleNode(Doc, 'GR',
-      FloatToStr(gActiveModel.StrucPars.GR, gUSFormatSettings)));
+      FloatToStr(theModel.StrucPars.GR, gUSFormatSettings)));
     ElementNode.AppendChild(SimpleNode(Doc, 'DR',
-      FloatToStr(gActiveModel.StrucPars.DR, gUSFormatSettings)));
+      FloatToStr(theModel.StrucPars.DR, gUSFormatSettings)));
     ElementNode.AppendChild(SimpleNode(Doc, 'GE',
-      FloatToStr(gActiveModel.StrucPars.GE, gUSFormatSettings)));
+      FloatToStr(theModel.StrucPars.GE, gUSFormatSettings)));
+    if (theModel.Version <> '1') and (theModel.Version <> '1.1') then
+    begin
+      ElementNode.AppendChild(SimpleNode(Doc, 'alpha1',
+      FloatToStr(theModel.StrucPars.alpha1, gUSFormatSettings)));
+      ElementNode.AppendChild(SimpleNode(Doc, 'beta1',
+      FloatToStr(theModel.StrucPars.beta1, gUSFormatSettings)));
+      ElementNode.AppendChild(SimpleNode(Doc, 'alpha3',
+      FloatToStr(theModel.StrucPars.alpha3, gUSFormatSettings)));
+      ElementNode.AppendChild(SimpleNode(Doc, 'beta3',
+      FloatToStr(theModel.StrucPars.beta3, gUSFormatSettings)));
+    end;
     RootNode.AppendChild(ElementNode);
 
     WriteXMLFile(Doc, theFileName);
@@ -257,4 +270,3 @@ begin
 end;
 
 end.
-

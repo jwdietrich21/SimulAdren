@@ -436,7 +436,7 @@ begin
       if delimiter = kNULL then
       begin
         ReadParams(Sender, gActiveModel.StrucPars);
-        SaveScenario(fileName);
+        SaveScenario(gActiveModel, fileName);
       end
       else
         SaveGrid(fileName, delimiter);
