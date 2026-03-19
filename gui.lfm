@@ -1,5 +1,5 @@
 object ValuesForm: TValuesForm
-  Left = 216
+  Left = 215
   Height = 544
   Top = 150
   Width = 765
@@ -739,6 +739,33 @@ object ValuesForm: TValuesForm
         Caption = 'Paste'
         Enabled = False
         ShortCut = 16470
+      end
+    end
+    object WindowMenu: TMenuItem
+      Caption = 'Window'
+      object SimControlMenuItem: TMenuItem
+        Caption = 'Simulation control'
+        OnClick = SimControlMenuItemClick
+      end
+      object PredictionMenuItem: TMenuItem
+        Caption = 'Prediction'
+        OnClick = PredictionMenuItemClick
+      end
+      object PlotMenuItem: TMenuItem
+        Caption = 'Time series plot'
+        OnClick = PlotMenuItemClick
+      end
+      object IPSMenuItem: TMenuItem
+        Caption = 'Information processing structure'
+        OnClick = IPSMenuItemClick
+      end
+      object EvolvedParameterMenuitem: TMenuItem
+        Caption = 'Evolved parameters'
+        OnClick = EvolvedParameterMenuitemClick
+      end
+      object FitnessMenuItem: TMenuItem
+        Caption = 'Fitness over generations'
+        OnClick = FitnessMenuItemClick
       end
     end
     object HelpMenu: TMenuItem

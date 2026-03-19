@@ -56,6 +56,13 @@ type
     Alpha1UnitLabel: TLabel;
     Beta3UnitLabel: TLabel;
     HoursButton: TRadioButton;
+    EvolvedParameterMenuitem: TMenuItem;
+    FitnessMenuItem: TMenuItem;
+    SimControlMenuItem: TMenuItem;
+    PredictionMenuItem: TMenuItem;
+    PlotMenuItem: TMenuItem;
+    IPSMenuItem: TMenuItem;
+    WindowMenu: TMenuItem;
     MinutesButton: TRadioButton;
     ModelVersionLabel: TLabel;
     ModelVersionComboBox: TComboBox;
@@ -132,14 +139,20 @@ type
     procedure CopyMenuItemClick(Sender: TObject);
     procedure EstimateGECheckboxChange(Sender: TObject);
     procedure EstimateGRCheckBoxChange(Sender: TObject);
+    procedure EvolvedParameterMenuitemClick(Sender: TObject);
+    procedure FitnessMenuItemClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure HoursButtonChange(Sender: TObject);
+    procedure IPSMenuItemClick(Sender: TObject);
     procedure MacAboutItemClick(Sender: TObject);
     procedure MinutesButtonChange(Sender: TObject);
     procedure ModelVersionComboBoxChange(Sender: TObject);
     procedure OpenMenuItemClick(Sender: TObject);
     procedure OpenToolButtonClick(Sender: TObject);
+    procedure PlotMenuItemClick(Sender: TObject);
+    procedure PredictionMenuItemClick(Sender: TObject);
     procedure SaveToolButtonClick(Sender: TObject);
+    procedure SimControlMenuItemClick(Sender: TObject);
     procedure WinAboutItemClick(Sender: TObject);
     procedure QuitMenuItemClick(Sender: TObject);
     procedure EvolveButtonClick(Sender: TObject);
@@ -696,6 +709,11 @@ begin
   TestTimeUnit := SimTimeUnit;
 end;
 
+procedure TValuesForm.IPSMenuItemClick(Sender: TObject);
+begin
+  IPSForm.Show;
+end;
+
 procedure TValuesForm.MinutesButtonChange(Sender: TObject);
 begin
   if MinutesButton.Checked then
@@ -743,9 +761,24 @@ begin
   OpenMenuItemClick(Sender);
 end;
 
+procedure TValuesForm.PlotMenuItemClick(Sender: TObject);
+begin
+  PlotForm.Show;
+end;
+
+procedure TValuesForm.PredictionMenuItemClick(Sender: TObject);
+begin
+  PredictionForm.Show;
+end;
+
 procedure TValuesForm.SaveToolButtonClick(Sender: TObject);
 begin
   SaveMenuItemClick(Sender);
+end;
+
+procedure TValuesForm.SimControlMenuItemClick(Sender: TObject);
+begin
+  ValuesForm.Show;
 end;
 
 procedure TValuesForm.QuitMenuItemClick(Sender: TObject);
@@ -834,6 +867,16 @@ begin
   else
     GREdit.Enabled := True;
   CheckEvolveEnabling(Sender);
+end;
+
+procedure TValuesForm.EvolvedParameterMenuitemClick(Sender: TObject);
+begin
+  ParameterForm.Show;
+end;
+
+procedure TValuesForm.FitnessMenuItemClick(Sender: TObject);
+begin
+  FitnessPlotForm.Show;
 end;
 
 
