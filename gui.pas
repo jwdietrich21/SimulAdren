@@ -604,6 +604,10 @@ begin
     Alpha3Edit.Value := theModel.StrucPars.alpha3;
     Beta3Edit.Value := theModel.StrucPars.beta3;
   end;
+  if theModel.Version = '1.0' then
+    ModelVersionCombobox.Caption := 'Model 1'
+  else
+    ModelVersionCombobox.Caption := 'Model ' + theModel.Version;
 end;
 
 procedure AssignParams(var theModel: TActiveModel; params: TStrucPars);
@@ -725,7 +729,7 @@ begin
       1:
       begin
         theVersion := '';
-        ReadScenario(theFileName, theVersion);  {XML file}
+        ReadScenario(theFileName, gActiveModel);  {XML file}
         SetParams(Sender, gActiveModel);
       end;
     end;

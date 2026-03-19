@@ -39,7 +39,7 @@ var
 
 function NewScenario: TActiveModel;
 function emptyModel: TActiveModel;
-procedure ReadScenario(theFileName: string; var modelVersion: Str13);
+procedure ReadScenario(theFileName: string; var theModel: tActiveModel);
 procedure SaveScenario(theModel: tActiveModel; theFileName: string);
 
 implementation
@@ -105,7 +105,7 @@ begin
   Result.Version := '';
 end;
 
-procedure ReadScenario(theFileName: string; var modelVersion: Str13);
+procedure ReadScenario(theFileName: string; var theModel: tActiveModel);
 {reads a simulation scenario}
 var
   i: integer;
@@ -130,43 +130,47 @@ begin
             with RootNode.Attributes[i] do
             begin
               if NodeName = 'modelversion' then
-                modelVersion := UTF8Encode(NodeValue);
+                theModel.Version := UTF8Encode(NodeValue);
             end;
         RootNode := Doc.DocumentElement.FindNode('MIRIAM');
         if assigned(RootNode) then
         begin
-          gActiveModel.Name := NodeContent(RootNode, 'Name');
-          gActiveModel.Reference := NodeContent(RootNode, 'Reference');
-          gActiveModel.Species := NodeContent(RootNode, 'Species');
-          gActiveModel.Creators := NodeContent(RootNode, 'Creators');
+          theModel.Name := NodeContent(RootNode, 'Name');
+          theModel.Reference := NodeContent(RootNode, 'Reference');
+          theModel.Species := NodeContent(RootNode, 'Species');
+          theModel.Creators := NodeContent(RootNode, 'Creators');
           if not TryXMLDateTime2DateTime(NodeContent(RootNode, 'Created'),
-            gActiveModel.Created) then
-            gActiveModel.Created := standardDate;
+            theModel.Created) then
+            theModel.Created := standardDate;
           if not TryXMLDateTime2DateTime(NodeContent(RootNode, 'LastModified'),
-            gActiveModel.LastModified) then
-            gActiveModel.LastModified := standardDate;
-          gActiveModel.Terms := NodeContent(RootNode, 'Terms');
+            theModel.LastModified) then
+            theModel.LastModified := standardDate;
+          theModel.Terms := NodeContent(RootNode, 'Terms');
         end;
         RootNode := Doc.DocumentElement.FindNode('MIASE');
         if assigned(RootNode) then
         begin
-          gActiveModel.Code := NodeContent(RootNode, 'Code');
-          gActiveModel.Comments := NodeContent(RootNode, 'Comments');
+          theModel.Code := NodeContent(RootNode, 'Code');
+          theModel.Comments := NodeContent(RootNode, 'Comments');
         end;
-        if gActiveModel.Code = '' then
-          gActiveModel.Code := MIASE_SIMULADREN_STANDARD_CODE;
-        if (modelVersion = '') or (LeftStr(modelVersion, 2) = '1.') then
+        if theModel.Code = '' then
+          theModel.Code := MIASE_SIMULADREN_STANDARD_CODE;
+        if (theModel.Version = '') or (LeftStr(theModel.Version, 2) = '1.') then
         begin
           RootNode := Doc.DocumentElement.FindNode('strucpars');
           if assigned(RootNode) then
           begin
-            VarFromNode(RootNode, 'G1', gActiveModel.StrucPars.G1);
-            VarFromNode(RootNode, 'G3', gActiveModel.StrucPars.G3);
-            VarFromNode(RootNode, 'GA', gActiveModel.StrucPars.GA);
-            VarFromNode(RootNode, 'DA', gActiveModel.StrucPars.DA);
-            VarFromNode(RootNode, 'GR', gActiveModel.StrucPars.GR);
-            VarFromNode(RootNode, 'DR', gActiveModel.StrucPars.DR);
-            VarFromNode(RootNode, 'GE', gActiveModel.StrucPars.GE);
+            VarFromNode(RootNode, 'G1', theModel.StrucPars.G1);
+            VarFromNode(RootNode, 'G3', theModel.StrucPars.G3);
+            VarFromNode(RootNode, 'GA', theModel.StrucPars.GA);
+            VarFromNode(RootNode, 'DA', theModel.StrucPars.DA);
+            VarFromNode(RootNode, 'GR', theModel.StrucPars.GR);
+            VarFromNode(RootNode, 'DR', theModel.StrucPars.DR);
+            VarFromNode(RootNode, 'GE', theModel.StrucPars.GE);
+            VarFromNode(RootNode, 'alpha1', theModel.StrucPars.alpha1);
+            VarFromNode(RootNode, 'beta1', theModel.StrucPars.beta1);
+            VarFromNode(RootNode, 'alpha3', theModel.StrucPars.alpha3);
+            VarFromNode(RootNode, 'beta3', theModel.StrucPars.beta3);
           end;
         end
         else
@@ -174,7 +178,7 @@ begin
         basicNode := Doc.DocumentElement.FindNode('basic');
         if assigned(basicNode) then
         begin
-          VarFromNode(basicNode, 'iterations', gActiveModel.Iterations);
+          VarFromNode(basicNode, 'iterations', theModel.Iterations);
         end;
       finally
         if assigned(Doc) then
@@ -182,9 +186,9 @@ begin
       end;
       {$IFDEF GUI}
       if AnnotationForm.Visible then
-        AnnotationForm.ShowAnnotation(gActiveModel);
+        AnnotationForm.ShowAnnotation(theModel);
       {$ENDIF}
-      gActiveModel.Imported := True;
+      theModel.Imported := True;
       DefaultFormatSettings.DecimalSeparator := oldSep;
     end
     else
