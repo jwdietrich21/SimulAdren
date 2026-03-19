@@ -91,5 +91,8 @@ begin
   PredictionList.Cells[2, 6] := FloatToStrF(Parameters2.yr / yRFactor, ffFixed, 0, 4);
 end;
 
+Initialization
+gPrediction[0].CRH := kCRH;
+
 end.
 

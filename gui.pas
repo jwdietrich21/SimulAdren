@@ -35,7 +35,7 @@ uses
   ComCtrls, StdCtrls, ExtCtrls, LCLType, Spin, Menus, Math,
   SimuladrenTypes, SimuladrenResources, SimulationEngine, Prediction, Plot,
   GUIServices, AboutBox, SetTargets, evoEngine, FitnessPlot, ParameterPlot,
-  DIFSupport, ScenarioHandler, IPS;
+  DIFSupport, ScenarioHandler, IPS, HandleInitialConditions;
 
 type
 
@@ -55,6 +55,7 @@ type
     Alpha1Label: TLabel;
     Alpha1UnitLabel: TLabel;
     Beta3UnitLabel: TLabel;
+    ICButton: TButton;
     HoursButton: TRadioButton;
     EvolvedParameterMenuitem: TMenuItem;
     FitnessMenuItem: TMenuItem;
@@ -143,6 +144,7 @@ type
     procedure FitnessMenuItemClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure HoursButtonChange(Sender: TObject);
+    procedure ICButtonClick(Sender: TObject);
     procedure IPSMenuItemClick(Sender: TObject);
     procedure MacAboutItemClick(Sender: TObject);
     procedure MinutesButtonChange(Sender: TObject);
@@ -326,7 +328,8 @@ begin
   PlotForm.eSeries.Clear;
   PlotForm.ACTHSeries.Clear;
   PlotForm.yrSeries.Clear;
-  RunSimulation(CRHSpinEdit.Value * CRHFactor, gActiveModel);
+  gInitialConditions.CRH := CRHSpinEdit.Value * CRHFactor;
+  RunSimulation(gInitialConditions, gActiveModel);
   PredictionForm.DisplayPrediction(gPrediction[0], gPrediction[1]);
   if gActiveModel.iterations > ValuesGrid.RowCount then
     ValuesGrid.RowCount := gActiveModel.iterations + 1;
@@ -707,6 +710,12 @@ begin
     SimTimeUnit := minutes;
   end;
   TestTimeUnit := SimTimeUnit;
+end;
+
+procedure TValuesForm.ICButtonClick(Sender: TObject);
+begin
+  InitialConditionsForm.Invalidate; // forces redrawing
+  InitialConditionsForm.Show;
 end;
 
 procedure TValuesForm.IPSMenuItemClick(Sender: TObject);

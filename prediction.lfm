@@ -34,6 +34,7 @@ object PredictionForm: TPredictionForm
         Width = 96
       end>
     MouseWheelOption = mwGrid
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goSmoothScroll, goHeaderHotTracking]
     RowCount = 7
     ScrollBars = ssAutoVertical
     TabOrder = 0

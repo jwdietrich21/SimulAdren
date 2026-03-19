@@ -162,8 +162,9 @@ var
   gSequence: TSequence;
   gBlocks: TBlocks;
   gPrediction: TPredictionArray;
+  gInitialConditions: TPrediction;
 
-procedure RunSimulation(CRH: extended; model: tActiveModel);
+procedure RunSimulation(InitialContitions: tPrediction; model: tActiveModel);
 function PredictSteadyState(CRH: extended; model: tActiveModel): TPredictionArray;
 
 implementation
@@ -223,16 +224,16 @@ begin
   end;
 end;
 
-procedure RunSimulation(CRH: extended; model: tActiveModel);
+procedure RunSimulation(InitialContitions: tPrediction; model: tActiveModel);
 var
-  e, ACTH, PRF, F, v, yr: extended;
+  CRH, e, ACTH, PRF, F, v, yR: extended;
   i: integer;
   params: TStrucPars;
 begin
   params := model.StrucPars;
   if model.Iterations > 0 then
   begin
-    gPrediction := PredictSteadyState(CRH, model);
+    gPrediction := PredictSteadyState(InitialContitions.CRH, model);
 
     gSequence.size := 0; // delete content
     gSequence.size := model.Iterations;;
@@ -261,12 +262,25 @@ begin
       gBlocks.ASIA3.delta := Delta;
     end;
 
-    yr := 20;
+    CRH := InitialContitions.CRH;
+    e := InitialContitions.e;
+    ACTH := InitialContitions.ACTH;
+    PRF := InitialContitions.PRF;
+    F := InitialContitions.F;
+    v := InitialContitions.v;
+    yR := InitialContitions.yR;
+
+    if (model.Version <> '1') and (model.Version <> '1.1') then
+    begin
+      gBlocks.ASIA1.x1 := gBlocks.ASIA1.alpha / gBlocks.ASIA1.beta * e;
+      gBlocks.ASIA3.x1 := gBlocks.ASIA3.alpha / gBlocks.ASIA3.beta * PRF;
+    end;
+
     for i := 0 to model.Iterations - 1 do
     begin
-      gBlocks.NoCoDI.input1 := CRH;
+      gBlocks.NoCoDI.input1 := InitialContitions.CRH;
       gBlocks.NoCoDI.input2 := yR;
-      e := PituitaryResponse(CRH, yR);
+      e := PituitaryResponse(InitialContitions.CRH, yR);
       if (model.Version = '1') or (model.Version = '1.1') then
       begin
         gBlocks.G1.input := e;

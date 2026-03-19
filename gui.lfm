@@ -1,12 +1,12 @@
 object ValuesForm: TValuesForm
   Left = 215
-  Height = 544
+  Height = 546
   Top = 150
-  Width = 765
+  Width = 766
   ActiveControl = StartButton
   Caption = 'Simuladren'
-  ClientHeight = 544
-  ClientWidth = 765
+  ClientHeight = 546
+  ClientWidth = 766
   Constraints.MinHeight = 400
   Constraints.MinWidth = 640
   Menu = MainMenu1
@@ -15,16 +15,16 @@ object ValuesForm: TValuesForm
   OnCreate = FormCreate
   object ValuesGrid: TStringGrid
     Left = 0
-    Height = 216
+    Height = 218
     Top = 40
-    Width = 768
+    Width = 769
     Anchors = [akTop, akLeft, akRight, akBottom]
     AutoFillColumns = True
     ColCount = 7
     Columns = <    
       item
         Title.Caption = 'CRH(t)'
-        Width = 117
+        Width = 118
       end    
       item
         Font.Color = clRed
@@ -54,11 +54,12 @@ object ValuesForm: TValuesForm
       end>
     FixedRows = 2
     MouseWheelOption = mwGrid
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goSmoothScroll, goHeaderHotTracking]
     RowCount = 26
     TabOrder = 0
     ColWidths = (
       64
-      117
+      118
       117
       117
       117
@@ -70,7 +71,7 @@ object ValuesForm: TValuesForm
     Left = 0
     Height = 26
     Top = 0
-    Width = 765
+    Width = 766
     Caption = 'ToolBar1'
     Images = ImageList1
     TabOrder = 1
@@ -113,10 +114,10 @@ object ValuesForm: TValuesForm
     end
   end
   object StartButton: TButton
-    Left = 662
+    Left = 663
     Height = 25
     Hint = 'Run simulation...'
-    Top = 496
+    Top = 498
     Width = 75
     Anchors = [akRight, akBottom]
     Caption = 'Run'
@@ -130,7 +131,7 @@ object ValuesForm: TValuesForm
     Left = 84
     Height = 20
     Hint = 'Concentration of corticotropin releasing hormone (CRH)'
-    Top = 312
+    Top = 314
     Width = 98
     Anchors = [akLeft, akBottom]
     DecimalPlaces = 4
@@ -141,16 +142,16 @@ object ValuesForm: TValuesForm
   object CRHLabel: TLabel
     Left = 31
     Height = 16
-    Top = 313
+    Top = 315
     Width = 27
     Anchors = [akLeft, akBottom]
     Caption = 'CRH'
     ParentColor = False
   end
   object TimeLabel: TLabel
-    Left = 450
+    Left = 451
     Height = 16
-    Top = 456
+    Top = 458
     Width = 30
     Anchors = [akRight, akBottom]
     Caption = 'Time'
@@ -159,10 +160,10 @@ object ValuesForm: TValuesForm
   object IterationsSpinEdit: TSpinEdit
     AnchorSideLeft.Control = TimeLabel
     AnchorSideLeft.Side = asrBottom
-    Left = 491
+    Left = 492
     Height = 20
     Hint = 'Number of simulation steps'
-    Top = 456
+    Top = 458
     Width = 98
     Anchors = [akRight, akBottom]
     BorderSpacing.Left = 11
@@ -173,7 +174,7 @@ object ValuesForm: TValuesForm
   object G1Label: TLabel
     Left = 31
     Height = 16
-    Top = 363
+    Top = 365
     Width = 16
     Anchors = [akLeft, akBottom]
     Caption = 'G1'
@@ -183,7 +184,7 @@ object ValuesForm: TValuesForm
     Left = 84
     Height = 20
     Hint = 'Gain of ASIA element 1'
-    Top = 362
+    Top = 364
     Width = 98
     Anchors = [akLeft, akBottom]
     Increment = 0.1
@@ -193,7 +194,7 @@ object ValuesForm: TValuesForm
   object GALabel: TLabel
     Left = 31
     Height = 16
-    Top = 453
+    Top = 455
     Width = 18
     Anchors = [akLeft, akBottom]
     Caption = 'GA'
@@ -203,7 +204,7 @@ object ValuesForm: TValuesForm
     Left = 84
     Height = 20
     Hint = 'Secretory capacity of adrenal glands'
-    Top = 452
+    Top = 454
     Width = 98
     Anchors = [akLeft, akBottom]
     Increment = 0.1
@@ -214,7 +215,7 @@ object ValuesForm: TValuesForm
     Left = 84
     Height = 20
     Hint = 'Gain of ASIA element 2'
-    Top = 416
+    Top = 418
     Width = 98
     Anchors = [akLeft, akBottom]
     Increment = 0.1
@@ -224,7 +225,7 @@ object ValuesForm: TValuesForm
   object G3Label: TLabel
     Left = 31
     Height = 16
-    Top = 420
+    Top = 422
     Width = 18
     Anchors = [akLeft, akBottom]
     Caption = 'G3'
@@ -233,7 +234,7 @@ object ValuesForm: TValuesForm
   object DALabel: TLabel
     Left = 31
     Height = 16
-    Top = 489
+    Top = 491
     Width = 18
     Anchors = [akLeft, akBottom]
     Caption = 'DA'
@@ -243,7 +244,7 @@ object ValuesForm: TValuesForm
     Left = 84
     Height = 20
     Hint = 'EC50 of ACTH at the adrenal glands'
-    Top = 488
+    Top = 490
     Width = 98
     Anchors = [akLeft, akBottom]
     Increment = 0.1
@@ -251,10 +252,10 @@ object ValuesForm: TValuesForm
     Value = 10
   end
   object DREdit: TFloatSpinEdit
-    Left = 491
+    Left = 492
     Height = 20
     Hint = 'EC50 of cortisol (F)'
-    Top = 348
+    Top = 350
     Width = 98
     Anchors = [akRight, akBottom]
     Increment = 0.1
@@ -262,19 +263,19 @@ object ValuesForm: TValuesForm
     Value = 200
   end
   object DRLabel: TLabel
-    Left = 462
+    Left = 463
     Height = 16
-    Top = 348
+    Top = 350
     Width = 18
     Anchors = [akRight, akBottom]
     Caption = 'DR'
     ParentColor = False
   end
   object GREdit: TFloatSpinEdit
-    Left = 491
+    Left = 492
     Height = 20
     Hint = 'Cortisol receptor gain'
-    Top = 312
+    Top = 314
     Width = 98
     Anchors = [akRight, akBottom]
     Increment = 0.1
@@ -282,9 +283,9 @@ object ValuesForm: TValuesForm
     Value = 1
   end
   object GRLabel: TLabel
-    Left = 462
+    Left = 463
     Height = 16
-    Top = 312
+    Top = 314
     Width = 18
     Anchors = [akRight, akBottom]
     Caption = 'GR'
@@ -293,7 +294,7 @@ object ValuesForm: TValuesForm
   object G1UnitLabel: TLabel
     Left = 197
     Height = 16
-    Top = 363
+    Top = 365
     Width = 18
     Anchors = [akLeft, akBottom]
     Caption = 's/L'
@@ -301,7 +302,7 @@ object ValuesForm: TValuesForm
   object G3Unitlabel: TLabel
     Left = 197
     Height = 16
-    Top = 420
+    Top = 422
     Width = 18
     Anchors = [akLeft, akBottom]
     Caption = 's/L'
@@ -309,7 +310,7 @@ object ValuesForm: TValuesForm
   object GAUnitLabel: TLabel
     Left = 197
     Height = 16
-    Top = 453
+    Top = 455
     Width = 40
     Anchors = [akLeft, akBottom]
     Caption = 'nmol/s'
@@ -317,40 +318,40 @@ object ValuesForm: TValuesForm
   object DAUnitLabel: TLabel
     Left = 197
     Height = 16
-    Top = 489
+    Top = 491
     Width = 41
     Anchors = [akLeft, akBottom]
     Caption = 'pmol/L'
   end
   object GRUnitLabel: TLabel
-    Left = 604
+    Left = 605
     Height = 16
-    Top = 312
+    Top = 314
     Width = 25
     Anchors = [akRight, akBottom]
     Caption = '       '
   end
   object DRUnitLabel: TLabel
-    Left = 604
+    Left = 605
     Height = 16
-    Top = 349
+    Top = 351
     Width = 41
     Anchors = [akRight, akBottom]
     Caption = 'nmol/L'
   end
   object GELabel: TLabel
-    Left = 462
+    Left = 463
     Height = 16
-    Top = 388
+    Top = 390
     Width = 17
     Anchors = [akRight, akBottom]
     Caption = 'GE'
   end
   object GEEdit: TFloatSpinEdit
-    Left = 491
+    Left = 492
     Height = 20
     Hint = 'Effector gain'
-    Top = 384
+    Top = 386
     Width = 98
     Anchors = [akRight, akBottom]
     TabOrder = 11
@@ -359,16 +360,16 @@ object ValuesForm: TValuesForm
   object CRHUnitLabel: TLabel
     Left = 197
     Height = 16
-    Top = 313
+    Top = 315
     Width = 38
     Anchors = [akLeft, akBottom]
     Caption = 'fmol/L'
   end
   object SteadyStateButton: TButton
-    Left = 570
+    Left = 571
     Height = 25
     Hint = 'Predict steady-state values'
-    Top = 496
+    Top = 498
     Width = 75
     Anchors = [akRight, akBottom]
     Caption = 'Predict'
@@ -378,10 +379,10 @@ object ValuesForm: TValuesForm
     OnClick = SteadyStateButtonClick
   end
   object EvolveButton: TButton
-    Left = 481
+    Left = 482
     Height = 25
     Hint = 'Estimate checked parameters with an evolutionary algorithm.'
-    Top = 496
+    Top = 498
     Width = 75
     Anchors = [akRight, akBottom]
     Caption = 'Estimate'
@@ -392,10 +393,10 @@ object ValuesForm: TValuesForm
     OnClick = EvolveButtonClick
   end
   object EstimateGRCheckBox: TCheckBox
-    Left = 596
+    Left = 597
     Height = 18
     Hint = 'Estimate this parameter via evolutionary algorithm'
-    Top = 314
+    Top = 316
     Width = 75
     Anchors = [akRight, akBottom]
     Caption = 'Estimate'
@@ -403,10 +404,10 @@ object ValuesForm: TValuesForm
     OnChange = EstimateGRCheckBoxChange
   end
   object EstimateGECheckbox: TCheckBox
-    Left = 596
+    Left = 597
     Height = 18
     Hint = 'Estimate this parameter via evolutionary algorithm'
-    Top = 384
+    Top = 386
     Width = 75
     Anchors = [akRight, akBottom]
     Caption = 'Estimate'
@@ -416,7 +417,7 @@ object ValuesForm: TValuesForm
   object ModelVersionComboBox: TComboBox
     Left = 85
     Height = 20
-    Top = 278
+    Top = 280
     Width = 148
     Anchors = [akLeft, akBottom]
     ItemHeight = 18
@@ -434,7 +435,7 @@ object ValuesForm: TValuesForm
   object ModelVersionLabel: TLabel
     Left = 31
     Height = 16
-    Top = 278
+    Top = 280
     Width = 45
     Anchors = [akLeft, akBottom]
     Caption = 'Version'
@@ -442,7 +443,7 @@ object ValuesForm: TValuesForm
   object Alpha1Edit: TFloatSpinEdit
     Left = 320
     Height = 20
-    Top = 348
+    Top = 350
     Width = 80
     Anchors = [akLeft, akBottom]
     DecimalPlaces = 4
@@ -454,7 +455,7 @@ object ValuesForm: TValuesForm
   object Alpha1Label: TLabel
     Left = 272
     Height = 16
-    Top = 350
+    Top = 352
     Width = 40
     Anchors = [akLeft, akBottom]
     Caption = 'Alpha1'
@@ -462,7 +463,7 @@ object ValuesForm: TValuesForm
   object Alpha1UnitLabel: TLabel
     Left = 404
     Height = 16
-    Top = 351
+    Top = 353
     Width = 11
     Anchors = [akLeft, akBottom]
     Caption = '/L'
@@ -470,7 +471,7 @@ object ValuesForm: TValuesForm
   object Beta1Label: TLabel
     Left = 272
     Height = 16
-    Top = 373
+    Top = 375
     Width = 33
     Anchors = [akLeft, akBottom]
     Caption = 'Beta1'
@@ -478,7 +479,7 @@ object ValuesForm: TValuesForm
   object Beta1Edit: TFloatSpinEdit
     Left = 320
     Height = 20
-    Top = 372
+    Top = 374
     Width = 80
     Anchors = [akLeft, akBottom]
     DecimalPlaces = 4
@@ -490,7 +491,7 @@ object ValuesForm: TValuesForm
   object Beta1UnitLabel: TLabel
     Left = 404
     Height = 16
-    Top = 374
+    Top = 376
     Width = 11
     Anchors = [akLeft, akBottom]
     Caption = '/s'
@@ -498,7 +499,7 @@ object ValuesForm: TValuesForm
   object Shape1: TShape
     Left = 224
     Height = 25
-    Top = 358
+    Top = 360
     Width = 40
     Anchors = [akLeft, akBottom]
     Brush.Color = clDefault
@@ -509,7 +510,7 @@ object ValuesForm: TValuesForm
   object Alpha3Edit: TFloatSpinEdit
     Left = 320
     Height = 20
-    Top = 405
+    Top = 407
     Width = 80
     Anchors = [akLeft, akBottom]
     DecimalPlaces = 4
@@ -521,7 +522,7 @@ object ValuesForm: TValuesForm
   object Alpha3Label: TLabel
     Left = 272
     Height = 16
-    Top = 406
+    Top = 408
     Width = 42
     Anchors = [akLeft, akBottom]
     Caption = 'Alpha3'
@@ -529,7 +530,7 @@ object ValuesForm: TValuesForm
   object Alpha3UnitLabel: TLabel
     Left = 404
     Height = 16
-    Top = 407
+    Top = 409
     Width = 11
     Anchors = [akLeft, akBottom]
     Caption = '/L'
@@ -537,7 +538,7 @@ object ValuesForm: TValuesForm
   object Beta3Label: TLabel
     Left = 272
     Height = 16
-    Top = 429
+    Top = 431
     Width = 36
     Anchors = [akLeft, akBottom]
     Caption = 'Beta3'
@@ -545,7 +546,7 @@ object ValuesForm: TValuesForm
   object Beta3Edit: TFloatSpinEdit
     Left = 320
     Height = 20
-    Top = 428
+    Top = 430
     Width = 80
     Anchors = [akLeft, akBottom]
     DecimalPlaces = 6
@@ -557,7 +558,7 @@ object ValuesForm: TValuesForm
   object Beta3UnitLabel: TLabel
     Left = 404
     Height = 16
-    Top = 430
+    Top = 432
     Width = 11
     Anchors = [akLeft, akBottom]
     Caption = '/s'
@@ -565,7 +566,7 @@ object ValuesForm: TValuesForm
   object Shape2: TShape
     Left = 224
     Height = 25
-    Top = 414
+    Top = 416
     Width = 40
     Anchors = [akLeft, akBottom]
     Brush.Color = clDefault
@@ -574,10 +575,10 @@ object ValuesForm: TValuesForm
     Shape = stTriangleLeft
   end
   object MinutesButton: TRadioButton
-    Left = 594
+    Left = 595
     Height = 18
     Hint = 'Minutes'
-    Top = 458
+    Top = 460
     Width = 71
     Anchors = [akRight, akBottom]
     Caption = 'Minutes'
@@ -587,15 +588,26 @@ object ValuesForm: TValuesForm
     OnChange = MinutesButtonChange
   end
   object HoursButton: TRadioButton
-    Left = 677
+    Left = 678
     Height = 18
     Hint = 'Hours'
-    Top = 458
+    Top = 460
     Width = 60
     Anchors = [akRight, akBottom]
     Caption = 'Hours'
     TabOrder = 22
     OnChange = HoursButtonChange
+  end
+  object ICButton: TButton
+    Left = 361
+    Height = 25
+    Hint = 'Initial Conditions...'
+    Top = 498
+    Width = 75
+    Anchors = [akRight, akBottom]
+    Caption = 'IC'
+    TabOrder = 23
+    OnClick = ICButtonClick
   end
   object ImageList1: TImageList
     Left = 584

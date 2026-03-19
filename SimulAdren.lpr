@@ -37,7 +37,7 @@ uses
   Plot, prediction, SimuladrenTypes, Solver, AboutBox, EnvironmentInfo,
   RandomFunctions, evoEngine, SetTargets, FitnessPlot, ParameterPlot,
   DIFSupport, SystemsDiagram, BaseServices, GUIServices, ScenarioHandler,
-  SimuladrenResources;
+  SimuladrenResources, HandleInitialConditions;
 
 {$R *.res}
 
@@ -54,5 +54,6 @@ begin
   Application.CreateForm(TTargetForm, TargetForm);
   Application.CreateForm(TFitnessPlotForm, FitnessPlotForm);
   Application.CreateForm(TParameterForm, ParameterForm);
+  Application.CreateForm(TInitialConditionsForm, InitialConditionsForm);
   Application.Run;
 end.

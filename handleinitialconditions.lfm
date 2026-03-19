@@ -1,0 +1,82 @@
+object InitialConditionsForm: TInitialConditionsForm
+  Left = 240
+  Height = 214
+  Top = 168
+  Width = 368
+  BorderStyle = bsDialog
+  Caption = 'Initial Conditions'
+  ClientHeight = 214
+  ClientWidth = 368
+  LCLVersion = '4.6.0.0'
+  OnCreate = FormCreate
+  OnPaint = FormPaint
+  object ICList: TStringGrid
+    Left = 0
+    Height = 160
+    Top = 0
+    Width = 364
+    Anchors = [akTop, akLeft, akRight]
+    AutoFillColumns = True
+    ColCount = 3
+    Columns = <    
+      item
+        Title.Caption = 'Start value'
+        Width = 149
+      end    
+      item
+        Title.Caption = 'UoM'
+        Width = 149
+      end>
+    MouseWheelOption = mwGrid
+    Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goEditing, goDblClickAutoSize, goSmoothScroll, goHeaderHotTracking]
+    RowCount = 7
+    ScrollBars = ssAutoVertical
+    TabOrder = 0
+    ColWidths = (
+      64
+      149
+      149
+    )
+  end
+  object OKButton: TButton
+    Left = 269
+    Height = 25
+    Hint = 'Use these values'
+    Top = 173
+    Width = 75
+    Anchors = [akRight, akBottom]
+    Caption = 'OK'
+    Default = True
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 1
+    OnClick = OKButtonClick
+  end
+  object PredictionButton: TButton
+    Left = 149
+    Height = 25
+    Hint = 'Fill-in values from prediction'
+    Top = 173
+    Width = 99
+    Anchors = [akRight, akBottom]
+    Caption = 'Prediction'
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 2
+    OnClick = PredictionButtonClick
+  end
+  object CancelButton: TButton
+    Left = 16
+    Height = 25
+    Hint = 'Cancel entry and close this dialog box'
+    Top = 173
+    Width = 75
+    Anchors = [akLeft, akBottom]
+    Cancel = True
+    Caption = 'Cancel'
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 3
+    OnClick = CancelButtonClick
+  end
+end
