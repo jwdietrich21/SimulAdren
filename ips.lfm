@@ -1,7 +1,7 @@
 object IPSForm: TIPSForm
-  Left = 366
+  Left = 455
   Height = 370
-  Top = 149
+  Top = 122
   Width = 552
   BorderStyle = bsSingle
   Caption = 'Information Processing Structure'
@@ -147,6 +147,7 @@ object IPSForm: TIPSForm
   LCLVersion = '4.6.0.0'
   Visible = True
   OnCreate = FormCreate
+  OnPaint = DrawIPS
   object IPSImage: TImage
     Left = 24
     Height = 339

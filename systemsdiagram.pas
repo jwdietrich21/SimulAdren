@@ -6,7 +6,7 @@ unit SystemsDiagram;
 
 { SystemsDiagram: Classes for drawing block diagrams }
 
-{ Version 2.1.0 (Foudre) }
+{ Version 2.1.1 (Foudre) }
 
 { (c) Johannes W. Dietrich, 1994 - 2026 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -1434,7 +1434,10 @@ begin
     th := 0;
     s := blockDiagram.scaling;
     theRect := ScaledRect(boundsRect, s);
-    theString := 'ASIA';
+    if title = '' then
+      theString := 'ASIA'
+    else
+      theString := title;
     Font.Color := blockDiagram.canvas.Pen.Color;
     Font.Height := trunc(blockDiagram.canvas.Font.Height * s);
     oldFontElements := FontProperties(blockDiagram.canvas.Font);

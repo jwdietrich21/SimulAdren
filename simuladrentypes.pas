@@ -91,6 +91,7 @@ var
   gNumberFormat, gDateTimeFormat: string;
   gFormatSettings, gUSFormatSettings: TFormatSettings;
   gScalingFactor: real;
+  gActiveModel: tActiveModel;
 
 implementation
 
@@ -99,6 +100,7 @@ initialization
   gDateTimeFormat := STANDARD_TIME_FORMAT;
 
 end.
+
 { References:
 
 Breuninger LM, Dempsey WL, Uhl J, Murasko DM. Hydrocortisone regulation of

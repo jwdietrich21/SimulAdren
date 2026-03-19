@@ -34,9 +34,6 @@ uses
   Classes, SysUtils, DateUtils, DOM, XMLRead, XMLWrite,
   URIParser, SimuladrenTypes, SimuladrenResources, BaseServices, GUIServices;
 
-var
-  gActiveModel: tActiveModel;
-
 function NewScenario: TActiveModel;
 function emptyModel: TActiveModel;
 procedure ReadScenario(theFileName: string; var theModel: tActiveModel);
@@ -130,7 +127,11 @@ begin
             with RootNode.Attributes[i] do
             begin
               if NodeName = 'modelversion' then
+              begin
                 theModel.Version := UTF8Encode(NodeValue);
+                if theModel.Version = '1.0' then
+                  theModel.Version := '1';
+              end;
             end;
         RootNode := Doc.DocumentElement.FindNode('MIRIAM');
         if assigned(RootNode) then
@@ -155,7 +156,8 @@ begin
         end;
         if theModel.Code = '' then
           theModel.Code := MIASE_SIMULADREN_STANDARD_CODE;
-        if (theModel.Version = '') or (LeftStr(theModel.Version, 2) = '1.') then
+        if (theModel.Version = '') or (theModel.Version = '1') or
+          (LeftStr(theModel.Version, 2) = '1.') then
         begin
           RootNode := Doc.DocumentElement.FindNode('strucpars');
           if assigned(RootNode) then
@@ -256,13 +258,13 @@ begin
     if (theModel.Version <> '1') and (theModel.Version <> '1.1') then
     begin
       ElementNode.AppendChild(SimpleNode(Doc, 'alpha1',
-      FloatToStr(theModel.StrucPars.alpha1, gUSFormatSettings)));
+        FloatToStr(theModel.StrucPars.alpha1, gUSFormatSettings)));
       ElementNode.AppendChild(SimpleNode(Doc, 'beta1',
-      FloatToStr(theModel.StrucPars.beta1, gUSFormatSettings)));
+        FloatToStr(theModel.StrucPars.beta1, gUSFormatSettings)));
       ElementNode.AppendChild(SimpleNode(Doc, 'alpha3',
-      FloatToStr(theModel.StrucPars.alpha3, gUSFormatSettings)));
+        FloatToStr(theModel.StrucPars.alpha3, gUSFormatSettings)));
       ElementNode.AppendChild(SimpleNode(Doc, 'beta3',
-      FloatToStr(theModel.StrucPars.beta3, gUSFormatSettings)));
+        FloatToStr(theModel.StrucPars.beta3, gUSFormatSettings)));
     end;
     RootNode.AppendChild(ElementNode);
 

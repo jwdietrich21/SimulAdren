@@ -40,6 +40,7 @@ type
     Controller, DAInjection, VTypeAllostery, MMRatio2: TIPSClass;
     DRInjection, MMRatio4: TIPSClass;
     G1, GA, G3, GR, GE, xt, DA, DR, x1, j1, j2: TIPSClass;
+    ASIA1, ASIA3: TIPSClass;
     cx, ce, cy, cACTH, cyr, cDA, c1, cN, c2a, c2b, c2c: TConnectionClass;
     cCortisol, cv, cD4, c4a, c4b, c4c: TConnectionClass;
   end;
@@ -121,12 +122,24 @@ begin
     TInvertableClass(Elements.Controller).invertedSegments := [bottomSegment];
     Elements.Controller.Draw;
 
-    Elements.G1 := TPClass.Create;
-    Elements.G1.blockDiagram := BlockDiagram;
-    SetRect(Elements.G1.boundsRect, 100, 52, 160, 88);
-    Elements.G1.title := 'G1';
-    Elements.G1.font.Style := [fsItalic];
-    Elements.G1.Draw;
+    if (gActiveModel.Version = '1') or (gActiveModel.Version = '1.1') then
+    begin
+      Elements.G1 := TPClass.Create;
+      Elements.G1.blockDiagram := BlockDiagram;
+      SetRect(Elements.G1.boundsRect, 100, 52, 160, 88);
+      Elements.G1.title := 'G1';
+      Elements.G1.font.Style := [fsItalic];
+      Elements.G1.Draw;
+    end
+    else
+    begin
+      Elements.ASIA1 := TASIAClass.Create;
+      Elements.ASIA1.blockDiagram := BlockDiagram;
+      SetRect(Elements.ASIA1.boundsRect, 100, 52, 160, 88);
+      Elements.ASIA1.title := 'ASIA 1';
+      Elements.ASIA1.font.Style := [fsItalic];
+      Elements.ASIA1.Draw;
+    end;
 
     Elements.GA := TPClass.Create;
     Elements.GA.blockDiagram := BlockDiagram;
@@ -140,12 +153,24 @@ begin
     SetRect(Elements.DAInjection.boundsRect, 250, 100, 290, 140);
     Elements.DAInjection.Draw;
 
+    if (gActiveModel.Version = '1') or (gActiveModel.Version = '1.1') then
+    begin
     Elements.G3 := TPClass.Create;
     Elements.G3.blockDiagram := BlockDiagram;
     SetRect(Elements.G3.boundsRect, 420, 110, 480, 150);
     Elements.G3.title := 'G3';
     Elements.G3.font.Style := [fsItalic];
     Elements.G3.Draw;
+    end
+    else
+    begin
+      Elements.ASIA3 := TASIAClass.Create;
+      Elements.ASIA3.blockDiagram := BlockDiagram;
+      SetRect(Elements.ASIA3.boundsRect, 420, 110, 480, 150);
+      Elements.ASIA3.title := 'ASIA 3';
+      Elements.ASIA3.font.Style := [fsItalic];
+      Elements.ASIA3.Draw;
+    end;
 
     Elements.MMRatio2 := TPiClass.Create;
     Elements.MMRatio2.blockDiagram := BlockDiagram;
@@ -234,7 +259,10 @@ begin
     Elements.ce.blockDiagram := BlockDiagram;
     Elements.ce.sourceObject := Elements.Controller;
     Elements.ce.sourceAnchor := rightmiddle;
-    Elements.ce.drainObject := Elements.G1;
+    if (gActiveModel.Version = '1') or (gActiveModel.Version = '1.1') then
+      Elements.ce.drainObject := Elements.G1
+    else
+      Elements.ce.drainObject := Elements.ASIA1;
     Elements.ce.drainAnchor := leftmiddle;
     Elements.ce.title := 'e(t)';
     Elements.ce.font.Style := [fsItalic];
@@ -246,7 +274,10 @@ begin
     BlockDiagram.Canvas.Pen.Color := clGoldenRod;
     Elements.cACTH := TConnectionClass.Create;
     Elements.cACTH.blockDiagram := BlockDiagram;
-    Elements.cACTH.sourceObject := Elements.G1;
+    if (gActiveModel.Version = '1') or (gActiveModel.Version = '1.1') then
+      Elements.cACTH.sourceObject := Elements.G1
+    else
+      Elements.cACTH.sourceObject := Elements.ASIA1;
     Elements.cACTH.sourceAnchor := rightmiddle;
     Elements.cACTH.drainObject := Elements.GA;
     Elements.cACTH.drainAnchor := leftmiddle;
@@ -303,7 +334,10 @@ begin
     Elements.cy.blockDiagram := BlockDiagram;
     Elements.cy.sourceObject := Elements.MMRatio2;
     Elements.cy.sourceAnchor := rightmiddle;
-    Elements.cy.drainObject := Elements.G3;
+    if (gActiveModel.Version = '1') or (gActiveModel.Version = '1.1') then
+      Elements.cy.drainObject := Elements.G3
+    else
+      Elements.cy.drainObject := Elements.ASIA3;
     Elements.cy.drainAnchor := topmiddle;
     Elements.cy.chirality := cright;
     Elements.cy.title := 'PR(F, t)';
@@ -314,7 +348,10 @@ begin
 
     Elements.cCortisol := TConnectionClass.Create;
     Elements.cCortisol.blockDiagram := BlockDiagram;
-    Elements.cCortisol.sourceObject := Elements.G3;
+    if (gActiveModel.Version = '1') or (gActiveModel.Version = '1.1') then
+      Elements.cCortisol.sourceObject := Elements.G3
+    else
+      Elements.cCortisol.sourceObject := Elements.ASIA3;
     Elements.cCortisol.sourceAnchor := bottommiddle;
     Elements.cCortisol.drainObject := Elements.GR;
     Elements.cCortisol.drainAnchor := rightmiddle;
@@ -405,8 +442,7 @@ end;
 
 procedure TIPSForm.FormCreate(Sender: TObject);
 begin
-  Scaled := true;
-  DrawIPS(Sender);
+  Scaled := True;
 end;
 
 procedure TIPSForm.SaveBlockDiagram(fileName: string; imageType: TImageType);

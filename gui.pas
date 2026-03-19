@@ -713,6 +713,7 @@ end;
 procedure TValuesForm.ModelVersionComboBoxChange(Sender: TObject);
 begin
   SetModel(Sender);
+  IPSForm.Invalidate; // forces redrawing
 end;
 
 procedure TValuesForm.OpenMenuItemClick(Sender: TObject);
@@ -733,6 +734,7 @@ begin
         SetParams(Sender, gActiveModel);
       end;
     end;
+    IPSForm.Invalidate; // forces redrawing
   end;
 end;
 
