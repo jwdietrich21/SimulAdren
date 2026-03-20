@@ -46,7 +46,7 @@ type
     { private declarations }
   public
     { public declarations }
-    procedure DisplayPrediction(Parameters1, Parameters2: TPrediction);
+    procedure DisplayPrediction(Parameters1, Parameters2: TParamVector);
   end;
 
 var
@@ -75,7 +75,7 @@ begin
     PredictionList.Cells[3, i] := kUoMs[i];
 end;
 
-procedure TPredictionForm.DisplayPrediction(Parameters1, Parameters2: TPrediction);
+procedure TPredictionForm.DisplayPrediction(Parameters1, Parameters2: TParamVector);
 begin
   PredictionList.Cells[1, 1] := FloatToStrF(Parameters1.CRH / CRHFactor, ffFixed, 0, 4);
   PredictionList.Cells[1, 2] := FloatToStrF(Parameters1.e / eFactor, ffFixed, 0, 4);

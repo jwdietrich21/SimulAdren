@@ -9,7 +9,6 @@ object InitialConditionsForm: TInitialConditionsForm
   ClientWidth = 368
   LCLVersion = '4.6.0.0'
   OnCreate = FormCreate
-  OnPaint = FormPaint
   object ICList: TStringGrid
     Left = 0
     Height = 160

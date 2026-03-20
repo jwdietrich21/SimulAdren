@@ -46,7 +46,6 @@ type
     ICList: TStringGrid;
     procedure CancelButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure FormPaint(Sender: TObject);
     procedure OKButtonClick(Sender: TObject);
     procedure PredictionButtonClick(Sender: TObject);
   private
@@ -73,27 +72,21 @@ procedure TInitialConditionsForm.FormCreate(Sender: TObject);
 var
   i: integer;
 begin
-  for i := 1 to ICList.RowCount - 1 do
-    begin
-      ICList.Cells[2, i] := kUoMs[i];
-    end;
-end;
-
-procedure TInitialConditionsForm.FormPaint(Sender: TObject);
-var
-  i: integer;
-begin
-  ICList.Cells[1, 1] := FloatToStrF(gPrediction[0].CRH / CRHFactor, ffFixed, 0, 4);
-  for i := 2 to ICList.RowCount - 1 do
-    begin
-      ICList.Cells[1, i] := '0';
-    end;
   ICList.Cells[0, 1] := 'CRH';
   ICList.Cells[0, 2] := 'e';
   ICList.Cells[0, 3] := 'ACTH';
   ICList.Cells[0, 4] := 'PRF';
   ICList.Cells[0, 5] := 'F';
   ICList.Cells[0, 6] := 'yr';
+  ICList.Cells[1, 1] := FloatToStrF(gInitialconditions.CRH / CRHFactor, ffFixed, 0, 4);
+  for i := 2 to ICList.RowCount - 1 do
+    begin
+      ICList.Cells[1, i] := '0';
+    end;
+  for i := 1 to ICList.RowCount - 1 do
+    begin
+      ICList.Cells[2, i] := kUoMs[i];
+    end;
 end;
 
 procedure TInitialConditionsForm.OKButtonClick(Sender: TObject);
@@ -116,6 +109,10 @@ begin
   ICList.Cells[1, 5] := FloatToStrF(gPrediction[0].F / CortisolFactor, ffFixed, 0, 4);
   ICList.Cells[1, 6] := FloatToStrF(gPrediction[0].yR / yRFactor, ffFixed, 0, 4);
 end;
+
+initialization
+
+gInitialconditions.CRH := kCRH;
 
 end.
 

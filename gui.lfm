@@ -127,27 +127,6 @@ object ValuesForm: TValuesForm
     TabOrder = 2
     OnClick = StartButtonClick
   end
-  object CRHSpinEdit: TFloatSpinEdit
-    Left = 84
-    Height = 20
-    Hint = 'Concentration of corticotropin releasing hormone (CRH)'
-    Top = 314
-    Width = 98
-    Anchors = [akLeft, akBottom]
-    DecimalPlaces = 4
-    Increment = 0.2
-    TabOrder = 3
-    Value = 5
-  end
-  object CRHLabel: TLabel
-    Left = 31
-    Height = 16
-    Top = 315
-    Width = 27
-    Anchors = [akLeft, akBottom]
-    Caption = 'CRH'
-    ParentColor = False
-  end
   object TimeLabel: TLabel
     Left = 451
     Height = 16
@@ -168,13 +147,13 @@ object ValuesForm: TValuesForm
     Anchors = [akRight, akBottom]
     BorderSpacing.Left = 11
     MaxValue = 1000000
-    TabOrder = 4
+    TabOrder = 3
     Value = 180
   end
   object G1Label: TLabel
     Left = 31
     Height = 16
-    Top = 365
+    Top = 331
     Width = 16
     Anchors = [akLeft, akBottom]
     Caption = 'G1'
@@ -184,17 +163,17 @@ object ValuesForm: TValuesForm
     Left = 84
     Height = 20
     Hint = 'Gain of ASIA element 1'
-    Top = 364
+    Top = 330
     Width = 98
     Anchors = [akLeft, akBottom]
     Increment = 0.1
-    TabOrder = 5
+    TabOrder = 4
     Value = 2000
   end
   object GALabel: TLabel
     Left = 31
     Height = 16
-    Top = 455
+    Top = 421
     Width = 18
     Anchors = [akLeft, akBottom]
     Caption = 'GA'
@@ -204,28 +183,28 @@ object ValuesForm: TValuesForm
     Left = 84
     Height = 20
     Hint = 'Secretory capacity of adrenal glands'
-    Top = 454
+    Top = 420
     Width = 98
     Anchors = [akLeft, akBottom]
     Increment = 0.1
-    TabOrder = 6
+    TabOrder = 5
     Value = 1.17
   end
   object G3Edit: TFloatSpinEdit
     Left = 84
     Height = 20
     Hint = 'Gain of ASIA element 2'
-    Top = 418
+    Top = 384
     Width = 98
     Anchors = [akLeft, akBottom]
     Increment = 0.1
-    TabOrder = 7
+    TabOrder = 6
     Value = 371
   end
   object G3Label: TLabel
     Left = 31
     Height = 16
-    Top = 422
+    Top = 388
     Width = 18
     Anchors = [akLeft, akBottom]
     Caption = 'G3'
@@ -234,7 +213,7 @@ object ValuesForm: TValuesForm
   object DALabel: TLabel
     Left = 31
     Height = 16
-    Top = 491
+    Top = 457
     Width = 18
     Anchors = [akLeft, akBottom]
     Caption = 'DA'
@@ -244,11 +223,11 @@ object ValuesForm: TValuesForm
     Left = 84
     Height = 20
     Hint = 'EC50 of ACTH at the adrenal glands'
-    Top = 490
+    Top = 456
     Width = 98
     Anchors = [akLeft, akBottom]
     Increment = 0.1
-    TabOrder = 8
+    TabOrder = 7
     Value = 10
   end
   object DREdit: TFloatSpinEdit
@@ -259,7 +238,7 @@ object ValuesForm: TValuesForm
     Width = 98
     Anchors = [akRight, akBottom]
     Increment = 0.1
-    TabOrder = 9
+    TabOrder = 8
     Value = 200
   end
   object DRLabel: TLabel
@@ -279,7 +258,7 @@ object ValuesForm: TValuesForm
     Width = 98
     Anchors = [akRight, akBottom]
     Increment = 0.1
-    TabOrder = 10
+    TabOrder = 9
     Value = 1
   end
   object GRLabel: TLabel
@@ -294,7 +273,7 @@ object ValuesForm: TValuesForm
   object G1UnitLabel: TLabel
     Left = 197
     Height = 16
-    Top = 365
+    Top = 331
     Width = 18
     Anchors = [akLeft, akBottom]
     Caption = 's/L'
@@ -302,7 +281,7 @@ object ValuesForm: TValuesForm
   object G3Unitlabel: TLabel
     Left = 197
     Height = 16
-    Top = 422
+    Top = 388
     Width = 18
     Anchors = [akLeft, akBottom]
     Caption = 's/L'
@@ -310,7 +289,7 @@ object ValuesForm: TValuesForm
   object GAUnitLabel: TLabel
     Left = 197
     Height = 16
-    Top = 455
+    Top = 421
     Width = 40
     Anchors = [akLeft, akBottom]
     Caption = 'nmol/s'
@@ -318,7 +297,7 @@ object ValuesForm: TValuesForm
   object DAUnitLabel: TLabel
     Left = 197
     Height = 16
-    Top = 491
+    Top = 457
     Width = 41
     Anchors = [akLeft, akBottom]
     Caption = 'pmol/L'
@@ -354,16 +333,8 @@ object ValuesForm: TValuesForm
     Top = 386
     Width = 98
     Anchors = [akRight, akBottom]
-    TabOrder = 11
+    TabOrder = 10
     Value = 1
-  end
-  object CRHUnitLabel: TLabel
-    Left = 197
-    Height = 16
-    Top = 315
-    Width = 38
-    Anchors = [akLeft, akBottom]
-    Caption = 'fmol/L'
   end
   object SteadyStateButton: TButton
     Left = 571
@@ -375,7 +346,7 @@ object ValuesForm: TValuesForm
     Caption = 'Predict'
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 12
+    TabOrder = 11
     OnClick = SteadyStateButtonClick
   end
   object EvolveButton: TButton
@@ -389,7 +360,7 @@ object ValuesForm: TValuesForm
     Enabled = False
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 13
+    TabOrder = 12
     OnClick = EvolveButtonClick
   end
   object EstimateGRCheckBox: TCheckBox
@@ -400,7 +371,7 @@ object ValuesForm: TValuesForm
     Width = 75
     Anchors = [akRight, akBottom]
     Caption = 'Estimate'
-    TabOrder = 14
+    TabOrder = 13
     OnChange = EstimateGRCheckBoxChange
   end
   object EstimateGECheckbox: TCheckBox
@@ -411,7 +382,7 @@ object ValuesForm: TValuesForm
     Width = 75
     Anchors = [akRight, akBottom]
     Caption = 'Estimate'
-    TabOrder = 15
+    TabOrder = 14
     OnChange = EstimateGECheckboxChange
   end
   object ModelVersionComboBox: TComboBox
@@ -428,7 +399,7 @@ object ValuesForm: TValuesForm
       'Model 1.2'
       'Model 1.3'
     )
-    TabOrder = 16
+    TabOrder = 15
     Text = 'Model 1.3'
     OnChange = ModelVersionComboBoxChange
   end
@@ -443,19 +414,19 @@ object ValuesForm: TValuesForm
   object Alpha1Edit: TFloatSpinEdit
     Left = 320
     Height = 20
-    Top = 350
+    Top = 316
     Width = 80
     Anchors = [akLeft, akBottom]
     DecimalPlaces = 4
     Increment = 0.0001
-    TabOrder = 17
+    TabOrder = 16
     Value = 0.4
     OnChange = Alpha1EditChange
   end
   object Alpha1Label: TLabel
     Left = 272
     Height = 16
-    Top = 352
+    Top = 318
     Width = 40
     Anchors = [akLeft, akBottom]
     Caption = 'Alpha1'
@@ -463,7 +434,7 @@ object ValuesForm: TValuesForm
   object Alpha1UnitLabel: TLabel
     Left = 404
     Height = 16
-    Top = 353
+    Top = 319
     Width = 11
     Anchors = [akLeft, akBottom]
     Caption = '/L'
@@ -471,7 +442,7 @@ object ValuesForm: TValuesForm
   object Beta1Label: TLabel
     Left = 272
     Height = 16
-    Top = 375
+    Top = 341
     Width = 33
     Anchors = [akLeft, akBottom]
     Caption = 'Beta1'
@@ -479,19 +450,19 @@ object ValuesForm: TValuesForm
   object Beta1Edit: TFloatSpinEdit
     Left = 320
     Height = 20
-    Top = 374
+    Top = 340
     Width = 80
     Anchors = [akLeft, akBottom]
     DecimalPlaces = 4
     Increment = 0.0001
-    TabOrder = 18
+    TabOrder = 17
     Value = 0.0002
     OnChange = Beta1EditChange
   end
   object Beta1UnitLabel: TLabel
     Left = 404
     Height = 16
-    Top = 376
+    Top = 342
     Width = 11
     Anchors = [akLeft, akBottom]
     Caption = '/s'
@@ -499,7 +470,7 @@ object ValuesForm: TValuesForm
   object Shape1: TShape
     Left = 224
     Height = 25
-    Top = 360
+    Top = 326
     Width = 40
     Anchors = [akLeft, akBottom]
     Brush.Color = clDefault
@@ -510,19 +481,19 @@ object ValuesForm: TValuesForm
   object Alpha3Edit: TFloatSpinEdit
     Left = 320
     Height = 20
-    Top = 407
+    Top = 373
     Width = 80
     Anchors = [akLeft, akBottom]
     DecimalPlaces = 4
     Increment = 0.0001
-    TabOrder = 19
+    TabOrder = 18
     Value = 0.0476
     OnChange = Alpha3EditChange
   end
   object Alpha3Label: TLabel
     Left = 272
     Height = 16
-    Top = 408
+    Top = 374
     Width = 42
     Anchors = [akLeft, akBottom]
     Caption = 'Alpha3'
@@ -530,7 +501,7 @@ object ValuesForm: TValuesForm
   object Alpha3UnitLabel: TLabel
     Left = 404
     Height = 16
-    Top = 409
+    Top = 375
     Width = 11
     Anchors = [akLeft, akBottom]
     Caption = '/L'
@@ -538,7 +509,7 @@ object ValuesForm: TValuesForm
   object Beta3Label: TLabel
     Left = 272
     Height = 16
-    Top = 431
+    Top = 397
     Width = 36
     Anchors = [akLeft, akBottom]
     Caption = 'Beta3'
@@ -546,19 +517,19 @@ object ValuesForm: TValuesForm
   object Beta3Edit: TFloatSpinEdit
     Left = 320
     Height = 20
-    Top = 430
+    Top = 396
     Width = 80
     Anchors = [akLeft, akBottom]
     DecimalPlaces = 6
     Increment = 0.0001
-    TabOrder = 20
+    TabOrder = 19
     Value = 0.000128
     OnChange = Beta3EditChange
   end
   object Beta3UnitLabel: TLabel
     Left = 404
     Height = 16
-    Top = 432
+    Top = 398
     Width = 11
     Anchors = [akLeft, akBottom]
     Caption = '/s'
@@ -566,7 +537,7 @@ object ValuesForm: TValuesForm
   object Shape2: TShape
     Left = 224
     Height = 25
-    Top = 416
+    Top = 382
     Width = 40
     Anchors = [akLeft, akBottom]
     Brush.Color = clDefault
@@ -583,7 +554,7 @@ object ValuesForm: TValuesForm
     Anchors = [akRight, akBottom]
     Caption = 'Minutes'
     Checked = True
-    TabOrder = 21
+    TabOrder = 20
     TabStop = True
     OnChange = MinutesButtonChange
   end
@@ -595,18 +566,18 @@ object ValuesForm: TValuesForm
     Width = 60
     Anchors = [akRight, akBottom]
     Caption = 'Hours'
-    TabOrder = 22
+    TabOrder = 21
     OnChange = HoursButtonChange
   end
   object ICButton: TButton
-    Left = 361
+    Left = 340
     Height = 25
     Hint = 'Initial Conditions...'
     Top = 498
     Width = 75
     Anchors = [akRight, akBottom]
     Caption = 'IC'
-    TabOrder = 23
+    TabOrder = 22
     OnClick = ICButtonClick
   end
   object ImageList1: TImageList

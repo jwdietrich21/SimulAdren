@@ -152,19 +152,19 @@ type
     ASIA1, ASIA3: TASIA;
   end;
 
-  TPrediction = record
+  TParamVector = record
     CRH, e, ACTH, PRF, F, v, yR: extended;
   end;
 
-  TPredictionArray = array[0..1] of TPrediction;
+  TPredictionArray = array[0..1] of TParamVector;
 
 var
   gSequence: TSequence;
   gBlocks: TBlocks;
   gPrediction: TPredictionArray;
-  gInitialConditions: TPrediction;
+  gInitialConditions: TParamVector;
 
-procedure RunSimulation(InitialContitions: tPrediction; model: tActiveModel);
+procedure RunSimulation(InitialContitions: TParamVector; model: tActiveModel);
 function PredictSteadyState(CRH: extended; model: tActiveModel): TPredictionArray;
 
 implementation
@@ -224,7 +224,7 @@ begin
   end;
 end;
 
-procedure RunSimulation(InitialContitions: tPrediction; model: tActiveModel);
+procedure RunSimulation(InitialContitions: TParamVector; model: tActiveModel);
 var
   CRH, e, ACTH, PRF, F, v, yR: extended;
   i: integer;

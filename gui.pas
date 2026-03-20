@@ -108,7 +108,6 @@ type
     GRUnitLabel: TLabel;
     DRFactorLabel: TLabel;
     GELabel: TLabel;
-    CRHUnitLabel: TLabel;
     MacAboutItem: TMenuItem;
     MainMenu1: TMainMenu;
     NewMenuItem: TMenuItem;
@@ -124,8 +123,6 @@ type
     ToolButton5: TToolButton;
     UndoMenuItem: TMenuItem;
     WinAboutItem: TMenuItem;
-    CRHLabel: TLabel;
-    CRHSpinEdit: TFloatSpinEdit;
     StartButton: TButton;
     ValuesGrid: TStringGrid;
     ToolBar1: TToolBar;
@@ -328,7 +325,6 @@ begin
   PlotForm.eSeries.Clear;
   PlotForm.ACTHSeries.Clear;
   PlotForm.yrSeries.Clear;
-  gInitialConditions.CRH := CRHSpinEdit.Value * CRHFactor;
   RunSimulation(gInitialConditions, gActiveModel);
   PredictionForm.DisplayPrediction(gPrediction[0], gPrediction[1]);
   if gActiveModel.iterations > ValuesGrid.RowCount then
@@ -356,7 +352,7 @@ var
   params: TStrucPars;
 begin
   ReadParams(Sender, params);
-  gPrediction := PredictSteadyState(CRHSpinEdit.Value * CRHFactor, gActiveModel);
+  gPrediction := PredictSteadyState(gInitialconditions.CRH, gActiveModel);
   PredictionForm.DisplayPrediction(gPrediction[0], gPrediction[1]);
 end;
 
@@ -413,7 +409,7 @@ begin
       EvoTargets.TournamentSize := TargetForm.TournamentSizeSpinEdit.Value;
       FitnessPlotForm.Show;
       ParameterForm.Show;
-      GeneticAlgorithm(CRHSpinEdit.Value * CRHFactor, testModel, EvoTargets,
+      GeneticAlgorithm(gInitialconditions.CRH, testModel, EvoTargets,
         AllPopulations, FittestIndividuals);
       FitnessPlotForm.DrawFitness(FittestIndividuals);
       ParameterForm.DrawParameters(FittestIndividuals);
@@ -803,7 +799,6 @@ begin
   Left := 13;
   AdaptMenus;
   SimTimeUnit := minutes;
-  CRHSpinEdit.Value := kCRH / CRHFactor;
   for i := 1 to ValuesGrid.ColCount - 1 do
     ValuesGrid.Cells[i, 1] := kUoMs[i];
   ValuesGrid.Columns[0].Font.Color := clDarkOrange;
