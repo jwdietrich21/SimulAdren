@@ -1,12 +1,12 @@
 object ValuesForm: TValuesForm
   Left = 215
-  Height = 546
+  Height = 582
   Top = 150
-  Width = 766
+  Width = 723
   ActiveControl = StartButton
   Caption = 'Simuladren'
-  ClientHeight = 546
-  ClientWidth = 766
+  ClientHeight = 582
+  ClientWidth = 723
   Constraints.MinHeight = 400
   Constraints.MinWidth = 640
   Menu = MainMenu1
@@ -15,42 +15,42 @@ object ValuesForm: TValuesForm
   OnCreate = FormCreate
   object ValuesGrid: TStringGrid
     Left = 0
-    Height = 218
+    Height = 180
     Top = 40
-    Width = 769
+    Width = 726
     Anchors = [akTop, akLeft, akRight, akBottom]
     AutoFillColumns = True
     ColCount = 7
     Columns = <    
       item
         Title.Caption = 'CRH(t)'
-        Width = 118
+        Width = 110
       end    
       item
         Font.Color = clRed
         Title.Caption = 'e(t)'
-        Width = 117
+        Width = 110
       end    
       item
         Font.Color = clLime
         Title.Caption = 'ACTH(t)'
-        Width = 117
+        Width = 110
       end    
       item
         Font.Color = clPurple
         Title.Font.Color = clPurple
         Title.Caption = 'PRF(t)'
-        Width = 117
+        Width = 110
       end    
       item
         Font.Color = clPurple
         Title.Font.Color = clPurple
         Title.Caption = 'F(t)'
-        Width = 117
+        Width = 110
       end    
       item
         Title.Caption = 'yR(t)'
-        Width = 117
+        Width = 110
       end>
     FixedRows = 2
     MouseWheelOption = mwGrid
@@ -59,19 +59,19 @@ object ValuesForm: TValuesForm
     TabOrder = 0
     ColWidths = (
       64
-      118
-      117
-      117
-      117
-      117
-      117
+      110
+      110
+      110
+      110
+      110
+      110
     )
   end
   object ToolBar1: TToolBar
     Left = 0
     Height = 26
     Top = 0
-    Width = 766
+    Width = 723
     Caption = 'ToolBar1'
     Images = ImageList1
     TabOrder = 1
@@ -114,10 +114,10 @@ object ValuesForm: TValuesForm
     end
   end
   object StartButton: TButton
-    Left = 663
+    Left = 620
     Height = 25
     Hint = 'Run simulation...'
-    Top = 498
+    Top = 534
     Width = 75
     Anchors = [akRight, akBottom]
     Caption = 'Run'
@@ -127,458 +127,529 @@ object ValuesForm: TValuesForm
     TabOrder = 2
     OnClick = StartButtonClick
   end
-  object TimeLabel: TLabel
-    Left = 451
-    Height = 16
-    Top = 458
-    Width = 30
-    Anchors = [akRight, akBottom]
-    Caption = 'Time'
-    ParentColor = False
-  end
-  object IterationsSpinEdit: TSpinEdit
-    AnchorSideLeft.Control = TimeLabel
-    AnchorSideLeft.Side = asrBottom
-    Left = 492
-    Height = 20
-    Hint = 'Number of simulation steps'
-    Top = 458
-    Width = 98
-    Anchors = [akRight, akBottom]
-    BorderSpacing.Left = 11
-    MaxValue = 1000000
-    TabOrder = 3
-    Value = 180
-  end
-  object G1Label: TLabel
-    Left = 31
-    Height = 16
-    Top = 331
-    Width = 16
-    Anchors = [akLeft, akBottom]
-    Caption = 'G1'
-    ParentColor = False
-  end
-  object G1Edit: TFloatSpinEdit
-    Left = 84
-    Height = 20
-    Hint = 'Gain of ASIA element 1'
-    Top = 330
-    Width = 98
-    Anchors = [akLeft, akBottom]
-    Increment = 0.1
-    TabOrder = 4
-    Value = 2000
-  end
-  object GALabel: TLabel
-    Left = 31
-    Height = 16
-    Top = 421
-    Width = 18
-    Anchors = [akLeft, akBottom]
-    Caption = 'GA'
-    ParentColor = False
-  end
-  object GAEdit: TFloatSpinEdit
-    Left = 84
-    Height = 20
-    Hint = 'Secretory capacity of adrenal glands'
-    Top = 420
-    Width = 98
-    Anchors = [akLeft, akBottom]
-    Increment = 0.1
-    TabOrder = 5
-    Value = 1.17
-  end
-  object G3Edit: TFloatSpinEdit
-    Left = 84
-    Height = 20
-    Hint = 'Gain of ASIA element 2'
-    Top = 384
-    Width = 98
-    Anchors = [akLeft, akBottom]
-    Increment = 0.1
-    TabOrder = 6
-    Value = 371
-  end
-  object G3Label: TLabel
-    Left = 31
-    Height = 16
-    Top = 388
-    Width = 18
-    Anchors = [akLeft, akBottom]
-    Caption = 'G3'
-    ParentColor = False
-  end
-  object DALabel: TLabel
-    Left = 31
-    Height = 16
-    Top = 457
-    Width = 18
-    Anchors = [akLeft, akBottom]
-    Caption = 'DA'
-    ParentColor = False
-  end
-  object DAEdit: TFloatSpinEdit
-    Left = 84
-    Height = 20
-    Hint = 'EC50 of ACTH at the adrenal glands'
-    Top = 456
-    Width = 98
-    Anchors = [akLeft, akBottom]
-    Increment = 0.1
-    TabOrder = 7
-    Value = 10
-  end
-  object DREdit: TFloatSpinEdit
-    Left = 492
-    Height = 20
-    Hint = 'EC50 of cortisol (F)'
-    Top = 350
-    Width = 98
-    Anchors = [akRight, akBottom]
-    Increment = 0.1
-    TabOrder = 8
-    Value = 200
-  end
-  object DRLabel: TLabel
-    Left = 463
-    Height = 16
-    Top = 350
-    Width = 18
-    Anchors = [akRight, akBottom]
-    Caption = 'DR'
-    ParentColor = False
-  end
-  object GREdit: TFloatSpinEdit
-    Left = 492
-    Height = 20
-    Hint = 'Cortisol receptor gain'
-    Top = 314
-    Width = 98
-    Anchors = [akRight, akBottom]
-    Increment = 0.1
-    TabOrder = 9
-    Value = 1
-  end
-  object GRLabel: TLabel
-    Left = 463
-    Height = 16
-    Top = 314
-    Width = 18
-    Anchors = [akRight, akBottom]
-    Caption = 'GR'
-    ParentColor = False
-  end
-  object G1UnitLabel: TLabel
-    Left = 197
-    Height = 16
-    Top = 331
-    Width = 18
-    Anchors = [akLeft, akBottom]
-    Caption = 's/L'
-  end
-  object G3Unitlabel: TLabel
-    Left = 197
-    Height = 16
-    Top = 388
-    Width = 18
-    Anchors = [akLeft, akBottom]
-    Caption = 's/L'
-  end
-  object GAUnitLabel: TLabel
-    Left = 197
-    Height = 16
-    Top = 421
-    Width = 40
-    Anchors = [akLeft, akBottom]
-    Caption = 'nmol/s'
-  end
-  object DAUnitLabel: TLabel
-    Left = 197
-    Height = 16
-    Top = 457
-    Width = 41
-    Anchors = [akLeft, akBottom]
-    Caption = 'pmol/L'
-  end
-  object GRUnitLabel: TLabel
-    Left = 605
-    Height = 16
-    Top = 314
-    Width = 25
-    Anchors = [akRight, akBottom]
-    Caption = '       '
-  end
-  object DRUnitLabel: TLabel
-    Left = 605
-    Height = 16
-    Top = 351
-    Width = 41
-    Anchors = [akRight, akBottom]
-    Caption = 'nmol/L'
-  end
-  object GELabel: TLabel
-    Left = 463
-    Height = 16
-    Top = 390
-    Width = 17
-    Anchors = [akRight, akBottom]
-    Caption = 'GE'
-  end
-  object GEEdit: TFloatSpinEdit
-    Left = 492
-    Height = 20
-    Hint = 'Effector gain'
-    Top = 386
-    Width = 98
-    Anchors = [akRight, akBottom]
-    TabOrder = 10
-    Value = 1
-  end
   object SteadyStateButton: TButton
-    Left = 571
+    Left = 528
     Height = 25
     Hint = 'Predict steady-state values'
-    Top = 498
+    Top = 534
     Width = 75
     Anchors = [akRight, akBottom]
     Caption = 'Predict'
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 11
+    TabOrder = 3
     OnClick = SteadyStateButtonClick
   end
   object EvolveButton: TButton
-    Left = 482
+    Left = 439
     Height = 25
     Hint = 'Estimate checked parameters with an evolutionary algorithm.'
-    Top = 498
+    Top = 534
     Width = 75
     Anchors = [akRight, akBottom]
     Caption = 'Estimate'
     Enabled = False
     ParentShowHint = False
     ShowHint = True
-    TabOrder = 12
+    TabOrder = 4
     OnClick = EvolveButtonClick
   end
-  object EstimateGRCheckBox: TCheckBox
-    Left = 597
-    Height = 18
-    Hint = 'Estimate this parameter via evolutionary algorithm'
-    Top = 316
-    Width = 75
-    Anchors = [akRight, akBottom]
-    Caption = 'Estimate'
-    TabOrder = 13
-    OnChange = EstimateGRCheckBoxChange
-  end
-  object EstimateGECheckbox: TCheckBox
-    Left = 597
-    Height = 18
-    Hint = 'Estimate this parameter via evolutionary algorithm'
-    Top = 386
-    Width = 75
-    Anchors = [akRight, akBottom]
-    Caption = 'Estimate'
-    TabOrder = 14
-    OnChange = EstimateGECheckboxChange
-  end
-  object ModelVersionComboBox: TComboBox
-    Left = 85
-    Height = 20
-    Top = 280
-    Width = 148
-    Anchors = [akLeft, akBottom]
-    ItemHeight = 18
-    ItemIndex = 3
-    Items.Strings = (
-      'Model 1'
-      'Model 1.1'
-      'Model 1.2'
-      'Model 1.3'
-    )
-    TabOrder = 15
-    Text = 'Model 1.3'
-    OnChange = ModelVersionComboBoxChange
-  end
-  object ModelVersionLabel: TLabel
-    Left = 31
-    Height = 16
-    Top = 280
-    Width = 45
-    Anchors = [akLeft, akBottom]
-    Caption = 'Version'
-  end
-  object Alpha1Edit: TFloatSpinEdit
-    Left = 320
-    Height = 20
-    Top = 316
-    Width = 80
-    Anchors = [akLeft, akBottom]
-    DecimalPlaces = 4
-    Increment = 0.0001
-    TabOrder = 16
-    Value = 0.4
-    OnChange = Alpha1EditChange
-  end
-  object Alpha1Label: TLabel
-    Left = 272
-    Height = 16
-    Top = 318
-    Width = 40
-    Anchors = [akLeft, akBottom]
-    Caption = 'Alpha1'
-  end
-  object Alpha1UnitLabel: TLabel
-    Left = 404
-    Height = 16
-    Top = 319
-    Width = 11
-    Anchors = [akLeft, akBottom]
-    Caption = '/L'
-  end
-  object Beta1Label: TLabel
-    Left = 272
-    Height = 16
-    Top = 341
-    Width = 33
-    Anchors = [akLeft, akBottom]
-    Caption = 'Beta1'
-  end
-  object Beta1Edit: TFloatSpinEdit
-    Left = 320
-    Height = 20
-    Top = 340
-    Width = 80
-    Anchors = [akLeft, akBottom]
-    DecimalPlaces = 4
-    Increment = 0.0001
-    TabOrder = 17
-    Value = 0.0002
-    OnChange = Beta1EditChange
-  end
-  object Beta1UnitLabel: TLabel
-    Left = 404
-    Height = 16
-    Top = 342
-    Width = 11
-    Anchors = [akLeft, akBottom]
-    Caption = '/s'
-  end
-  object Shape1: TShape
-    Left = 224
-    Height = 25
-    Top = 326
-    Width = 40
-    Anchors = [akLeft, akBottom]
-    Brush.Color = clDefault
-    Brush.Style = bsClear
-    Pen.Color = clWindowText
-    Shape = stTriangleLeft
-  end
-  object Alpha3Edit: TFloatSpinEdit
-    Left = 320
-    Height = 20
-    Top = 373
-    Width = 80
-    Anchors = [akLeft, akBottom]
-    DecimalPlaces = 4
-    Increment = 0.0001
-    TabOrder = 18
-    Value = 0.0476
-    OnChange = Alpha3EditChange
-  end
-  object Alpha3Label: TLabel
-    Left = 272
-    Height = 16
-    Top = 374
-    Width = 42
-    Anchors = [akLeft, akBottom]
-    Caption = 'Alpha3'
-  end
-  object Alpha3UnitLabel: TLabel
-    Left = 404
-    Height = 16
-    Top = 375
-    Width = 11
-    Anchors = [akLeft, akBottom]
-    Caption = '/L'
-  end
-  object Beta3Label: TLabel
-    Left = 272
-    Height = 16
-    Top = 397
-    Width = 36
-    Anchors = [akLeft, akBottom]
-    Caption = 'Beta3'
-  end
-  object Beta3Edit: TFloatSpinEdit
-    Left = 320
-    Height = 20
-    Top = 396
-    Width = 80
-    Anchors = [akLeft, akBottom]
-    DecimalPlaces = 6
-    Increment = 0.0001
-    TabOrder = 19
-    Value = 0.000128
-    OnChange = Beta3EditChange
-  end
-  object Beta3UnitLabel: TLabel
-    Left = 404
-    Height = 16
-    Top = 398
-    Width = 11
-    Anchors = [akLeft, akBottom]
-    Caption = '/s'
-  end
-  object Shape2: TShape
-    Left = 224
-    Height = 25
-    Top = 382
-    Width = 40
-    Anchors = [akLeft, akBottom]
-    Brush.Color = clDefault
-    Brush.Style = bsClear
-    Pen.Color = clWindowText
-    Shape = stTriangleLeft
-  end
-  object MinutesButton: TRadioButton
-    Left = 595
-    Height = 18
-    Hint = 'Minutes'
-    Top = 460
-    Width = 71
-    Anchors = [akRight, akBottom]
-    Caption = 'Minutes'
-    Checked = True
-    TabOrder = 20
-    TabStop = True
-    OnChange = MinutesButtonChange
-  end
-  object HoursButton: TRadioButton
-    Left = 678
-    Height = 18
-    Hint = 'Hours'
-    Top = 460
-    Width = 60
-    Anchors = [akRight, akBottom]
-    Caption = 'Hours'
-    TabOrder = 21
-    OnChange = HoursButtonChange
-  end
   object ICButton: TButton
-    Left = 340
+    Left = 297
     Height = 25
     Hint = 'Initial Conditions...'
-    Top = 498
+    Top = 534
     Width = 75
     Anchors = [akRight, akBottom]
     Caption = 'IC'
-    TabOrder = 22
+    TabOrder = 5
     OnClick = ICButtonClick
+  end
+  object ResetButton: TButton
+    Left = 31
+    Height = 25
+    Hint = 'Initial Conditions...'
+    Top = 534
+    Width = 75
+    Anchors = [akLeft, akBottom]
+    Caption = 'Reset'
+    TabOrder = 6
+    OnClick = ResetButtonClick
+  end
+  object SimulationControlGroupBox: TGroupBox
+    Left = 31
+    Height = 59
+    Top = 228
+    Width = 664
+    Anchors = [akLeft, akRight, akBottom]
+    Caption = 'Simulation Control'
+    ClientHeight = 32
+    ClientWidth = 654
+    TabOrder = 7
+    object ModelVersionComboBox: TComboBox
+      Left = 61
+      Height = 20
+      Hint = 'Model version'
+      Top = 7
+      Width = 148
+      ItemHeight = 18
+      ItemIndex = 3
+      Items.Strings = (
+        'Model 1'
+        'Model 1.1'
+        'Model 1.2'
+        'Model 1.3'
+      )
+      TabOrder = 0
+      Text = 'Model 1.3'
+      OnChange = ModelVersionComboBoxChange
+    end
+    object ModelVersionLabel: TLabel
+      Left = 7
+      Height = 16
+      Top = 7
+      Width = 45
+      Caption = 'Version'
+    end
+    object TimeLabel: TLabel
+      Left = 311
+      Height = 16
+      Top = 7
+      Width = 94
+      Anchors = [akTop, akRight]
+      Caption = 'Simulated Time'
+      ParentColor = False
+    end
+    object IterationsSpinEdit: TSpinEdit
+      AnchorSideLeft.Control = TimeLabel
+      AnchorSideLeft.Side = asrBottom
+      Left = 411
+      Height = 21
+      Hint = 'Duration of simulated time'
+      Top = 7
+      Width = 80
+      Anchors = [akTop, akRight]
+      BorderSpacing.Left = 11
+      MaxValue = 1000000
+      TabOrder = 1
+      Value = 180
+    end
+    object MinutesRadioButton: TRadioButton
+      Left = 497
+      Height = 18
+      Hint = 'Minutes'
+      Top = 7
+      Width = 75
+      Anchors = [akTop, akRight]
+      Caption = 'Minutes'
+      Checked = True
+      TabOrder = 2
+      TabStop = True
+      OnChange = MinutesRadioButtonChange
+    end
+    object HoursRadioButton: TRadioButton
+      Left = 574
+      Height = 18
+      Hint = 'Hours'
+      Top = 7
+      Width = 63
+      Anchors = [akTop, akRight]
+      Caption = 'Hours'
+      TabOrder = 3
+      OnChange = HoursRadioButtonChange
+    end
+  end
+  object ICGroupBox: TGroupBox
+    Left = 31
+    Height = 59
+    Top = 295
+    Width = 664
+    Anchors = [akLeft, akRight, akBottom]
+    Caption = 'Initial Conditions'
+    ClientHeight = 32
+    ClientWidth = 654
+    TabOrder = 8
+    object ICRadioButton: TRadioButton
+      Left = 90
+      Height = 18
+      Hint = 'Begin next simulation run with specified initial conditions'
+      Top = 5
+      Width = 125
+      Anchors = [akLeft, akBottom]
+      Caption = 'Initial conditions'
+      Checked = True
+      TabOrder = 1
+      TabStop = True
+      OnChange = ICRadioButtonChange
+    end
+    object ContinueRadioButton: TRadioButton
+      Left = 225
+      Height = 18
+      Hint = 'Continue next simulation run with last values'
+      Top = 5
+      Width = 106
+      Anchors = [akLeft, akBottom]
+      Caption = 'Current state'
+      TabOrder = 0
+      OnChange = ContinueRadioButtonChange
+    end
+    object BeginLabel: TLabel
+      Left = 8
+      Height = 16
+      Top = 5
+      Width = 67
+      Anchors = [akLeft, akBottom]
+      Caption = 'Begin with:'
+    end
+  end
+  object StrucParGroupBox: TGroupBox
+    Left = 31
+    Height = 160
+    Top = 362
+    Width = 661
+    Anchors = [akLeft, akRight, akBottom]
+    Caption = 'Structure Parameters'
+    ClientHeight = 133
+    ClientWidth = 651
+    TabOrder = 9
+    object G1Label: TLabel
+      Left = 11
+      Height = 16
+      Top = 17
+      Width = 16
+      Anchors = [akLeft, akBottom]
+      Caption = 'G1'
+      ParentColor = False
+    end
+    object G1Edit: TFloatSpinEdit
+      Left = 36
+      Height = 21
+      Hint = 'Gain of ASIA element 1'
+      Top = 13
+      Width = 80
+      Anchors = [akLeft, akBottom]
+      Increment = 0.1
+      TabOrder = 0
+      Value = 2000
+    end
+    object GALabel: TLabel
+      Left = 449
+      Height = 16
+      Top = 6
+      Width = 18
+      Anchors = [akRight, akBottom]
+      Caption = 'GA'
+      ParentColor = False
+    end
+    object GAEdit: TFloatSpinEdit
+      Left = 478
+      Height = 21
+      Hint = 'Secretory capacity of adrenal glands'
+      Top = 3
+      Width = 80
+      Anchors = [akRight, akBottom]
+      Increment = 0.1
+      TabOrder = 1
+      Value = 1.17
+    end
+    object G3Edit: TFloatSpinEdit
+      Left = 36
+      Height = 21
+      Hint = 'Gain of ASIA element 3'
+      Top = 84
+      Width = 80
+      Anchors = [akLeft, akBottom]
+      Increment = 0.1
+      TabOrder = 2
+      Value = 371
+    end
+    object G3Label: TLabel
+      Left = 11
+      Height = 16
+      Top = 86
+      Width = 18
+      Anchors = [akLeft, akBottom]
+      Caption = 'G3'
+      ParentColor = False
+    end
+    object DALabel: TLabel
+      Left = 449
+      Height = 16
+      Top = 30
+      Width = 18
+      Anchors = [akRight, akBottom]
+      Caption = 'DA'
+      ParentColor = False
+    end
+    object DAEdit: TFloatSpinEdit
+      Left = 478
+      Height = 21
+      Hint = 'EC50 of ACTH at the adrenal glands'
+      Top = 26
+      Width = 80
+      Anchors = [akRight, akBottom]
+      Increment = 0.1
+      TabOrder = 3
+      Value = 10
+    end
+    object DREdit: TFloatSpinEdit
+      Left = 478
+      Height = 21
+      Hint = 'EC50 of cortisol (F)'
+      Top = 84
+      Width = 80
+      Anchors = [akRight, akBottom]
+      Increment = 0.1
+      TabOrder = 4
+      Value = 200
+    end
+    object DRLabel: TLabel
+      Left = 449
+      Height = 16
+      Top = 87
+      Width = 18
+      Anchors = [akRight, akBottom]
+      Caption = 'DR'
+      ParentColor = False
+    end
+    object GREdit: TFloatSpinEdit
+      Left = 478
+      Height = 21
+      Hint = 'Cortisol receptor gain'
+      Top = 60
+      Width = 80
+      Anchors = [akRight, akBottom]
+      Increment = 0.1
+      TabOrder = 5
+      Value = 1
+    end
+    object GRLabel: TLabel
+      Left = 449
+      Height = 16
+      Top = 63
+      Width = 18
+      Anchors = [akRight, akBottom]
+      Caption = 'GR'
+      ParentColor = False
+    end
+    object G1UnitLabel: TLabel
+      Left = 124
+      Height = 16
+      Top = 17
+      Width = 18
+      Anchors = [akLeft, akBottom]
+      Caption = 's/L'
+    end
+    object G3Unitlabel: TLabel
+      Left = 124
+      Height = 16
+      Top = 86
+      Width = 18
+      Anchors = [akLeft, akBottom]
+      Caption = 's/L'
+    end
+    object GAUnitLabel: TLabel
+      Left = 569
+      Height = 16
+      Top = 6
+      Width = 40
+      Anchors = [akRight, akBottom]
+      Caption = 'nmol/s'
+    end
+    object DAUnitLabel: TLabel
+      Left = 569
+      Height = 16
+      Top = 30
+      Width = 41
+      Anchors = [akRight, akBottom]
+      Caption = 'pmol/L'
+    end
+    object DRUnitLabel: TLabel
+      Left = 569
+      Height = 16
+      Top = 87
+      Width = 41
+      Anchors = [akRight, akBottom]
+      Caption = 'nmol/L'
+    end
+    object GELabel: TLabel
+      Left = 449
+      Height = 16
+      Top = 113
+      Width = 17
+      Anchors = [akRight, akBottom]
+      Caption = 'GE'
+    end
+    object GEEdit: TFloatSpinEdit
+      Left = 478
+      Height = 21
+      Hint = 'Effector gain'
+      Top = 108
+      Width = 80
+      Anchors = [akRight, akBottom]
+      TabOrder = 6
+      Value = 1
+    end
+    object EstimateGRCheckBox: TCheckBox
+      Left = 566
+      Height = 18
+      Hint = 'Estimate this parameter via evolutionary algorithm'
+      Top = 62
+      Width = 79
+      Anchors = [akRight, akBottom]
+      Caption = 'Estimate'
+      TabOrder = 7
+      OnChange = EstimateGRCheckBoxChange
+    end
+    object EstimateGECheckbox: TCheckBox
+      Left = 566
+      Height = 18
+      Hint = 'Estimate this parameter via evolutionary algorithm'
+      Top = 110
+      Width = 79
+      Anchors = [akRight, akBottom]
+      Caption = 'Estimate'
+      TabOrder = 8
+      OnChange = EstimateGECheckboxChange
+    end
+    object Alpha1Edit: TFloatSpinEdit
+      Left = 247
+      Height = 21
+      Hint = 'Alpha1 (reciprocal of apparent volume of distribution)'
+      Top = 3
+      Width = 80
+      Anchors = [akLeft, akBottom]
+      DecimalPlaces = 4
+      Increment = 0.0001
+      TabOrder = 9
+      Value = 0.4
+      OnChange = Alpha1EditChange
+    end
+    object Alpha1Label: TLabel
+      Left = 199
+      Height = 16
+      Top = 6
+      Width = 40
+      Anchors = [akLeft, akBottom]
+      Caption = 'Alpha1'
+    end
+    object Alpha1UnitLabel: TLabel
+      Left = 331
+      Height = 16
+      Top = 6
+      Width = 11
+      Anchors = [akLeft, akBottom]
+      Caption = '/L'
+    end
+    object Beta1Label: TLabel
+      Left = 199
+      Height = 16
+      Top = 30
+      Width = 33
+      Anchors = [akLeft, akBottom]
+      Caption = 'Beta1'
+    end
+    object Beta1Edit: TFloatSpinEdit
+      Left = 247
+      Height = 21
+      Hint = 'Clearance exponent 1 (rate constant, ln(2)/t1/2)'
+      Top = 26
+      Width = 80
+      Anchors = [akLeft, akBottom]
+      DecimalPlaces = 4
+      Increment = 0.0001
+      TabOrder = 10
+      Value = 0.0002
+      OnChange = Beta1EditChange
+    end
+    object Beta1UnitLabel: TLabel
+      Left = 331
+      Height = 16
+      Top = 30
+      Width = 11
+      Anchors = [akLeft, akBottom]
+      Caption = '/s'
+    end
+    object Shape1: TShape
+      Left = 151
+      Height = 21
+      Top = 14
+      Width = 40
+      Anchors = [akLeft, akBottom]
+      Brush.Color = clDefault
+      Brush.Style = bsClear
+      Pen.Color = clWindowText
+      Shape = stTriangleLeft
+    end
+    object Alpha3Edit: TFloatSpinEdit
+      Left = 247
+      Height = 21
+      Hint = 'Alpha3 (reciprocal of apparent volume of distribution)'
+      Top = 72
+      Width = 80
+      Anchors = [akLeft, akBottom]
+      DecimalPlaces = 4
+      Increment = 0.0001
+      TabOrder = 11
+      Value = 0.0476
+      OnChange = Alpha3EditChange
+    end
+    object Alpha3Label: TLabel
+      Left = 199
+      Height = 16
+      Top = 74
+      Width = 42
+      Anchors = [akLeft, akBottom]
+      Caption = 'Alpha3'
+    end
+    object Alpha3UnitLabel: TLabel
+      Left = 331
+      Height = 16
+      Top = 74
+      Width = 11
+      Anchors = [akLeft, akBottom]
+      Caption = '/L'
+    end
+    object Beta3Label: TLabel
+      Left = 199
+      Height = 16
+      Top = 98
+      Width = 36
+      Anchors = [akLeft, akBottom]
+      Caption = 'Beta3'
+    end
+    object Beta3Edit: TFloatSpinEdit
+      Left = 247
+      Height = 21
+      Hint = 'Clearance exponent 3 (rate constant, ln(2)/t1/2)'
+      Top = 95
+      Width = 80
+      Anchors = [akLeft, akBottom]
+      DecimalPlaces = 6
+      Increment = 0.0001
+      TabOrder = 12
+      Value = 0.000128
+      OnChange = Beta3EditChange
+    end
+    object Beta3UnitLabel: TLabel
+      Left = 331
+      Height = 16
+      Top = 98
+      Width = 11
+      Anchors = [akLeft, akBottom]
+      Caption = '/s'
+    end
+    object Shape2: TShape
+      Left = 151
+      Height = 21
+      Top = 83
+      Width = 40
+      Anchors = [akLeft, akBottom]
+      Brush.Color = clDefault
+      Brush.Style = bsClear
+      Pen.Color = clWindowText
+      Shape = stTriangleLeft
+    end
   end
   object ImageList1: TImageList
     Left = 584

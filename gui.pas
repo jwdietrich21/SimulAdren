@@ -55,16 +55,23 @@ type
     Alpha1Label: TLabel;
     Alpha1UnitLabel: TLabel;
     Beta3UnitLabel: TLabel;
+    StrucParGroupBox: TGroupBox;
+    ICGroupBox: TGroupBox;
+    SimulationControlGroupBox: TGroupBox;
     ICButton: TButton;
-    HoursButton: TRadioButton;
+    HoursRadioButton: TRadioButton;
     EvolvedParameterMenuitem: TMenuItem;
     FitnessMenuItem: TMenuItem;
+    ICRadioButton: TRadioButton;
+    ContinueRadioButton: TRadioButton;
+    BeginLabel: TLabel;
+    ResetButton: TButton;
     SimControlMenuItem: TMenuItem;
     PredictionMenuItem: TMenuItem;
     PlotMenuItem: TMenuItem;
     IPSMenuItem: TMenuItem;
     WindowMenu: TMenuItem;
-    MinutesButton: TRadioButton;
+    MinutesRadioButton: TRadioButton;
     ModelVersionLabel: TLabel;
     ModelVersionComboBox: TComboBox;
     EstimateGECheckbox: TCheckBox;
@@ -105,7 +112,6 @@ type
     G3Unitlabel: TLabel;
     GAFactorLabel: TLabel;
     DAFactorLabel: TLabel;
-    GRUnitLabel: TLabel;
     DRFactorLabel: TLabel;
     GELabel: TLabel;
     MacAboutItem: TMenuItem;
@@ -134,22 +140,25 @@ type
     procedure Beta1EditChange(Sender: TObject);
     procedure Beta3EditChange(Sender: TObject);
     procedure CloseMenuItemClick(Sender: TObject);
+    procedure ContinueRadioButtonChange(Sender: TObject);
     procedure CopyMenuItemClick(Sender: TObject);
     procedure EstimateGECheckboxChange(Sender: TObject);
     procedure EstimateGRCheckBoxChange(Sender: TObject);
     procedure EvolvedParameterMenuitemClick(Sender: TObject);
     procedure FitnessMenuItemClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure HoursButtonChange(Sender: TObject);
+    procedure HoursRadioButtonChange(Sender: TObject);
     procedure ICButtonClick(Sender: TObject);
+    procedure ICRadioButtonChange(Sender: TObject);
     procedure IPSMenuItemClick(Sender: TObject);
     procedure MacAboutItemClick(Sender: TObject);
-    procedure MinutesButtonChange(Sender: TObject);
+    procedure MinutesRadioButtonChange(Sender: TObject);
     procedure ModelVersionComboBoxChange(Sender: TObject);
     procedure OpenMenuItemClick(Sender: TObject);
     procedure OpenToolButtonClick(Sender: TObject);
     procedure PlotMenuItemClick(Sender: TObject);
     procedure PredictionMenuItemClick(Sender: TObject);
+    procedure ResetButtonClick(Sender: TObject);
     procedure SaveToolButtonClick(Sender: TObject);
     procedure SimControlMenuItemClick(Sender: TObject);
     procedure WinAboutItemClick(Sender: TObject);
@@ -310,6 +319,7 @@ var
   i, j: integer;
   params: TStrucPars;
 begin
+  ValuesForm.cursor := crHourGlass;
   ReadParams(Sender, params);
   gActiveModel.iterations := IterationsSpinEdit.Value * SecsPerMin;
   if SimTimeUnit = hours then
@@ -345,6 +355,7 @@ begin
   end;
   PlotForm.ShowPlot;
   gSequence.Destroy;
+  ValuesForm.cursor := crDefault;
 end;
 
 procedure TValuesForm.SteadyStateButtonClick(Sender: TObject);
@@ -694,11 +705,11 @@ begin
   ShowAboutWindow(Sender);
 end;
 
-procedure TValuesForm.HoursButtonChange(Sender: TObject);
+procedure TValuesForm.HoursRadioButtonChange(Sender: TObject);
 begin
-  if HoursButton.Checked then
+  if HoursRadioButton.Checked then
   begin
-    MinutesButton.Checked := False;
+    MinutesRadioButton.Checked := False;
     SimTimeUnit := hours;
   end
   else
@@ -714,16 +725,28 @@ begin
   InitialConditionsForm.Show;
 end;
 
+procedure TValuesForm.ICRadioButtonChange(Sender: TObject);
+begin
+  if ContinueRadioButton.Checked then
+  begin
+    ContinueRadioButton.Checked := False;
+    ICRadioButton.Checked := true;
+  end
+  else
+  begin
+  end;
+end;
+
 procedure TValuesForm.IPSMenuItemClick(Sender: TObject);
 begin
   IPSForm.Show;
 end;
 
-procedure TValuesForm.MinutesButtonChange(Sender: TObject);
+procedure TValuesForm.MinutesRadioButtonChange(Sender: TObject);
 begin
-  if MinutesButton.Checked then
+  if MinutesRadioButton.Checked then
   begin
-    HoursButton.Checked := False;
+    HoursRadioButton.Checked := False;
     SimTimeUnit := minutes;
   end
   else
@@ -776,6 +799,11 @@ begin
   PredictionForm.Show;
 end;
 
+procedure TValuesForm.ResetButtonClick(Sender: TObject);
+begin
+
+end;
+
 procedure TValuesForm.SaveToolButtonClick(Sender: TObject);
 begin
   SaveMenuItemClick(Sender);
@@ -813,6 +841,18 @@ end;
 procedure TValuesForm.CloseMenuItemClick(Sender: TObject);
 begin
   application.Terminate;
+end;
+
+procedure TValuesForm.ContinueRadioButtonChange(Sender: TObject);
+begin
+  if ICRadioButton.Checked then
+  begin
+    ICRadioButton.Checked := False;
+    ContinueRadioButton.Checked := True;
+  end
+  else
+  begin
+  end;
 end;
 
 procedure TValuesForm.Alpha1EditChange(Sender: TObject);
