@@ -164,10 +164,60 @@ var
   gPrediction: TPredictionArray;
   gInitialConditions: TParamVector;
 
-procedure RunSimulation(InitialContitions: TParamVector; model: tActiveModel);
+procedure RunSimulation(InitialContitions: TParamVector; model: tActiveModel;
+  nmin: integer);
 function PredictSteadyState(CRH: extended; model: tActiveModel): TPredictionArray;
+procedure ClearSimulation;
 
 implementation
+
+procedure InitBlocks(model: tActiveModel; params: TStrucPars);
+begin
+  gBlocks.G1 := TP.Create;
+  gBlocks.G3 := TP.Create;
+  gBlocks.GE := TP.Create;
+  gBlocks.MiMeA := TMiMe.Create;
+  gBlocks.MimeR := TMime.Create;
+  gBlocks.NoCoDI := TNoCoDI.Create;
+  gBlocks.G1.G := params.G1;
+  gBlocks.G3.G := params.G3;
+  gBlocks.GE.G := params.GE;
+  gBlocks.MiMeA.G := params.GA;
+  gBlocks.MiMeA.D := params.DA;
+  gBlocks.MimeR.G := params.GR;
+  gBlocks.MimeR.D := params.DR;
+  if (model.Version <> '1') and (model.Version <> '1.1') then
+  begin
+    gBlocks.ASIA1 := TASIA.Create;
+    gBlocks.ASIA3 := TASIA.Create;
+    gBlocks.ASIA1.alpha := params.alpha1;
+    gBlocks.ASIA1.beta := params.beta1;
+    gBlocks.ASIA1.delta := Delta;
+    gBlocks.ASIA3.alpha := params.alpha3;
+    gBlocks.ASIA3.beta := params.beta3;
+    gBlocks.ASIA3.delta := Delta;
+  end;
+end;
+
+procedure ClearSimulation;
+begin
+  if assigned(gBlocks.G1) then
+    FreeAndNil(gBlocks.G1);
+  if assigned(gBlocks.G3) then
+    FreeAndNil(gBlocks.G3);
+  if assigned(gBlocks.MiMeA) then
+    FreeAndNil(gBlocks.MiMeA);
+  if assigned(gBlocks.MiMeR) then
+    FreeAndNil(gBlocks.MiMeR);
+  if assigned(gBlocks.GE) then
+    FreeAndNil(gBlocks.GE);
+  if assigned(gBlocks.NoCoDI) then
+    FreeAndNil(gBlocks.NoCoDI);
+  if assigned(gBlocks.ASIA1) then
+    FreeAndNil(gBlocks.ASIA1);
+  if assigned(gBlocks.ASIA3) then
+    FreeAndNil(gBlocks.ASIA3);
+end;
 
 function PituitaryResponse(CRH, yR: extended): extended;
 begin
@@ -224,51 +274,42 @@ begin
   end;
 end;
 
-procedure RunSimulation(InitialContitions: TParamVector; model: tActiveModel);
+procedure RunSimulation(InitialContitions: TParamVector; model: tActiveModel;
+  nmin: integer);
 var
   CRH, e, ACTH, PRF, F, v, yR: extended;
   i: integer;
   params: TStrucPars;
 begin
   params := model.StrucPars;
-  if model.Iterations > 0 then
+  gPrediction := PredictSteadyState(InitialContitions.CRH, model);
+  if (model.Iterations > 0) and (model.Iterations > nmin) then
   begin
-    gPrediction := PredictSteadyState(InitialContitions.CRH, model);
-
-    gSequence.size := 0; // delete content
-    gSequence.size := model.Iterations;;
-    gBlocks.G1 := TP.Create;
-    gBlocks.G3 := TP.Create;
-    gBlocks.GE := TP.Create;
-    gBlocks.MiMeA := TMiMe.Create;
-    gBlocks.MimeR := TMime.Create;
-    gBlocks.NoCoDI := TNoCoDI.Create;
-    gBlocks.G1.G := params.G1;
-    gBlocks.G3.G := params.G3;
-    gBlocks.GE.G := params.GE;
-    gBlocks.MiMeA.G := params.GA;
-    gBlocks.MiMeA.D := params.DA;
-    gBlocks.MimeR.G := params.GR;
-    gBlocks.MimeR.D := params.DR;
-    if (model.Version <> '1') and (model.Version <> '1.1') then
+    if nmin = 0 then
     begin
-      gBlocks.ASIA1 := TASIA.Create;
-      gBlocks.ASIA3 := TASIA.Create;
-      gBlocks.ASIA1.alpha := params.alpha1;
-      gBlocks.ASIA1.beta := params.beta1;
-      gBlocks.ASIA1.delta := Delta;
-      gBlocks.ASIA3.alpha := params.alpha3;
-      gBlocks.ASIA3.beta := params.beta3;
-      gBlocks.ASIA3.delta := Delta;
+      ClearSimulation;
+      InitBlocks(model, params);
+      gSequence.size := 0; // delete content
+      CRH := InitialContitions.CRH;
+      e := InitialContitions.e;
+      ACTH := InitialContitions.ACTH;
+      PRF := InitialContitions.PRF;
+      F := InitialContitions.F;
+      v := InitialContitions.v;
+      yR := InitialContitions.yR;
+    end
+    else
+    begin
+      CRH := gSequence.CRH[nmin];
+      e := gSequence.e[nmin];
+      ACTH := gSequence.ACTH[nmin];
+      PRF := gSequence.PRF[nmin];
+      F := gSequence.F[nmin];
+      v := gSequence.v[nmin];
+      yR := gSequence.yR[nmin];
     end;
 
-    CRH := InitialContitions.CRH;
-    e := InitialContitions.e;
-    ACTH := InitialContitions.ACTH;
-    PRF := InitialContitions.PRF;
-    F := InitialContitions.F;
-    v := InitialContitions.v;
-    yR := InitialContitions.yR;
+    gSequence.size := model.Iterations;
 
     if (model.Version <> '1') and (model.Version <> '1.1') then
     begin
@@ -276,7 +317,7 @@ begin
       gBlocks.ASIA3.x1 := gBlocks.ASIA3.alpha / gBlocks.ASIA3.beta * PRF;
     end;
 
-    for i := 0 to model.Iterations - 1 do
+    for i := nmin to model.Iterations - 1 do
     begin
       gBlocks.NoCoDI.input1 := InitialContitions.CRH;
       gBlocks.NoCoDI.input2 := yR;
@@ -316,16 +357,6 @@ begin
       gSequence.yr[i] := yr;
       application.ProcessMessages;
     end;
-    gBlocks.G1.Destroy;
-    gBlocks.G3.Destroy;
-    gBlocks.MiMeA.Destroy;
-    gBlocks.MimeR.Destroy;
-    gBlocks.GE.Destroy;
-    gBlocks.NoCoDI.Destroy;
-    if assigned(gBlocks.ASIA1) then
-      FreeAndNil(gBlocks.ASIA1);
-    if assigned(gBlocks.ASIA3) then
-      FreeAndNil(gBlocks.ASIA3);
   end;
 end;
 
@@ -360,5 +391,8 @@ end;
 initialization
 
   gActiveModel := NewScenario;
+
+finalization
+  ClearSimulation;
 
 end.

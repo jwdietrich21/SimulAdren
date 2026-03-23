@@ -56,4 +56,5 @@ begin
   Application.CreateForm(TParameterForm, ParameterForm);
   Application.CreateForm(TInitialConditionsForm, InitialConditionsForm);
   Application.Run;
+  ClearSimulation;
 end.

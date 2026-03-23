@@ -335,7 +335,7 @@ begin
   PlotForm.eSeries.Clear;
   PlotForm.ACTHSeries.Clear;
   PlotForm.yrSeries.Clear;
-  RunSimulation(gInitialConditions, gActiveModel);
+  RunSimulation(gInitialConditions, gActiveModel, 0);
   PredictionForm.DisplayPrediction(gPrediction[0], gPrediction[1]);
   if gActiveModel.iterations > ValuesGrid.RowCount then
     ValuesGrid.RowCount := gActiveModel.iterations + 1;

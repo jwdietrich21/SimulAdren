@@ -224,7 +224,7 @@ object ValuesForm: TValuesForm
       AnchorSideLeft.Control = TimeLabel
       AnchorSideLeft.Side = asrBottom
       Left = 411
-      Height = 21
+      Height = 20
       Hint = 'Duration of simulated time'
       Top = 7
       Width = 80
@@ -235,11 +235,11 @@ object ValuesForm: TValuesForm
       Value = 180
     end
     object MinutesRadioButton: TRadioButton
-      Left = 497
+      Left = 501
       Height = 18
       Hint = 'Minutes'
       Top = 7
-      Width = 75
+      Width = 71
       Anchors = [akTop, akRight]
       Caption = 'Minutes'
       Checked = True
@@ -248,11 +248,11 @@ object ValuesForm: TValuesForm
       OnChange = MinutesRadioButtonChange
     end
     object HoursRadioButton: TRadioButton
-      Left = 574
+      Left = 577
       Height = 18
       Hint = 'Hours'
       Top = 7
-      Width = 63
+      Width = 60
       Anchors = [akTop, akRight]
       Caption = 'Hours'
       TabOrder = 3
@@ -274,7 +274,7 @@ object ValuesForm: TValuesForm
       Height = 18
       Hint = 'Begin next simulation run with specified initial conditions'
       Top = 5
-      Width = 125
+      Width = 119
       Anchors = [akLeft, akBottom]
       Caption = 'Initial conditions'
       Checked = True
@@ -287,7 +287,7 @@ object ValuesForm: TValuesForm
       Height = 18
       Hint = 'Continue next simulation run with last values'
       Top = 5
-      Width = 106
+      Width = 101
       Anchors = [akLeft, akBottom]
       Caption = 'Current state'
       TabOrder = 0
@@ -323,9 +323,9 @@ object ValuesForm: TValuesForm
     end
     object G1Edit: TFloatSpinEdit
       Left = 36
-      Height = 21
+      Height = 20
       Hint = 'Gain of ASIA element 1'
-      Top = 13
+      Top = 14
       Width = 80
       Anchors = [akLeft, akBottom]
       Increment = 0.1
@@ -343,9 +343,9 @@ object ValuesForm: TValuesForm
     end
     object GAEdit: TFloatSpinEdit
       Left = 478
-      Height = 21
+      Height = 20
       Hint = 'Secretory capacity of adrenal glands'
-      Top = 3
+      Top = 4
       Width = 80
       Anchors = [akRight, akBottom]
       Increment = 0.1
@@ -354,9 +354,9 @@ object ValuesForm: TValuesForm
     end
     object G3Edit: TFloatSpinEdit
       Left = 36
-      Height = 21
+      Height = 20
       Hint = 'Gain of ASIA element 3'
-      Top = 84
+      Top = 85
       Width = 80
       Anchors = [akLeft, akBottom]
       Increment = 0.1
@@ -383,9 +383,9 @@ object ValuesForm: TValuesForm
     end
     object DAEdit: TFloatSpinEdit
       Left = 478
-      Height = 21
+      Height = 20
       Hint = 'EC50 of ACTH at the adrenal glands'
-      Top = 26
+      Top = 27
       Width = 80
       Anchors = [akRight, akBottom]
       Increment = 0.1
@@ -394,9 +394,9 @@ object ValuesForm: TValuesForm
     end
     object DREdit: TFloatSpinEdit
       Left = 478
-      Height = 21
+      Height = 20
       Hint = 'EC50 of cortisol (F)'
-      Top = 84
+      Top = 85
       Width = 80
       Anchors = [akRight, akBottom]
       Increment = 0.1
@@ -414,9 +414,9 @@ object ValuesForm: TValuesForm
     end
     object GREdit: TFloatSpinEdit
       Left = 478
-      Height = 21
+      Height = 20
       Hint = 'Cortisol receptor gain'
-      Top = 60
+      Top = 61
       Width = 80
       Anchors = [akRight, akBottom]
       Increment = 0.1
@@ -482,31 +482,31 @@ object ValuesForm: TValuesForm
     end
     object GEEdit: TFloatSpinEdit
       Left = 478
-      Height = 21
+      Height = 20
       Hint = 'Effector gain'
-      Top = 108
+      Top = 109
       Width = 80
       Anchors = [akRight, akBottom]
       TabOrder = 6
       Value = 1
     end
     object EstimateGRCheckBox: TCheckBox
-      Left = 566
+      Left = 570
       Height = 18
       Hint = 'Estimate this parameter via evolutionary algorithm'
       Top = 62
-      Width = 79
+      Width = 75
       Anchors = [akRight, akBottom]
       Caption = 'Estimate'
       TabOrder = 7
       OnChange = EstimateGRCheckBoxChange
     end
     object EstimateGECheckbox: TCheckBox
-      Left = 566
+      Left = 570
       Height = 18
       Hint = 'Estimate this parameter via evolutionary algorithm'
       Top = 110
-      Width = 79
+      Width = 75
       Anchors = [akRight, akBottom]
       Caption = 'Estimate'
       TabOrder = 8
@@ -514,9 +514,9 @@ object ValuesForm: TValuesForm
     end
     object Alpha1Edit: TFloatSpinEdit
       Left = 247
-      Height = 21
+      Height = 20
       Hint = 'Alpha1 (reciprocal of apparent volume of distribution)'
-      Top = 3
+      Top = 4
       Width = 80
       Anchors = [akLeft, akBottom]
       DecimalPlaces = 4
@@ -551,9 +551,9 @@ object ValuesForm: TValuesForm
     end
     object Beta1Edit: TFloatSpinEdit
       Left = 247
-      Height = 21
+      Height = 20
       Hint = 'Clearance exponent 1 (rate constant, ln(2)/t1/2)'
-      Top = 26
+      Top = 27
       Width = 80
       Anchors = [akLeft, akBottom]
       DecimalPlaces = 4
@@ -583,9 +583,9 @@ object ValuesForm: TValuesForm
     end
     object Alpha3Edit: TFloatSpinEdit
       Left = 247
-      Height = 21
+      Height = 20
       Hint = 'Alpha3 (reciprocal of apparent volume of distribution)'
-      Top = 72
+      Top = 73
       Width = 80
       Anchors = [akLeft, akBottom]
       DecimalPlaces = 4
@@ -620,9 +620,9 @@ object ValuesForm: TValuesForm
     end
     object Beta3Edit: TFloatSpinEdit
       Left = 247
-      Height = 21
+      Height = 20
       Hint = 'Clearance exponent 3 (rate constant, ln(2)/t1/2)'
-      Top = 95
+      Top = 96
       Width = 80
       Anchors = [akLeft, akBottom]
       DecimalPlaces = 6
