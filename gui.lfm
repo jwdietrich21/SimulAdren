@@ -154,17 +154,6 @@ object ValuesForm: TValuesForm
     TabOrder = 4
     OnClick = EvolveButtonClick
   end
-  object ICButton: TButton
-    Left = 297
-    Height = 25
-    Hint = 'Initial Conditions...'
-    Top = 534
-    Width = 75
-    Anchors = [akRight, akBottom]
-    Caption = 'IC'
-    TabOrder = 5
-    OnClick = ICButtonClick
-  end
   object ResetButton: TButton
     Left = 31
     Height = 25
@@ -173,7 +162,7 @@ object ValuesForm: TValuesForm
     Width = 75
     Anchors = [akLeft, akBottom]
     Caption = 'Reset'
-    TabOrder = 6
+    TabOrder = 5
     OnClick = ResetButtonClick
   end
   object SimulationControlGroupBox: TGroupBox
@@ -185,7 +174,7 @@ object ValuesForm: TValuesForm
     Caption = 'Simulation Control'
     ClientHeight = 32
     ClientWidth = 654
-    TabOrder = 7
+    TabOrder = 6
     object ModelVersionComboBox: TComboBox
       Left = 61
       Height = 20
@@ -268,19 +257,20 @@ object ValuesForm: TValuesForm
     Caption = 'Initial Conditions'
     ClientHeight = 32
     ClientWidth = 654
-    TabOrder = 8
+    TabOrder = 7
     object ICRadioButton: TRadioButton
       Left = 90
       Height = 18
       Hint = 'Begin next simulation run with specified initial conditions'
       Top = 5
-      Width = 119
+      Width = 130
       Anchors = [akLeft, akBottom]
-      Caption = 'Initial conditions'
+      Caption = 'Initial conditions...'
       Checked = True
       TabOrder = 1
       TabStop = True
       OnChange = ICRadioButtonChange
+      OnMouseDown = ICRadioButtonMouseDown
     end
     object ContinueRadioButton: TRadioButton
       Left = 225
@@ -301,6 +291,17 @@ object ValuesForm: TValuesForm
       Anchors = [akLeft, akBottom]
       Caption = 'Begin with:'
     end
+    object CustomRadioButton: TRadioButton
+      Left = 344
+      Height = 18
+      Top = 5
+      Width = 113
+      Anchors = [akLeft, akBottom]
+      Caption = 'Custom state...'
+      TabOrder = 2
+      OnChange = CustomRadioButtonChange
+      OnMouseDown = CustomRadioButtonMouseDown
+    end
   end
   object StrucParGroupBox: TGroupBox
     Left = 31
@@ -311,7 +312,7 @@ object ValuesForm: TValuesForm
     Caption = 'Structure Parameters'
     ClientHeight = 133
     ClientWidth = 651
-    TabOrder = 9
+    TabOrder = 8
     object G1Label: TLabel
       Left = 11
       Height = 16

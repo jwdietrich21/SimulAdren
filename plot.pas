@@ -83,6 +83,12 @@ begin
   TimeSeriesChart.AxisList.Axes[1].Range.Max := gSequence.size - 1;
   if DarkTheme then
     yrSeries.SeriesColor := clWhite;
+  CRHSeries.Clear;
+  PRFSeries.Clear;
+  FSeries.Clear;
+  eSeries.Clear;
+  ACTHSeries.Clear;
+  yrSeries.Clear;
   for i := 0 to gSequence.size - 1 do
   begin
     CRHSeries.AddXY(i, gSequence.CRH[i] / CRHFactor);

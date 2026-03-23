@@ -55,10 +55,10 @@ type
     Alpha1Label: TLabel;
     Alpha1UnitLabel: TLabel;
     Beta3UnitLabel: TLabel;
+    CustomRadioButton: TRadioButton;
     StrucParGroupBox: TGroupBox;
     ICGroupBox: TGroupBox;
     SimulationControlGroupBox: TGroupBox;
-    ICButton: TButton;
     HoursRadioButton: TRadioButton;
     EvolvedParameterMenuitem: TMenuItem;
     FitnessMenuItem: TMenuItem;
@@ -142,14 +142,18 @@ type
     procedure CloseMenuItemClick(Sender: TObject);
     procedure ContinueRadioButtonChange(Sender: TObject);
     procedure CopyMenuItemClick(Sender: TObject);
+    procedure CustomRadioButtonChange(Sender: TObject);
+    procedure CustomRadioButtonMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: integer);
     procedure EstimateGECheckboxChange(Sender: TObject);
     procedure EstimateGRCheckBoxChange(Sender: TObject);
     procedure EvolvedParameterMenuitemClick(Sender: TObject);
     procedure FitnessMenuItemClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure HoursRadioButtonChange(Sender: TObject);
-    procedure ICButtonClick(Sender: TObject);
     procedure ICRadioButtonChange(Sender: TObject);
+    procedure ICRadioButtonMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: integer);
     procedure IPSMenuItemClick(Sender: TObject);
     procedure MacAboutItemClick(Sender: TObject);
     procedure MinutesRadioButtonChange(Sender: TObject);
@@ -316,26 +320,34 @@ end;
 
 procedure TValuesForm.StartButtonClick(Sender: TObject);
 var
-  i, j: integer;
+  i, j, nmin: integer;
   params: TStrucPars;
 begin
   ValuesForm.cursor := crHourGlass;
   ReadParams(Sender, params);
-  gActiveModel.iterations := IterationsSpinEdit.Value * SecsPerMin;
-  if SimTimeUnit = hours then
-    gActiveModel.iterations := gActiveModel.iterations * MinsPerHour;
-  gSequence := TSequence.Create;
+  if ContinueRadioButton.Checked or CustomRadioButton.Checked then
+    nmin := gActiveModel.iterations
+  else
+    nmin := 0;
+  if SimTimeUnit = minutes then
+    gActiveModel.iterations := nmin + IterationsSpinEdit.Value * SecsPerMin
+  else if SimTimeUnit = hours then
+    gActiveModel.iterations :=
+      nmin + IterationsSpinEdit.Value * MinsPerHour * SecsPerMin;
   ValuesGrid.RowCount := gActiveModel.iterations + 2;
   for i := 0 to ValuesGrid.ColCount - 1 do
-    for j := 2 to ValuesGrid.RowCount - 1 do
+    for j := nmin + 2 to ValuesGrid.RowCount - 1 do
       ValuesGrid.Cells[i, j] := '';
-  PlotForm.CRHSeries.Clear;
-  PlotForm.PRFSeries.Clear;
-  PlotForm.FSeries.Clear;
-  PlotForm.eSeries.Clear;
-  PlotForm.ACTHSeries.Clear;
-  PlotForm.yrSeries.Clear;
-  RunSimulation(gInitialConditions, gActiveModel, 0);
+  if nmin = 0 then
+  begin
+    PlotForm.CRHSeries.Clear;
+    PlotForm.PRFSeries.Clear;
+    PlotForm.FSeries.Clear;
+    PlotForm.eSeries.Clear;
+    PlotForm.ACTHSeries.Clear;
+    PlotForm.yrSeries.Clear;
+  end;
+  RunSimulation(gInitialConditions, gActiveModel, nmin);
   PredictionForm.DisplayPrediction(gPrediction[0], gPrediction[1]);
   if gActiveModel.iterations > ValuesGrid.RowCount then
     ValuesGrid.RowCount := gActiveModel.iterations + 1;
@@ -354,7 +366,6 @@ begin
     ValuesGrid.Cells[6, i + 2] := FloatToStrF(gSequence.yr[i] / yRFactor, ffFixed, 0, 4);
   end;
   PlotForm.ShowPlot;
-  gSequence.Destroy;
   ValuesForm.cursor := crDefault;
 end;
 
@@ -719,21 +730,59 @@ begin
   TestTimeUnit := SimTimeUnit;
 end;
 
-procedure TValuesForm.ICButtonClick(Sender: TObject);
-begin
-  InitialConditionsForm.Invalidate; // forces redrawing
-  InitialConditionsForm.Show;
-end;
-
 procedure TValuesForm.ICRadioButtonChange(Sender: TObject);
 begin
   if ContinueRadioButton.Checked then
   begin
     ContinueRadioButton.Checked := False;
-    ICRadioButton.Checked := true;
-  end
-  else
+    CustomRadioButton.Checked := False;
+    ICRadioButton.Checked := True;
+  end;
+end;
+
+procedure TValuesForm.ICRadioButtonMouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: integer);
+begin
+  InitialConditionsForm.Invalidate; // forces redrawing
+  InitialConditionsForm.ShowModal;
+end;
+
+procedure TValuesForm.ContinueRadioButtonChange(Sender: TObject);
+begin
+  if ICRadioButton.Checked then
   begin
+    ICRadioButton.Checked := False;
+    CustomRadioButton.Checked := False;
+    ContinueRadioButton.Checked := True;
+  end;
+end;
+
+procedure TValuesForm.CustomRadioButtonChange(Sender: TObject);
+begin
+  if CustomRadioButton.Checked then
+  begin
+    ICRadioButton.Checked := False;
+    CustomRadioButton.Checked := True;
+    ContinueRadioButton.Checked := False;
+  end;
+end;
+
+procedure TValuesForm.CustomRadioButtonMouseDown(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: integer);
+var
+  i: integer;
+begin
+  InitialConditionsForm.Invalidate; // forces redrawing
+  InitialConditionsForm.ShowModal;
+  if (InitialConditionsForm.response = mrOk) and assigned(gSequence) then
+  begin
+    i := gSequence.size - 1;
+    gSequence.CRH[i] := gInitialConditions.CRH;
+    gSequence.e[i] := gInitialConditions.e;
+    gSequence.ACTH[i] := gInitialConditions.ACTH;
+    gSequence.PRF[i] := gInitialConditions.PRF;
+    gSequence.F[i] := gInitialConditions.F;
+    gSequence.yR[i] := gInitialConditions.yR;
   end;
 end;
 
@@ -841,18 +890,6 @@ end;
 procedure TValuesForm.CloseMenuItemClick(Sender: TObject);
 begin
   application.Terminate;
-end;
-
-procedure TValuesForm.ContinueRadioButtonChange(Sender: TObject);
-begin
-  if ICRadioButton.Checked then
-  begin
-    ICRadioButton.Checked := False;
-    ContinueRadioButton.Checked := True;
-  end
-  else
-  begin
-  end;
 end;
 
 procedure TValuesForm.Alpha1EditChange(Sender: TObject);

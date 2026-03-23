@@ -164,7 +164,7 @@ var
   gPrediction: TPredictionArray;
   gInitialConditions: TParamVector;
 
-procedure RunSimulation(InitialContitions: TParamVector; model: tActiveModel;
+procedure RunSimulation(InitialConditions: TParamVector; model: tActiveModel;
   nmin: integer);
 function PredictSteadyState(CRH: extended; model: tActiveModel): TPredictionArray;
 procedure ClearSimulation;
@@ -217,6 +217,8 @@ begin
     FreeAndNil(gBlocks.ASIA1);
   if assigned(gBlocks.ASIA3) then
     FreeAndNil(gBlocks.ASIA3);
+  if assigned(gSequence) then
+    FreeAndNil(gSequence);
 end;
 
 function PituitaryResponse(CRH, yR: extended): extended;
@@ -274,7 +276,7 @@ begin
   end;
 end;
 
-procedure RunSimulation(InitialContitions: TParamVector; model: tActiveModel;
+procedure RunSimulation(InitialConditions: TParamVector; model: tActiveModel;
   nmin: integer);
 var
   CRH, e, ACTH, PRF, F, v, yR: extended;
@@ -282,36 +284,37 @@ var
   params: TStrucPars;
 begin
   params := model.StrucPars;
-  gPrediction := PredictSteadyState(InitialContitions.CRH, model);
+  gPrediction := PredictSteadyState(InitialConditions.CRH, model);
   if (model.Iterations > 0) and (model.Iterations > nmin) then
   begin
     if nmin = 0 then
     begin
       ClearSimulation;
       InitBlocks(model, params);
+      gSequence := TSequence.Create;
       gSequence.size := 0; // delete content
-      CRH := InitialContitions.CRH;
-      e := InitialContitions.e;
-      ACTH := InitialContitions.ACTH;
-      PRF := InitialContitions.PRF;
-      F := InitialContitions.F;
-      v := InitialContitions.v;
-      yR := InitialContitions.yR;
+      CRH := InitialConditions.CRH;
+      e := InitialConditions.e;
+      ACTH := InitialConditions.ACTH;
+      PRF := InitialConditions.PRF;
+      F := InitialConditions.F;
+      v := InitialConditions.v;
+      yR := InitialConditions.yR;
     end
     else
     begin
-      CRH := gSequence.CRH[nmin];
-      e := gSequence.e[nmin];
-      ACTH := gSequence.ACTH[nmin];
-      PRF := gSequence.PRF[nmin];
-      F := gSequence.F[nmin];
-      v := gSequence.v[nmin];
-      yR := gSequence.yR[nmin];
+      CRH := gSequence.CRH[nmin-1];
+      e := gSequence.e[nmin-1];
+      ACTH := gSequence.ACTH[nmin-1];
+      PRF := gSequence.PRF[nmin-1];
+      F := gSequence.F[nmin-1];
+      v := gSequence.v[nmin-1];
+      yR := gSequence.yR[nmin-1];
     end;
 
     gSequence.size := model.Iterations;
 
-    if (model.Version <> '1') and (model.Version <> '1.1') then
+    if (nmin = 0) and (model.Version <> '1') and (model.Version <> '1.1') then
     begin
       gBlocks.ASIA1.x1 := gBlocks.ASIA1.alpha / gBlocks.ASIA1.beta * e;
       gBlocks.ASIA3.x1 := gBlocks.ASIA3.alpha / gBlocks.ASIA3.beta * PRF;
@@ -319,9 +322,9 @@ begin
 
     for i := nmin to model.Iterations - 1 do
     begin
-      gBlocks.NoCoDI.input1 := InitialContitions.CRH;
+      gBlocks.NoCoDI.input1 := CRH;
       gBlocks.NoCoDI.input2 := yR;
-      e := PituitaryResponse(InitialContitions.CRH, yR);
+      e := PituitaryResponse(CRH, yR);
       if (model.Version = '1') or (model.Version = '1.1') then
       begin
         gBlocks.G1.input := e;

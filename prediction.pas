@@ -93,6 +93,7 @@ end;
 
 Initialization
 gPrediction[0].CRH := kCRH;
+gPrediction[1].CRH := kCRH;
 
 end.
 

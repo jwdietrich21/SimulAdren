@@ -2,29 +2,29 @@ object InitialConditionsForm: TInitialConditionsForm
   Left = 240
   Height = 214
   Top = 168
-  Width = 368
+  Width = 472
   BorderStyle = bsDialog
   Caption = 'Initial Conditions'
   ClientHeight = 214
-  ClientWidth = 368
+  ClientWidth = 472
   LCLVersion = '4.6.0.0'
   OnCreate = FormCreate
   object ICList: TStringGrid
     Left = 0
     Height = 160
     Top = 0
-    Width = 364
+    Width = 468
     Anchors = [akTop, akLeft, akRight]
     AutoFillColumns = True
     ColCount = 3
     Columns = <    
       item
         Title.Caption = 'Start value'
-        Width = 149
+        Width = 201
       end    
       item
         Title.Caption = 'UoM'
-        Width = 149
+        Width = 201
       end>
     MouseWheelOption = mwGrid
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goEditing, goDblClickAutoSize, goSmoothScroll, goHeaderHotTracking]
@@ -33,12 +33,12 @@ object InitialConditionsForm: TInitialConditionsForm
     TabOrder = 0
     ColWidths = (
       64
-      149
-      149
+      201
+      201
     )
   end
   object OKButton: TButton
-    Left = 269
+    Left = 373
     Height = 25
     Hint = 'Use these values'
     Top = 173
@@ -52,7 +52,7 @@ object InitialConditionsForm: TInitialConditionsForm
     OnClick = OKButtonClick
   end
   object PredictionButton: TButton
-    Left = 149
+    Left = 262
     Height = 25
     Hint = 'Fill-in values from prediction'
     Top = 173
@@ -77,5 +77,15 @@ object InitialConditionsForm: TInitialConditionsForm
     ShowHint = True
     TabOrder = 3
     OnClick = CancelButtonClick
+  end
+  object CurStateButton: TButton
+    Left = 152
+    Height = 25
+    Top = 173
+    Width = 99
+    Anchors = [akRight, akBottom]
+    Caption = 'Current state'
+    TabOrder = 4
+    OnClick = CurStateButtonClick
   end
 end
