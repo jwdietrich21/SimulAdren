@@ -316,8 +316,8 @@ begin
 
     if (nmin = 0) and (model.Version <> '1') and (model.Version <> '1.1') then
     begin
-      gBlocks.ASIA1.x1 := gBlocks.ASIA1.alpha / gBlocks.ASIA1.beta * e;
-      gBlocks.ASIA3.x1 := gBlocks.ASIA3.alpha / gBlocks.ASIA3.beta * PRF;
+      gBlocks.ASIA1.x1 := ACTH;
+      gBlocks.ASIA3.x1 := F;
     end;
 
     for i := nmin to model.Iterations - 1 do

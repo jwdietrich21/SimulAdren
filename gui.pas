@@ -783,6 +783,8 @@ begin
     gSequence.PRF[i] := gInitialConditions.PRF;
     gSequence.F[i] := gInitialConditions.F;
     gSequence.yR[i] := gInitialConditions.yR;
+    gBlocks.ASIA1.x1 := gInitialConditions.ACTH;
+    gBlocks.ASIA3.x1 := gInitialConditions.F;
   end;
 end;
 

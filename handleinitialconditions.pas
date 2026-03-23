@@ -75,13 +75,16 @@ procedure TInitialConditionsForm.CurStateButtonClick(Sender: TObject);
 var
   i: integer;
 begin
-  i := gSequence.size - 1;
-  ICList.Cells[1, 1] := FloatToStrF(gSequence.CRH[i] / CRHFactor, ffFixed, 0, 4);
-  ICList.Cells[1, 2] := FloatToStrF(gSequence.e[i] / eFactor, ffFixed, 0, 4);
-  ICList.Cells[1, 3] := FloatToStrF(gSequence.ACTH[i] / ACTHFactor, ffFixed, 0, 4);
-  ICList.Cells[1, 4] := FloatToStrF(gSequence.PRF[i] / PRFFactor, ffFixed, 0, 4);
-  ICList.Cells[1, 5] := FloatToStrF(gSequence.F[i] / CortisolFactor, ffFixed, 0, 4);
-  ICList.Cells[1, 6] := FloatToStrF(gSequence.yR[i] / yRFactor, ffFixed, 0, 4);
+  if assigned(gSequence) then
+  begin
+    i := gSequence.size - 1;
+    ICList.Cells[1, 1] := FloatToStrF(gSequence.CRH[i] / CRHFactor, ffFixed, 0, 4);
+    ICList.Cells[1, 2] := FloatToStrF(gSequence.e[i] / eFactor, ffFixed, 0, 4);
+    ICList.Cells[1, 3] := FloatToStrF(gSequence.ACTH[i] / ACTHFactor, ffFixed, 0, 4);
+    ICList.Cells[1, 4] := FloatToStrF(gSequence.PRF[i] / PRFFactor, ffFixed, 0, 4);
+    ICList.Cells[1, 5] := FloatToStrF(gSequence.F[i] / CortisolFactor, ffFixed, 0, 4);
+    ICList.Cells[1, 6] := FloatToStrF(gSequence.yR[i] / yRFactor, ffFixed, 0, 4);
+  end;
 end;
 
 procedure TInitialConditionsForm.FormCreate(Sender: TObject);
@@ -113,7 +116,7 @@ begin
   gInitialConditions.PRF := StrToFloatDef(ICList.Cells[1, 4], 0) * PRFFactor;
   gInitialConditions.F := StrToFloatDef(ICList.Cells[1, 5], 0) * CortisolFactor;
   gInitialConditions.yR := StrToFloatDef(ICList.Cells[1, 6], 0) * yRFactor;
-  response := mrOK;
+  response := mrOk;
   Close;
 end;
 
