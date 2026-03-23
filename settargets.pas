@@ -85,7 +85,7 @@ begin
   TargetA := FloatSpinEditA.Value * ACTHFactor;
   TargetF := FloatSpinEditF.Value * CortisolFactor;
   Close;
-  ModalResult := mrOK;
+  ModalResult := mrOk;
 end;
 
 procedure TTargetForm.CancelButtonClick(Sender: TObject);
@@ -96,11 +96,7 @@ end;
 
 procedure TTargetForm.FormCreate(Sender: TObject);
 begin
-  Scaled := true;
-  targetA := kEvoTargets.ACTH;
-  targetF := kEvoTargets.F;
-  FloatSpinEditA.Value := targetA;
-  FloatSpinEditF.Value := targetF;
+  Scaled := True;
   UoM_A.Caption := kUoMs[3]; // UoM for ACTH
   UoM_F.Caption := kUoMs[5]; // UoM for F (Cortisol)
   LowerBoundSpinEdit.Value := LowerBound;
@@ -113,9 +109,22 @@ end;
 
 procedure TTargetForm.FormShow(Sender: TObject);
 begin
+  case gActiveModel.Version of
+    '1', '1.1', '1.2', '1.3':
+    begin
+      targetA := kEvoTargets_1.ACTH;
+      targetF := kEvoTargets_1.F;
+    end;
+    otherwise
+    begin
+      targetA := kEvoTargets_1_4.ACTH;
+      targetF := kEvoTargets_1_4.F;
+    end;
+  end;
+  FloatSpinEditA.Value := targetA;
+  FloatSpinEditF.Value := targetF;
   ActiveControl := OKButton;
   OKButton.SetFocus;
 end;
 
 end.
-

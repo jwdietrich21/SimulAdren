@@ -175,6 +175,7 @@ type
   private
     { private declarations }
     procedure CheckEvolveEnabling(Sender: TObject);
+    procedure ClearOutput(Sender: TObject);
   public
     { public declarations }
     AllPopulations: TAllPopulations;
@@ -318,6 +319,17 @@ end;
 
 { TValuesForm }
 
+procedure TValuesForm.ClearOutput(Sender: TObject);
+begin
+  ValuesGrid.RowCount := gActiveModel.iterations + 2;
+  PlotForm.CRHSeries.Clear;
+  PlotForm.PRFSeries.Clear;
+  PlotForm.FSeries.Clear;
+  PlotForm.eSeries.Clear;
+  PlotForm.ACTHSeries.Clear;
+  PlotForm.yrSeries.Clear;
+end;
+
 procedure TValuesForm.StartButtonClick(Sender: TObject);
 var
   i, j, nmin: integer;
@@ -334,18 +346,14 @@ begin
   else if SimTimeUnit = hours then
     gActiveModel.iterations :=
       nmin + IterationsSpinEdit.Value * MinsPerHour * SecsPerMin;
-  ValuesGrid.RowCount := gActiveModel.iterations + 2;
-  for i := 0 to ValuesGrid.ColCount - 1 do
-    for j := nmin + 2 to ValuesGrid.RowCount - 1 do
-      ValuesGrid.Cells[i, j] := '';
   if nmin = 0 then
+    ClearOutput(Sender)
+  else
   begin
-    PlotForm.CRHSeries.Clear;
-    PlotForm.PRFSeries.Clear;
-    PlotForm.FSeries.Clear;
-    PlotForm.eSeries.Clear;
-    PlotForm.ACTHSeries.Clear;
-    PlotForm.yrSeries.Clear;
+    ValuesGrid.RowCount := gActiveModel.iterations + 2;
+    for i := 0 to ValuesGrid.ColCount - 1 do
+      for j := nmin + 2 to ValuesGrid.RowCount - 1 do
+        ValuesGrid.Cells[i, j] := '';
   end;
   RunSimulation(gInitialConditions, gActiveModel, nmin);
   PredictionForm.DisplayPrediction(gPrediction[0], gPrediction[1]);
@@ -676,6 +684,7 @@ begin
     '1.1': AssignParams(gActiveModel, kStrucPars_1_1);
     '1.2': AssignParams(gActiveModel, kStrucPars_1_2);
     '1.3': AssignParams(gActiveModel, kStrucPars_1_3);
+    '1.4': AssignParams(gActiveModel, kStrucPars_1_4);
   end;
   // Model versions 1 or 1.1?
   if (ModelVersionComboBox.ItemIndex = 0) or (ModelVersionComboBox.ItemIndex = 1) then
@@ -745,6 +754,8 @@ procedure TValuesForm.ICRadioButtonMouseDown(Sender: TObject;
 begin
   InitialConditionsForm.Invalidate; // forces redrawing
   InitialConditionsForm.ShowModal;
+  if InitialConditionsForm.response = mrOk then
+    ICRadioButton.Checked := True;
 end;
 
 procedure TValuesForm.ContinueRadioButtonChange(Sender: TObject);
@@ -785,6 +796,7 @@ begin
     gSequence.yR[i] := gInitialConditions.yR;
     gBlocks.ASIA1.x1 := gInitialConditions.ACTH;
     gBlocks.ASIA3.x1 := gInitialConditions.F;
+    CustomRadioButton.Checked := True;
   end;
 end;
 
@@ -852,7 +864,12 @@ end;
 
 procedure TValuesForm.ResetButtonClick(Sender: TObject);
 begin
-
+  ClearSimulation;
+  gActiveModel.iterations := 0;
+  ClearOutput(Sender);
+  ICRadioButton.Checked := True;
+  ContinueRadioButton.Checked := False;
+  CustomRadioButton.Checked := False;
 end;
 
 procedure TValuesForm.SaveToolButtonClick(Sender: TObject);
@@ -926,7 +943,6 @@ begin
   else
     EvolveButton.Enabled := False;
 end;
-
 
 procedure TValuesForm.EstimateGECheckboxChange(Sender: TObject);
 begin

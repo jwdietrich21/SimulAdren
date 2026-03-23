@@ -60,7 +60,7 @@ const
   kalpha3_1_1 = 1 / VD_F_1_1;
   kbeta3_1 = ln(2) / (t12_F_1 * SecsPerMin);
   kbeta3_1_1 = ln(2) / (t12_F_1_1 * SecsPerMin);
-  mPR_F = 5.2e-10;
+  mPR_F_1 = 5.2e-10;
 
   kStrucPars_1: TStrucPars =
     ( // default values for model 1
@@ -81,7 +81,7 @@ const
     ( // default values for model 1.1
     G1: kalpha1 / kbeta1;
     G3: kalpha3_1_1 / kbeta3_1_1;
-    GA: 2.25 * mPR_F;
+    GA: 2.25 * mPR_F_1;
     DA: 1e-11;
     GR: 1;
     DR: 2e-7;
@@ -111,7 +111,22 @@ const
     ( // default values for model 1.3
     G1: kalpha1 / kbeta1;
     G3: kalpha3_1_1 / kbeta3_1_1;
-    GA: 2.25 * mPR_F;
+    GA: 2.25 * mPR_F_1;
+    DA: 1e-11;
+    GR: 1;
+    DR: 2e-7;
+    GE: 1;
+    alpha1: kalpha1;
+    beta1: kbeta1;
+    alpha3: kalpha3_1_1;
+    beta3: kbeta3_1_1;
+    );
+
+  kStrucPars_1_4: TStrucPars =
+    ( // default values for model 1.3
+    G1: kalpha1 / kbeta1;
+    G3: kalpha3_1_1 / kbeta3_1_1;
+    GA: 2.6e-9;
     DA: 1e-11;
     GR: 1;
     DR: 2e-7;
@@ -126,10 +141,16 @@ const
     ( // CRH, e, ACTH, PRF, F, yR
     'fmol/l', 'fmol/s', 'pmol/L', 'pmol/s', 'nmol/L', 'mAU');
 
-  kEvoTargets: TEvoTargets =
+  kEvoTargets_1: TEvoTargets =
     (
     ACTH: 6.81;
     F: 175.88;
+    );
+
+  kEvoTargets_1_4: TEvoTargets =
+    (
+    ACTH: 6.08;
+    F: 364.56;
     );
 
 type
@@ -287,12 +308,12 @@ begin
   gPrediction := PredictSteadyState(InitialConditions.CRH, model);
   if (model.Iterations > 0) and (model.Iterations > nmin) then
   begin
-    if nmin = 0 then
+    if nmin = 0 then // new simulation
     begin
       ClearSimulation;
       InitBlocks(model, params);
       gSequence := TSequence.Create;
-      gSequence.size := 0; // delete content
+      gSequence.size := 0;        // delete content
       CRH := InitialConditions.CRH;
       e := InitialConditions.e;
       ACTH := InitialConditions.ACTH;
@@ -303,13 +324,22 @@ begin
     end
     else
     begin
-      CRH := gSequence.CRH[nmin-1];
-      e := gSequence.e[nmin-1];
-      ACTH := gSequence.ACTH[nmin-1];
-      PRF := gSequence.PRF[nmin-1];
-      F := gSequence.F[nmin-1];
-      v := gSequence.v[nmin-1];
-      yR := gSequence.yR[nmin-1];
+      if assigned(gSequence) then // continuation
+      begin
+        CRH := gSequence.CRH[nmin - 1];
+        e := gSequence.e[nmin - 1];
+        ACTH := gSequence.ACTH[nmin - 1];
+        PRF := gSequence.PRF[nmin - 1];
+        F := gSequence.F[nmin - 1];
+        v := gSequence.v[nmin - 1];
+        yR := gSequence.yR[nmin - 1];
+      end
+      else                        // error handler
+      begin
+        ClearSimulation;
+        InitBlocks(model, params);
+        gSequence := TSequence.Create;
+      end;
     end;
 
     gSequence.size := model.Iterations;
