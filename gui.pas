@@ -335,7 +335,7 @@ var
   i, j, nmin: integer;
   params: TStrucPars;
 begin
-  ValuesForm.cursor := crHourGlass;
+  //ValuesForm.cursor := crHourGlass;
   ReadParams(Sender, params);
   if ContinueRadioButton.Checked or CustomRadioButton.Checked then
     nmin := gActiveModel.iterations
@@ -374,7 +374,7 @@ begin
     ValuesGrid.Cells[6, i + 2] := FloatToStrF(gSequence.yr[i] / yRFactor, ffFixed, 0, 4);
   end;
   PlotForm.ShowPlot;
-  ValuesForm.cursor := crDefault;
+  //ValuesForm.cursor := crDefault;
 end;
 
 procedure TValuesForm.SteadyStateButtonClick(Sender: TObject);
@@ -822,6 +822,7 @@ end;
 procedure TValuesForm.ModelVersionComboBoxChange(Sender: TObject);
 begin
   SetModel(Sender);
+  IPSForm.ModelChanged := True;
   IPSForm.Invalidate; // forces redrawing
 end;
 
@@ -843,6 +844,7 @@ begin
         SetParams(Sender, gActiveModel);
       end;
     end;
+    IPSForm.ModelChanged := True;
     IPSForm.Invalidate; // forces redrawing
   end;
 end;
@@ -885,6 +887,9 @@ end;
 procedure TValuesForm.QuitMenuItemClick(Sender: TObject);
 begin
   application.Terminate;
+  while not Application.Terminated do
+    Application.ProcessMessages;
+  Close;
 end;
 
 procedure TValuesForm.FormCreate(Sender: TObject);
@@ -909,6 +914,9 @@ end;
 procedure TValuesForm.CloseMenuItemClick(Sender: TObject);
 begin
   application.Terminate;
+  while not Application.Terminated do
+    Application.ProcessMessages;
+  Close;
 end;
 
 procedure TValuesForm.Alpha1EditChange(Sender: TObject);

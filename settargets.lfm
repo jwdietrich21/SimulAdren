@@ -1,15 +1,16 @@
 object TargetForm: TTargetForm
   Left = 761
-  Height = 372
+  Height = 744
   Hint = 'Set targets for estimting parameters by evolutionary algorithm'
   Top = 260
-  Width = 420
+  Width = 840
   ActiveControl = OKButton
   BorderStyle = bsDialog
   Caption = 'Set Targets'
-  ClientHeight = 372
-  ClientWidth = 420
-  Constraints.MinWidth = 420
+  ClientHeight = 744
+  ClientWidth = 840
+  Constraints.MinWidth = 840
+  DesignTimePPI = 192
   FormStyle = fsStayOnTop
   Position = poOwnerFormCenter
   ShowHint = True
@@ -17,10 +18,10 @@ object TargetForm: TTargetForm
   OnCreate = FormCreate
   OnShow = FormShow
   object OKButton: TButton
-    Left = 320
-    Height = 25
-    Top = 329
-    Width = 75
+    Left = 654
+    Height = 50
+    Top = 658
+    Width = 150
     Anchors = [akRight, akBottom]
     Caption = 'OK'
     Default = True
@@ -29,10 +30,10 @@ object TargetForm: TTargetForm
     OnClick = OKButtonClick
   end
   object CancelButton: TButton
-    Left = 223
-    Height = 25
-    Top = 329
-    Width = 75
+    Left = 456
+    Height = 50
+    Top = 658
+    Width = 150
     Anchors = [akRight, akBottom]
     Cancel = True
     Caption = 'Cancel'
@@ -41,153 +42,153 @@ object TargetForm: TTargetForm
     OnClick = CancelButtonClick
   end
   object TargetGroupBox: TGroupBox
-    Left = 16
-    Height = 105
-    Top = 16
-    Width = 386
+    Left = 32
+    Height = 210
+    Top = 32
+    Width = 772
     Anchors = [akTop, akLeft, akRight]
     Caption = 'Set targets for evolutionary algorithm:'
-    ClientHeight = 78
-    ClientWidth = 376
+    ClientHeight = 173
+    ClientWidth = 768
     TabOrder = 2
     object FloatSpinEditA: TFloatSpinEdit
-      Left = 128
-      Height = 20
-      Top = 8
-      Width = 98
+      Left = 256
+      Height = 40
+      Top = 16
+      Width = 196
       TabOrder = 0
       OnEditingDone = OKButtonClick
     end
     object FloatSpinEditF: TFloatSpinEdit
-      Left = 128
-      Height = 20
-      Top = 40
-      Width = 98
+      Left = 256
+      Height = 40
+      Top = 80
+      Width = 196
       TabOrder = 1
     end
     object ALabel: TLabel
-      Left = 8
-      Height = 16
-      Top = 8
-      Width = 39
+      Left = 16
+      Height = 32
+      Top = 16
+      Width = 65
       Caption = 'ACTH:'
     end
     object FLabel: TLabel
-      Left = 8
-      Height = 16
-      Top = 40
-      Width = 72
+      Left = 16
+      Height = 32
+      Top = 80
+      Width = 119
       Caption = 'Cortisol (F):'
     end
     object UoM_A: TLabel
-      Left = 235
-      Height = 16
-      Top = 8
-      Width = 28
+      Left = 470
+      Height = 32
+      Top = 16
+      Width = 52
       Caption = 'UoM'
     end
     object UoM_F: TLabel
-      Left = 235
-      Height = 16
-      Top = 40
-      Width = 28
+      Left = 470
+      Height = 32
+      Top = 80
+      Width = 52
       Caption = 'UoM'
     end
   end
   object ParametersGroupBox: TGroupBox
-    Left = 16
-    Height = 183
-    Top = 128
-    Width = 386
+    Left = 32
+    Height = 366
+    Top = 256
+    Width = 772
     Anchors = [akTop, akLeft, akRight, akBottom]
     Caption = 'Parameters for genetic algorithm:'
-    ClientHeight = 156
-    ClientWidth = 376
+    ClientHeight = 329
+    ClientWidth = 768
     TabOrder = 3
     object LowerBoundSpinEdit: TSpinEdit
-      Left = 128
-      Height = 20
+      Left = 256
+      Height = 40
       Top = 0
-      Width = 98
+      Width = 196
       TabOrder = 0
     end
     object BoundsLabel: TLabel
-      Left = 8
-      Height = 16
-      Top = 4
-      Width = 50
+      Left = 16
+      Height = 32
+      Top = 8
+      Width = 85
       Caption = 'Bounds:'
     end
     object UpperBoundSpinEdit: TSpinEdit
-      Left = 272
-      Height = 20
-      Top = 1
-      Width = 98
+      Left = 544
+      Height = 40
+      Top = 2
+      Width = 196
       TabOrder = 1
     end
     object HyphenLabel: TLabel
-      Left = 240
-      Height = 16
-      Top = 4
-      Width = 8
+      Left = 480
+      Height = 32
+      Top = 8
+      Width = 12
       Caption = '–'
     end
     object PopSizeLabel: TLabel
-      Left = 8
-      Height = 16
-      Top = 34
-      Width = 101
+      Left = 16
+      Height = 32
+      Top = 68
+      Width = 176
       Caption = 'Population Size: '
     end
     object PopSizeSpinEdit: TSpinEdit
-      Left = 128
-      Height = 20
-      Top = 30
-      Width = 98
+      Left = 256
+      Height = 40
+      Top = 60
+      Width = 196
       MinValue = 30
       TabOrder = 2
       Value = 50
     end
     object GenerationsLabel: TLabel
-      Left = 8
-      Height = 16
-      Top = 60
-      Width = 77
+      Left = 16
+      Height = 32
+      Top = 120
+      Width = 133
       Caption = 'Generations:'
     end
     object GenerationsSpinEdit: TSpinEdit
-      Left = 128
-      Height = 20
-      Top = 60
-      Width = 98
+      Left = 256
+      Height = 40
+      Top = 120
+      Width = 196
       TabOrder = 3
     end
     object MutationRateLabel: TLabel
-      Left = 8
-      Height = 16
-      Top = 91
-      Width = 88
+      Left = 16
+      Height = 32
+      Top = 182
+      Width = 157
       Caption = 'Mutation Rate:'
     end
     object TournamentSizeLabel: TLabel
-      Left = 8
-      Height = 16
-      Top = 122
-      Width = 105
+      Left = 16
+      Height = 32
+      Top = 244
+      Width = 184
       Caption = 'Tournament Size:'
     end
     object TournamentSizeSpinEdit: TSpinEdit
-      Left = 128
-      Height = 20
-      Top = 122
-      Width = 98
+      Left = 256
+      Height = 40
+      Top = 244
+      Width = 196
       TabOrder = 4
     end
     object MutationRateSpinEdit: TFloatSpinEdit
-      Left = 128
-      Height = 20
-      Top = 91
-      Width = 98
+      Left = 256
+      Height = 40
+      Top = 182
+      Width = 196
       DecimalPlaces = 4
       Increment = 0.1
       TabOrder = 5

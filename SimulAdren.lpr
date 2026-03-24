@@ -43,7 +43,7 @@ uses
 
 begin
   RequireDerivedFormResource := True;
-  Application.Scaled := True;
+  Application.Scaled:=True;
   Application.Initialize;
   gScalingFactor := ScalingFactor;
   Application.CreateForm(TValuesForm, ValuesForm);
@@ -56,5 +56,6 @@ begin
   Application.CreateForm(TParameterForm, ParameterForm);
   Application.CreateForm(TInitialConditionsForm, InitialConditionsForm);
   Application.Run;
+  Application.ProcessMessages;
   ClearSimulation;
 end.

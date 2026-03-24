@@ -1,7 +1,7 @@
 object ParameterForm: TParameterForm
-  Left = 226
+  Left = 754
   Height = 361
-  Top = 262
+  Top = 257
   Width = 615
   Caption = 'Parameter Values over Generations'
   ClientHeight = 361

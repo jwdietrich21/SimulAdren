@@ -51,10 +51,12 @@ type
     IPSImage: TImage;
     procedure DrawIPS(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormPaint(Sender: TObject);
   private
     { private declarations }
   public
     { public declarations }
+    ModelChanged: boolean;
     BlockDiagram: TBlockDiagram;
     IPSBitmap: TBitmap;
     Elements: TElements;
@@ -449,6 +451,17 @@ end;
 procedure TIPSForm.FormCreate(Sender: TObject);
 begin
   Scaled := True;
+  ModelChanged := False;
+  DrawIPS(Sender);
+end;
+
+procedure TIPSForm.FormPaint(Sender: TObject);
+begin
+  If ModelChanged then
+  begin
+    ModelChanged := False;
+    DrawIPS(Sender);
+  end;
 end;
 
 procedure TIPSForm.SaveBlockDiagram(fileName: string; imageType: TImageType);

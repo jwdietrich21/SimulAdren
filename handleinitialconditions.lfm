@@ -7,6 +7,7 @@ object InitialConditionsForm: TInitialConditionsForm
   Caption = 'Initial Conditions'
   ClientHeight = 214
   ClientWidth = 472
+  Position = poOwnerFormCenter
   LCLVersion = '4.6.0.0'
   OnCreate = FormCreate
   object ICList: TStringGrid

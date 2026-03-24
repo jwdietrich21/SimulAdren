@@ -1,12 +1,13 @@
 object AboutWindow: TAboutWindow
   Left = 240
-  Height = 326
+  Height = 652
   Top = 145
-  Width = 473
+  Width = 946
   BorderStyle = bsToolWindow
   Caption = 'About SimulAdren'
-  ClientHeight = 326
-  ClientWidth = 473
+  ClientHeight = 652
+  ClientWidth = 946
+  DesignTimePPI = 192
   FormStyle = fsStayOnTop
   Position = poScreenCenter
   LCLVersion = '4.6.0.0'
@@ -14,21 +15,21 @@ object AboutWindow: TAboutWindow
   OnKeyDown = FormKeyDown
   OnPaint = FormPaint
   object CopyrightLabel8: TLabel
-    Left = 17
-    Height = 13
-    Top = 228
-    Width = 160
+    Left = 34
+    Height = 30
+    Top = 456
+    Width = 291
     Caption = 'Katholisches Klinikum Bochum'
-    Font.Height = -11
+    Font.Height = -22
     Font.Pitch = fpVariable
     ParentColor = False
     ParentFont = False
   end
   object BigLogo: TImage
-    Left = 200
-    Height = 212
-    Top = 16
-    Width = 256
+    Left = 400
+    Height = 424
+    Top = 32
+    Width = 512
     Center = True
     Picture.Data = {
       07544269746D617016222200424D162222000000000036000000280000005F03
@@ -69944,104 +69945,104 @@ object AboutWindow: TAboutWindow
     OnClick = BigLogoClick
   end
   object VersionLabel: TLabel
-    Left = 17
-    Height = 13
-    Top = 80
-    Width = 65
+    Left = 34
+    Height = 30
+    Top = 160
+    Width = 119
     Caption = 'Version x.y.z'
-    Font.Height = -11
+    Font.Height = -22
     Font.Pitch = fpVariable
     ParentColor = False
     ParentFont = False
   end
   object CopyrightLabel1: TLabel
-    Left = 17
-    Height = 13
-    Top = 104
-    Width = 80
+    Left = 34
+    Height = 30
+    Top = 208
+    Width = 145
     Caption = '© 1994 – 2026'
-    Font.Height = -11
+    Font.Height = -22
     Font.Pitch = fpVariable
     ParentColor = False
     ParentFont = False
   end
   object CopyrightLabel2: TLabel
-    Left = 17
-    Height = 13
-    Top = 118
-    Width = 111
+    Left = 34
+    Height = 30
+    Top = 236
+    Width = 201
     Caption = 'Johannes W. Dietrich'
-    Font.Height = -11
+    Font.Height = -22
     Font.Pitch = fpVariable
     ParentColor = False
     ParentFont = False
   end
   object CopyrightLabel3: TLabel
-    Left = 17
-    Height = 13
-    Top = 155
-    Width = 106
+    Left = 34
+    Height = 25
+    Top = 310
+    Width = 192
     Caption = 'In Cooperation with:'
     Font.CharSet = ANSI_CHARSET
     Font.Color = 10975864
-    Font.Height = -11
+    Font.Height = -22
     Font.Name = '.SF NS Text'
     ParentColor = False
     ParentFont = False
   end
   object CopyrightLabel4: TLabel
-    Left = 17
-    Height = 13
-    Top = 171
-    Width = 144
+    Left = 34
+    Height = 30
+    Top = 342
+    Width = 268
     Caption = 'Klinikum der LMU München'
-    Font.Height = -11
+    Font.Height = -22
     Font.Pitch = fpVariable
     ParentColor = False
     ParentFont = False
   end
   object CopyrightLabel5: TLabel
-    Left = 17
-    Height = 13
-    Top = 185
-    Width = 129
+    Left = 34
+    Height = 30
+    Top = 370
+    Width = 236
     Caption = 'Universitätsklinikum Ulm'
-    Font.Height = -11
+    Font.Height = -22
     Font.Pitch = fpVariable
     ParentColor = False
     ParentFont = False
   end
   object CopyrightLabel6: TLabel
-    Left = 17
-    Height = 13
-    Top = 199
-    Width = 132
+    Left = 34
+    Height = 30
+    Top = 398
+    Width = 241
     Caption = 'Ruhr-Universität Bochum'
-    Font.Height = -11
+    Font.Height = -22
     Font.Pitch = fpVariable
     ParentColor = False
     ParentFont = False
   end
   object CopyrightLabel7: TLabel
-    Left = 17
-    Height = 13
-    Top = 213
-    Width = 186
+    Left = 34
+    Height = 30
+    Top = 426
+    Width = 340
     Caption = 'Universitätsklinikum Bergmannsheil'
-    Font.Height = -11
+    Font.Height = -22
     Font.Pitch = fpVariable
     ParentColor = False
     ParentFont = False
   end
   object URL1: TLabel
     Cursor = crHandPoint
-    Left = 17
-    Height = 13
-    Top = 295
-    Width = 90
+    Left = 34
+    Height = 30
+    Top = 590
+    Width = 163
     Caption = 'simuladren.sf.net'
     Font.Color = clNavy
-    Font.Height = -11
+    Font.Height = -22
     Font.Pitch = fpVariable
     ParentColor = False
     ParentFont = False
@@ -70049,23 +70050,24 @@ object AboutWindow: TAboutWindow
   end
   object SciCrunchLabel: TLabel
     Cursor = crHandPoint
-    Left = 272
-    Height = 13
-    Top = 295
-    Width = 171
+    Left = 603
+    Height = 30
+    Top = 590
+    Width = 309
+    Alignment = taRightJustify
     Caption = '(SimulAdren, RRID:SCR_027314)'
     Font.Color = clNavy
-    Font.Height = -11
+    Font.Height = -22
     Font.Pitch = fpVariable
     ParentColor = False
     ParentFont = False
     OnClick = SciCrunchLabelClick
   end
   object SimulaBetaLabel: TImage
-    Left = 16
-    Height = 58
-    Top = 16
-    Width = 200
+    Left = 32
+    Height = 116
+    Top = 32
+    Width = 400
     Picture.Data = {
       07544269746D6170C2F85C00424DC2F85C00000000003600000028000000BB09
       00002F03000001001800000000008CF85C006400000064000000000000000000
@@ -260480,45 +260482,45 @@ object AboutWindow: TAboutWindow
     Transparent = True
   end
   object CopyrightLabel9: TLabel
-    Left = 17
-    Height = 13
-    Top = 243
-    Width = 173
+    Left = 34
+    Height = 30
+    Top = 486
+    Width = 319
     Caption = 'Christian Medical College Vellore'
-    Font.Height = -11
+    Font.Height = -22
     Font.Pitch = fpVariable
     ParentColor = False
     ParentFont = False
   end
   object CopyrightLabel10: TLabel
-    Left = 17
-    Height = 13
-    Top = 258
-    Width = 185
+    Left = 34
+    Height = 30
+    Top = 516
+    Width = 342
     Caption = 'Lee Kong Chian School of Medicine'
-    Font.Height = -11
+    Font.Height = -22
     Font.Pitch = fpVariable
     ParentColor = False
     ParentFont = False
   end
   object CopyrightLabel11: TLabel
-    Left = 17
-    Height = 13
-    Top = 273
-    Width = 233
+    Left = 34
+    Height = 30
+    Top = 546
+    Width = 429
     Caption = 'Nanyang Technological University Singapore'
-    Font.Height = -11
+    Font.Height = -22
     Font.Pitch = fpVariable
     ParentColor = False
     ParentFont = False
   end
   object CopyrightLabel12: TLabel
-    Left = 16
-    Height = 13
-    Top = 134
-    Width = 92
+    Left = 32
+    Height = 30
+    Top = 268
+    Width = 172
     Caption = 'and Nina Siegmar'
-    Font.Height = -11
+    Font.Height = -22
     Font.Pitch = fpVariable
     ParentColor = False
     ParentFont = False
