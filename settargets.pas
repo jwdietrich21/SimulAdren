@@ -110,7 +110,7 @@ end;
 procedure TTargetForm.FormShow(Sender: TObject);
 begin
   case gActiveModel.Version of
-    '1', '1.1', '1.2', '1.3':
+    '1', '1.0', '1.1', '1.2', '1.3':
     begin
       targetA := kEvoTargets_1.ACTH;
       targetF := kEvoTargets_1.F;

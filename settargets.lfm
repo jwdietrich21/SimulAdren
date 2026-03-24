@@ -144,9 +144,9 @@ object TargetForm: TTargetForm
       Height = 20
       Top = 30
       Width = 98
-      MinValue = 10
+      MinValue = 30
       TabOrder = 2
-      Value = 10
+      Value = 50
     end
     object GenerationsLabel: TLabel
       Left = 8

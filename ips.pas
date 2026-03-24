@@ -122,7 +122,8 @@ begin
     TInvertableClass(Elements.Controller).invertedSegments := [bottomSegment];
     Elements.Controller.Draw;
 
-    if (gActiveModel.Version = '1') or (gActiveModel.Version = '1.1') then
+    if (gActiveModel.Version = '1') or (gActiveModel.Version = '1.0') or
+      (gActiveModel.Version = '1.1') then
     begin
       Elements.G1 := TPClass.Create;
       Elements.G1.blockDiagram := BlockDiagram;
@@ -153,14 +154,15 @@ begin
     SetRect(Elements.DAInjection.boundsRect, 250, 100, 290, 140);
     Elements.DAInjection.Draw;
 
-    if (gActiveModel.Version = '1') or (gActiveModel.Version = '1.1') then
+    if (gActiveModel.Version = '1') or (gActiveModel.Version = '1.0') or
+      (gActiveModel.Version = '1.1') then
     begin
-    Elements.G3 := TPClass.Create;
-    Elements.G3.blockDiagram := BlockDiagram;
-    SetRect(Elements.G3.boundsRect, 420, 110, 480, 150);
-    Elements.G3.title := 'G3';
-    Elements.G3.font.Style := [fsItalic];
-    Elements.G3.Draw;
+      Elements.G3 := TPClass.Create;
+      Elements.G3.blockDiagram := BlockDiagram;
+      SetRect(Elements.G3.boundsRect, 420, 110, 480, 150);
+      Elements.G3.title := 'G3';
+      Elements.G3.font.Style := [fsItalic];
+      Elements.G3.Draw;
     end
     else
     begin
@@ -259,7 +261,8 @@ begin
     Elements.ce.blockDiagram := BlockDiagram;
     Elements.ce.sourceObject := Elements.Controller;
     Elements.ce.sourceAnchor := rightmiddle;
-    if (gActiveModel.Version = '1') or (gActiveModel.Version = '1.1') then
+    if (gActiveModel.Version = '1') or (gActiveModel.Version = '1.0') or
+      (gActiveModel.Version = '1.1') then
       Elements.ce.drainObject := Elements.G1
     else
       Elements.ce.drainObject := Elements.ASIA1;
@@ -274,7 +277,8 @@ begin
     BlockDiagram.Canvas.Pen.Color := clGoldenRod;
     Elements.cACTH := TConnectionClass.Create;
     Elements.cACTH.blockDiagram := BlockDiagram;
-    if (gActiveModel.Version = '1') or (gActiveModel.Version = '1.1') then
+    if (gActiveModel.Version = '1') or (gActiveModel.Version = '1.0') or
+      (gActiveModel.Version = '1.1') then
       Elements.cACTH.sourceObject := Elements.G1
     else
       Elements.cACTH.sourceObject := Elements.ASIA1;
@@ -334,7 +338,8 @@ begin
     Elements.cy.blockDiagram := BlockDiagram;
     Elements.cy.sourceObject := Elements.MMRatio2;
     Elements.cy.sourceAnchor := rightmiddle;
-    if (gActiveModel.Version = '1') or (gActiveModel.Version = '1.1') then
+    if (gActiveModel.Version = '1') or (gActiveModel.Version = '1.0') or
+      (gActiveModel.Version = '1.1') then
       Elements.cy.drainObject := Elements.G3
     else
       Elements.cy.drainObject := Elements.ASIA3;
@@ -348,7 +353,8 @@ begin
 
     Elements.cCortisol := TConnectionClass.Create;
     Elements.cCortisol.blockDiagram := BlockDiagram;
-    if (gActiveModel.Version = '1') or (gActiveModel.Version = '1.1') then
+    if (gActiveModel.Version = '1') or (gActiveModel.Version = '1.0') or
+      (gActiveModel.Version = '1.1') then
       Elements.cCortisol.sourceObject := Elements.G3
     else
       Elements.cCortisol.sourceObject := Elements.ASIA3;

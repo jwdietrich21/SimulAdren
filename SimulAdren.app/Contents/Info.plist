@@ -56,7 +56,7 @@ Source code released under the BSD License
 			<string>Viewer</string>
 			<key>CFBundleTypeExtensions</key>
 			<array>
-				<string>*</string>
+				<string>xml</string>
 			</array>
 			<key>CFBundleTypeOSTypes</key>
 			<array>

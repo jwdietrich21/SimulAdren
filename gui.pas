@@ -680,7 +680,7 @@ procedure TValuesForm.SetModel(Sender: TObject);
 begin
   gActiveModel.Version := VersionID(ModelVersionComboBox.Caption);
   case gActiveModel.Version of
-    '1': AssignParams(gActiveModel, kStrucPars_1);
+    '1', '1.0': AssignParams(gActiveModel, kStrucPars_1);
     '1.1': AssignParams(gActiveModel, kStrucPars_1_1);
     '1.2': AssignParams(gActiveModel, kStrucPars_1_2);
     '1.3': AssignParams(gActiveModel, kStrucPars_1_3);
