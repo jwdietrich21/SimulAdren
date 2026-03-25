@@ -7,7 +7,7 @@ unit HandleInitialConditions;
 { Simulation program for the hypothalamus-pituitary-adrenal axis }
 { Form for setting initial conditions }
 
-{ Version 2.0.0 (Rubycon) }
+{ Version 2.0.1 (Rubycon) }
 
 { (c) Johannes W. Dietrich, 1994 - 2026 }
 { (c) Nina Siegmar, 2020 - 2026 }

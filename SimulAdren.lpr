@@ -7,7 +7,7 @@ program SimulAdren;
 { Simulation program for the hypothalamus-pituitary-adrenal axis }
 { Main project file }
 
-{ Version 2.0.0 (Rubycon) }
+{ Version 2.0.1 (Rubycon) }
 
 { (c) Johannes W. Dietrich, 1994 - 2026 }
 { (c) Nina Siegmar, 2020 - 2026 }
@@ -43,7 +43,7 @@ uses
 
 begin
   RequireDerivedFormResource := True;
-  Application.Scaled:=True;
+  Application.Scaled := True;
   Application.Initialize;
   gScalingFactor := ScalingFactor;
   Application.CreateForm(TValuesForm, ValuesForm);
