@@ -79,7 +79,7 @@ implementation
 
 procedure TAboutWindow.BigLogoClick(Sender: TObject);
 begin
-
+  OpenURL(BASE_URL);
 end;
 
 procedure TAboutWindow.FormCreate(Sender: TObject);
@@ -90,6 +90,7 @@ end;
 
 procedure TAboutWindow.FormKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
+  { Check for command + W or control + w to close the window }
 begin
   if (key = 87) and ((ssMeta in Shift) or (ssCtrl in Shift)) then
     Close;
@@ -97,6 +98,7 @@ end;
 
 procedure TAboutWindow.FormPaint(Sender: TObject);
 begin
+  { Check if dark theme enabled and adjust elements accordingly }
   if DarkTheme then
   begin
     URL1.Font.Color := clSkyBlue;
@@ -107,7 +109,8 @@ begin
     URL1.Font.Color := clNavy;
     SciCrunchLabel.Font.Color := clNavy;
   end;
-  application.ProcessMessages;
+  { application.ProcessMessages should not be invoked here, as it may lead
+    to an endless loop, at least on macOS }
 end;
 
 procedure TAboutWindow.SciCrunchLabelClick(Sender: TObject);

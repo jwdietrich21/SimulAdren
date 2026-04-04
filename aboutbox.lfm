@@ -25,6 +25,7 @@ object AboutWindow: TAboutWindow
     ParentFont = False
   end
   object BigLogo: TImage
+    Cursor = crHandPoint
     Left = 200
     Height = 212
     Top = 16
