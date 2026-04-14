@@ -185,7 +185,7 @@ type
     procedure CopyCells(Sender: TObject);
     procedure ReadParams(Sender: TObject; var params: TStrucPars);
     procedure SetParams(Sender: TObject; var theModel: tActiveModel);
-    procedure SetModel(Sender: TObject);
+    procedure SetModel(Sender: TObject; default: boolean);
     procedure SetG1(Sender: TObject);
     procedure SetG3(Sender: TObject);
   end;
@@ -676,36 +676,38 @@ begin
   end;
 end;
 
-procedure TValuesForm.SetModel(Sender: TObject);
+procedure TValuesForm.SetModel(Sender: TObject; default: boolean);
 begin
   gActiveModel.Version := VersionID(ModelVersionComboBox.Caption);
+  if default then
+    case gActiveModel.Version of
+      '1', '1.0': AssignParams(gActiveModel, kStrucPars_1);
+      '1.1': AssignParams(gActiveModel, kStrucPars_1_1);
+      '1.2': AssignParams(gActiveModel, kStrucPars_1_2);
+      '1.3': AssignParams(gActiveModel, kStrucPars_1_3);
+      '1.4': AssignParams(gActiveModel, kStrucPars_1_4);
+    end;
   case gActiveModel.Version of
-    '1', '1.0': AssignParams(gActiveModel, kStrucPars_1);
-    '1.1': AssignParams(gActiveModel, kStrucPars_1_1);
-    '1.2': AssignParams(gActiveModel, kStrucPars_1_2);
-    '1.3': AssignParams(gActiveModel, kStrucPars_1_3);
-    '1.4': AssignParams(gActiveModel, kStrucPars_1_4);
-  end;
-  // Model versions 1 or 1.1?
-  if (ModelVersionComboBox.ItemIndex = 0) or (ModelVersionComboBox.ItemIndex = 1) then
-  begin
-    G1Edit.Enabled := True;
-    Alpha1Edit.Enabled := False;
-    Beta1Edit.Enabled := False;
-    G3Edit.Enabled := True;
-    Alpha3Edit.Enabled := False;
-    Beta3Edit.Enabled := False;
-  end
-  else
-  begin
-    G1Edit.Enabled := False;
-    Alpha1Edit.Enabled := True;
-    Beta1Edit.Enabled := True;
-    G3Edit.Enabled := False;
-    Alpha3Edit.Enabled := True;
-    Beta3Edit.Enabled := True;
-    SetG1(Sender);
-    SetG3(Sender);
+    '1', '1.0', '1.1': // Model versions 1 or 1.1?
+    begin
+      G1Edit.Enabled := True;
+      Alpha1Edit.Enabled := False;
+      Beta1Edit.Enabled := False;
+      G3Edit.Enabled := True;
+      Alpha3Edit.Enabled := False;
+      Beta3Edit.Enabled := False;
+    end
+    otherwise          // newer model versions?
+    begin
+      G1Edit.Enabled := False;
+      Alpha1Edit.Enabled := True;
+      Beta1Edit.Enabled := True;
+      G3Edit.Enabled := False;
+      Alpha3Edit.Enabled := True;
+      Beta3Edit.Enabled := True;
+      SetG1(Sender);
+      SetG3(Sender);
+    end;
   end;
   SetParams(Sender, gActiveModel);
 end;
@@ -821,7 +823,7 @@ end;
 
 procedure TValuesForm.ModelVersionComboBoxChange(Sender: TObject);
 begin
-  SetModel(Sender);
+  SetModel(Sender, True);
   IPSForm.ModelChanged := True;
   IPSForm.Invalidate; // forces redrawing
 end;
@@ -842,6 +844,7 @@ begin
         theVersion := '';
         ReadScenario(theFileName, gActiveModel);  {XML file}
         SetParams(Sender, gActiveModel);
+        SetModel(Sender, false);
       end;
     end;
     IPSForm.ModelChanged := True;
@@ -908,7 +911,7 @@ begin
   ValuesGrid.Columns[0].Title.Font.Color := clDarkOrange;
   ValuesGrid.Columns[1].Title.Font.Color := clDarkOrange;
   ValuesGrid.Columns[2].Title.Font.Color := clGoldenRod;
-  SetModel(Sender);
+  SetModel(Sender, True);
 end;
 
 procedure TValuesForm.CloseMenuItemClick(Sender: TObject);

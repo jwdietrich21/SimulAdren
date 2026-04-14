@@ -4,7 +4,7 @@
     <PathDelim Value="\"/>
     <Version Value="12"/>
     <BuildModes Active="Default"/>
-    <Units Count="52">
+    <Units Count="53">
       <Unit0>
         <Filename Value="SimulAdren.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -12,7 +12,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="33"/>
         <CursorPos X="3" Y="59"/>
-        <UsageCount Value="167"/>
+        <UsageCount Value="169"/>
         <Loaded Value="True"/>
       </Unit0>
       <Unit1>
@@ -22,11 +22,12 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="GUI"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="23"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="904"/>
-        <CursorPos X="6" Y="915"/>
-        <UsageCount Value="167"/>
+        <TopLine Value="802"/>
+        <CursorPos X="31" Y="843"/>
+        <UsageCount Value="169"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -38,7 +39,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="370"/>
         <CursorPos X="7" Y="391"/>
-        <UsageCount Value="167"/>
+        <UsageCount Value="169"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
@@ -52,7 +53,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="448"/>
         <CursorPos X="26" Y="10"/>
-        <UsageCount Value="167"/>
+        <UsageCount Value="169"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit3>
@@ -64,7 +65,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="877"/>
         <CursorPos Y="886"/>
-        <UsageCount Value="167"/>
+        <UsageCount Value="169"/>
         <Loaded Value="True"/>
       </Unit4>
       <Unit5>
@@ -78,7 +79,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="77"/>
         <CursorPos X="26" Y="10"/>
-        <UsageCount Value="166"/>
+        <UsageCount Value="168"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
         <BuildFileIfActive Value="True"/>
@@ -94,7 +95,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="70"/>
         <CursorPos X="26" Y="10"/>
-        <UsageCount Value="165"/>
+        <UsageCount Value="167"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit6>
@@ -104,7 +105,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="186"/>
         <CursorPos Y="191"/>
-        <UsageCount Value="162"/>
+        <UsageCount Value="164"/>
         <Loaded Value="True"/>
       </Unit7>
       <Unit8>
@@ -114,7 +115,7 @@
         <EditorIndex Value="4"/>
         <WindowIndex Value="1"/>
         <CursorPos X="48" Y="15"/>
-        <UsageCount Value="152"/>
+        <UsageCount Value="154"/>
         <Loaded Value="True"/>
       </Unit8>
       <Unit9>
@@ -124,7 +125,7 @@
         <EditorIndex Value="3"/>
         <WindowIndex Value="1"/>
         <CursorPos X="15" Y="3"/>
-        <UsageCount Value="152"/>
+        <UsageCount Value="154"/>
         <Loaded Value="True"/>
       </Unit9>
       <Unit10>
@@ -134,11 +135,10 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="AboutBox"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="12"/>
         <WindowIndex Value="1"/>
         <CursorPos Y="2"/>
-        <UsageCount Value="140"/>
+        <UsageCount Value="142"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit10>
@@ -150,7 +150,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="452"/>
         <CursorPos Y="474"/>
-        <UsageCount Value="140"/>
+        <UsageCount Value="142"/>
         <Loaded Value="True"/>
       </Unit11>
       <Unit12>
@@ -160,7 +160,7 @@
         <EditorIndex Value="19"/>
         <WindowIndex Value="1"/>
         <CursorPos X="26" Y="10"/>
-        <UsageCount Value="139"/>
+        <UsageCount Value="141"/>
         <Loaded Value="True"/>
       </Unit12>
       <Unit13>
@@ -170,7 +170,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="244"/>
         <CursorPos X="26" Y="10"/>
-        <UsageCount Value="139"/>
+        <UsageCount Value="141"/>
         <Loaded Value="True"/>
       </Unit13>
       <Unit14>
@@ -184,7 +184,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="100"/>
         <CursorPos X="26" Y="10"/>
-        <UsageCount Value="125"/>
+        <UsageCount Value="127"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit14>
@@ -199,7 +199,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="51"/>
         <CursorPos X="26" Y="10"/>
-        <UsageCount Value="110"/>
+        <UsageCount Value="112"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit15>
@@ -214,7 +214,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="60"/>
         <CursorPos X="26" Y="10"/>
-        <UsageCount Value="110"/>
+        <UsageCount Value="112"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit16>
@@ -225,7 +225,7 @@
         <EditorIndex Value="14"/>
         <WindowIndex Value="1"/>
         <CursorPos X="26" Y="10"/>
-        <UsageCount Value="96"/>
+        <UsageCount Value="98"/>
         <Loaded Value="True"/>
       </Unit17>
       <Unit18>
@@ -243,7 +243,7 @@
           <TopLine Value="263"/>
           <CursorPos X="66" Y="1509"/>
         </ExtraEditor1>
-        <UsageCount Value="115"/>
+        <UsageCount Value="117"/>
         <Loaded Value="True"/>
       </Unit18>
       <Unit19>
@@ -253,7 +253,7 @@
         <EditorIndex Value="5"/>
         <WindowIndex Value="1"/>
         <CursorPos Y="2"/>
-        <UsageCount Value="111"/>
+        <UsageCount Value="113"/>
         <Loaded Value="True"/>
       </Unit19>
       <Unit20>
@@ -263,7 +263,7 @@
         <EditorIndex Value="21"/>
         <WindowIndex Value="1"/>
         <CursorPos X="26" Y="10"/>
-        <UsageCount Value="95"/>
+        <UsageCount Value="97"/>
         <Loaded Value="True"/>
       </Unit20>
       <Unit21>
@@ -273,7 +273,7 @@
         <EditorIndex Value="17"/>
         <WindowIndex Value="1"/>
         <CursorPos X="26" Y="10"/>
-        <UsageCount Value="95"/>
+        <UsageCount Value="97"/>
         <Loaded Value="True"/>
       </Unit21>
       <Unit22>
@@ -283,7 +283,7 @@
         <EditorIndex Value="13"/>
         <WindowIndex Value="1"/>
         <CursorPos X="26" Y="10"/>
-        <UsageCount Value="94"/>
+        <UsageCount Value="96"/>
         <Loaded Value="True"/>
       </Unit22>
       <Unit23>
@@ -297,7 +297,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="67"/>
         <CursorPos X="26" Y="10"/>
-        <UsageCount Value="39"/>
+        <UsageCount Value="41"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit23>
@@ -528,127 +528,135 @@
         <CursorPos Y="170"/>
         <UsageCount Value="10"/>
       </Unit51>
+      <Unit52>
+        <Filename Value="..\..\..\..\..\..\..\..\..\Applications\lazarus\lcl\include\spinedit.inc"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="223"/>
+        <CursorPos Y="237"/>
+        <UsageCount Value="10"/>
+      </Unit52>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="SimulAdren.lpr"/>
-        <Caret Line="46" Column="3" TopLine="32"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="679" Column="31" TopLine="678"/>
       </Position1>
       <Position2>
         <Filename Value="gui.pas"/>
-        <Caret Line="889" Column="33" TopLine="875"/>
+        <Caret Line="824" Column="3" TopLine="810"/>
       </Position2>
       <Position3>
         <Filename Value="gui.pas"/>
-        <Caret Line="914" Column="3" TopLine="900"/>
+        <Caret Line="911" Column="11" TopLine="887"/>
       </Position3>
       <Position4>
         <Filename Value="gui.pas"/>
-        <Caret Line="916" Column="13" TopLine="900"/>
+        <Caret Line="188" Column="23" TopLine="175"/>
       </Position4>
       <Position5>
-        <Filename Value="aboutbox.pas"/>
-        <Caret Line="110" Column="5" TopLine="96"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="844" Column="18" TopLine="824"/>
       </Position5>
       <Position6>
-        <Filename Value="simulationengine.pas"/>
-        <Caret Line="391" Column="9" TopLine="378"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="187" Column="24" TopLine="187"/>
       </Position6>
       <Position7>
-        <Filename Value="SimulAdren.lpr"/>
-        <Caret Line="47" Column="3" TopLine="32"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="911" Column="11" TopLine="899"/>
       </Position7>
       <Position8>
-        <Filename Value="simulationengine.pas"/>
-        <Caret Line="394" Column="21" TopLine="378"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="188" Column="23" TopLine="188"/>
       </Position8>
       <Position9>
         <Filename Value="gui.pas"/>
-        <Caret Line="916" Column="5" TopLine="900"/>
+        <Caret Line="679" Column="31" TopLine="676"/>
       </Position9>
       <Position10>
         <Filename Value="gui.pas"/>
-        <Caret Line="915" Column="3" TopLine="889"/>
+        <Caret Line="188" Column="23" TopLine="186"/>
       </Position10>
       <Position11>
-        <Filename Value="ips.pas"/>
-        <Caret Line="57" Column="28" TopLine="43"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="679" Column="65" TopLine="679"/>
       </Position11>
       <Position12>
-        <Filename Value="simulationengine.pas"/>
-        <Caret Line="391" Column="7" TopLine="378"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="825" Column="24" TopLine="811"/>
       </Position12>
       <Position13>
-        <Filename Value="aboutbox.pas"/>
-        <Caret Line="110" Column="3" TopLine="96"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="679" Column="23" TopLine="665"/>
       </Position13>
       <Position14>
-        <Filename Value="ips.pas"/>
-        <Caret Line="469" Column="9" TopLine="453"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="912" Column="11" TopLine="896"/>
       </Position14>
       <Position15>
-        <Filename Value="ips.pas"/>
-        <Caret Line="475" Column="9" TopLine="454"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="188" Column="23" TopLine="187"/>
       </Position15>
       <Position16>
-        <Filename Value="ips.pas"/>
-        <Caret Line="59" Column="27" TopLine="59"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="683" Column="37" TopLine="671"/>
       </Position16>
       <Position17>
-        <Filename Value="ips.pas"/>
-        <Caret Line="463" Column="21" TopLine="450"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="846" Column="18" TopLine="828"/>
       </Position17>
       <Position18>
         <Filename Value="gui.pas"/>
-        <Caret Line="915" Column="3" TopLine="889"/>
+        <Caret Line="187" Column="24" TopLine="187"/>
       </Position18>
       <Position19>
         <Filename Value="gui.pas"/>
-        <Caret Line="754" Column="19" TopLine="741"/>
+        <Caret Line="653" Column="27" TopLine="633"/>
       </Position19>
       <Position20>
         <Filename Value="gui.pas"/>
-        <Caret Line="755" Column="35" TopLine="741"/>
+        <Caret Line="633" Column="32" TopLine="628"/>
       </Position20>
       <Position21>
         <Filename Value="gui.pas"/>
-        <Caret Line="786" Column="35" TopLine="763"/>
+        <Caret Line="712" Column="12" TopLine="675"/>
       </Position21>
       <Position22>
         <Filename Value="gui.pas"/>
-        <Caret Line="825" Column="31" TopLine="802"/>
+        <Caret Line="846" Column="18" TopLine="828"/>
       </Position22>
       <Position23>
         <Filename Value="gui.pas"/>
-        <Caret Line="826" Column="21" TopLine="803"/>
+        <Caret Line="187" Column="24" TopLine="174"/>
       </Position23>
       <Position24>
         <Filename Value="gui.pas"/>
-        <Caret Line="847" Column="33" TopLine="824"/>
+        <Caret Line="446" Column="16" TopLine="423"/>
       </Position24>
       <Position25>
         <Filename Value="gui.pas"/>
-        <Caret Line="848" Column="23" TopLine="825"/>
+        <Caret Line="633" Column="32" TopLine="609"/>
       </Position25>
       <Position26>
-        <Filename Value="simuladrentypes.pas"/>
-        <Caret Line="48" TopLine="35"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="679" Column="31" TopLine="670"/>
       </Position26>
       <Position27>
-        <Filename Value="aboutbox.pas"/>
-        <Caret Line="2" Column="20"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="826" Column="11" TopLine="802"/>
       </Position27>
       <Position28>
-        <Filename Value="simulationengine.pas"/>
-        <Caret Line="391" Column="7" TopLine="370"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="913" Column="11" TopLine="889"/>
       </Position28>
       <Position29>
-        <Filename Value="SimulAdren.lpr"/>
-        <Caret Line="59" Column="3" TopLine="33"/>
+        <Filename Value="gui.pas"/>
+        <Caret Line="190" Column="50" TopLine="174"/>
       </Position29>
       <Position30>
         <Filename Value="gui.pas"/>
-        <Caret Line="891" Column="5" TopLine="877"/>
+        <Caret Line="669" Column="38" TopLine="655"/>
       </Position30>
     </JumpHistory>
     <RunParams>
