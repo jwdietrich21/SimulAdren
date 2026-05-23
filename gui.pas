@@ -832,7 +832,6 @@ procedure TValuesForm.OpenMenuItemClick(Sender: TObject);
 var
   theFileName: string;
   theFilterIndex: integer;
-  theVersion: Str13;
 begin
   if OpenDialog1.Execute then
   begin
@@ -841,7 +840,6 @@ begin
     case theFilterIndex of
       1:
       begin
-        theVersion := '';
         ReadScenario(theFileName, gActiveModel);  {XML file}
         SetParams(Sender, gActiveModel);
         SetModel(Sender, false);
