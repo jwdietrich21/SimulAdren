@@ -5,7 +5,7 @@ SimulAdren
 
 A simulation program for the HPA axis.
 
-Version 2.0.0 (Rubycon)
+Version 2.0.1 (Rubycon)
 
 (c) Johannes W. Dietrich, 1994 - 2026
 (c) Nina Siegmar, 2020 - 2026
@@ -22,7 +22,7 @@ Source code released under the BSD License
 	<key>CFBundleExecutable</key>
 	<string>SimulAdren</string>
 	<key>CFBundleVersion</key>
-	<string>2.0.0</string>
+	<string>2.0.1</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
   <key>CFBundleLocalizations</key>
@@ -31,12 +31,14 @@ Source code released under the BSD License
   </array>
 	<key>CFBundleName</key>
 	<string>SimulAdren</string>
+	<key>CFBundleDisplayName</key>
+	<string>SimulAdren</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleSignature</key>
 	<string>SimC</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0.0</string>
+	<string>2.0.1</string>
 	<key>CFBundleGetInfoString</key>
 	<string>©1994-2026 J. W. Dietrich</string>
 	<key>NSHumanReadableCopyright</key>

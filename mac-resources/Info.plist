@@ -31,6 +31,8 @@ Source code released under the BSD License
   </array>
 	<key>CFBundleName</key>
 	<string>SimulAdren</string>
+	<key>CFBundleDisplayName</key>
+	<string>SimulAdren</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleSignature</key>
