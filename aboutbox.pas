@@ -7,7 +7,7 @@ unit AboutBox;
 { Simulation program for the hypothalamus-pituitary-adrenal axis }
 { About Box }
 
-{ Version 2.0.1 (Rubycon) }
+{ Version 2.1.0 (Chronos) }
 
 { (c) Johannes W. Dietrich, 1994 - 2026 }
 { (c) Nina Siegmar, 2020 - 2026 }
@@ -53,7 +53,7 @@ type
     CopyrightLabel8: TLabel;
     CopyrightLabel9: TLabel;
     SciCrunchLabel: TLabel;
-    SimulaBetaLabel: TImage;
+    VersionBanner: TImage;
     URL1: TLabel;
     VersionLabel: TLabel;
     procedure BigLogoClick(Sender: TObject);

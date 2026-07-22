@@ -13,7 +13,7 @@ object TargetForm: TTargetForm
   FormStyle = fsStayOnTop
   Position = poOwnerFormCenter
   ShowHint = True
-  LCLVersion = '4.6.0.0'
+  LCLVersion = '4.8.0.0'
   OnCreate = FormCreate
   OnShow = FormShow
   object OKButton: TButton
@@ -52,7 +52,7 @@ object TargetForm: TTargetForm
     TabOrder = 2
     object FloatSpinEditA: TFloatSpinEdit
       Left = 128
-      Height = 21
+      Height = 20
       Top = 8
       Width = 98
       TabOrder = 0
@@ -60,7 +60,7 @@ object TargetForm: TTargetForm
     end
     object FloatSpinEditF: TFloatSpinEdit
       Left = 128
-      Height = 21
+      Height = 20
       Top = 40
       Width = 98
       TabOrder = 1
@@ -106,7 +106,7 @@ object TargetForm: TTargetForm
     TabOrder = 3
     object LowerBoundSpinEdit: TSpinEdit
       Left = 128
-      Height = 21
+      Height = 20
       Top = 0
       Width = 98
       TabOrder = 0
@@ -120,7 +120,7 @@ object TargetForm: TTargetForm
     end
     object UpperBoundSpinEdit: TSpinEdit
       Left = 272
-      Height = 21
+      Height = 20
       Top = 1
       Width = 98
       TabOrder = 1
@@ -141,7 +141,7 @@ object TargetForm: TTargetForm
     end
     object PopSizeSpinEdit: TSpinEdit
       Left = 128
-      Height = 21
+      Height = 20
       Top = 30
       Width = 98
       MinValue = 30
@@ -157,7 +157,7 @@ object TargetForm: TTargetForm
     end
     object GenerationsSpinEdit: TSpinEdit
       Left = 128
-      Height = 21
+      Height = 20
       Top = 60
       Width = 98
       TabOrder = 3
@@ -178,14 +178,14 @@ object TargetForm: TTargetForm
     end
     object TournamentSizeSpinEdit: TSpinEdit
       Left = 128
-      Height = 21
+      Height = 20
       Top = 122
       Width = 98
       TabOrder = 4
     end
     object MutationRateSpinEdit: TFloatSpinEdit
       Left = 128
-      Height = 21
+      Height = 20
       Top = 91
       Width = 98
       DecimalPlaces = 4

@@ -6,7 +6,7 @@ object PlotForm: TPlotForm
   Caption = 'Plot'
   ClientHeight = 342
   ClientWidth = 554
-  LCLVersion = '4.6.0.0'
+  LCLVersion = '4.8.0.0'
   Visible = True
   OnCreate = FormCreate
   object TimeSeriesChart: TChart

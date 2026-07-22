@@ -8,7 +8,7 @@ object InitialConditionsForm: TInitialConditionsForm
   ClientHeight = 214
   ClientWidth = 472
   Position = poOwnerFormCenter
-  LCLVersion = '4.6.0.0'
+  LCLVersion = '4.8.0.0'
   OnCreate = FormCreate
   object ICList: TStringGrid
     Left = 0
@@ -27,6 +27,7 @@ object InitialConditionsForm: TInitialConditionsForm
         Title.Caption = 'UoM'
         Width = 201
       end>
+    DefaultColWidth = 64
     MouseWheelOption = mwGrid
     Options = [goFixedVertLine, goFixedHorzLine, goVertLine, goHorzLine, goRangeSelect, goColSizing, goEditing, goDblClickAutoSize, goSmoothScroll, goHeaderHotTracking]
     RowCount = 7
@@ -36,6 +37,12 @@ object InitialConditionsForm: TInitialConditionsForm
       64
       201
       201
+    )
+    Cells = (
+      1
+      0
+      0
+      'Param'
     )
   end
   object OKButton: TButton
