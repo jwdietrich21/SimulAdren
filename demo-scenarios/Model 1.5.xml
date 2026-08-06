@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scenario modelversion="1.5">
+  <MIRIAM>
+    <Name>MiMe-NoCoDI model of HPA feedback control</Name>
+    <Reference>Dietrich JW, Boehm BO: Equilibrium behaviour of feedback-coupled physiological saturation kinetics. In: Cybernetics and Systems 2006.Volume 1, edn. Edited by Trappl R. Vienna: Austrian Society forCybernetic Studies; 2006: 269-274.</Reference>
+    <Species>Homo sapiens (NCBI Taxonomy ID 9606)</Species>
+    <Creators>Dietrich, Boehm and Siegmar</Creators>
+    <Created>2025-06-28T13:00:00</Created>
+    <LastModified>2026-08-06T20:38:19</LastModified>
+    <Terms>Creative Commons Attributions License 4.0 (CC BY 4.0)</Terms>
+  </MIRIAM>
+  <MIASE>
+    <Code>Model of HPA feedback control for use with SimulAdren, as available from http://simuladren.sf.net</Code>
+    <Comments>NA</Comments>
+  </MIASE>
+  <basic>
+    <iterations>10800</iterations>
+  </basic>
+  <strucpars>
+    <G1>2000.00002980232</G1>
+    <G3>370.978724800019</G3>
+    <GA>2.6E-9</GA>
+    <DA>1E-11</DA>
+    <GR>85</GR>
+    <DR>2E-7</DR>
+    <GE>30</GE>
+    <alpha1>0.400000005960464</alpha1>
+    <beta1>0.0002</beta1>
+    <alpha3>0.0476190476190476</alpha3>
+    <beta3>0.000128360588992582</beta3>
+  </strucpars>
+</scenario>

@@ -686,6 +686,7 @@ begin
       '1.2': AssignParams(gActiveModel, kStrucPars_1_2);
       '1.3': AssignParams(gActiveModel, kStrucPars_1_3);
       '1.4': AssignParams(gActiveModel, kStrucPars_1_4);
+      '1.5': AssignParams(gActiveModel, kStrucPars_1_5);
     end;
   case gActiveModel.Version of
     '1', '1.0', '1.1': // Model versions 1 or 1.1?
@@ -696,6 +697,19 @@ begin
       G3Edit.Enabled := True;
       Alpha3Edit.Enabled := False;
       Beta3Edit.Enabled := False;
+      gInitialconditions.CRH := kCRH_old;
+    end;
+    '1.2', '1.3', '1.4': // Model versions 1.2 to 1.4?
+    begin
+      G1Edit.Enabled := False;
+      Alpha1Edit.Enabled := True;
+      Beta1Edit.Enabled := True;
+      G3Edit.Enabled := False;
+      Alpha3Edit.Enabled := True;
+      Beta3Edit.Enabled := True;
+      SetG1(Sender);
+      SetG3(Sender);
+     gInitialconditions.CRH := kCRH_old;
     end
     otherwise          // newer model versions?
     begin
@@ -707,6 +721,7 @@ begin
       Beta3Edit.Enabled := True;
       SetG1(Sender);
       SetG3(Sender);
+      gInitialConditions.CRH := kCRH_new;
     end;
   end;
   SetParams(Sender, gActiveModel);
@@ -842,7 +857,7 @@ begin
       begin
         ReadScenario(theFileName, gActiveModel);  {XML file}
         SetParams(Sender, gActiveModel);
-        SetModel(Sender, false);
+        SetModel(Sender, False);
       end;
     end;
     IPSForm.ModelChanged := True;

@@ -47,7 +47,8 @@ const
 
   Delta = 1;
 
-  kCRH = 5e-15;
+  kCRH_old = 5e-15;
+  kCRH_new = 5e-12;
 
   VD_ACTH = 2.5;
   kalpha1 = 1 / VD_ACTH;
@@ -123,7 +124,7 @@ const
     );
 
   kStrucPars_1_4: TStrucPars =
-    ( // default values for model 1.3
+    ( // default values for model 1.4
     G1: kalpha1 / kbeta1;
     G3: kalpha3_1_1 / kbeta3_1_1;
     GA: 2.6e-9;
@@ -131,6 +132,21 @@ const
     GR: 1;
     DR: 2e-7;
     GE: 1;
+    alpha1: kalpha1;
+    beta1: kbeta1;
+    alpha3: kalpha3_1_1;
+    beta3: kbeta3_1_1;
+    );
+
+  kStrucPars_1_5: TStrucPars =
+    ( // default values for model 1.5
+    G1: kalpha1 / kbeta1;
+    G3: kalpha3_1_1 / kbeta3_1_1;
+    GA: 2.6e-9;
+    DA: 1e-11;
+    GR: 85;
+    DR: 2e-7;
+    GE: 30;
     alpha1: kalpha1;
     beta1: kbeta1;
     alpha3: kalpha3_1_1;

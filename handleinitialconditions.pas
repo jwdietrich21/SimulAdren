@@ -48,6 +48,7 @@ type
     procedure CancelButtonClick(Sender: TObject);
     procedure CurStateButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
     procedure OKButtonClick(Sender: TObject);
     procedure PredictionButtonClick(Sender: TObject);
   private
@@ -108,6 +109,11 @@ begin
   end;
 end;
 
+procedure TInitialConditionsForm.FormShow(Sender: TObject);
+begin
+  ICList.Cells[1, 1] := FloatToStrF(gInitialconditions.CRH / CRHFactor, ffFixed, 0, 4);
+end;
+
 procedure TInitialConditionsForm.OKButtonClick(Sender: TObject);
 begin
   gInitialConditions.CRH := StrToFloatDef(ICList.Cells[1, 1], 0) * CRHFactor;
@@ -144,6 +150,6 @@ end;
 
 initialization
 
-  gInitialconditions.CRH := kCRH;
+  gInitialconditions.CRH := kCRH_new;
 
 end.
