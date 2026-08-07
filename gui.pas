@@ -42,9 +42,13 @@ type
   { TValuesForm }
 
   TValuesForm = class(TForm)
+    AcrophaseFloatSpinEdit: TFloatSpinEdit;
+    AcrophaseLabel: TLabel;
     Alpha3Edit: TFloatSpinEdit;
     Alpha3Label: TLabel;
     Alpha3UnitLabel: TLabel;
+    AmplitudeFloatSpinEdit: TFloatSpinEdit;
+    AmplitudeLabel: TLabel;
     Beta1Edit: TFloatSpinEdit;
     Beta3Edit: TFloatSpinEdit;
     Beta1Label: TLabel;
@@ -56,6 +60,9 @@ type
     Alpha1UnitLabel: TLabel;
     Beta3UnitLabel: TLabel;
     CustomRadioButton: TRadioButton;
+    ChronoGroupBox: TGroupBox;
+    MesorFloatSpinEdit: TFloatSpinEdit;
+    MesorLabel: TLabel;
     StrucParGroupBox: TGroupBox;
     ICGroupBox: TGroupBox;
     SimulationControlGroupBox: TGroupBox;
@@ -70,6 +77,8 @@ type
     PredictionMenuItem: TMenuItem;
     PlotMenuItem: TMenuItem;
     IPSMenuItem: TMenuItem;
+    TauFloatSpinEdit: TFloatSpinEdit;
+    TauLabel: TLabel;
     WindowMenu: TMenuItem;
     MinutesRadioButton: TRadioButton;
     ModelVersionLabel: TLabel;
