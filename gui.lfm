@@ -668,12 +668,12 @@ object ValuesForm: TValuesForm
       Left = 56
       Height = 20
       Top = 0
-      Width = 69
+      Width = 104
       Increment = 0.1
       TabOrder = 0
     end
     object AmplitudeFloatSpinEdit: TFloatSpinEdit
-      Left = 224
+      Left = 258
       Height = 20
       Top = 0
       Width = 50
@@ -682,7 +682,7 @@ object ValuesForm: TValuesForm
       Value = 1
     end
     object AcrophaseFloatSpinEdit: TFloatSpinEdit
-      Left = 384
+      Left = 418
       Height = 20
       Top = 0
       Width = 50
@@ -697,28 +697,28 @@ object ValuesForm: TValuesForm
       Caption = 'Mesor:'
     end
     object AmplitudeLabel: TLabel
-      Left = 152
+      Left = 186
       Height = 16
       Top = 4
       Width = 65
       Caption = 'Amplitude:'
     end
     object AcrophaseLabel: TLabel
-      Left = 304
+      Left = 338
       Height = 16
       Top = 4
       Width = 68
       Caption = 'Acrophase:'
     end
     object TauLabel: TLabel
-      Left = 464
+      Left = 498
       Height = 16
       Top = 4
       Width = 25
       Caption = 'Tau:'
     end
     object TauFloatSpinEdit: TFloatSpinEdit
-      Left = 504
+      Left = 538
       Height = 20
       Top = 0
       Width = 50

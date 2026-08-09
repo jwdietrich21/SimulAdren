@@ -637,9 +637,11 @@ begin
   params.alpha3 := Alpha3Edit.Value;
   params.beta3 := Beta3Edit.Value;
   GActiveModel.StrucPars := params;
+  gInitialconditions.CRH := MesorFloatSpinEdit.Value * CRHFactor;
 end;
 
 procedure TValuesForm.SetParams(Sender: TObject; var theModel: tActiveModel);
+// Set entry fields in GUI to the parameters of the model
 begin
   G1Edit.Value := theModel.StrucPars.G1;
   G3Edit.Value := theModel.StrucPars.G3;
@@ -659,6 +661,7 @@ begin
     ModelVersionCombobox.Caption := 'Model 1'
   else
     ModelVersionCombobox.Caption := 'Model ' + theModel.Version;
+  MesorFloatSpinEdit.Value := gInitialconditions.CRH / CRHFactor;
 end;
 
 procedure AssignParams(var theModel: TActiveModel; params: TStrucPars);

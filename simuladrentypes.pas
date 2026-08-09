@@ -79,7 +79,7 @@ const
   clDarkOrange = TColor($008CFF);
 
   SimulAdrenID = 'Simuladren';
-  SimulAdrenVersionString = SimulAdrenID + ' 1.1 (Desarrollo)';
+  SimulAdrenVersionString = SimulAdrenID + ' 2.1 (Chronos)';
 
   ISO_8601_DATE_FORMAT = 'YYYY-MM-DD"T"hh:nn:ss';
   {Date/time format in XML representation}
