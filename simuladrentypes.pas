@@ -34,8 +34,16 @@ uses
   Classes, SysUtils, Graphics;
 
 type
-  TStrucPars = record
+  TStrucPars = record             // structure parameters
     G1, G3, GA, DA, GR, DR, GE, alpha1, beta1, alpha3, beta3: extended;
+  end;
+
+  TCosinorRec = record
+    mesor, amplitude, acrophase, tau: extended;
+  end;
+
+  tReferenceInputPars = record    // reference input parameters
+    CRH: TCosinorRec;
   end;
 
   TEvoTargets = record

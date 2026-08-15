@@ -6,12 +6,12 @@ unit plots;
 
 { Bricks: Basic blocks for information processing structures }
 
-{ Version 2.0.0 (Escorpión) }
+{ Version 2.2.0 (Graffiti Street) } 
 
-{ (c) Johannes W. Dietrich, 1994 - 2023 }
+{ (c) Johannes W. Dietrich, 1994 - 2026 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
-{ (c) Ruhr University of Bochum 2005 - 2023 }
+{ (c) Ruhr University of Bochum 2005 - 2026 }
 
 { Unit for plotting }
 

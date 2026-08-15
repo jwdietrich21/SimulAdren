@@ -6,7 +6,7 @@
 
 { Bricks: Basic blocks for information processing structures }
 
-{ Version 2.1.0 (Foudre) }
+{ Version 2.2.0 (Graffiti Street) }
 
 { (c) Johannes W. Dietrich, 1994 - 2026 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -48,18 +48,19 @@ uses
 
 const
   Bricks_major = 2;
-  Bricks_minor = 1;
+  Bricks_minor = 2;
   Bricks_release = 0;
   Bricks_patch = 108;
   Bricks_fullversion = ((Bricks_major *  100 + Bricks_minor) * 100 + Bricks_release) * 100 + Bricks_patch;
-  Bricks_version = '2.1.0.100';
-  Bricks_internalversion = 'Foudre';
+  Bricks_version = '2.2.0.100';
+  Bricks_internalversion = 'Graffiti Street';
 
   kError101 = 'Runtime error: Negative parameter(s)';
   kError102 = 'Runtime error: Parameter(s) out of range';
   kError103 = 'Runtime error: min > max';
   kError104 = 'Runtime error: max = 0';
   kError105 = 'Runtime error: Denominator is zero';
+  kError106 = 'Runtime error: Parameter(s) negative or zero';
   kError210 = 'Runtime error: Nil pointer';
 
 type
@@ -415,6 +416,7 @@ end;
 procedure TTHarmonic.simulate;
 begin
   assert(assigned(model), kError210);
+  assert(G >= 0, kError101);
   fOutput := (G + G * sin(omega * model.time + phi)) / 2;
   if updateTime then
     model.time := model.time + delta;

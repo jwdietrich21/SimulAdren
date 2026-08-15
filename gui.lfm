@@ -1,5 +1,5 @@
 object ValuesForm: TValuesForm
-  Left = 237
+  Left = 236
   Height = 596
   Top = 136
   Width = 721

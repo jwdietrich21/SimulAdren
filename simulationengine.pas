@@ -200,6 +200,7 @@ var
   gBlocks: TBlocks;
   gPrediction: TPredictionArray;
   gInitialConditions: TParamVector;
+  gReferenceInput: tReferenceInputPars;
 
 procedure RunSimulation(InitialConditions: TParamVector; model: tActiveModel;
   nmin: integer);

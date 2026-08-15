@@ -6,7 +6,7 @@ unit SystemsDiagram;
 
 { SystemsDiagram: Classes for drawing block diagrams }
 
-{ Version 2.1.1 (Foudre) }
+{ Version 2.2.0 (Graffiti Street) }
 
 { (c) Johannes W. Dietrich, 1994 - 2026 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -1464,6 +1464,7 @@ end;
 
 procedure TMiMeClass.Draw;
 var
+  theRect: TRect;
   theString: string;
   rw, rh, tw, th: integer;
   oldFontElements: TFontElements;
@@ -1474,6 +1475,7 @@ begin
   begin
     s := blockDiagram.scaling;
     objectRect := ScaledRect(boundsRect, s);
+    theRect := objectRect;
     rw := objectRect.Right - objectRect.Left;
     rh := objectRect.Bottom - objectRect.Top;
     th := rh;
@@ -1496,7 +1498,7 @@ begin
     Font.Height := trunc(blockDiagram.canvas.Font.Height * s);
     oldFontElements := FontProperties(blockDiagram.canvas.Font);
     SetProperties(blockDiagram.canvas.Font, FontProperties(Font));
-    blockDiagram.canvas.Rectangle(objectRect);
+    blockDiagram.canvas.Rectangle(theRect);
     blockDiagram.canvas.Ellipse(objectRect);
     blockDiagram.canvas.MoveTo(objectRect.Left + trunc(0.2 * tw),
       objectRect.Top + trunc(0.15 * th));

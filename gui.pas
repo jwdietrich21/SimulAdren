@@ -637,7 +637,11 @@ begin
   params.alpha3 := Alpha3Edit.Value;
   params.beta3 := Beta3Edit.Value;
   GActiveModel.StrucPars := params;
-  gInitialconditions.CRH := MesorFloatSpinEdit.Value * CRHFactor;
+  gReferenceInput.CRH.mesor := MesorFloatSpinEdit.Value * CRHFactor;
+  gReferenceInput.CRH.amplitude := AmplitudeFloatSpinEdit.Value;
+  gReferenceInput.CRH.acrophase := AcrophaseFloatSpinEdit.Value;
+  gReferenceInput.CRH.tau := TauFloatSpinEdit.Value;
+  gInitialconditions.CRH := gReferenceInput.CRH.mesor;
 end;
 
 procedure TValuesForm.SetParams(Sender: TObject; var theModel: tActiveModel);

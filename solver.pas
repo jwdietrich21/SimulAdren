@@ -6,12 +6,12 @@ unit Solver;
 
 { Solver for algebraic equations defined by parameter sets }
 
-{ Version 2.1.0 (Foudre) }
+{ Version 2.2.0 (Graffiti Street) }
 
-{ (c) Johannes W. Dietrich, 1994 - 2025 }
+{ (c) Johannes W. Dietrich, 1994 - 2026 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
-{ (c) Ruhr University of Bochum 2005 - 2025 }
+{ (c) Ruhr University of Bochum 2005 - 2026 }
 
 { Standard blocks for systems modelling and simulation }
 
@@ -31,7 +31,7 @@ unit Solver;
 interface
 
 uses
-  Classes, SysUtils, Math;
+  Classes, SysUtils, Math, uComplex;
 
 type
   TLRoot = extended;

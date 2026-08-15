@@ -6,7 +6,7 @@ unit lifeblocks;
 
 { LifeBlocks: Metabricks for information processing structures in organisms }
 
-{ Version 2.1.0 (Foudre) }
+{ Version 2.2.0 (Graffiti Street) }
 
 { (c) Johannes W. Dietrich, 1994 - 2026 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
@@ -26,7 +26,9 @@ unit lifeblocks;
 { but WITHOUT ANY WARRANTY; without even the implied warranty of }
 { MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. }
 
+{$IFDEF FPC}   {Lazarus and Free Pascal}
 {$mode objfpc}
+{$ENDIF}
 {$H+}
 {$ASSERTIONS ON}
 
@@ -91,6 +93,20 @@ type
     property simOutput: extended read SimAndGetOutput;
   end;
 
+  { TGenerateCosinor }
+
+  TCosinor = class(TTHarmonic)
+  protected
+    function SimAndGetOutput: extended; override;
+  public
+    mesor, amplitude, acrophase, tau: extended;
+    constructor Create;
+    destructor Destroy; override;
+    property output: extended read Foutput;
+    procedure simulate; override;
+    property simOutput: extended read SimAndGetOutput;
+  end;
+
 implementation
 
 { TNoCoDI }
@@ -98,12 +114,12 @@ implementation
 function TNoCoDI.SimAndGetOutput: extended;
 begin
   simulate;
-  result := fOutput;
+  Result := fOutput;
 end;
 
 constructor TNoCoDI.Create;
 begin
-  inherited create;
+  inherited Create;
 end;
 
 destructor TNoCoDI.Destroy;
@@ -117,12 +133,40 @@ begin
   fOutput := input1 / (1 + input2);
 end;
 
+{ TCosinor }
+
+function TCosinor.SimAndGetOutput: extended;
+begin
+  simulate;
+  Result := fOutput;
+end;
+
+constructor TCosinor.Create;
+begin
+  inherited Create;
+end;
+
+destructor TCosinor.Destroy;
+begin
+  inherited Destroy;
+end;
+
+procedure TCosinor.simulate;
+begin
+  G := amplitude * 2;
+  phi := pi / 2 * (1 - 4 * acrophase); // express cos as sin and add acrophase
+  assert(tau > 0, kError106);
+  omega := 2 * pi / tau;
+  inherited simulate;
+  fOutput := fOutput - G / 2 + mesor;
+end;
+
 { TMiMe }
 
 function TMiMe.SimAndGetOutput: extended;
 begin
   simulate;
-  result := fOutput;
+  Result := fOutput;
 end;
 
 constructor TMiMe.Create;
@@ -175,14 +219,15 @@ end;
 function TASIA.SimAndGetOutput: extended;
 begin
   simulate;
-  result := fOutput;
+  Result := fOutput;
 end;
 
 constructor TASIA.Create;
 begin
-  inherited create;
+  inherited Create;
   PT1Analog := TPT1.Create;
   FAlpha := 1;
+  G := -1;
   SetBeta(1);
 end;
 
@@ -196,27 +241,11 @@ procedure TASIA.simulate;
 begin
   assert(FBeta <> 0, kError102);
   PT1Analog.input := input;
-  fOutput := PT1Analog.simOutput;
+  if G < 0 then   // undefined
+    fOutput := PT1Analog.simOutput
+  else
+    fOutput := G * PT1Analog.simOutput;
 end;
 
 end.
-
-{References:  }
-
-{1. Dietrich JW 2000 Signal Storage in Metabolic Pathways: The ASIA Element. }
-{    kybernetiknet 1:1-9  }
-
-{2. Dietrich JW, Tesche A, Pickardt CR, Mitzdorf U 2004 Thyrotropic Feedback }
-{   Control: Evidence for an Additional Ultrashort Feedback Loop from Fractal }
-{   Analysis. Cybernetics and Systems 35:315-331.}
-
-{3. Dietrich, J. W. und B. O. Boehm (2006). Equilibrium behaviour of }
-{   feedback-coupled physiological saturation kinetics. In: Cybernetics and }
-{   Systems 2006. R. Trappl (Hrsg). Vienna, Austrian Society for Cybernetic }
-{   Studies. 1: 269-74. }
-
-{4. Dietrich, J. W., Siegmar, N., Hojjati, J. R., Gardt, O., & Boehm, B. O. }
-{   (2024). CyberUnits Bricks: An Implementation Study of a Class Library for }
-{   Simulating Nonlinear Biological Feedback Loops. ADCAIJ: Advances in }
-{   Distributed Computing and Artificial Intelligence Journal, 13(1), e31762.}
-{   https://doi.org/10.14201/adcaij.31762 }
+{References:  }{1. Dietrich JW 2000 Signal Storage in Metabolic Pathways: The ASIA Element. }{    kybernetiknet 1:1-9  }{2. Dietrich JW, Tesche A, Pickardt CR, Mitzdorf U 2004 Thyrotropic Feedback }{   Control: Evidence for an Additional Ultrashort Feedback Loop from Fractal }{   Analysis. Cybernetics and Systems 35:315-331.}{3. Dietrich, J. W. und B. O. Boehm (2006). Equilibrium behaviour of }{   feedback-coupled physiological saturation kinetics. In: Cybernetics and }{   Systems 2006. R. Trappl (Hrsg). Vienna, Austrian Society for Cybernetic }{   Studies. 1: 269-74. }{4. Dietrich, J. W., Siegmar, N., Hojjati, J. R., Gardt, O., & Boehm, B. O. }{   (2024). CyberUnits Bricks: An Implementation Study of a Class Library for }{   Simulating Nonlinear Biological Feedback Loops. ADCAIJ: Advances in }{   Distributed Computing and Artificial Intelligence Journal, 13(1), e31762.}{   https://doi.org/10.14201/adcaij.31762 }

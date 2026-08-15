@@ -6,12 +6,12 @@ unit SignalAnalysis;
 
 { Bricks: Basic blocks for information processing structures }
 
-{ Version 2.1.0 (Foudre) }
+{ Version 2.2.0 (Graffiti Street) }
 
-{ (c) Johannes W. Dietrich, 1994 - 2023 }
+{ (c) Johannes W. Dietrich, 1994 - 2026 }
 { (c) Ludwig Maximilian University of Munich 1995 - 2002 }
 { (c) University of Ulm Hospitals 2002 - 2004 }
-{ (c) Ruhr University of Bochum 2005 - 2023 }
+{ (c) Ruhr University of Bochum 2005 - 2026 }
 
 { Standard signal processing tools }
 
@@ -46,6 +46,7 @@ type
   table = array of complex;
 
 function IsPowerOfTwo(num: integer): boolean;
+function PrevPowerOfTwo(num: integer): integer;
 function NextPowerOfTwo(num: integer): integer;
 function fft(DataVector: table): table;
 
@@ -70,11 +71,16 @@ var
   y: integer;
 begin
   Result := False;
-  y := 2;
+  y := 1;
   repeat
     y := y * 2;
-    if num = y then Result := True;
+    if (num = 1) or (num = y) then Result := True;
   until (num = y) or (y >= MaxPower2);
+end;
+
+function PrevPowerOfTwo(num: integer): integer;
+begin
+  Result := NextPowerOfTwo(num) div 2;
 end;
 
 function NextPowerOfTwo(num: integer): integer;
@@ -104,6 +110,7 @@ var
   T: complex;
 begin
   n := length(DataVector);
+  assert((n = 0) or IsPowerOfTwo(n), kError300);
 
   if n >= 2 then
   begin
