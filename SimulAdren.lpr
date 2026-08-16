@@ -57,5 +57,5 @@ begin
   Application.CreateForm(TInitialConditionsForm, InitialConditionsForm);
   Application.Run;
   Application.ProcessMessages;
-  ClearSimulation;
+  ClearSimulation(gActiveModel);
 end.

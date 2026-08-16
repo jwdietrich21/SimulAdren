@@ -31,7 +31,7 @@ unit SimuladrenTypes;
 interface
 
 uses
-  Classes, SysUtils, Graphics;
+  Classes, SysUtils, Graphics, Bricks;
 
 type
   TStrucPars = record             // structure parameters
@@ -69,6 +69,7 @@ type
     Iterations: integer;
     Imported: boolean;
     Version: string;
+    SimulationModel: TModel;
   end;
 
   TImageType = (NULL, BMP, XPM, PNG, PBM, JPG, TIFF, SVG);

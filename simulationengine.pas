@@ -202,15 +202,17 @@ var
   gPrediction: TPredictionArray;
   gInitialConditions: TParamVector;
 
-procedure RunSimulation(InitialConditions: TParamVector; model: tActiveModel;
+procedure RunSimulation(InitialConditions: TParamVector; var model: tActiveModel;
   nmin: integer);
 function PredictSteadyState(CRH: extended; model: tActiveModel): TPredictionArray;
-procedure ClearSimulation;
+procedure ClearSimulation(var model: tActiveModel);
 
 implementation
 
-procedure InitBlocks(model: tActiveModel; params: TStrucPars; ref: tRefInputPars);
+procedure InitBlocks(var model: tActiveModel; params: TStrucPars; ref: tRefInputPars);
 begin
+  model.SimulationModel := TModel.Create;
+  model.SimulationModel.delta := Delta;
   gBlocks.G1 := TP.Create;
   gBlocks.G3 := TP.Create;
   gBlocks.GE := TP.Create;
@@ -231,20 +233,28 @@ begin
     gBlocks.ASIA3 := TASIA.Create;
     gBlocks.ASIA1.alpha := params.alpha1;
     gBlocks.ASIA1.beta := params.beta1;
-    gBlocks.ASIA1.delta := Delta;
+    gBlocks.ASIA1.delta := model.SimulationModel.delta;
     gBlocks.ASIA3.alpha := params.alpha3;
     gBlocks.ASIA3.beta := params.beta3;
-    gBlocks.ASIA3.delta := Delta;
+    gBlocks.ASIA3.delta := model.SimulationModel.delta;
   end;
   if (model.Version <> '1') and (model.Version <> '1.1') and
-    (model.Version <> '1.3') and (model.Version <> '1.4') then
+    (model.Version <> '1.2') and (model.Version <> '1.3') and
+    (model.Version <> '1.4') then
     // model version 1.5 or newer
   begin
     gBlocks.RhythmGenerator := tCosinor.Create;
+    gBlocks.RhythmGenerator.model := model.SimulationModel;
+    gBlocks.RhythmGenerator.mesor := ref.CRH.mesor;
+    gBlocks.RhythmGenerator.amplitude := ref.CRH.amplitude;
+    gBlocks.RhythmGenerator.acrophase := ref.CRH.acrophase;
+    gBlocks.RhythmGenerator.tau := ref.CRH.tau;
+    gBlocks.RhythmGenerator.updateTime := False;
+    gBlocks.RhythmGenerator.delta := model.SimulationModel.delta;
   end;
 end;
 
-procedure ClearSimulation;
+procedure ClearSimulation(var model: tActiveModel);
 begin
   if assigned(gBlocks.G1) then
     FreeAndNil(gBlocks.G1);
@@ -266,18 +276,18 @@ begin
     FreeAndNil(gBlocks.RhythmGenerator);
   if assigned(gSequence) then
     FreeAndNil(gSequence);
+  if assigned(model.SimulationModel) then
+    FreeAndNil(model.SimulationModel);
+end;
+
+function CRHRelease: extended;
+begin
+  Result := gBlocks.RhythmGenerator.simOutput;
 end;
 
 function PituitaryResponse(CRH, yR: extended): extended;
 begin
-  if assigned(gBlocks.RhythmGenerator) then
-    // in model versions 1.5 or newer
-    gBlocks.NoCoDI.input1 := CRH // change to integrate diurnal rhythm
-  else
-    // model version older than 1.5
-  begin
-    gBlocks.NoCoDI.input1 := CRH;
-  end;
+  gBlocks.NoCoDI.input1 := CRH;
   gBlocks.NoCoDI.input2 := yR;
   Result := gBlocks.NoCoDI.simOutput;
 end;
@@ -330,7 +340,7 @@ begin
   end;
 end;
 
-procedure RunSimulation(InitialConditions: TParamVector; model: tActiveModel;
+procedure RunSimulation(InitialConditions: TParamVector; var model: tActiveModel;
   nmin: integer);
 var
   CRH, e, ACTH, PRF, F, v, yR: extended;
@@ -345,7 +355,7 @@ begin
   begin
     if nmin = 0 then // new simulation
     begin
-      ClearSimulation;
+      ClearSimulation(model);
       InitBlocks(model, params, refinput);
       gSequence := TSequence.Create;
       gSequence.size := 0;        // delete content
@@ -371,9 +381,10 @@ begin
       end
       else                        // error handler
       begin
-        ClearSimulation;
+        ClearSimulation(model);
         InitBlocks(model, params, refInput);
         gSequence := TSequence.Create;
+        CRH := InitialConditions.CRH;
       end;
     end;
 
@@ -387,8 +398,14 @@ begin
 
     for i := nmin to model.Iterations - 1 do
     begin
-      gBlocks.NoCoDI.input1 := CRH;
-      gBlocks.NoCoDI.input2 := yR;
+      model.SimulationModel.time := i;
+      if (model.Version <> '1') and (model.Version <> '1.1') and
+        (model.Version <> '1.2') and (model.Version <> '1.3') and
+        (model.Version <> '1.4') then
+        // model version 1.5 or newer
+      begin
+        CRH := CRHRelease;
+      end;
       e := PituitaryResponse(CRH, yR);
       if (model.Version = '1') or (model.Version = '1.1') then
       begin
@@ -461,6 +478,6 @@ initialization
   gActiveModel := NewScenario;
 
 finalization
-  ClearSimulation;
+  ClearSimulation(gActiveModel);
 
 end.

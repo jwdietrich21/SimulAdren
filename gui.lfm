@@ -1,5 +1,5 @@
 object ValuesForm: TValuesForm
-  Left = 235
+  Left = 233
   Height = 596
   Top = 136
   Width = 721
@@ -665,29 +665,30 @@ object ValuesForm: TValuesForm
     ClientWidth = 652
     TabOrder = 9
     object MesorFloatSpinEdit: TFloatSpinEdit
-      Left = 56
+      Left = 53
       Height = 20
-      Top = 0
-      Width = 104
+      Top = 2
+      Width = 72
       Increment = 0.1
       TabOrder = 0
     end
     object AmplitudeFloatSpinEdit: TFloatSpinEdit
-      Left = 258
+      Left = 255
       Height = 20
-      Top = 0
+      Top = 2
       Width = 50
       Increment = 0.1
       TabOrder = 1
-      Value = 1
+      Value = 90
     end
     object AcrophaseFloatSpinEdit: TFloatSpinEdit
-      Left = 418
+      Left = 411
       Height = 20
-      Top = 0
+      Top = 2
       Width = 50
       Increment = 0.01
       TabOrder = 2
+      Value = 7
     end
     object MesorLabel: TLabel
       Left = 8
@@ -711,20 +712,41 @@ object ValuesForm: TValuesForm
       Caption = 'Acrophase:'
     end
     object TauLabel: TLabel
-      Left = 498
+      Left = 479
       Height = 16
       Top = 4
       Width = 25
       Caption = 'Tau:'
     end
     object TauFloatSpinEdit: TFloatSpinEdit
-      Left = 538
+      Left = 511
       Height = 20
-      Top = 0
+      Top = 2
       Width = 50
       Increment = 0.1
       TabOrder = 3
-      Value = 1
+      Value = 24
+    end
+    object MesorUoM: TLabel
+      Left = 130
+      Height = 16
+      Top = 4
+      Width = 28
+      Caption = 'UoM'
+    end
+    object AmplitudeUoM: TLabel
+      Left = 309
+      Height = 16
+      Top = 4
+      Width = 12
+      Caption = '%'
+    end
+    object TimeUoM: TLabel
+      Left = 567
+      Height = 16
+      Top = 4
+      Width = 77
+      Caption = 'Units of time'
     end
   end
   object ImageList1: TImageList

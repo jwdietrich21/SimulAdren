@@ -100,6 +100,7 @@ begin
   Result.Iterations := 0;
   Result.Imported := False;
   Result.Version := '';
+  Result.SimulationModel := nil;
 end;
 
 procedure ReadScenario(theFileName: string; var theModel: tActiveModel);

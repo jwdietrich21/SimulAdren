@@ -61,6 +61,9 @@ type
     Beta3UnitLabel: TLabel;
     CustomRadioButton: TRadioButton;
     ChronoGroupBox: TGroupBox;
+    AmplitudeUoM: TLabel;
+    TimeUoM: TLabel;
+    MesorUoM: TLabel;
     MesorFloatSpinEdit: TFloatSpinEdit;
     MesorLabel: TLabel;
     StrucParGroupBox: TGroupBox;
@@ -348,12 +351,14 @@ begin
     MinutesRadioButton.Checked := False;
     HoursRadioButton.Checked := True;
     SimTimeUnit := hours;
+    TimeUoM.Caption := HoursRadioButton.Caption;
   end
   else
   begin
     MinutesRadioButton.Checked := True;
     HoursRadioButton.Checked := False;
     SimTimeUnit := minutes;
+    TimeUoM.Caption := MinutesRadioButton.Caption;
   end;
   TestTimeUnit := SimTimeUnit;
 end;
@@ -666,7 +671,7 @@ begin
   params.beta3 := Beta3Edit.Value;
   GActiveModel.StrucPars := params;
   refInput.CRH.mesor := MesorFloatSpinEdit.Value * CRHFactor;
-  refInput.CRH.amplitude := AmplitudeFloatSpinEdit.Value;
+  refInput.CRH.amplitude := AmplitudeFloatSpinEdit.Value / 100 * refInput.CRH.mesor;
   refInput.CRH.acrophase := AcrophaseFloatSpinEdit.Value * timeMultiplier;
   refInput.CRH.tau := TauFloatSpinEdit.Value * timeMultiplier;
   gActiveModel.RefInput := refInput;
@@ -912,7 +917,7 @@ end;
 
 procedure TValuesForm.ResetButtonClick(Sender: TObject);
 begin
-  ClearSimulation;
+  ClearSimulation(gActiveModel);
   gActiveModel.iterations := 0;
   ClearOutput(Sender);
   ICRadioButton.Checked := True;
@@ -955,6 +960,7 @@ begin
   ValuesGrid.Columns[1].Title.Font.Color := clDarkOrange;
   ValuesGrid.Columns[2].Title.Font.Color := clGoldenRod;
   SetModel(Sender, True);
+  MesorUoM.Caption := kUoMs[1];
 end;
 
 procedure TValuesForm.CloseMenuItemClick(Sender: TObject);
