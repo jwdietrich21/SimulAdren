@@ -187,6 +187,7 @@ type
     MiMeA, MimeR: TMiMe;
     NoCoDI: TNoCoDI;
     ASIA1, ASIA3: TASIA;
+    RhythmGenerator: TCosinor;
   end;
 
   TParamVector = record
@@ -200,7 +201,6 @@ var
   gBlocks: TBlocks;
   gPrediction: TPredictionArray;
   gInitialConditions: TParamVector;
-  gReferenceInput: tReferenceInputPars;
 
 procedure RunSimulation(InitialConditions: TParamVector; model: tActiveModel;
   nmin: integer);
@@ -209,7 +209,7 @@ procedure ClearSimulation;
 
 implementation
 
-procedure InitBlocks(model: tActiveModel; params: TStrucPars);
+procedure InitBlocks(model: tActiveModel; params: TStrucPars; ref: tRefInputPars);
 begin
   gBlocks.G1 := TP.Create;
   gBlocks.G3 := TP.Create;
@@ -225,6 +225,7 @@ begin
   gBlocks.MimeR.G := params.GR;
   gBlocks.MimeR.D := params.DR;
   if (model.Version <> '1') and (model.Version <> '1.1') then
+    // model version 1.2 or newer
   begin
     gBlocks.ASIA1 := TASIA.Create;
     gBlocks.ASIA3 := TASIA.Create;
@@ -234,6 +235,12 @@ begin
     gBlocks.ASIA3.alpha := params.alpha3;
     gBlocks.ASIA3.beta := params.beta3;
     gBlocks.ASIA3.delta := Delta;
+  end;
+  if (model.Version <> '1') and (model.Version <> '1.1') and
+    (model.Version <> '1.3') and (model.Version <> '1.4') then
+    // model version 1.5 or newer
+  begin
+    gBlocks.RhythmGenerator := tCosinor.Create;
   end;
 end;
 
@@ -255,13 +262,22 @@ begin
     FreeAndNil(gBlocks.ASIA1);
   if assigned(gBlocks.ASIA3) then
     FreeAndNil(gBlocks.ASIA3);
+  if assigned(gBlocks.RhythmGenerator) then
+    FreeAndNil(gBlocks.RhythmGenerator);
   if assigned(gSequence) then
     FreeAndNil(gSequence);
 end;
 
 function PituitaryResponse(CRH, yR: extended): extended;
 begin
-  gBlocks.NoCoDI.input1 := CRH;
+  if assigned(gBlocks.RhythmGenerator) then
+    // in model versions 1.5 or newer
+    gBlocks.NoCoDI.input1 := CRH // change to integrate diurnal rhythm
+  else
+    // model version older than 1.5
+  begin
+    gBlocks.NoCoDI.input1 := CRH;
+  end;
   gBlocks.NoCoDI.input2 := yR;
   Result := gBlocks.NoCoDI.simOutput;
 end;
@@ -320,15 +336,17 @@ var
   CRH, e, ACTH, PRF, F, v, yR: extended;
   i: integer;
   params: TStrucPars;
+  refInput: tRefInputPars;
 begin
   params := model.StrucPars;
+  refInput := model.RefInput;
   gPrediction := PredictSteadyState(InitialConditions.CRH, model);
   if (model.Iterations > 0) and (model.Iterations > nmin) then
   begin
     if nmin = 0 then // new simulation
     begin
       ClearSimulation;
-      InitBlocks(model, params);
+      InitBlocks(model, params, refinput);
       gSequence := TSequence.Create;
       gSequence.size := 0;        // delete content
       CRH := InitialConditions.CRH;
@@ -354,7 +372,7 @@ begin
       else                        // error handler
       begin
         ClearSimulation;
-        InitBlocks(model, params);
+        InitBlocks(model, params, refInput);
         gSequence := TSequence.Create;
       end;
     end;

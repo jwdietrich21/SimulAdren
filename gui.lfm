@@ -1,5 +1,5 @@
 object ValuesForm: TValuesForm
-  Left = 236
+  Left = 235
   Height = 596
   Top = 136
   Width = 721
@@ -223,7 +223,7 @@ object ValuesForm: TValuesForm
       BorderSpacing.Left = 11
       MaxValue = 1000000
       TabOrder = 1
-      Value = 180
+      Value = 3
     end
     object MinutesRadioButton: TRadioButton
       Left = 499
@@ -233,9 +233,7 @@ object ValuesForm: TValuesForm
       Width = 71
       Anchors = [akTop, akRight]
       Caption = 'Minutes'
-      Checked = True
       TabOrder = 2
-      TabStop = True
       OnChange = MinutesRadioButtonChange
     end
     object HoursRadioButton: TRadioButton
@@ -246,7 +244,9 @@ object ValuesForm: TValuesForm
       Width = 60
       Anchors = [akTop, akRight]
       Caption = 'Hours'
+      Checked = True
       TabOrder = 3
+      TabStop = True
       OnChange = HoursRadioButtonChange
     end
   end

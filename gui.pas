@@ -185,6 +185,7 @@ type
     { private declarations }
     procedure CheckEvolveEnabling(Sender: TObject);
     procedure ClearOutput(Sender: TObject);
+    procedure AdjustTimeUnits(Sender: TObject);
   public
     { public declarations }
     AllPopulations: TAllPopulations;
@@ -192,7 +193,8 @@ type
     SimTimeUnit, TestTimeUnit: TTimeUnit;
     procedure ShowAboutWindow(Sender: TObject);
     procedure CopyCells(Sender: TObject);
-    procedure ReadParams(Sender: TObject; var params: TStrucPars);
+    procedure ReadParams(Sender: TObject; var params: TStrucPars;
+      var refInput: tRefInputPars);
     procedure SetParams(Sender: TObject; var theModel: tActiveModel);
     procedure SetModel(Sender: TObject; default: boolean);
     procedure SetG1(Sender: TObject);
@@ -339,13 +341,31 @@ begin
   PlotForm.yrSeries.Clear;
 end;
 
+procedure TValuesForm.AdjustTimeUnits(Sender: TObject);
+begin
+  if HoursRadioButton.Checked then
+  begin
+    MinutesRadioButton.Checked := False;
+    HoursRadioButton.Checked := True;
+    SimTimeUnit := hours;
+  end
+  else
+  begin
+    MinutesRadioButton.Checked := True;
+    HoursRadioButton.Checked := False;
+    SimTimeUnit := minutes;
+  end;
+  TestTimeUnit := SimTimeUnit;
+end;
+
 procedure TValuesForm.StartButtonClick(Sender: TObject);
 var
   i, j, nmin: integer;
   params: TStrucPars;
+  refInput: tRefInputPars;
 begin
   //ValuesForm.cursor := crHourGlass;
-  ReadParams(Sender, params);
+  ReadParams(Sender, params, refInput);
   if ContinueRadioButton.Checked or CustomRadioButton.Checked then
     nmin := gActiveModel.iterations
   else
@@ -389,8 +409,9 @@ end;
 procedure TValuesForm.SteadyStateButtonClick(Sender: TObject);
 var
   params: TStrucPars;
+  refInput: TRefInputPars;
 begin
-  ReadParams(Sender, params);
+  ReadParams(Sender, params, refInput);
   gPrediction := PredictSteadyState(gInitialconditions.CRH, gActiveModel);
   PredictionForm.DisplayPrediction(gPrediction[0], gPrediction[1]);
 end;
@@ -486,7 +507,7 @@ begin
       end;
       if delimiter = kNULL then
       begin
-        ReadParams(Sender, gActiveModel.StrucPars);
+        ReadParams(Sender, gActiveModel.StrucPars, gActiveModel.RefInput);
         SaveScenario(gActiveModel, fileName);
       end
       else
@@ -623,8 +644,15 @@ begin
   CutorCopyfromGrid(ValuesGrid, False);
 end;
 
-procedure TValuesForm.ReadParams(Sender: TObject; var params: TStrucPars);
+procedure TValuesForm.ReadParams(Sender: TObject; var params: TStrucPars;
+  var refInput: tRefInputPars);
+var
+  timeMultiplier: integer;
 begin
+  if SimTimeUnit = minutes then
+    timeMultiplier := SecsPerMin
+  else if SimTimeUnit = hours then
+    timeMultiplier := MinsPerHour * SecsPerMin;
   params.G1 := G1Edit.Value;
   params.G3 := G3Edit.Value;
   params.GA := GAEdit.Value * GAFactor;
@@ -637,11 +665,12 @@ begin
   params.alpha3 := Alpha3Edit.Value;
   params.beta3 := Beta3Edit.Value;
   GActiveModel.StrucPars := params;
-  gReferenceInput.CRH.mesor := MesorFloatSpinEdit.Value * CRHFactor;
-  gReferenceInput.CRH.amplitude := AmplitudeFloatSpinEdit.Value;
-  gReferenceInput.CRH.acrophase := AcrophaseFloatSpinEdit.Value;
-  gReferenceInput.CRH.tau := TauFloatSpinEdit.Value;
-  gInitialconditions.CRH := gReferenceInput.CRH.mesor;
+  refInput.CRH.mesor := MesorFloatSpinEdit.Value * CRHFactor;
+  refInput.CRH.amplitude := AmplitudeFloatSpinEdit.Value;
+  refInput.CRH.acrophase := AcrophaseFloatSpinEdit.Value * timeMultiplier;
+  refInput.CRH.tau := TauFloatSpinEdit.Value * timeMultiplier;
+  gActiveModel.RefInput := refInput;
+  gInitialconditions.CRH := gActiveModel.RefInput.CRH.mesor;
 end;
 
 procedure TValuesForm.SetParams(Sender: TObject; var theModel: tActiveModel);
@@ -713,6 +742,7 @@ begin
       G3Edit.Enabled := True;
       Alpha3Edit.Enabled := False;
       Beta3Edit.Enabled := False;
+      ChronoGroupBox.Enabled := False;
       gInitialconditions.CRH := kCRH_old;
     end;
     '1.2', '1.3', '1.4': // Model versions 1.2 to 1.4?
@@ -723,9 +753,10 @@ begin
       G3Edit.Enabled := False;
       Alpha3Edit.Enabled := True;
       Beta3Edit.Enabled := True;
+      ChronoGroupBox.Enabled := False;
       SetG1(Sender);
       SetG3(Sender);
-     gInitialconditions.CRH := kCRH_old;
+      gInitialconditions.CRH := kCRH_old;
     end
     otherwise          // newer model versions?
     begin
@@ -735,6 +766,7 @@ begin
       G3Edit.Enabled := False;
       Alpha3Edit.Enabled := True;
       Beta3Edit.Enabled := True;
+      ChronoGroupBox.Enabled := True;
       SetG1(Sender);
       SetG3(Sender);
       gInitialConditions.CRH := kCRH_new;
@@ -760,16 +792,7 @@ end;
 
 procedure TValuesForm.HoursRadioButtonChange(Sender: TObject);
 begin
-  if HoursRadioButton.Checked then
-  begin
-    MinutesRadioButton.Checked := False;
-    SimTimeUnit := hours;
-  end
-  else
-  begin
-    SimTimeUnit := minutes;
-  end;
-  TestTimeUnit := SimTimeUnit;
+  AdjustTimeUnits(Sender);
 end;
 
 procedure TValuesForm.ICRadioButtonChange(Sender: TObject);
@@ -840,16 +863,7 @@ end;
 
 procedure TValuesForm.MinutesRadioButtonChange(Sender: TObject);
 begin
-  if MinutesRadioButton.Checked then
-  begin
-    HoursRadioButton.Checked := False;
-    SimTimeUnit := minutes;
-  end
-  else
-  begin
-    SimTimeUnit := hours;
-  end;
-  TestTimeUnit := SimTimeUnit;
+  AdjustTimeUnits(Sender);
 end;
 
 procedure TValuesForm.ModelVersionComboBoxChange(Sender: TObject);
@@ -931,7 +945,7 @@ begin
   Scaled := True;
   Left := 13;
   AdaptMenus;
-  SimTimeUnit := minutes;
+  AdjustTimeUnits(Sender);
   for i := 1 to ValuesGrid.ColCount - 1 do
     ValuesGrid.Cells[i, 1] := kUoMs[i];
   ValuesGrid.Columns[0].Font.Color := clDarkOrange;

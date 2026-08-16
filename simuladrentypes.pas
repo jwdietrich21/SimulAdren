@@ -42,7 +42,7 @@ type
     mesor, amplitude, acrophase, tau: extended;
   end;
 
-  tReferenceInputPars = record    // reference input parameters
+  tRefInputPars = record    // reference input parameters
     CRH: TCosinorRec;
   end;
 
@@ -65,6 +65,7 @@ type
     Code: ansistring; // MIASE
     Comments: ansistring; // MIASE
     StrucPars: TStrucPars;
+    RefInput: tRefInputPars;
     Iterations: integer;
     Imported: boolean;
     Version: string;
