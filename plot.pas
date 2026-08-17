@@ -32,23 +32,26 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, TAGraph, TASeries, TALegendPanel, TADrawUtils,
-  TADrawerSVG, TADrawerCanvas, Forms, Controls, Graphics, Dialogs,
-  SimuladrenTypes, SimulationEngine, GUIServices;
+  TADrawerSVG, TADrawerCanvas, Forms, Controls, Graphics, Dialogs, ExtCtrls,
+  ColorBox, SimuladrenTypes, SimulationEngine, GUIServices;
 
 type
 
   { TPlotForm }
 
   TPlotForm = class(TForm)
+    ChartLegendPanel1: TChartLegendPanel;
     TimeSeriesChart: TChart;
     PRFSeries: TLineSeries;
     FSeries: TLineSeries;
-    ChartLegendPanel1: TChartLegendPanel;
     eSeries: TLineSeries;
     ACTHSeries: TLineSeries;
+    VariablesCheckGroup: TCheckGroup;
     yrSeries: TLineSeries;
     CRHSeries: TLineSeries;
     procedure FormCreate(Sender: TObject);
+    procedure VariablesCheckGroupClick(Sender: TObject);
+    procedure VariablesCheckGroupItemClick(Sender: TObject; Index: integer);
   private
     { private declarations }
   public
@@ -67,13 +70,27 @@ implementation
 { TPlotForm }
 
 procedure TPlotForm.FormCreate(Sender: TObject);
+var
+  i: integer;
 begin
-  Scaled := true;
+  Scaled := True;
   top := screen.Height - Height - trunc(39 * gScalingFactor);
   left := screen.Width - Width - trunc(52 * gScalingFactor);
   CRHSeries.SeriesColor := clDarkOrange;
   eSeries.SeriesColor := clDarkOrange;
   ACTHSeries.SeriesColor := clGoldenRod;
+  for i := 0 to VariablesCheckGroup.Items.Count - 2 do
+    VariablesCheckGroup.Checked[i] := True;
+end;
+
+procedure TPlotForm.VariablesCheckGroupClick(Sender: TObject);
+begin
+  ShowPlot;
+end;
+
+procedure TPlotForm.VariablesCheckGroupItemClick(Sender: TObject; Index: integer);
+begin
+  ShowPlot;
 end;
 
 procedure TPlotForm.ShowPlot;
@@ -83,6 +100,30 @@ begin
   TimeSeriesChart.AxisList.Axes[1].Range.Max := gSequence.size - 1;
   if DarkTheme then
     yrSeries.SeriesColor := clWhite;
+  if VariablesCheckGroup.Checked[0] then
+    CRHSeries.Active := True
+  else
+    CRHSeries.Active := False;
+  if VariablesCheckGroup.Checked[1] then
+    eSeries.Active := True
+  else
+    eSeries.Active := False;
+  if VariablesCheckGroup.Checked[2] then
+    ACTHSeries.Active := True
+  else
+    ACTHSeries.Active := False;
+  if VariablesCheckGroup.Checked[3] then
+    PRFSeries.Active := True
+  else
+    PRFSeries.Active := False;
+  if VariablesCheckGroup.Checked[4] then
+    FSeries.Active := True
+  else
+    FSeries.Active := False;
+  if VariablesCheckGroup.Checked[5] then
+    yrSeries.Active := True
+  else
+    yrSeries.Active := False;
   CRHSeries.Clear;
   PRFSeries.Clear;
   FSeries.Clear;

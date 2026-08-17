@@ -223,7 +223,7 @@ object ValuesForm: TValuesForm
       BorderSpacing.Left = 11
       MaxValue = 1000000
       TabOrder = 1
-      Value = 3
+      Value = 24
     end
     object MinutesRadioButton: TRadioButton
       Left = 499
@@ -688,7 +688,7 @@ object ValuesForm: TValuesForm
       Width = 50
       Increment = 0.01
       TabOrder = 2
-      Value = 7
+      Value = 4
     end
     object MesorLabel: TLabel
       Left = 8
