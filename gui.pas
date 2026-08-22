@@ -189,6 +189,7 @@ type
     procedure CheckEvolveEnabling(Sender: TObject);
     procedure ClearOutput(Sender: TObject);
     procedure AdjustTimeUnits(Sender: TObject);
+    procedure PredictFromStrucPars(Sender: TObject);
   public
     { public declarations }
     AllPopulations: TAllPopulations;
@@ -363,6 +364,16 @@ begin
   TestTimeUnit := SimTimeUnit;
 end;
 
+procedure TValuesForm.PredictFromStrucPars(Sender: TObject);
+var
+  params: TStrucPars;
+  refInput: TRefInputPars;
+begin
+  ReadParams(Sender, params, refInput);
+  gPrediction := PredictSteadyState(gInitialconditions.CRH, gActiveModel);
+  PredictionForm.DisplayPrediction(gPrediction[0], gPrediction[1]);
+end;
+
 procedure TValuesForm.StartButtonClick(Sender: TObject);
 var
   i, j, nmin: integer;
@@ -412,13 +423,8 @@ begin
 end;
 
 procedure TValuesForm.SteadyStateButtonClick(Sender: TObject);
-var
-  params: TStrucPars;
-  refInput: TRefInputPars;
 begin
-  ReadParams(Sender, params, refInput);
-  gPrediction := PredictSteadyState(gInitialconditions.CRH, gActiveModel);
-  PredictionForm.DisplayPrediction(gPrediction[0], gPrediction[1]);
+  PredictFromStrucPars(Sender);
 end;
 
 procedure TValuesForm.SaveGrid(theFileName: string; theDelimiter: char);
@@ -813,6 +819,7 @@ end;
 procedure TValuesForm.ICRadioButtonMouseDown(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: integer);
 begin
+  PredictFromStrucPars(Sender);     // ensure that valid predictions exist
   InitialConditionsForm.Invalidate; // forces redrawing
   InitialConditionsForm.ShowModal;
   if InitialConditionsForm.response = mrOk then

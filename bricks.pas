@@ -50,9 +50,9 @@ const
   Bricks_major = 2;
   Bricks_minor = 2;
   Bricks_release = 0;
-  Bricks_patch = 108;
+  Bricks_patch = 115;
   Bricks_fullversion = ((Bricks_major *  100 + Bricks_minor) * 100 + Bricks_release) * 100 + Bricks_patch;
-  Bricks_version = '2.2.0.100';
+  Bricks_version = '2.2.0.115';
   Bricks_internalversion = 'Graffiti Street';
 
   kError101 = 'Runtime error: Negative parameter(s)';

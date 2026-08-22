@@ -27,7 +27,7 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="2"/>
       <MinorVersionNr Value="1"/>
-      <BuildNr Value="193"/>
+      <BuildNr Value="195"/>
       <Attributes pvaDebug="True" pvaPreRelease="True"/>
       <StringTable Comments="Simulator for the HPA axis" CompanyName="Ruhr University of Bochum" FileDescription="Simulation program for the hypothalamus-pituitary-adrenal axis (HPA feedback control)" InternalName="Chronos" LegalCopyright="1994–2026 J. W. Dietrich, N. Siegmar and Ruhr University of Bochum" LegalTrademarks="SimulAdren" OriginalFilename="SimulAdren" ProductName="SimulAdren" ProductVersion="2.1.0"/>
     </VersionInfo>

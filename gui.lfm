@@ -1,5 +1,5 @@
 object ValuesForm: TValuesForm
-  Left = 233
+  Left = 231
   Height = 596
   Top = 136
   Width = 721
@@ -178,7 +178,7 @@ object ValuesForm: TValuesForm
     object ModelVersionComboBox: TComboBox
       Left = 61
       Height = 20
-      Hint = 'Model version'
+      Hint = 'Select model version'
       Top = 8
       Width = 148
       ItemHeight = 18
@@ -228,7 +228,7 @@ object ValuesForm: TValuesForm
     object MinutesRadioButton: TRadioButton
       Left = 499
       Height = 18
-      Hint = 'Minutes'
+      Hint = 'Define time in minutes'
       Top = 8
       Width = 71
       Anchors = [akTop, akRight]
@@ -239,7 +239,7 @@ object ValuesForm: TValuesForm
     object HoursRadioButton: TRadioButton
       Left = 575
       Height = 18
-      Hint = 'Hours'
+      Hint = 'Define time in hours'
       Top = 8
       Width = 60
       Anchors = [akTop, akRight]
@@ -279,9 +279,9 @@ object ValuesForm: TValuesForm
       Height = 18
       Hint = 'Continue next simulation run with last values'
       Top = 5
-      Width = 101
+      Width = 181
       Anchors = [akLeft, akBottom]
-      Caption = 'Current state'
+      Caption = 'Continue with current state'
       TabOrder = 0
       OnChange = ContinueRadioButtonChange
     end
@@ -294,12 +294,13 @@ object ValuesForm: TValuesForm
       Caption = 'Begin with:'
     end
     object CustomRadioButton: TRadioButton
-      Left = 344
+      Left = 409
       Height = 18
+      Hint = 'Change to a custom state.'
       Top = 5
-      Width = 113
+      Width = 155
       Anchors = [akLeft, akBottom]
-      Caption = 'Custom state...'
+      Caption = 'Step to custom state...'
       TabOrder = 2
       OnChange = CustomRadioButtonChange
       OnMouseDown = CustomRadioButtonMouseDown
@@ -667,6 +668,7 @@ object ValuesForm: TValuesForm
     object MesorFloatSpinEdit: TFloatSpinEdit
       Left = 53
       Height = 20
+      Hint = 'Mesor of CRH concentration (rhtyhm-adjusted mean)'
       Top = 2
       Width = 72
       Increment = 0.1
@@ -675,6 +677,7 @@ object ValuesForm: TValuesForm
     object AmplitudeFloatSpinEdit: TFloatSpinEdit
       Left = 255
       Height = 20
+      Hint = 'Amplitude of CRH oscillations in percent of the MESOR'
       Top = 2
       Width = 50
       Increment = 0.1
@@ -684,6 +687,7 @@ object ValuesForm: TValuesForm
     object AcrophaseFloatSpinEdit: TFloatSpinEdit
       Left = 411
       Height = 20
+      Hint = 'Acrophase of CRH oscillation, i. e. timing of first maximum'
       Top = 2
       Width = 50
       Increment = 0.01
@@ -694,8 +698,8 @@ object ValuesForm: TValuesForm
       Left = 8
       Height = 16
       Top = 4
-      Width = 42
-      Caption = 'Mesor:'
+      Width = 38
+      Caption = 'Mesor'
     end
     object AmplitudeLabel: TLabel
       Left = 186
@@ -721,6 +725,7 @@ object ValuesForm: TValuesForm
     object TauFloatSpinEdit: TFloatSpinEdit
       Left = 511
       Height = 20
+      Hint = 'Duration of period'
       Top = 2
       Width = 50
       Increment = 0.1
