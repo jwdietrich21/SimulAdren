@@ -203,7 +203,7 @@ procedure SaveScenario(theModel: tActiveModel; theFileName: string);
 var
   oldSep: char;
   Doc: TXMLDocument;
-  RootNode, ElementNode: TDOMNode;
+  RootNode, ElementNode, SubelementNode: TDOMNode;
   theDate: ansistring;
 begin
   oldSep := DefaultFormatSettings.DecimalSeparator;
@@ -267,6 +267,19 @@ begin
       ElementNode.AppendChild(SimpleNode(Doc, 'beta3',
         FloatToStr(theModel.StrucPars.beta3, gUSFormatSettings)));
     end;
+    RootNode.AppendChild(ElementNode);
+
+    ElementNode := Doc.CreateElement('refinput');
+    SubelementNode := Doc.CreateElement('CRH');
+    SubelementNode.AppendChild(SimpleNode(Doc, 'MESOR',
+      FloatToStr(theModel.RefInput.CRH.mesor, gUSFormatSettings)));
+    SubelementNode.AppendChild(SimpleNode(Doc, 'Amplitude',
+      FloatToStr(theModel.RefInput.CRH.amplitude, gUSFormatSettings)));
+    SubelementNode.AppendChild(SimpleNode(Doc, 'Acrophase',
+      FloatToStr(theModel.RefInput.CRH.acrophase, gUSFormatSettings)));
+    SubelementNode.AppendChild(SimpleNode(Doc, 'Tau',
+      FloatToStr(theModel.RefInput.CRH.tau, gUSFormatSettings)));
+    ElementNode.AppendChild(SubelementNode);
     RootNode.AppendChild(ElementNode);
 
     WriteXMLFile(Doc, theFileName);

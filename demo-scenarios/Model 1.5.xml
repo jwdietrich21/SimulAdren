@@ -6,15 +6,15 @@
     <Species>Homo sapiens (NCBI Taxonomy ID 9606)</Species>
     <Creators>Dietrich, Boehm and Siegmar</Creators>
     <Created>2025-06-28T13:00:00</Created>
-    <LastModified>2026-08-06T20:38:19</LastModified>
+    <LastModified>2026-08-22T21:09:24</LastModified>
     <Terms>Creative Commons Attributions License 4.0 (CC BY 4.0)</Terms>
   </MIRIAM>
   <MIASE>
     <Code>Model of HPA feedback control for use with SimulAdren, as available from http://simuladren.sf.net</Code>
-    <Comments>NA</Comments>
+    <Comments></Comments>
   </MIASE>
   <basic>
-    <iterations>10800</iterations>
+    <iterations>86400</iterations>
   </basic>
   <strucpars>
     <G1>2000.00002980232</G1>
@@ -29,4 +29,12 @@
     <alpha3>0.0476190476190476</alpha3>
     <beta3>0.000128360588992582</beta3>
   </strucpars>
+  <refinput>
+    <CRH>
+      <MESOR>5E-12</MESOR>
+      <Amplitude>4.5E-12</Amplitude>
+      <Acrophase>14400</Acrophase>
+      <Tau>86400</Tau>
+    </CRH>
+  </refinput>
 </scenario>
