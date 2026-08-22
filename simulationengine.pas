@@ -153,6 +153,17 @@ const
     beta3: kbeta3_1_1;
     );
 
+  kRefInputs_1_5: tRefInputPars =
+    (
+    CRH:
+      (
+      mesor: 5e-12;
+      amplitude: 4.5e-12;
+      acrophase: 14400;
+      tau: 86400;
+      );
+    );
+
   kUoMs: array [1..6] of string =
     ( // CRH, e, ACTH, PRF, F, yR
     'fmol/l', 'fmol/s', 'pmol/L', 'pmol/s', 'nmol/L', 'mAU');

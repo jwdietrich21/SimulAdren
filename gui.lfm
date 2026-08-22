@@ -675,11 +675,11 @@ object ValuesForm: TValuesForm
       TabOrder = 0
     end
     object AmplitudeFloatSpinEdit: TFloatSpinEdit
-      Left = 255
+      Left = 247
       Height = 20
       Hint = 'Amplitude of CRH oscillations in percent of the MESOR'
       Top = 2
-      Width = 50
+      Width = 58
       Increment = 0.1
       TabOrder = 1
       Value = 90
@@ -702,7 +702,7 @@ object ValuesForm: TValuesForm
       Caption = 'Mesor'
     end
     object AmplitudeLabel: TLabel
-      Left = 186
+      Left = 176
       Height = 16
       Top = 4
       Width = 65

@@ -108,7 +108,7 @@ procedure ReadScenario(theFileName: string; var theModel: tActiveModel);
 var
   i: integer;
   Doc: TXMLDocument;
-  RootNode, basicNode: TDOMNode;
+  RootNode, basicNode, ElementNode, SubelementNode: TDOMNode;
   oldSep: char;
   standardDate: TDateTime;
 begin
@@ -174,6 +174,15 @@ begin
             VarFromNode(RootNode, 'beta1', theModel.StrucPars.beta1);
             VarFromNode(RootNode, 'alpha3', theModel.StrucPars.alpha3);
             VarFromNode(RootNode, 'beta3', theModel.StrucPars.beta3);
+          end;
+          ElementNode := Doc.DocumentElement.FindNode('refinput');
+          if assigned(ElementNode) then
+          begin
+            SubelementNode := ElementNode.FindNode('CRH');
+            VarFromNode(SubelementNode, 'MESOR', theModel.RefInput.CRH.mesor);
+            VarFromNode(SubelementNode, 'Amplitude', theModel.RefInput.CRH.amplitude);
+            VarFromNode(SubelementNode, 'Acrophase', theModel.RefInput.CRH.acrophase);
+            VarFromNode(SubelementNode, 'Tau', theModel.RefInput.CRH.tau);
           end;
         end
         else

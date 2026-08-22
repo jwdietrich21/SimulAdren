@@ -686,7 +686,13 @@ end;
 
 procedure TValuesForm.SetParams(Sender: TObject; var theModel: tActiveModel);
 // Set entry fields in GUI to the parameters of the model
+var
+  timeMultiplier: integer;
 begin
+  if SimTimeUnit = minutes then
+    timeMultiplier := SecsPerMin
+  else if SimTimeUnit = hours then
+    timeMultiplier := MinsPerHour * SecsPerMin;
   G1Edit.Value := theModel.StrucPars.G1;
   G3Edit.Value := theModel.StrucPars.G3;
   GAEdit.Value := theModel.StrucPars.GA / GAFactor;
@@ -705,7 +711,16 @@ begin
     ModelVersionCombobox.Caption := 'Model 1'
   else
     ModelVersionCombobox.Caption := 'Model ' + theModel.Version;
-  MesorFloatSpinEdit.Value := gInitialconditions.CRH / CRHFactor;
+  if StrToFloatDef(theModel.Version, 0) >= 1.5 then
+  begin
+    MesorFloatSpinEdit.Value := theModel.RefInput.CRH.mesor / CRHFactor;
+    AmplitudeFloatSpinEdit.Value :=
+      theModel.refInput.CRH.amplitude * 100 / theModel.RefInput.CRH.mesor;
+    AcrophaseFloatSpinEdit.Value := theModel.RefInput.CRH.acrophase / timeMultiplier;
+    TauFloatSpinEdit.Value := theModel.RefInput.CRH.tau / timeMultiplier;
+  end
+  else
+    MesorFloatSpinEdit.Value := gInitialconditions.CRH / CRHFactor;
 end;
 
 procedure AssignParams(var theModel: TActiveModel; params: TStrucPars);
@@ -732,6 +747,17 @@ begin
   end;
 end;
 
+procedure AssignRefinput(var theModel: TActiveModel; refinput: tRefInputPars);
+begin
+  with theModel.refInput.CRH do
+  begin
+    mesor := refinput.CRH.mesor;
+    amplitude := refinput.CRH.amplitude;
+    acrophase := refinput.CRH.acrophase;
+    tau := refinput.CRH.tau;
+  end;
+end;
+
 procedure TValuesForm.SetModel(Sender: TObject; default: boolean);
 begin
   gActiveModel.Version := VersionID(ModelVersionComboBox.Caption);
@@ -742,7 +768,11 @@ begin
       '1.2': AssignParams(gActiveModel, kStrucPars_1_2);
       '1.3': AssignParams(gActiveModel, kStrucPars_1_3);
       '1.4': AssignParams(gActiveModel, kStrucPars_1_4);
-      '1.5': AssignParams(gActiveModel, kStrucPars_1_5);
+      '1.5':
+      begin
+        AssignParams(gActiveModel, kStrucPars_1_5);
+        AssignRefinput(gActiveModel, kRefInputs_1_5);
+      end;
     end;
   case gActiveModel.Version of
     '1', '1.0', '1.1': // Model versions 1 or 1.1?
