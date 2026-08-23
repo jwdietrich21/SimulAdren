@@ -1,7 +1,7 @@
 object PlotForm: TPlotForm
-  Left = 649
+  Left = 727
   Height = 330
-  Top = 519
+  Top = 495
   Width = 670
   Caption = 'Plot'
   ClientHeight = 330

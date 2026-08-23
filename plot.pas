@@ -130,6 +130,12 @@ begin
   eSeries.Clear;
   ACTHSeries.Clear;
   yrSeries.Clear;
+  CRHSeries.BeginUpdate;
+  PRFSeries.BeginUpdate;
+  FSeries.BeginUpdate;
+  eSeries.BeginUpdate;
+  ACTHSeries.BeginUpdate;
+  yrSeries.BeginUpdate;
   for i := 0 to gSequence.size - 1 do
   begin
     CRHSeries.AddXY(i, gSequence.CRH[i] / CRHFactor);
@@ -139,6 +145,12 @@ begin
     ACTHSeries.AddXY(i, gSequence.ACTH[i] / ACTHFactor);
     yrSeries.AddXY(i, gSequence.yr[i] / yRFactor);
   end;
+  CRHSeries.EndUpdate;
+  PRFSeries.EndUpdate;
+  FSeries.EndUpdate;
+  eSeries.EndUpdate;
+  ACTHSeries.EndUpdate;
+  yrSeries.EndUpdate;
 end;
 
 procedure TPlotForm.SaveChart(fileName: string; imageType: TImageType);

@@ -4,7 +4,7 @@
     <PathDelim Value="\"/>
     <Version Value="12"/>
     <BuildModes Active="Default"/>
-    <Units Count="55">
+    <Units Count="52">
       <Unit0>
         <Filename Value="SimulAdren.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -22,14 +22,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="GUI"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="23"/>
         <WindowIndex Value="1"/>
         <CursorPos Y="2"/>
         <ExtraEditorCount Value="1"/>
         <ExtraEditor1>
-          <IsVisibleTab Value="True"/>
           <EditorIndex Value="-1"/>
+          <WindowIndex Value="-1"/>
           <TopLine Value="-1"/>
           <CursorPos X="-1" Y="-1"/>
         </ExtraEditor1>
@@ -81,10 +80,11 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Plot"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="8"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="63"/>
-        <CursorPos X="53" Y="77"/>
+        <TopLine Value="129"/>
+        <CursorPos X="42" Y="132"/>
         <UsageCount Value="186"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -345,9 +345,9 @@
         <Filename Value="C:\Applications\lazarus\lcl\include\spinedit.inc"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="162"/>
-        <CursorPos Y="175"/>
-        <UsageCount Value="5"/>
+        <TopLine Value="223"/>
+        <CursorPos Y="237"/>
+        <UsageCount Value="10"/>
       </Unit27>
       <Unit28>
         <Filename Value="C:\Applications\lazarus\lcl\grids.pas"/>
@@ -445,7 +445,7 @@
         <Filename Value="C:\Applications\lazarus\fpc\3.2.4\sources\rtl\objpas\sysutils\sysutilh.inc"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="338"/>
+        <TopLine Value="337"/>
         <CursorPos X="23" Y="351"/>
         <UsageCount Value="10"/>
       </Unit39>
@@ -453,9 +453,9 @@
         <Filename Value="C:\Applications\lazarus\fpc\3.2.4\sources\rtl\objpas\sysutils\sysutils.inc"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="154"/>
-        <CursorPos X="39" Y="160"/>
-        <UsageCount Value="9"/>
+        <TopLine Value="152"/>
+        <CursorPos X="9" Y="158"/>
+        <UsageCount Value="10"/>
       </Unit40>
       <Unit41>
         <Filename Value="C:\Applications\lazarus\lcl\dialogs.pp"/>
@@ -548,30 +548,6 @@
         <CursorPos Y="170"/>
         <UsageCount Value="10"/>
       </Unit51>
-      <Unit52>
-        <Filename Value="..\..\..\..\..\..\..\..\..\Applications\lazarus\lcl\include\spinedit.inc"/>
-        <EditorIndex Value="-1"/>
-        <WindowIndex Value="1"/>
-        <TopLine Value="223"/>
-        <CursorPos Y="237"/>
-        <UsageCount Value="10"/>
-      </Unit52>
-      <Unit53>
-        <Filename Value="..\..\..\..\..\..\..\..\..\Applications\lazarus\fpc\3.2.4\sources\rtl\objpas\sysutils\sysutilh.inc"/>
-        <EditorIndex Value="-1"/>
-        <WindowIndex Value="1"/>
-        <TopLine Value="337"/>
-        <CursorPos X="23" Y="351"/>
-        <UsageCount Value="10"/>
-      </Unit53>
-      <Unit54>
-        <Filename Value="..\..\..\..\..\..\..\..\..\Applications\lazarus\fpc\3.2.4\sources\rtl\objpas\sysutils\sysutils.inc"/>
-        <EditorIndex Value="-1"/>
-        <WindowIndex Value="1"/>
-        <TopLine Value="152"/>
-        <CursorPos X="9" Y="158"/>
-        <UsageCount Value="10"/>
-      </Unit54>
     </Units>
     <JumpHistory Count="22" HistoryIndex="21">
       <Position1>
@@ -608,59 +584,59 @@
       </Position8>
       <Position9>
         <Filename Value="gui.pas"/>
-        <Caret Line="908" Column="9" TopLine="1028"/>
+        <Caret Line="793" Column="12" TopLine="776"/>
       </Position9>
       <Position10>
         <Filename Value="gui.pas"/>
-        <Caret Line="793" Column="12" TopLine="776"/>
+        <Caret Line="202" Column="24" TopLine="201"/>
       </Position10>
       <Position11>
         <Filename Value="gui.pas"/>
-        <Caret Line="202" Column="24" TopLine="201"/>
+        <Caret Line="690" Column="3" TopLine="677"/>
       </Position11>
       <Position12>
         <Filename Value="gui.pas"/>
-        <Caret Line="690" Column="3" TopLine="677"/>
+        <Caret Line="908" Column="9" TopLine="894"/>
       </Position12>
       <Position13>
         <Filename Value="gui.pas"/>
-        <Caret Line="908" Column="9" TopLine="894"/>
+        <Caret Line="793" Column="3" TopLine="780"/>
       </Position13>
       <Position14>
         <Filename Value="gui.pas"/>
-        <Caret Line="793" Column="3" TopLine="780"/>
+        <Caret Line="487" Column="7" TopLine="473"/>
       </Position14>
       <Position15>
         <Filename Value="gui.pas"/>
-        <Caret Line="487" Column="7" TopLine="473"/>
+        <Caret Line="742" Column="31" TopLine="731"/>
       </Position15>
       <Position16>
         <Filename Value="gui.pas"/>
-        <Caret Line="742" Column="31" TopLine="731"/>
+        <Caret Line="976" Column="3" TopLine="958"/>
       </Position16>
       <Position17>
         <Filename Value="gui.pas"/>
-        <Caret Line="976" Column="3" TopLine="958"/>
+        <Caret Line="909" Column="9" TopLine="895"/>
       </Position17>
       <Position18>
         <Filename Value="gui.pas"/>
-        <Caret Line="909" Column="9" TopLine="895"/>
+        <Caret Line="920" Column="18" TopLine="895"/>
       </Position18>
       <Position19>
         <Filename Value="gui.pas"/>
-        <Caret Line="920" Column="18" TopLine="895"/>
+        <Caret Line="202" Column="24" TopLine="202"/>
       </Position19>
       <Position20>
         <Filename Value="gui.pas"/>
-        <Caret Line="202" Column="24" TopLine="202"/>
+        <Caret Line="697" Column="70" TopLine="684"/>
       </Position20>
       <Position21>
         <Filename Value="gui.pas"/>
-        <Caret Line="697" Column="70" TopLine="684"/>
+        <Caret Line="720" Column="72" TopLine="702"/>
       </Position21>
       <Position22>
-        <Filename Value="gui.pas"/>
-        <Caret Line="720" Column="72" TopLine="702"/>
+        <Filename Value="plot.pas"/>
+        <Caret Line="77" Column="53" TopLine="63"/>
       </Position22>
     </JumpHistory>
     <RunParams>
