@@ -55,6 +55,9 @@ begin
   Application.CreateForm(TFitnessPlotForm, FitnessPlotForm);
   Application.CreateForm(TParameterForm, ParameterForm);
   Application.CreateForm(TInitialConditionsForm, InitialConditionsForm);
+  ValuesForm.PredictFromStrucPars(nil);
+  PrepareInitialConditions;
+  InitialConditionsForm.FillFromPredictions(nil);
   Application.Run;
   Application.ProcessMessages;
   ClearSimulation(gActiveModel);

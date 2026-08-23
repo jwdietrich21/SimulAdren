@@ -55,14 +55,39 @@ type
 
   public
     response: TModalResult;
+    procedure FillFromPredictions(Sender: TObject);
   end;
 
 var
   InitialConditionsForm: TInitialConditionsForm;
 
+procedure PrepareInitialConditions;
+
 implementation
 
 {$R *.lfm}
+
+procedure PrepareInitialConditions;
+begin
+  if gPrediction[0].F > 0 then
+  begin
+    gInitialConditions.CRH := gPrediction[0].CRH;
+    gInitialConditions.e := gPrediction[0].e;
+    gInitialConditions.ACTH := gPrediction[0].ACTH;
+    gInitialConditions.PRF := gPrediction[0].F;
+    gInitialConditions.F := gPrediction[0].F;
+    gInitialConditions.yR := gPrediction[0].yR;
+  end
+  else
+  begin
+    gInitialConditions.CRH := gPrediction[1].CRH;
+    gInitialConditions.e := gPrediction[1].e;
+    gInitialConditions.ACTH := gPrediction[1].ACTH;
+    gInitialConditions.PRF := gPrediction[1].F;
+    gInitialConditions.F := gPrediction[1].F;
+    gInitialConditions.yR := gPrediction[1].yR;
+  end
+end;
 
 { TInitialConditionsForm }
 
@@ -98,15 +123,16 @@ begin
   ICList.Cells[0, 4] := 'PRF';
   ICList.Cells[0, 5] := 'F';
   ICList.Cells[0, 6] := 'yr';
-  ICList.Cells[1, 1] := FloatToStrF(gInitialconditions.CRH / CRHFactor, ffFixed, 0, 4);
+  {ICList.Cells[1, 1] := FloatToStrF(gInitialconditions.CRH / CRHFactor, ffFixed, 0, 4);
   for i := 2 to ICList.RowCount - 1 do
   begin
     ICList.Cells[1, i] := '0';
-  end;
+  end;}
   for i := 1 to ICList.RowCount - 1 do
   begin
     ICList.Cells[2, i] := kUoMs[i];
   end;
+  FillFromPredictions(Sender);
 end;
 
 procedure TInitialConditionsForm.FormShow(Sender: TObject);
@@ -127,6 +153,11 @@ begin
 end;
 
 procedure TInitialConditionsForm.PredictionButtonClick(Sender: TObject);
+begin
+  FillFromPredictions(Sender);
+end;
+
+procedure TInitialConditionsForm.FillFromPredictions(Sender: TObject);
 begin
   if gPrediction[0].F > 0 then
   begin
@@ -149,7 +180,5 @@ begin
 end;
 
 initialization
-
-  gInitialconditions.CRH := kCRH_new;
 
 end.

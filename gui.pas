@@ -189,7 +189,6 @@ type
     procedure CheckEvolveEnabling(Sender: TObject);
     procedure ClearOutput(Sender: TObject);
     procedure AdjustTimeUnits(Sender: TObject);
-    procedure PredictFromStrucPars(Sender: TObject);
   public
     { public declarations }
     AllPopulations: TAllPopulations;
@@ -203,6 +202,7 @@ type
     procedure SetModel(Sender: TObject; default: boolean);
     procedure SetG1(Sender: TObject);
     procedure SetG3(Sender: TObject);
+    procedure PredictFromStrucPars(Sender: TObject);
   end;
 
 var
