@@ -7,7 +7,7 @@ unit ScenarioHandler;
 { Simulation program for the hypothalamus-pituitary-adrenal axis }
 { This unit reads and writes scenarios as XML files }
 
-{ Version 2.1.0 (Chronos) }
+{ Version 2.1.1 (Chronos) }
 
 { (c) Johannes W. Dietrich, 1994 - 2026 }
 { (c) Nina Siegmar, 2020 - 2026 }
@@ -42,6 +42,7 @@ procedure SaveScenario(theModel: tActiveModel; theFileName: string);
 implementation
 
 function ValidFormat(theStream: TStream; const theBaseURI: ansistring): boolean;
+{ Some basic checks if an XML file is valid }
 const
   SIGNATURE_1 = '<?xml version="1.';
   SIGNATURE_2 = '<scenario';

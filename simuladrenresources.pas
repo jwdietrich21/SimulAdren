@@ -7,7 +7,7 @@ unit SimuladrenResources;
 { Simulation program for the hypothalamus-pituitary-adrenal axis }
 { This unit provides URLs and global strings for other SimulAdren units }
 
-{ Version 2.1.0 (Chronos) }
+{ Version 2.1.1 (Chronos) }
 
 { (c) Johannes W. Dietrich, 1994 - 2026 }
 { (c) Nina Siegmar, 2020 - 2026 }

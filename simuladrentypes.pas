@@ -7,7 +7,7 @@ unit SimuladrenTypes;
 { Simulation program for the hypothalamus-pituitary-adrenal axis }
 { Global types and constants }
 
-{ Version 2.1.0 (Chronos) }
+{ Version 2.1.1 (Chronos) }
 
 { (c) Johannes W. Dietrich, 1994 - 2026 }
 { (c) Nina Siegmar, 2020 - 2026 }
@@ -89,7 +89,7 @@ const
   clDarkOrange = TColor($008CFF);
 
   SimulAdrenID = 'Simuladren';
-  SimulAdrenVersionString = SimulAdrenID + ' 2.1 (Chronos)';
+  SimulAdrenVersionString = SimulAdrenID + ' 2.1.1 (Chronos)';
 
   ISO_8601_DATE_FORMAT = 'YYYY-MM-DD"T"hh:nn:ss';
   {Date/time format in XML representation}

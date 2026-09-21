@@ -7,7 +7,7 @@ unit BaseServices;
 { Simulation program for the hypothalamus-pituitary-adrenal axis }
 { General GUI-independent services for use by several units }
 
-{ Version 2.1.0 (Chronos) }
+{ Version 2.1.1 (Chronos) }
 
 { (c) Johannes W. Dietrich, 1994 - 2026 }
 { (c) Nina Siegmar, 2020 - 2026 }
